@@ -1,0 +1,50 @@
+
+h1 {
+	font-family: open-sans;
+	font-size: 3.125em;
+	
+	margin-bottom: 15px;
+}
+
+h2 {
+	font-family: open-sans;
+	font-size: 1.875em;
+}
+
+h3 {
+	font-family: open-sans;
+	font-size: 1.875em;
+}
+
+h4 {
+	font-family: open-sans;
+	font-size: 1.5em;
+}
+p {
+	font-family: open-sans;
+	font-size: 1.125em;
+	
+	margin: 15px 0;
+}
+
+/* classes */
+.light { color: #eee; }
+.light-grey { color: #bbb; }
+.grey { color: #777; }
+.dark-grey { color: #444; }
+.dark { color: #222; }
+
+.small { font-size: 0.875em; margin: 5px 0; }
+
+.justify { text-align: justify; }
+.underline { text-decoration: underline; }
+.italic { font-style: italic; }
+.bold { font-weight: bold; }
+
+.text-shadow-dark { text-shadow: 0px 0px 5px rgba(0, 0, 0, 1); }
+.text-shadow-light { text-shadow: 0px 0px 5px rgba(200, 200, 200, 1); }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+.text-center { text-align: center; }
+
+.hover:hover { color: #fc0; cursor: pointer; }
