@@ -3,43 +3,43 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <?php echo $this->headTitle('Sleanded')?>
+        <?php echo $this->headTitle('Sleanded')->setSeparator(' - ')->setAutoEscape(false) ?>
 
         <?php echo $this->headMeta()
             ->appendName('viewport', 'width=device-width, initial-scale=1.0')
-            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge') ?>
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ?>
 
-        <!-- Styles -->
+        <!-- Le styles -->
         <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+                        ->prependStylesheet($this->basePath('css/bootstrap.css'))
                         ->prependStylesheet($this->basePath('css/style.css'))
-                        ->prependStylesheet($this->basePath('css/text.css'))
-                        ->prependStylesheet($this->basePath('css/bootstrap.min.css'))
-                        ->prependStylesheet($this->basePath('css/bootstrap-theme.min.css'))?>
+                        ->prependStylesheet($this->basePath('css/layout.css')) ?>
 
         <!-- Scripts -->
         <?php echo $this->headScript()
-            ->prependFile($this->basePath('js/bootstrap.min.js'))
-            ->prependFile($this->basePath('js/jquery.min.js'))
+            ->prependFile($this->basePath('js/bootstrap.js'), 'text/javascript')
+            ->prependFile($this->basePath('js/load.js'), 'text/javascript')
+            ->prependFile('http://code.jquery.com/jquery.min.js', 'text/javascript')
             ->prependFile($this->basePath('js/respond.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
-            ->prependFile($this->basePath('js/html5shiv.min.js'),   'text/javascript', array('conditional' => 'lt IE 9',)) ?>
+            ->prependFile($this->basePath('js/html5shiv.js'),   'text/javascript', array('conditional' => 'lt IE 9',))
+        ; ?>
 
     </head>
     <body>
-        <div id="top-menu" class="shadow">
-            <ul>
-                <li><a class="animate">TEST</a></li>
-                <li><a class="animate">TEST</a></li>
-            </ul>
-        </div>
-        <div id="banner" class="shaded-50">
-            
-        </div>
-        <div class="container">
-            <?php echo $this->content ?>
+        <div id="page">
+            <header class="width">
+
+            </header>
+            <div id="content">
+                <div class="width" id="container">
+                    <?php echo $this->content; ?>
+                </div>
+            </div>
             <footer>
-                <p>&copy; 2012 - <?php echo date('Y') ?> by Sleanded <?php echo $this->translate('All rights reserved.') ?></p>
+
             </footer>
-        </div> <!-- /container -->
+        </div>
         <?php echo $this->inlineScript() ?>
     </body>
 </html>

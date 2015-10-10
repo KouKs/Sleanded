@@ -1,117 +1,43 @@
 /*
-Author: KouKs/Eric Meyer
-Tema: Hlavni rozlozeni stranky, Vynulovani
-Barvy
-#fc0 - oranzova
-#28e - modra
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 10.10.2015
+    Author     : Pavel
+
+    #009CFF
 */
 
-/*Vynulovani nataveni*/
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
-a { text-decoration: none; color: inherit; cursor: pointer; }
-li { list-style-type: none; }
-input, textarea , option, button, select { outline-style: none; }
 
-/* samotny vzhled stranky */
-body {
-    font-family: open sans;    
-}
 
-#top-menu {
-    position: relative;
-    
-    width: 100%; height: 50px;
-    
-    background-color: #fff;
-}
-#top-menu ul {
-    width: 1000px;
-    margin: 0px auto;
-}
-#top-menu ul li a{
-    line-height: 20px;
-    font-size: 0.95em;
-    padding: 15px;
-    font-family: open sans;
-    font-weight: bold;
-    color: #aaa;
-    float: left;
-}
-#top-menu ul li a:hover {
-    color: #fc0;
-    text-decoration: none;
-}
+/**
+ * media
+ */
 
-#banner {
-    width: 100%; height: 800px;
-    
-    background: url('../img/banner.jpg') no-repeat center center;
-    background-size: cover;
+@media only screen and (min-width: 850px) {
+    .width {
+        width: 500px;
+    }
+    #inzeraty , #firmy { width: 100%; }
+    nav a { padding: 20px 10px 18px 10px; }
     
 }
 
-.animate {
-        -webkit-transition-duration: 0.2s;
-        transition-duration: 0.2s;
-        -moz-transition-duration: 0.2s;
-
-        -webkit-transition-property: all;
-        -moz-transition-property: all;
-        -o-transition-property: all;
-        transition-property: all;
+@media only screen and (min-width: 1050px) {
+    .width {
+        width: 700px;
+    }
+    #inzeraty , #firmy { width: 340px; }
+    nav a { padding: 20px 20px 18px 20px; }
 }
 
-.arrow-left { float: left; background: url( images/icons/arrow-left.png ) center center no-repeat; }
-.arrow-left:hover { background-image: url( images/icons/arrow-left-hover.png ); }
-.arrow-right { float: right; background: url( images/icons/arrow-right.png ) center center no-repeat; }
-.arrow-right:hover { background-image: url( images/icons/arrow-right-hover.png ); }
-.arrow-up { background: url( images/icons/arrow-up.png ) center center no-repeat; }
-.arrow-up:hover { background-image: url( images/icons/arrow-up-hover.png ); }
 
-.arrow-left-2 { float: left; background: url( images/icons/arrow2-left.png ) center center no-repeat; }
-.arrow-left-2:hover { background-image: url( images/icons/arrow2-left-hover.png ); }
-.arrow-right-2 { float: right; background: url( images/icons/arrow2-right.png ) center center no-repeat; }
-.arrow-right-2:hover { background-image: url( images/icons/arrow2-right-hover.png ); }
-.arrow-up-2 { background: url( images/icons/arrow2-up.png ) center center no-repeat; }
-.arrow-up-2:hover { background-image: url( images/icons/arrow2-up-hover.png ); }
-
-.arrow-left-3 { float: left; background: url( images/icons/arrow3-left.png ) center center no-repeat; }
-.arrow-left-3:hover { background-image: url( images/icons/arrow3-left-hover.png ); }
-.arrow-right-3 { float: right; background: url( images/icons/arrow3-right.png ) center center no-repeat; }
-.arrow-right-3:hover { background-image: url( images/icons/arrow3-right-hover.png ); }
-.arrow-up-3 { background: url( images/icons/arrow3-up.png ) center center no-repeat; }
-.arrow-up-3:hover { background-image: url( images/icons/arrow3-up-hover.png ); }
-
-.bg-white { background-color: #fff; }
-.bg-light-grey { background-color: #eee; }
-.bg-dark-grey { background-color: #222; }
-.bg-black { background-color: #111; }
-.bg-orange { background-color: #fc0; }
-
-.shadow {
-        -webkit-box-shadow: #000 0px 0px 10px;
-        -moz-box-shadow: #000 0px 0px 10px;
-        box-shadow: #000 0px 0px 10px;
+@media only screen and (min-width: 1250px) {
+    .width {
+        width: 900px;
+    }
+    #inzeraty , #firmy { width: 440px; }
+    nav a { padding: 20px 20px 18px 20px; }
 }
-
-.left { float: left; }
-.right { float: right; }

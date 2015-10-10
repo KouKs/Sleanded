@@ -8,6 +8,26 @@
  */
 
 return array(
+    
+    'view_helpers' => array(
+        'factories' => array(
+            /*
+            'menu' => function($sm) {
+                $helper = new Application\Helper\Menu();
+                return $helper;           
+            },
+            */
+            'messenger' => function($sm) {
+                $helper = new Application\Helper\Messenger();
+                return $helper;           
+            },
+        ),
+        'invokables' => array(
+            'menu' => 'Application\Helper\Menu', 
+            'messenger' => 'Application\Helper\Messenger', 
+        ),  
+    ),
+    
     'router' => array(
         'routes' => array(
             'home' => array(
@@ -27,7 +47,7 @@ return array(
             'application' => array(
                 'type'    => 'Literal',
                 'options' => array(
-                    'route'    => '/application',
+                    'route'    => '/',
                     'defaults' => array(
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller'    => 'Index',
@@ -39,7 +59,7 @@ return array(
                     'default' => array(
                         'type'    => 'Segment',
                         'options' => array(
-                            'route'    => '/[:controller[/:action]]',
+                            'route'    => '[:controller[/:action]]',
                             'constraints' => array(
                                 'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
                                 'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
@@ -73,7 +93,7 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Application\Controller\Index' => 'Application\Controller\IndexController'
+            'Application\Controller\Index' => 'Application\Controller\IndexController',
         ),
     ),
     'view_manager' => array(

@@ -3,9 +3,13 @@ Sleanded website
 
 Introduction
 ------------
-This website serves as a reference portfolio for students
+This website serves as a company site of Sleanded codes
+
+
+Team
+----
 - Pavel Koch
 - Michael Bausano
-- Dominik Karas
+
 
 
