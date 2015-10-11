@@ -25,7 +25,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
  * limitations under the License.
  * ======================================================================== */
 
-var _URL = "/Trinec/public/";
+var _URL = "/sleanded/public/";
 
 +function ($) { "use strict";
 

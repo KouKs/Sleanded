@@ -1,32 +1,5 @@
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,700);
 
-h1 {
-	font-family: open sans;
-	font-size: 3.125em;
-	
-	margin-bottom: 15px;
-}
 
-h2 {
-	font-family: open sans;
-	font-size: 1.875em;
-}
-
-h3 {
-	font-family: open sans;
-	font-size: 1.875em;
-}
-
-h4 {
-	font-family: open sans;
-	font-size: 1.5em;
-}
-p {
-	font-family: open sans;
-	font-size: 1.125em;
-	
-	margin: 15px 0;
-}
 
 /* classes */
 .light { color: #eee; }

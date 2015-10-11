@@ -1,0 +1,492 @@
+/**
+ *  Created on : 11.10.2015
+ *   Author     : Pavel
+ */
+/**
+ * Setting variables
+ */
+/**
+ * 0 - Reset
+ */
+body {
+  margin: 0;
+  padding: 0;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+img {
+  width: 100%;
+}
+/**
+ * 1 - Vzhled stránek
+ */
+/**
+ * 1.1 - Celkový
+ */
+body {
+  width: 100%;
+  min-height: 100%;
+  background-color: black;
+  font-family: 'Proxima Nova';
+}
+/**
+ * 1.2 - Index
+ */
+nav#side {
+  position: fixed;
+  top: 40%;
+  right: 10px;
+}
+nav#side a {
+  line-height: 15px;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-indent: -100px;
+  width: 15px;
+  height: 15px;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  border: 2px solid #aaa;
+  display: block;
+  cursor: pointer;
+  -webkit-transition: all linear 0.2s;
+  -moz-transition: all linear 0.2s;
+  -o-transition: all linear 0.2s;
+  transition: all linear 0.2s;
+}
+nav#side a:hover {
+  background-color: #b23432;
+  border-color: #b23432;
+}
+nav#side a.active {
+  background-color: #aaa;
+  cursor: default;
+}
+nav#side a.active:hover {
+  background-color: #aaa;
+  border-color: #aaa;
+}
+header {
+  width: 100%;
+}
+@media screen and (min-height: 300px) {
+  header {
+    height: 500px;
+  }
+}
+@media screen and (min-height: 500px) {
+  header {
+    height: 700px;
+  }
+}
+@media screen and (min-height: 700px) {
+  header {
+    height: 900px;
+  }
+}
+@media screen and (min-height: 900px) {
+  header {
+    height: 1000px;
+  }
+}
+header #top-bar {
+  width: 100%;
+  height: 80px;
+  background: url("../img/menu-bg.png");
+}
+header #top-bar #logo {
+  padding: 15px;
+  float: left;
+  cursor: pointer;
+}
+@media screen and (max-width: 600px) {
+  header #top-bar nav#primary {
+    float: right;
+    width: 80px;
+    height: 80px;
+    background-color: black;
+  }
+}
+@media screen and (min-width: 600px) {
+  header #top-bar nav#primary {
+    float: right;
+  }
+  header #top-bar nav#primary a {
+    color: #eee;
+    line-height: 20px;
+    font-size: 14px;
+    float: left;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: bold;
+    -webkit-transition: all linear 0.2s;
+    -moz-transition: all linear 0.2s;
+    -o-transition: all linear 0.2s;
+    transition: all linear 0.2s;
+  }
+  header #top-bar nav#primary a:hover {
+    color: #b23432;
+  }
+  header #top-bar nav#primary a.fb,
+  header #top-bar nav#primary a.twitter {
+    height: 32px;
+    padding: 24px;
+  }
+}
+@media screen and (min-width: 600px) and (min-width: 600px) {
+  header #top-bar nav#primary a {
+    padding: 30px 10px 30px 10px;
+  }
+}
+@media screen and (min-width: 600px) and (min-width: 1000px) {
+  header #top-bar nav#primary a {
+    padding: 30px 20px 30px 20px;
+  }
+}
+@media screen and (min-width: 600px) and (min-width: 1200px) {
+  header #top-bar nav#primary a {
+    padding: 30px;
+  }
+}
+header #motto {
+  width: 80%;
+  margin: 20% auto 0 auto;
+  text-align: center;
+}
+header #buttons {
+  position: relative;
+  top: 10%;
+  margin: 0 auto;
+}
+@media screen and (min-width: 0px) {
+  header #buttons {
+    width: 200px;
+  }
+}
+@media screen and (min-width: 800px) {
+  header #buttons {
+    width: 500px;
+  }
+}
+@media screen and (min-width: 1000px) {
+  header #buttons {
+    width: 600px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  header #buttons {
+    width: 700px;
+  }
+}
+/**
+ * 2 - Fonty
+ */
+@font-face {
+  font-family: 'Proxima Nova';
+  font-weight: normal;
+  src: url('../fonts/ProximaNova-Regular.otf');
+}
+@font-face {
+  font-family: 'Proxima Nova';
+  font-weight: lighter;
+  src: url('../fonts/ProximaNova-Light.otf');
+}
+@font-face {
+  font-family: 'Proxima Nova';
+  font-weight: bold;
+  src: url('../fonts/ProximaNova-Semibold.otf');
+}
+/**
+ * 3 - Formátování textu
+ */
+/**
+ * 3.1 - Nadpisy
+ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  width: 100%;
+}
+h1 {
+  color: white;
+  font-weight: lighter;
+  margin: 0;
+}
+@media screen and (min-width: 0px) {
+  h1 {
+    font-size: 30px;
+    line-height: 30px;
+  }
+}
+@media screen and (min-width: 800px) {
+  h1 {
+    font-size: 60px;
+    line-height: 60px;
+  }
+}
+@media screen and (min-width: 1000px) {
+  h1 {
+    font-size: 70px;
+    line-height: 70px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  h1 {
+    font-size: 80px;
+    line-height: 80px;
+  }
+}
+h2 {
+  margin: 15px 0;
+  text-align: center;
+  font-weight: normal;
+  font-size: 60px;
+  color: #b23432;
+  line-height: 60px;
+  padding-bottom: 15px;
+  background: url("../img/underline.png") center bottom no-repeat;
+}
+h3 {
+  font-size: 30px;
+  color: #b23432;
+  text-align: center;
+  margin-bottom: 10px;
+}
+h4 {
+  font-size: 1.5em;
+}
+p {
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 20px;
+  color: #333;
+}
+p.motto-text {
+  margin-top: 20px;
+  color: white;
+}
+@media screen and (min-width: 0px) {
+  p.motto-text {
+    font-size: 15px;
+    line-height: 15px;
+  }
+}
+@media screen and (min-width: 800px) {
+  p.motto-text {
+    font-size: 20px;
+    line-height: 20px;
+  }
+}
+@media screen and (min-width: 1000px) {
+  p.motto-text {
+    font-size: 30px;
+    line-height: 30px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  p.motto-text {
+    font-size: 40px;
+    line-height: 40px;
+  }
+}
+p.logo-text {
+  padding: 20px 5px;
+  font-size: 40px;
+  color: #eee;
+  font-weight: bold;
+  line-height: 40px;
+  float: left;
+}
+/**
+ * 4 - Obecně používané třídy
+ */
+.third {
+  width: 29.3333%;
+  padding: 2%;
+  float: left;
+  text-align: justify;
+}
+.hidden {
+  display: none;
+}
+.part {
+  width: 100%;
+  overflow: hidden;
+  display: block;
+  background: white;
+}
+.area {
+  margin: 0 auto;
+}
+@media screen and (min-width: 800px) {
+  .area {
+    width: 600px;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .area {
+    width: 800px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .area {
+    width: 1000px;
+  }
+}
+#header-img,
+#home-img,
+.imageHolder {
+  position: absolute;
+  z-index: -1;
+}
+.shadow {
+  -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+}
+/**
+ * 5 - Inputy
+ */
+/**
+ * 5.1 - Tlačítka
+ */
+.contact,
+.work {
+  width: 40%;
+  padding: 15px 0;
+  font-weight: lighter;
+  color: #fff;
+  text-transform: uppercase;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  -webkit-transition: all linear 0.2s;
+  -moz-transition: all linear 0.2s;
+  -o-transition: all linear 0.2s;
+  transition: all linear 0.2s;
+}
+@media screen and (min-width: 0px) {
+  .contact,
+  .work {
+    font-size: 10px;
+    line-height: 10px;
+  }
+}
+@media screen and (min-width: 800px) {
+  .contact,
+  .work {
+    font-size: 15px;
+    line-height: 15px;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .contact,
+  .work {
+    font-size: 20px;
+    line-height: 20px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .contact,
+  .work {
+    font-size: 25px;
+    line-height: 25px;
+  }
+}
+.contact {
+  float: left;
+  background-color: #b23432;
+  border: 2px solid #b23432;
+}
+.work {
+  float: right;
+  border: 2px solid #fff;
+}
+.work:hover {
+  border: 2px solid #b23432;
+  color: #b23432;
+}
+/**
+ * 6 - Zprávy
+ */
+.message {
+  margin-top: 20px;
+  width: 100%;
+  padding: 20px;
+  color: #fff;
+  font-size: 20px;
+  box-sizing: border-box;
+}
+.success {
+  background-color: #eee;
+  background-image: -moz-linear-gradient(top, #eee, #fff);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#eee), to(#fff));
+  background-image: -webkit-linear-gradient(top, #eee, #fff);
+  background-image: -o-linear-gradient(top, #eee, #fff);
+  background-image: linear-gradient(to bottom, #eee, #fff);
+}
+.notice {
+  background-color: #eee;
+  background-image: -moz-linear-gradient(top, #eee, #fff);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#eee), to(#fff));
+  background-image: -webkit-linear-gradient(top, #eee, #fff);
+  background-image: -o-linear-gradient(top, #eee, #fff);
+  background-image: linear-gradient(to bottom, #eee, #fff);
+}
+.error {
+  background-color: #eee;
+  background-image: -moz-linear-gradient(top, #eee, #fff);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#eee), to(#fff));
+  background-image: -webkit-linear-gradient(top, #eee, #fff);
+  background-image: -o-linear-gradient(top, #eee, #fff);
+  background-image: linear-gradient(to bottom, #eee, #fff);
+}
+/**
+ * 7 - kony
+ */
+[class^='icon'] {
+  width: 32px;
+  height: 32px;
+  display: block;
+  float: right;
+}
+.icon-fb {
+  background: url("../img/icons/facebook.png");
+}
+.icon-fb:hover {
+  background: url("../img/icons/facebook-hover.png");
+}
+.icon-twitter {
+  background: url("../img/icons/twitter.png");
+}
+.icon-twitter:hover {
+  background: url("../img/icons/twitter-hover.png");
+}
+/**
+ * Optimalizace
+ */
+/*
+@media only screen and (min-width: 850px) {
+
+    
+}
+
+@media only screen and (min-width: 1050px) {
+
+}
+
+
+@media only screen and (min-width: 1250px) {
+
+}
+*/
+/**
+ * 8 - Funkce
+ */
+/*# sourceMappingURL=glob.css.map */
