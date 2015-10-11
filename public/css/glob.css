@@ -94,7 +94,6 @@ header {
 header #top-bar {
   width: 100%;
   height: 80px;
-  background: url("../img/menu-bg.png");
 }
 header #top-bar #logo {
   padding: 15px;
@@ -179,6 +178,25 @@ header #buttons {
   header #buttons {
     width: 700px;
   }
+}
+.reference {
+  width: 50%;
+  float: left;
+  cursor: pointer;
+}
+footer {
+  width: 100%;
+  height: 500px;
+  background-color: #333;
+  /*
+    #bottom-bar {
+        position: relative; top: 420px;
+        width: 100%;
+        height: 80px;
+        background: #ddd;
+        border-top: 1px solid #000;
+    }
+    */
 }
 /**
  * 2 - Fonty
@@ -305,6 +323,9 @@ p.logo-text {
 /**
  * 4 - Obecně používané třídy
  */
+.red {
+  color: #b23432;
+}
 .third {
   width: 29.3333%;
   padding: 10% 2%;
@@ -338,9 +359,7 @@ p.logo-text {
     width: 1000px;
   }
 }
-#header-img,
-#home-img,
-.imageHolder {
+[class^='img-'] {
   position: absolute;
   z-index: -1;
 }

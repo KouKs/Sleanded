@@ -34,14 +34,14 @@ $.fn.leavePage = function() {
 
 
 $(document).ready( function() { 
-    $('#header-img').imageScroll({
+    $('.img-header').imageScroll({
         image: null,
         imageAttribute: 'image',
         container: $('header'),
         windowObject: $(window),
         speed: 0.05,
         coverRatio: 0.75,
-        holderClass: 'imageHolder',
+        holderClass: 'img-holder',
         holderMinHeight: 1000,
         holderMaxHeight: null,
         extraHeight: 0,
@@ -50,22 +50,24 @@ $(document).ready( function() {
         parallax: true,
         touch: false
     });
-    $('#home-img').imageScroll({
+    /*
+    $('.img-ref').imageScroll({
         image: null,
         imageAttribute: 'image',
-        container: $('body'),
+        container: $('.img-ref').parent(),
         windowObject: $(window),
         speed: 0.05,
         coverRatio: 0.75,
-        holderClass: 'imageHolder',
-        holderMinHeight: 721,
+        holderClass: 'img-holder',
+        holderMinHeight: 200,
         holderMaxHeight: null,
         extraHeight: 0,
         mediaWidth: 1280,
         mediaHeight: 1024,
         parallax: true,
         touch: false
-    });
+    });*/
+    
     $("#side a").each( function( ) {
         $(this).css({color:"transparent",fontSize: "0px"});
     });

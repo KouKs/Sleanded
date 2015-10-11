@@ -7,7 +7,7 @@
  * Setting variables
  */
 @theme-color: #b23432;
-@secondary-color: #b23432;
+@secondary-color: #d9403c;
 @grey: #eee;
 
 @img-folder: "../img/";
@@ -101,7 +101,6 @@ header {
     #top-bar {
         width: 100%;
         height: 80px;
-        background: url( "@{img-folder}menu-bg.png" );
         
         #logo {
             padding: 15px;
@@ -181,7 +180,28 @@ header {
     }
 }
 
+.reference {
+    width: 50%;
+    float: left;
+    cursor: pointer;
+}
 
+
+footer {
+    width: 100%;
+    height: 500px;
+    background-color: #333;
+    
+    /*
+    #bottom-bar {
+        position: relative; top: 420px;
+        width: 100%;
+        height: 80px;
+        background: #ddd;
+        border-top: 1px solid #000;
+    }
+    */
+}
 /**
  * 2 - Fonty
  */
@@ -305,6 +325,9 @@ p.logo-text {
 /**
  * 4 - Obecně používané třídy
  */
+.red {
+    color: @theme-color;
+}
 .third {
     width: 29.3333%;
     padding: 10% 2%;
@@ -320,6 +343,7 @@ p.logo-text {
     overflow: hidden;
     display: block;
     background: white;
+    //border-bottom: 5px solid @theme-color;
 }
 
 .area {
@@ -338,7 +362,7 @@ p.logo-text {
     }
 }
 
-#header-img , #home-img , .imageHolder { position: absolute; z-index: -1; }
+[class^='img-'] { position: absolute; z-index: -1; }
 .shadow {
     -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
     -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
