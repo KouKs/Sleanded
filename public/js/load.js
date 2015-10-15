@@ -68,6 +68,7 @@ $(document).ready( function() {
         touch: false
     });*/
     
+    /* side menu */
     $("#side a").each( function( ) {
         $(this).css({color:"transparent",fontSize: "0px"});
     });
