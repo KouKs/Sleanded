@@ -8,7 +8,7 @@
 /**
  * 0 - Reset
  */
-body {
+* {
   margin: 0;
   padding: 0;
 }
@@ -21,7 +21,9 @@ img {
 }
 input,
 button,
-textarea {
+textarea,
+select,
+option {
   outline: 0;
 }
 /**
@@ -30,11 +32,14 @@ textarea {
 /**
  * 1.1 - Celkový
  */
+html,
 body {
   width: 100%;
-  min-height: 100%;
+  height: 100%;
   background-color: black;
   font-family: 'Proxima Nova';
+  position: relative;
+  z-index: -2;
 }
 /**
  * 1.2 - Index
@@ -75,30 +80,30 @@ nav#side a.active:hover {
 }
 header {
   width: 100%;
-}
-@media screen and (min-height: 300px) {
-  header {
-    height: 500px;
-  }
-}
-@media screen and (min-height: 500px) {
-  header {
-    height: 700px;
-  }
-}
-@media screen and (min-height: 700px) {
-  header {
-    height: 900px;
-  }
-}
-@media screen and (min-height: 900px) {
-  header {
-    height: 1000px;
-  }
+  height: 100%;
+  overflow: none;
+  display: block;
 }
 header #top-bar {
   width: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 15;
   height: 80px;
+  display: none;
+  /*
+        @media screen {
+            @media (min-width: 600px) {
+                height: 40px;
+            }
+            @media (min-width: 900px) {
+                height: 60px;
+            }
+            @media (min-width: 1200px) {
+                height: 80px;
+            }
+        }
+        */
 }
 header #top-bar #logo {
   padding: 15px;
@@ -108,9 +113,12 @@ header #top-bar #logo {
 @media screen and (max-width: 600px) {
   header #top-bar nav#primary {
     float: right;
-    width: 80px;
-    height: 80px;
+    width: 40px;
+    height: 40px;
     background-color: black;
+  }
+  header #top-bar nav#primary a {
+    display: none;
   }
 }
 @media screen and (min-width: 600px) {
@@ -120,7 +128,6 @@ header #top-bar #logo {
   header #top-bar nav#primary a {
     color: #eee;
     line-height: 20px;
-    font-size: 14px;
     float: left;
     text-transform: uppercase;
     cursor: pointer;
@@ -141,28 +148,54 @@ header #top-bar #logo {
 }
 @media screen and (min-width: 600px) and (min-width: 600px) {
   header #top-bar nav#primary a {
-    padding: 30px 10px 30px 10px;
+    font-size: 8px;
+    padding: 30px 10px;
   }
 }
-@media screen and (min-width: 600px) and (min-width: 1000px) {
+@media screen and (min-width: 600px) and (min-width: 900px) {
   header #top-bar nav#primary a {
-    padding: 30px 20px 30px 20px;
+    font-size: 10px;
+    padding: 30px 20px;
   }
 }
 @media screen and (min-width: 600px) and (min-width: 1200px) {
   header #top-bar nav#primary a {
+    font-size: 14px;
     padding: 30px;
   }
 }
+header #fixed-bar {
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 80px;
+  color: #333;
+  z-index: 15;
+  -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  display: none;
+}
+header #fixed-bar #top-bar nav a {
+  color: #333;
+}
+header #fixed-bar p.logo-text-sleanded {
+  color: #333;
+}
 header #motto {
   width: 80%;
-  margin: 20% auto 0 auto;
+  position: relative;
+  top: 30%;
+  margin: 0 auto;
   text-align: center;
+  display: none;
 }
 header #buttons {
   position: relative;
-  top: 10%;
+  top: 60%;
   margin: 0 auto;
+  opacity: 0;
 }
 @media screen and (min-width: 0px) {
   header #buttons {
@@ -185,47 +218,39 @@ header #buttons {
   }
 }
 .reference {
-  width: 50%;
+  width: 27.3333%;
+  margin: 0 2.5% 50px 2.5%;
+  padding: 0.5%;
+  border-radius: 5px;
   float: left;
   cursor: pointer;
-}
-footer {
-  width: 100%;
-  background-color: #b23432;
-  background-image: -moz-linear-gradient(top, #b23432, #d9403c);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#b23432), to(#d9403c));
-  background-image: -webkit-linear-gradient(top, #b23432, #d9403c);
-  background-image: -o-linear-gradient(top, #b23432, #d9403c);
-  background-image: linear-gradient(to bottom, #b23432, #d9403c);
-  overflow: hidden;
-  height: 500px;
-}
-footer #newsletter,
-footer #contact,
-footer #blog,
-footer #languages {
-  margin: 1%;
-  padding: 1%;
-  float: left;
-  box-sizing: border-box;
-  width: 21%;
-  border-left: 1px solid #333;
-}
-footer #bottom-bar {
-  position: relative;
-  top: 420px;
-  width: 100%;
-  height: 80px;
-  background: #222;
-  border-top: 1px solid #000;
-  text-align: center;
-  color: #eee;
+  background: #fafafa;
+  -webkit-transition: all linear 0.2s;
+  -moz-transition: all linear 0.2s;
+  -o-transition: all linear 0.2s;
+  transition: all linear 0.2s;
   -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
 }
-footer .post-footer {
-  margin-bottom: 4px;
+.reference:hover {
+  -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.6);
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.6);
+}
+footer {
+  width: 100%;
+  overflow: hidden;
+  height: 20px;
+  padding: 30px 0;
+  background: url(../img/logo50.png ) 15px center no-repeat #111;
+  line-height: 20px;
+  font-size: 20px;
+  color: #999;
+  text-align: center;
+  -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
 }
 /**
  * 2 - Fonty
@@ -289,44 +314,36 @@ h1 {
     line-height: 80px;
   }
 }
-h2 {
-  margin: 30px 0;
+h2,
+h3 {
+  margin: 50px 0;
   text-align: center;
-  font-weight: bold;
-  font-size: 60px;
+  font-weight: lighter;
+  font-size: 50px;
   color: #b23432;
-  line-height: 60px;
-  text-transform: uppercase;
+  line-height: 50px;
 }
 h3 {
-  font-size: 30px;
-  line-height: 30px;
-  color: #b23432;
-  text-align: center;
-  margin-bottom: 10px;
+  color: #fff;
 }
 h4 {
+  margin: 7px 0;
+  font-weight: lighter;
   font-size: 25px;
+  color: #333;
   line-height: 25px;
-  color: #fff;
-  margin-bottom: 10px;
-  font-weight: bold;
-}
-h5 {
-  font-size: 20px;
-  line-height: 20px;
-  color: #eee;
-  margin-bottom: 5px;
-  font-weight: bold;
 }
 p {
   font-weight: normal;
-  font-size: 18px;
+  font-size: 20px;
   line-height: 20px;
-  color: #333;
+  color: #aaa;
 }
 p.light {
   color: #eee;
+}
+p.justify {
+  text-align: justify;
 }
 p.motto-text {
   margin-top: 20px;
@@ -356,13 +373,25 @@ p.motto-text {
     line-height: 40px;
   }
 }
-p.logo-text {
-  padding: 20px 5px;
+p.logo-text-sleanded,
+p.logo-text-codes {
+  padding: 20px 0px;
   font-size: 40px;
   color: #eee;
-  font-weight: bold;
+  font-weight: lighter;
   line-height: 40px;
   float: left;
+}
+p.logo-text-codes {
+  font-weight: bold;
+  color: #b23432;
+}
+p.about {
+  padding-bottom: 50px;
+}
+p.reference-text {
+  text-align: justify;
+  font-size: 16px;
 }
 /**
  * 4 - Obecně používané třídy
@@ -370,9 +399,12 @@ p.logo-text {
 .red {
   color: #b23432;
 }
+.red-bg {
+  background-color: #b23432;
+}
 .third {
   width: 29.3333%;
-  padding: 10% 2%;
+  padding: 5% 2%;
   float: left;
   text-align: justify;
 }
@@ -383,25 +415,18 @@ p.logo-text {
   width: 100%;
   overflow: hidden;
   display: block;
-  background: white;
+  background: #fff;
+  position: relative;
+}
+.part:nth-child(even) {
+  background: transparent;
+}
+.part:nth-child(5) {
+  background: #b23432;
 }
 .area {
   margin: 0 auto;
-}
-@media screen and (min-width: 800px) {
-  .area {
-    width: 600px;
-  }
-}
-@media screen and (min-width: 1000px) {
-  .area {
-    width: 800px;
-  }
-}
-@media screen and (min-width: 1200px) {
-  .area {
-    width: 1000px;
-  }
+  width: 90%;
 }
 [class^='img-'] {
   position: absolute;
@@ -410,55 +435,42 @@ p.logo-text {
 /**
  * 5 - Inputy
  */
-::-webkit-input-placeholder {
-  color: #fff;
+#contact {
+  width: 50%;
+  padding-bottom: 50px;
+  margin: 0 auto;
 }
-:-moz-placeholder {
-  /* Firefox 18- */
-  color: #fff;
-}
-::-moz-placeholder {
-  /* Firefox 19+ */
-  color: #fff;
-}
-:-ms-input-placeholder {
-  color: #fff;
-}
-.email-footer {
-  margin-top: 10px;
-  border: 2px solid #fff;
-  border-radius: 5px;
+#contact textarea,
+#contact select,
+#contact input[type="text"] {
+  border: 0;
+  padding: 20px;
+  margin-bottom: 5px;
+  max-width: 100%;
+  min-width: 100%;
+  background: #fff;
+  box-sizing: border-box;
+  display: inline-block;
   text-transform: uppercase;
-  color: #fff;
-  padding: 9px;
-  background: #b23432;
+  color: #b23432;
+  font-family: "Proxima Nova";
   font-size: 18px;
-  line-height: 18px;
-  -webkit-transition: all linear 0.2s;
-  -moz-transition: all linear 0.2s;
-  -o-transition: all linear 0.2s;
-  transition: all linear 0.2s;
+  text-indent: 0;
+}
+#contact textarea {
+  min-height: 200px;
+}
+#contact select:hover,
+#contact textarea:hover,
+#contact input[type="text"]:hover,
+#contact select:focus,
+#contact textarea:focus,
+#contact input[type="text"]:focus {
+  background: #eee;
 }
 /**
  * 5.1 - Tlačítka (<a>)
  */
-.contact-footer {
-  position: relative;
-  top: 15px;
-  border: 2px solid #fff;
-  border-radius: 5px;
-  text-transform: uppercase;
-  color: #fff;
-  padding: 9px 20px;
-  text-align: center;
-  font-size: 18px;
-  line-height: 18px;
-  cursor: pointer;
-  -webkit-transition: all linear 0.2s;
-  -moz-transition: all linear 0.2s;
-  -o-transition: all linear 0.2s;
-  transition: all linear 0.2s;
-}
 .contact,
 .work {
   width: 40%;
@@ -574,21 +586,57 @@ p.logo-text {
 /**
  * Optimalizace
  */
-/*
-@media only screen and (min-width: 850px) {
-
-    
+@media print {
+  * {
+    color: #000 !important;
+    text-shadow: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+  .ir a:after,
+  a[href^="javascript:"]:after,
+  a[href^="#"]:after {
+    content: "";
+  }
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+  thead {
+    display: table-header-group;
+  }
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+  img {
+    max-width: 100% !important;
+  }
+  @page {
+    margin: 0.5cm;
+  }
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
 }
-
-@media only screen and (min-width: 1050px) {
-
-}
-
-
-@media only screen and (min-width: 1250px) {
-
-}
-*/
 /**
  * 8 - Funkce
  */

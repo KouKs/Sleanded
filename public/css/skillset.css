@@ -11,14 +11,14 @@
   position: relative;
   display: inline-block;
   color: #999;
-  font-size: 35px;
+  font-size: 25px;
   text-align: center;
   color: #b23432;
 }
 
 .chart figcaption {
-  padding: 50px 25px;
-  width: 100px; height: 50px;
+  padding: 50px 15px;
+  width: 120px; height: 50px;
   border: 20px solid #333;
   border-radius: 100px;
   line-height: 50px;

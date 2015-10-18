@@ -12,15 +12,14 @@
 
         <!-- Le styles -->
         <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
-                        ->prependStylesheet($this->basePath('css/bootstrap.css'))
                         ->prependStylesheet($this->basePath('css/hover.min.css'))
                         ->prependStylesheet($this->basePath('css/skillset.css'))
                         ->prependStylesheet($this->basePath('css/glob.css')) ?>
 
         <!-- Scripts -->
         <?php echo $this->headScript()
-            ->prependFile($this->basePath('js/bootstrap.js'), 'text/javascript')
             ->prependFile($this->basePath('js/load.js'), 'text/javascript')
+            ->prependFile($this->basePath('js/images.js'), 'text/javascript')
             ->prependFile($this->basePath('js/jquery.imageScroll.min.js'), 'text/javascript')
             ->prependFile('http://code.jquery.com/jquery.min.js', 'text/javascript')
             ->prependFile($this->basePath('js/respond.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
@@ -28,15 +27,16 @@
         ; ?>
 
     </head>
-    <body>
-        
+    <body>        
         <header class="header">
             <div class="img-header" data-image="img/banner.png" data-width="1900" data-height="1266"></div>
+            <div id="fixed-bar"></div>
             <div id="top-bar">
                 <div id="logo">
-                    <img src="img/logo50.png" />
+                    <img height="100%" src="img/logo50.png" />
                 </div>
-                <p class="logo-text">Sleanded</p>
+                <p class="logo-text-sleanded">Sleanded</p>
+                <p class="logo-text-codes">codes</p>
                 <nav id="primary">
                     <a>home</a>
                     <a>our work</a>
@@ -55,7 +55,7 @@
                     Aliquam erat volutpat.	
                 </p>
             </div>
-            <div id=buttons>
+            <div id="buttons">
                 <a class="hvr-grow contact">contact us</a>
                 <a class="work">our work</a>
             </div>
@@ -66,47 +66,11 @@
                 <?php echo $this->content; ?>
             </div>
         </div>
-        
+ 
         <footer>
-            <div id="newsletter">
-                <h4>Newsletter</h4>
-                <p class="light">Sign up for our newsletter so you can easily stay in loop!</p>
-                <input placeholder="your email" class="email-footer" type="text" />
-            </div>
-            <div id="contact">
-                <h4>Get in touch</h4>
-                <p class="light">Do you have any questions?
-                We do have answers for
-                all of them!
-                Fell free to ask at any time.</p>
-                <a class="contact-footer">contact us</a>
-            </div>
-            <div id="blog">
-                <h4>Latest blog posts</h4>
-                <article class="post-footer">
-                    <h5>Lorem ipsum</h5>
-                    <p class="light">Consectetuer adipiscing elit.
-                    Nulla pulvinar eleifend sem. Vivamus luctus egestas leo...</p>
-                </article> 
-                <article class="post-footer">
-                    <h5>Lorem ipsum</h5>
-                    <p class="light">Consectetuer adipiscing elit.
-                    Nulla pulvinar eleifend sem. Vivamus luctus egestas leo...</p>
-                </article>                
-            </div>
-            <div id="languages">
-                <h4>Languages</h4>
-                <ul>
-                    <li>Lorem</li>
-                    <li>Lorem</li>
-                    <li>Lorem</li>
-                    <li>Lorem</li>
-                    <li>Lorem</li>
-                </ul>
-                
-            </div>
-            <div id="bottom-bar">Copyright &copy; Sleanded 2012-2015</div>
+            Copyright &copy; Sleanded 2012-2015
         </footer>
+
         
         <!--
         <nav id="side">

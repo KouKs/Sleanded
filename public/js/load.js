@@ -13,6 +13,7 @@ $(document).ready( function( ) {
     $('.leave').leavePage();
 });
 */
+var _URL = "/sleanded/public/";
 
 /* 
 * Function to animate leaving a page
@@ -33,40 +34,7 @@ $.fn.leavePage = function() {
 };
 
 
-$(document).ready( function() { 
-    $('.img-header').imageScroll({
-        image: null,
-        imageAttribute: 'image',
-        container: $('header'),
-        windowObject: $(window),
-        speed: 0.05,
-        coverRatio: 0.75,
-        holderClass: 'img-holder',
-        holderMinHeight: 1000,
-        holderMaxHeight: null,
-        extraHeight: 0,
-        mediaWidth: 1280,
-        mediaHeight: 1024,
-        parallax: true,
-        touch: false
-    });
-    /*
-    $('.img-ref').imageScroll({
-        image: null,
-        imageAttribute: 'image',
-        container: $('.img-ref').parent(),
-        windowObject: $(window),
-        speed: 0.05,
-        coverRatio: 0.75,
-        holderClass: 'img-holder',
-        holderMinHeight: 200,
-        holderMaxHeight: null,
-        extraHeight: 0,
-        mediaWidth: 1280,
-        mediaHeight: 1024,
-        parallax: true,
-        touch: false
-    });*/
+$(document).ready( function() {
     
     /* side menu */
     $("#side a").each( function( ) {
@@ -80,5 +48,27 @@ $(document).ready( function() {
         $("#side a").each( function( ) {
             $(this).css({color:"transparent",fontSize: "0px"});
         });
+    });
+    
+    /* loading */
+    $("#top-bar").fadeIn("slow",function() {
+        $("#motto").fadeIn("slow",function() {
+            $("#buttons")./*fadeIn().*/animate({top:"40%",opacity:1},"slow");
+        });
+    });
+    
+    $(this).scroll( function() {
+        if( $(window).scrollTop() > 80 ) {
+            if( $("#fixed-bar").css("display") === "none" ) {
+                $("#fixed-bar").fadeIn();
+                $("#fixed-bar").append($("#top-bar"));
+            }
+        } else {
+            if( $("#top-bar").css("display") !== "none" ) {
+                    $("header").append($("#top-bar"));
+                $("#fixed-bar").stop(true,false).fadeOut( );
+            }
+        }
+        
     });
 });
