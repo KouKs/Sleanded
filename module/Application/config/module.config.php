@@ -68,6 +68,17 @@ return array(
                             ),
                         ),
                     ),
+                    /*work*/
+                    'work' => array(
+                        'type'    => 'Literal',
+                        'options' => array(
+                            'route'    => 'work',
+                            'defaults' => array(
+                                'controller' => 'Application\Controller\Index',
+                                'action' => 'work',
+                            ),
+                        ),
+                    ),
                 ),
             ),
         ),

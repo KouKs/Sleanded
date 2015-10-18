@@ -7,13 +7,18 @@ use Zend\View\Model\ViewModel;
 
 class IndexController extends AbstractActionController
 {
-    
-    public function onDispatch(\Zend\Mvc\MvcEvent $e) {
 
+    public function onDispatch(\Zend\Mvc\MvcEvent $e)
+    {
         return parent::onDispatch($e);
     }
-    
+
     public function indexAction()
+    {
+        return new ViewModel();
+    }
+
+    public function workAction()
     {
         return new ViewModel();
     }

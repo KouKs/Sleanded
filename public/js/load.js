@@ -24,12 +24,18 @@ $.fn.leavePage = function() {
 
     event.preventDefault();
     linkLocation = this.href === undefined ? this.form.action : this.href;
-
+    $("#page").fadeOut();
+    $("#redirect-right").load( linkLocation , function( ) {
+       
+        $(this).show().animate({width:"100%"});
+    });
+    /*
     $("#banner-left").animate( { width: '0px'} );
     $("#banner-right").animate( { width: '0px'} );
     $("#container").fadeOut("slow",function(){
       window.location = linkLocation;
-    });      
+    }); 
+    */
   }); 
 };
 
@@ -71,4 +77,6 @@ $(document).ready( function() {
         }
         
     });
+    
+    //$('.leave').leavePage();
 });

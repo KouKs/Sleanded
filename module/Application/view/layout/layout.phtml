@@ -27,60 +27,62 @@
         ; ?>
 
     </head>
-    <body>        
-        <header class="header">
-            <div class="img-header" data-image="img/banner.png" data-width="1900" data-height="1266"></div>
-            <div id="fixed-bar"></div>
-            <div id="top-bar">
-                <div id="logo">
-                    <img height="100%" src="img/logo50.png" />
+    <body>   
+        <div id="redirect-right"></div>
+        <div id="page">
+            <header class="header">
+                <div class="img-header" data-image="img/banner.png" data-width="1900" data-height="1266"></div>
+                <div id="fixed-bar"></div>
+                <div id="top-bar">
+                    <div id="logo">
+                        <img height="100%" src="img/logo50.png" />
+                    </div>
+                    <p class="logo-text-sleanded">Sleanded</p>
+                    <p class="logo-text-codes">codes</p>
+                    <nav id="primary">
+                        <a class="leave" href="<?php echo $this->basePath(""); ?>">home</a>
+                        <a class="leave" href="<?php echo $this->basePath("work"); ?>">our work</a>
+                        <a>contact</a>
+                        <a>team</a>
+                        <a>blog</a>
+                        <!--<a class="fb"><div class="icon-fb"></div></a>
+                        <a class="twitter"><div class="icon-twitter"></div></a>-->
+                    </nav>
                 </div>
-                <p class="logo-text-sleanded">Sleanded</p>
-                <p class="logo-text-codes">codes</p>
-                <nav id="primary">
-                    <a>home</a>
-                    <a>our work</a>
-                    <a>contact</a>
-                    <a>team</a>
-                    <a>blog</a>
-                    <!--<a class="fb"><div class="icon-fb"></div></a>
-                    <a class="twitter"><div class="icon-twitter"></div></a>-->
-                </nav>
-            </div>
-            <div id="motto">
-                <h1><span class="red">WE</span> LIVE YOUR VISION</h1>
-                <p class="motto-text">
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                    Nulla pulvinar eleifend sem. Vivamus luctus egestas leo.
-                    Aliquam erat volutpat.	
-                </p>
-            </div>
-            <div id="buttons">
-                <a class="hvr-grow contact">contact us</a>
-                <a class="work">our work</a>
-            </div>
-        </header>
-        
-        <div id="content">
-            <div id="container">
-                <?php echo $this->content; ?>
-            </div>
-        </div>
- 
-        <footer>
-            Copyright &copy; Sleanded 2012-2015
-        </footer>
+                <div id="motto">
+                    <h1><span class="red">WE</span> LIVE YOUR VISION</h1>
+                    <p class="motto-text">
+                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                        Nulla pulvinar eleifend sem. Vivamus luctus egestas leo.
+                        Aliquam erat volutpat.	
+                    </p>
+                </div>
+                <div id="buttons">
+                    <a class="hvr-grow contact">contact us</a>
+                    <a class="work">our work</a>
+                </div>
+            </header>
 
-        
-        <!--
-        <nav id="side">
-            <a class="active">home</a>
-            <a>about</a>
-            <a>our work</a>
-        </nav>
-        -->
-        
-        <?php echo $this->inlineScript() ?>
-        
+            <div id="content">
+                <div id="container">
+                    <?php echo $this->content; ?>
+                </div>
+            </div>
+
+            <footer>
+                Copyright &copy; Sleanded 2012-2015
+            </footer>
+
+
+            <!--
+            <nav id="side">
+                <a class="active">home</a>
+                <a>about</a>
+                <a>our work</a>
+            </nav>
+            -->
+
+            <?php echo $this->inlineScript() ?>
+        </div>
     </body>
 </html>
