@@ -239,6 +239,25 @@ header #buttons {
   -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.6);
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.6);
 }
+.post {
+  width: 27.3333%;
+  margin: 0 3% 50px 3%;
+  cursor: pointer;
+  float: left;
+  background: rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  -webkit-transition: all linear 0.2s;
+  -moz-transition: all linear 0.2s;
+  -o-transition: all linear 0.2s;
+  transition: all linear 0.2s;
+}
+.post:hover {
+  -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.6);
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.6);
+}
 footer {
   width: 100%;
   overflow: hidden;
@@ -341,6 +360,14 @@ h4 {
   color: #333;
   line-height: 25px;
 }
+h5 {
+  text-align: center;
+  margin: 7px 0;
+  font-weight: lighter;
+  font-size: 25px;
+  color: #eee;
+  line-height: 25px;
+}
 p {
   font-weight: normal;
   font-size: 20px;
@@ -397,9 +424,13 @@ p.logo-text-codes {
 p.about {
   padding-bottom: 50px;
 }
-p.reference-text {
+p.reference-text,
+p.post-text {
   text-align: justify;
   font-size: 16px;
+}
+p.post-text {
+  margin: 5px;
 }
 /**
  * 4 - Obecně používané třídy
@@ -450,6 +481,7 @@ p.reference-text {
 }
 #contact textarea,
 #contact select,
+#contact button,
 #contact input[type="text"] {
   border: 0;
   padding: 20px;
@@ -468,6 +500,9 @@ p.reference-text {
 #contact textarea {
   min-height: 200px;
 }
+#contact select option {
+  background: #fff;
+}
 #contact select:hover,
 #contact textarea:hover,
 #contact input[type="text"]:hover,
@@ -475,6 +510,15 @@ p.reference-text {
 #contact textarea:focus,
 #contact input[type="text"]:focus {
   background: #eee;
+}
+#contact button {
+  color: #eee;
+  cursor: pointer;
+  background-color: #d9403c;
+}
+#contact button:hover,
+#contact button:focus {
+  background-color: #cc3c39;
 }
 /**
  * 5.1 - Tlačítka (<a>)
