@@ -20,23 +20,15 @@ var _URL = "/sleanded/public/";
 */
 $.fn.leavePage = function() {   
     
-  this.click(function(event){
+    this.click(function(event){
 
-    event.preventDefault();
-    linkLocation = this.href === undefined ? this.form.action : this.href;
-    $("#page").fadeOut();
-    $("#redirect-right").load( linkLocation , function( ) {
-       
-        $(this).show().animate({width:"100%"});
-    });
-    /*
-    $("#banner-left").animate( { width: '0px'} );
-    $("#banner-right").animate( { width: '0px'} );
-    $("#container").fadeOut("slow",function(){
-      window.location = linkLocation;
+        event.preventDefault();
+        linkLocation = this.href === undefined ? this.form.action : this.href;
+        $("#page").fadeOut();
+        $("#redirect-right").load( linkLocation , function( ) {   
+            $(this).show().animate({width:"100%"});
+        });
     }); 
-    */
-  }); 
 };
 
 
@@ -78,5 +70,22 @@ $(document).ready( function() {
         
     });
     
+    $("html").niceScroll({scrollspeed: 65});
+    $("#port").niceScroll("#bar",{scrollspeed: 65});
     //$('.leave').leavePage();
+    
+    $(this).scroll( function() {
+        $("#info-area").showContent( );
+        $("#why-us-area").showContent( );
+        $("#reference-area").showContent( );
+        $("#blog-area").showContent( );
+        $("#contact-area").showContent( );
+    });
+    
 });
+
+$.fn.showContent = function( ) {   
+    if( $(window).scrollTop() > this.offset().top - 650 ) {
+        this.animate({opacity: 1});
+    }
+};

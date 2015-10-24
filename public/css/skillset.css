@@ -1,7 +1,7 @@
 
 
 .skill {
-    float: left;
+    margin: 0 auto;
     width: 50%; min-width: 200px;
     height: 50%; min-height: 200px;
 }

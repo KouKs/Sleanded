@@ -92,8 +92,6 @@ nav#side {
 header {
     width: 100%;
     height: 100%;
-    overflow: none;
-    display: block;
     
     #top-bar {
         width: 100%;
@@ -279,6 +277,15 @@ footer {
     overflow: hidden;
     display: none;
 }
+
+#port {
+    background: rbga( 0,0,0,0.2);
+    width: 20px;
+}
+#bar {
+    background: @theme-color;
+    width: 20px;
+}
 /**
  * 2 - Fonty
  */
@@ -463,6 +470,7 @@ p.post-text {
 .area {
     margin: 0 auto;
     width: 90%;
+    opacity: 0;
 }
 
 [class^='img-'] { position: absolute; z-index: -1; }
@@ -495,6 +503,8 @@ p.post-text {
         font-family: "Proxima Nova";
         font-size: 18px;
         text-indent: 0;
+    
+        .animate();
     }
     textarea {
         min-height: 200px;
@@ -713,4 +723,19 @@ p.post-text {
 }
 .hidden() {
     display: none;
+}
+
+
+/** jinak to asi nejde :( jeste na to mrknu */
+.nicescroll-rails {
+    background: rgba(0,0,0,0.2);
+    width: 10px !important;
+
+}
+
+.nicescroll-rails div {
+    background: @theme-color !important;
+    width: 10px !important;
+    border: none !important;
+    border-radius: 0 !important;
 }

@@ -82,8 +82,6 @@ nav#side a.active:hover {
 header {
   width: 100%;
   height: 100%;
-  overflow: none;
-  display: block;
 }
 header #top-bar {
   width: 100%;
@@ -280,6 +278,14 @@ footer {
   overflow: hidden;
   display: none;
 }
+#port {
+  background: rbga(0, 0, 0, 0.2);
+  width: 20px;
+}
+#bar {
+  background: #b23432;
+  width: 20px;
+}
 /**
  * 2 - Fonty
  */
@@ -467,6 +473,7 @@ p.post-text {
 .area {
   margin: 0 auto;
   width: 90%;
+  opacity: 0;
 }
 [class^='img-'] {
   position: absolute;
@@ -497,6 +504,10 @@ p.post-text {
   font-family: "Proxima Nova";
   font-size: 18px;
   text-indent: 0;
+  -webkit-transition: all linear 0.2s;
+  -moz-transition: all linear 0.2s;
+  -o-transition: all linear 0.2s;
+  transition: all linear 0.2s;
 }
 #contact textarea {
   min-height: 200px;
@@ -693,4 +704,15 @@ p.post-text {
 /**
  * 8 - Funkce
  */
+/** jinak to asi nejde :( jeste na to mrknu */
+.nicescroll-rails {
+  background: rgba(0, 0, 0, 0.2);
+  width: 10px !important;
+}
+.nicescroll-rails div {
+  background: #b23432 !important;
+  width: 10px !important;
+  border: none !important;
+  border-radius: 0 !important;
+}
 /*# sourceMappingURL=glob.css.map */
