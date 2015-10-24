@@ -79,6 +79,17 @@ return array(
                             ),
                         ),
                     ),
+                    /*team*/
+                    'team' => array(
+                        'type'    => 'Literal',
+                        'options' => array(
+                            'route'    => 'team',
+                            'defaults' => array(
+                                'controller' => 'Application\Controller\Index',
+                                'action' => 'team',
+                            ),
+                        ),
+                    ),
                 ),
             ),
         ),

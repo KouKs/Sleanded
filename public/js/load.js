@@ -19,7 +19,7 @@ var _URL = "/sleanded/public/";
 * Function to animate leaving a page
 */
 $.fn.leavePage = function() {   
-    
+    /*
     this.click(function(event){
 
         event.preventDefault();
@@ -28,7 +28,7 @@ $.fn.leavePage = function() {
         $("#redirect-right").load( linkLocation , function( ) {   
             $(this).show().animate({width:"100%"});
         });
-    }); 
+    }); */
 };
 
 
@@ -74,18 +74,18 @@ $(document).ready( function() {
     $("#port").niceScroll("#bar",{scrollspeed: 65});
     //$('.leave').leavePage();
     
+    $(".area").showContent( );
     $(this).scroll( function() {
-        $("#info-area").showContent( );
-        $("#why-us-area").showContent( );
-        $("#reference-area").showContent( );
-        $("#blog-area").showContent( );
-        $("#contact-area").showContent( );
+        $(".area").showContent( );
     });
     
 });
 
 $.fn.showContent = function( ) {   
-    if( $(window).scrollTop() > this.offset().top - 650 ) {
-        this.animate({opacity: 1});
-    }
+    this.each( function( ) {
+        if( $(this).css("opacity") < 1 && $(window).scrollTop() > $(this).offset().top - 650 ) {
+            $(this).animate({opacity: 1});
+            return;
+        }
+    });
 };

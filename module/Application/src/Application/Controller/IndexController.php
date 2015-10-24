@@ -15,14 +15,20 @@ class IndexController extends AbstractActionController
 
     public function indexAction()
     {
-        return new ViewModel();
+        return [];
     }
 
     public function workAction()
     {
-        return new ViewModel();
+        $this->layout("layout/page");
+        return [];
     }
 
+    public function teamAction()
+    {
+        $this->layout("layout/page");
+        return [];
+    }
 
 }
 
