@@ -34,7 +34,7 @@ option {
  */
 html,
 body,
-#page {
+.page {
   width: 100%;
   height: 100%;
   font-family: 'Proxima Nova';
@@ -278,13 +278,6 @@ header #buttons {
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.6);
   background: rgba(0, 0, 0, 0.5);
 }
-#redirect-right {
-  position: absolute;
-  float: right;
-  width: 0;
-  overflow: hidden;
-  display: none;
-}
 /**
  * 1.3 - Další stránky
  */
@@ -301,6 +294,7 @@ header.secondary #top-bar {
   background-color: #fff;
   position: fixed;
   top: 0;
+  z-index: 15;
   -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
@@ -473,6 +467,23 @@ p.post-text {
 /**
  * 4 - Obecně používané třídy
  */
+.progress-bar {
+  width: 100%;
+  height: 50px;
+  background-color: #333;
+  color: #eee;
+  margin: 25px 0;
+}
+.progress-bar div {
+  width: 0;
+  height: 50px;
+  background-color: #b23432;
+}
+.progress-bar div label {
+  padding: 15px;
+  display: block;
+  font-size: 20px;
+}
 .red {
   background-color: #b23432;
 }

@@ -1,37 +1,12 @@
 /* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Page loading
  */
-/*
-$(document).ready( function( ) {
-    $("#container").fadeIn("slow",function( ) {
-        $("#banner-left").animate( { width: '150px'} );
-        $("#banner-right").animate( { width: '150px'} );
-    });
 
-    $('.leave').leavePage();
-});
-*/
 var _URL = "/sleanded/public/";
 
 /* 
-* Function to animate leaving a page
-*/
-$.fn.leavePage = function() {   
-    /*
-    this.click(function(event){
-
-        event.preventDefault();
-        linkLocation = this.href === undefined ? this.form.action : this.href;
-        $("#page").fadeOut();
-        $("#redirect-right").load( linkLocation , function( ) {   
-            $(this).show().animate({width:"100%"});
-        });
-    }); */
-};
-
-
+ * Animated page loading
+ */
 $(document).ready( function() {
     
     /* side menu */
@@ -55,8 +30,9 @@ $(document).ready( function() {
         });
     });
     
+    /* topbar animation */
     $(this).scroll( function() {
-        if( $(window).scrollTop() > 80 ) {
+        if( $(window).scrollTop() > 0 ) {
             if( $("#fixed-bar").css("display") === "none" ) {
                 $("#fixed-bar").fadeIn();
                 $("#fixed-bar").append($("#top-bar"));
@@ -70,17 +46,24 @@ $(document).ready( function() {
         
     });
     
+    /* smooth scrolling */
     $("html").niceScroll({scrollspeed: 65});
     $("#port").niceScroll("#bar",{scrollspeed: 65});
-    //$('.leave').leavePage();
     
+    /* binding function to elements */
+    $('.leave').leavePage();
+    
+    /* loading with scrolling */
     $(".area").showContent( );
     $(this).scroll( function() {
         $(".area").showContent( );
-    });
-    
+        $(".progress-bar").showBar( );
+    });    
 });
 
+/*
+ * Function to show area of content
+ */
 $.fn.showContent = function( ) {   
     this.each( function( ) {
         if( $(this).css("opacity") < 1 && $(window).scrollTop() > $(this).offset().top - 650 ) {
@@ -88,4 +71,28 @@ $.fn.showContent = function( ) {
             return;
         }
     });
+};
+
+$.fn.showBar = function( ) {  
+    this.each( function( ) {
+        if( $(this).children().first().css("width") !== 0 && $(window).scrollTop() > $(this).offset().top - 650 ) {
+            $(this).children().first().animate({width: $(this).data("percent")},1500);
+            return;
+        }
+    });    
+}
+
+/* 
+ * Function to animate leaving a page
+ */
+$.fn.leavePage = function() {   
+
+    this.click(function(event){
+
+        event.preventDefault();
+        linkLocation = this.href === undefined ? this.form.action : this.href;
+        $("body .page").fadeOut( "slow" , function() {
+            location.href = linkLocation;
+        });
+    }); 
 };
