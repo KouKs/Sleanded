@@ -309,6 +309,13 @@ header.secondary #top-bar nav#primary a:hover {
   color: #b23432;
 }
 /**
+ * 1.4 - team
+ */
+.team-tile {
+  height: 350px;
+  overflow: hidden;
+}
+/**
  * 2 - Fonty
  */
 @font-face {
@@ -401,10 +408,7 @@ p {
   font-weight: normal;
   font-size: 20px;
   line-height: 20px;
-  color: #aaa;
-}
-p.light {
-  color: #eee;
+  color: #666;
 }
 p.justify {
   text-align: justify;
@@ -464,6 +468,12 @@ p.post-text {
 .red-text {
   color: #b23432;
 }
+.white-text {
+  color: #fff;
+}
+.grey-text {
+  color: #eee;
+}
 /**
  * 4 - Obecně používané třídy
  */
@@ -494,22 +504,25 @@ p.post-text {
   background-color: #eee;
 }
 .third {
-  width: 29.3333%;
+  width: 33.3333%;
   padding: 3% 2%;
   float: left;
-  text-align: justify;
+  box-sizing: border-box;
 }
 .half {
-  width: 46%;
+  width: 50%;
   padding: 3% 2%;
   float: left;
-  text-align: justify;
+  box-sizing: border-box;
 }
 .one {
-  width: 96%;
+  width: 100%;
   padding: 3% 2%;
   float: left;
-  text-align: justify;
+  box-sizing: border-box;
+}
+.no-padding {
+  padding: 0;
 }
 .hidden {
   display: none;
