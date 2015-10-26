@@ -80,7 +80,7 @@ $.fn.showBar = function( ) {
             return;
         }
     });    
-}
+};
 
 /* 
  * Function to animate leaving a page
