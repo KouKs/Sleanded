@@ -251,6 +251,8 @@ header {
     cursor: pointer;
     float: left;
     background: rgba(50,50,50,0.3);
+    overflow: hidden;
+    border-radius: 5px;
     
     .shadow();
     .animate();
@@ -260,7 +262,28 @@ header {
         background: rgba(50,50,50,0.5);
     }
     div {
-        padding: 1%;
+        padding: 1.5%;
+    }
+}
+
+.reference {
+    width: 28.3333%;
+    margin: 0 2.5% 50px 2.5%;
+    border-radius: 5px;
+    float: left;
+    cursor: pointer;
+    background: #fafafa;
+    overflow: hidden;
+    
+    .animate();
+    .shadow();
+    
+    &:hover {
+        .shadow( 0.6 );
+    }
+    
+    div {
+        padding: 1.5%;
     }
 }
 
@@ -334,14 +357,55 @@ header.secondary {
     }
 }
 /**
- * 1.4 - team
+ * 1.4 - Team
  */
 .team-tile {
     height: 350px;
     overflow: hidden;
 }
+/**
+ * 1.5 - Blog 
+ */
+.blog-post {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 5px;
+    background: #fff;
+    cursor: pointer;
+    
+    .shadow;
+    .animate;
+    
+    &:hover {
+        .shadow( 0.6 );
+    }
+    
+    div {
+        margin: 1.5%;
+    }
+}
 
-
+/**
+ * 1.6 - Work
+ */
+.work-tile {
+    width: 100;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #fafafa;
+    overflow: hidden;
+    
+    .animate();
+    .shadow();
+    
+    &:hover {
+        .shadow( 0.6 );
+    }
+    
+    div {
+        padding: 1.5%;
+    }
+}
 
 
 /**
@@ -426,6 +490,10 @@ h4 {
 }
 
 h5 {
+    margin: 7px 0;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 20px;
 }
 
 /**
@@ -472,15 +540,15 @@ h5 {
  */
 .small {
     font-size: 14px;
-    line-height: 14px;
+    line-height: 18px;
 }
 .medium {
     font-size: 16px;
-    line-height: 16px;
+    line-height: 20px;
 }
 .big {
     font-size: 20px; 
-    line-height: 20px;   
+    line-height: 24px;   
 }
 
 /**
@@ -542,15 +610,17 @@ h5 {
  * 4.3 - Rozdělení stránky
  */
 .third {
-    width: 33.3333%;
+    width: 33.10%;
     padding: 3% 2%;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
     box-sizing: border-box;
 }
 .half {
     width: 50%;
     padding: 3% 2%;
-    float: left; 
+    display: inline-block;
+    vertical-align: top;
     box-sizing: border-box; 
 }
 .one {
@@ -592,35 +662,14 @@ h5 {
     overflow: hidden;
     display: block;
     position: relative;
-}
-
-.area {
-    margin: 0 auto;
-    width: 90%;
-    opacity: 0;
-}
-
-.reference {
-    width: 28.3333%;
-    height: 385px;
-    margin: 0 2.5% 50px 2.5%;
-    border-radius: 5px;
-    float: left;
-    cursor: pointer;
-    background: #fafafa;
-    overflow: hidden;
     
-    .animate();
-    .shadow();
-    
-    &:hover {
-        .shadow( 0.6 );
-    }
-    
-    div {
-        padding: 1%;
+    .area {
+        margin: 0 auto;
+        width: 90%;
+        opacity: 0;
     }
 }
+
 
 [class^='img-'] { position: absolute; z-index: -1; }
 

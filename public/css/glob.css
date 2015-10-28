@@ -243,6 +243,8 @@ header #buttons {
   cursor: pointer;
   float: left;
   background: rgba(50, 50, 50, 0.3);
+  overflow: hidden;
+  border-radius: 5px;
   -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
@@ -258,7 +260,31 @@ header #buttons {
   background: rgba(50, 50, 50, 0.5);
 }
 .post div {
-  padding: 1%;
+  padding: 1.5%;
+}
+.reference {
+  width: 28.3333%;
+  margin: 0 2.5% 50px 2.5%;
+  border-radius: 5px;
+  float: left;
+  cursor: pointer;
+  background: #fafafa;
+  overflow: hidden;
+  -webkit-transition: all linear 0.2s;
+  -moz-transition: all linear 0.2s;
+  -o-transition: all linear 0.2s;
+  transition: all linear 0.2s;
+  -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+}
+.reference:hover {
+  -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.6);
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.6);
+}
+.reference div {
+  padding: 1.5%;
 }
 p.motto-text {
   margin-top: 20px;
@@ -332,11 +358,61 @@ header.secondary #top-bar nav#primary a:hover {
   color: #b23432;
 }
 /**
- * 1.4 - team
+ * 1.4 - Team
  */
 .team-tile {
   height: 350px;
   overflow: hidden;
+}
+/**
+ * 1.5 - Blog 
+ */
+.blog-post {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 5px;
+  background: #fff;
+  cursor: pointer;
+  -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  -webkit-transition: all linear 0.2s;
+  -moz-transition: all linear 0.2s;
+  -o-transition: all linear 0.2s;
+  transition: all linear 0.2s;
+}
+.blog-post:hover {
+  -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.6);
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.6);
+}
+.blog-post div {
+  margin: 1.5%;
+}
+/**
+ * 1.6 - Work
+ */
+.work-tile {
+  width: 100;
+  border-radius: 5px;
+  cursor: pointer;
+  background: #fafafa;
+  overflow: hidden;
+  -webkit-transition: all linear 0.2s;
+  -moz-transition: all linear 0.2s;
+  -o-transition: all linear 0.2s;
+  transition: all linear 0.2s;
+  -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+}
+.work-tile:hover {
+  -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.6);
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.6);
+}
+.work-tile div {
+  padding: 1.5%;
 }
 /**
  * 2 - Fonty
@@ -420,6 +496,12 @@ h4 {
   font-size: 25px;
   line-height: 25px;
 }
+h5 {
+  margin: 7px 0;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 20px;
+}
 /**
  * 3.2 - Horizontální formátování
  */
@@ -458,15 +540,15 @@ h4 {
  */
 .small {
   font-size: 14px;
-  line-height: 14px;
+  line-height: 18px;
 }
 .medium {
   font-size: 16px;
-  line-height: 16px;
+  line-height: 20px;
 }
 .big {
   font-size: 20px;
-  line-height: 20px;
+  line-height: 24px;
 }
 /**
  * 3.5 - Styly
@@ -521,15 +603,17 @@ h4 {
  * 4.3 - Rozdělení stránky
  */
 .third {
-  width: 33.3333%;
+  width: 33.10%;
   padding: 3% 2%;
-  float: left;
+  display: inline-block;
+  vertical-align: top;
   box-sizing: border-box;
 }
 .half {
   width: 50%;
   padding: 3% 2%;
-  float: left;
+  display: inline-block;
+  vertical-align: top;
   box-sizing: border-box;
 }
 .one {
@@ -566,35 +650,10 @@ h4 {
   display: block;
   position: relative;
 }
-.area {
+.part .area {
   margin: 0 auto;
   width: 90%;
   opacity: 0;
-}
-.reference {
-  width: 28.3333%;
-  height: 385px;
-  margin: 0 2.5% 50px 2.5%;
-  border-radius: 5px;
-  float: left;
-  cursor: pointer;
-  background: #fafafa;
-  overflow: hidden;
-  -webkit-transition: all linear 0.2s;
-  -moz-transition: all linear 0.2s;
-  -o-transition: all linear 0.2s;
-  transition: all linear 0.2s;
-  -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
-  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
-}
-.reference:hover {
-  -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.6);
-  -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.6);
-  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.6);
-}
-.reference div {
-  padding: 1%;
 }
 [class^='img-'] {
   position: absolute;

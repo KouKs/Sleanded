@@ -101,6 +101,17 @@ return array(
                             ),
                         ),
                     ),
+                    /*blog*/
+                    'blog' => array(
+                        'type'    => 'Literal',
+                        'options' => array(
+                            'route'    => 'blog',
+                            'defaults' => array(
+                                'controller' => 'Application\Controller\Index',
+                                'action' => 'blog',
+                            ),
+                        ),
+                    ),
                 ),
             ),
         ),

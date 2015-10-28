@@ -29,11 +29,19 @@ class IndexController extends AbstractActionController
         $this->layout("layout/page");
         return [];
     }
+    
     public function contactAction()
     {
         $this->layout("layout/page");
         return [];
     }
+    
+    public function blogAction()
+    {
+        $this->layout("layout/page");
+        return [];
+    }
+    
 
 }
 
