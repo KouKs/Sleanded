@@ -90,6 +90,17 @@ return array(
                             ),
                         ),
                     ),
+                    /*contact*/
+                    'contact' => array(
+                        'type'    => 'Literal',
+                        'options' => array(
+                            'route'    => 'contact',
+                            'defaults' => array(
+                                'controller' => 'Application\Controller\Index',
+                                'action' => 'contact',
+                            ),
+                        ),
+                    ),
                 ),
             ),
         ),

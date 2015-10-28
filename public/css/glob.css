@@ -239,6 +239,7 @@ header #buttons {
 }
 .reference {
   width: 27.3333%;
+  height: 345.5px;
   margin: 0 2.5% 50px 2.5%;
   padding: 0.5%;
   border-radius: 5px;
@@ -377,23 +378,24 @@ h1 {
     line-height: 80px;
   }
 }
-h2,
-h3 {
+h2 {
   margin: 50px 0;
   text-align: center;
   font-weight: lighter;
   font-size: 50px;
-  color: #b23432;
   line-height: 50px;
 }
 h3 {
-  color: #fff;
+  margin: 30px 0;
+  text-align: center;
+  font-weight: lighter;
+  font-size: 35px;
+  line-height: 35px;
 }
 h4 {
   margin: 7px 0;
   font-weight: lighter;
   font-size: 25px;
-  color: #333;
   line-height: 25px;
 }
 h5 {
@@ -408,7 +410,6 @@ p {
   font-weight: normal;
   font-size: 20px;
   line-height: 20px;
-  color: #666;
 }
 p.justify {
   text-align: justify;
@@ -454,8 +455,9 @@ p.logo-text-codes {
   font-weight: bold;
   color: #b23432;
 }
-p.about {
-  padding-bottom: 50px;
+p.paragraph {
+  padding-bottom: 30px;
+  text-indent: 50px;
 }
 p.reference-text,
 p.post-text {
@@ -473,6 +475,9 @@ p.post-text {
 }
 .grey-text {
   color: #eee;
+}
+.dark-grey-text {
+  color: #333;
 }
 /**
  * 4 - Obecně používané třídy
@@ -531,14 +536,7 @@ p.post-text {
   width: 100%;
   overflow: hidden;
   display: block;
-  background: #fff;
   position: relative;
-}
-.part:nth-child(even) {
-  background: transparent;
-}
-.part:nth-child(5) {
-  background: #b23432;
 }
 .area {
   margin: 0 auto;
@@ -784,5 +782,39 @@ p.post-text {
   width: 10px !important;
   border: none !important;
   border-radius: 0 !important;
+}
+/**
+ * 9 - Tabulky
+ */
+/**
+ * 9.1 - základní, nestylovaná
+ */
+.table-basic {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 30px;
+  border-spacing: 0;
+}
+.table-basic tr:nth-child(odd) {
+  background: #eee;
+}
+.table-basic td,
+.table-basic th {
+  padding: 10px;
+  margin: 0;
+  color: #333;
+  text-align: center;
+  font-size: 16px;
+}
+.table-basic td.left,
+.table-basic th.left {
+  text-align: left;
+}
+.table-basic td.right,
+.table-basic th.right {
+  text-align: right;
+}
+.table-basic th {
+  font-weight: bold;
 }
 /*# sourceMappingURL=glob.css.map */

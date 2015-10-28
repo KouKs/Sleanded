@@ -12,6 +12,7 @@
 @secondary: #d9403c;
 @third: #cc3c39;
 @grey: #eee;
+@dark-grey: #333;
 
 @img-folder: "../img/";
 @font-folder: "../fonts/";
@@ -245,6 +246,7 @@ header {
 
 .reference {
     width: 27.3333%;
+    height: 345.5px;
     margin: 0 2.5% 50px 2.5%;
     padding: 0.5%;
     border-radius: 5px;
@@ -374,24 +376,27 @@ h1 {
     }
 }
 
-h2, h3 {
+h2 {
     margin: 50px 0;
     text-align: center;
     font-weight: lighter;
     font-size: 50px;
-    color: #b23432;
     line-height: 50px;
 }
 
 h3 {
-    color: #fff;
+    margin: 30px 0;
+    text-align: center;
+    font-weight: lighter;
+    font-size: 35px;
+    line-height: 35px;
+    
 }
 
 h4 {
     margin: 7px 0;
     font-weight: lighter;
     font-size: 25px;
-    color: #333;
     line-height: 25px;
 }
 
@@ -408,7 +413,6 @@ p {
     font-weight: normal;
     font-size: 20px;
     line-height: 20px;
-    color: #666;
     
 }
 
@@ -450,8 +454,9 @@ p.logo-text-codes {
     font-weight: bold;
     color: @theme-color;
 }
-p.about {
-    padding-bottom: 50px;
+p.paragraph {
+    padding-bottom: 30px;
+    text-indent: 50px;
 }
 
 p.reference-text , p.post-text {
@@ -461,6 +466,7 @@ p.reference-text , p.post-text {
 p.post-text {
     margin: 5px;
 }
+
 .red-text {
     color: @theme-color;
 }
@@ -471,6 +477,9 @@ p.post-text {
 .grey-text {
     color: @grey;
 } 
+.dark-grey-text {
+    color: @dark-grey;
+}
 /**
  * 4 - Obecně používané třídy
  */
@@ -535,15 +544,7 @@ p.post-text {
     width: 100%;
     overflow: hidden;
     display: block;
-    background: #fff;
     position: relative;
-    
-    &:nth-child(even) {
-        background: transparent;  
-    }
-    &:nth-child(5) {
-        background: @theme-color;  
-    }
 }
 
 .area {
@@ -817,4 +818,38 @@ p.post-text {
     width: 10px !important;
     border: none !important;
     border-radius: 0 !important;
+}
+
+/**
+ * 9 - Tabulky
+ */
+/**
+ * 9.1 - základní, nestylovaná
+ */
+
+.table-basic {
+    padding: 0; margin: 0;
+    margin-bottom: 30px;
+    border-spacing: 0;
+
+    tr:nth-child(odd) {
+        background: @grey;
+
+    }
+    td,th {
+        padding: 10px; margin: 0;
+        color: @dark-grey;
+        text-align: center;
+        font-size: 16px;
+        
+        &.left {
+            text-align: left;
+        }
+        &.right {
+            text-align: right;
+        }
+    }
+    th {
+        font-weight: bold;
+    }
 }
