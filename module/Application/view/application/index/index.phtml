@@ -2,26 +2,27 @@
     <div class="area">
         <h2 class="red-text">Our story</h2>
         <div class="half">
-            <p class="justify paragraph">
-                <span class="red-text">Sleanded is a brand-new coding company formed by 
-                    flexible and creative students who love what they are doing and are good at it.</span>
+            <p class="big justify margin indent red-text">
+                Sleanded is a brand-new coding company formed by 
+                flexible and creative students who love what they are doing and are good at it.
             </p>
-            <p class="justify paragraph dark-grey-text">
+            <p class="big justify margin indent dark-grey-text">
                 One chilly winter evening, two friends have decided they’d wanted a change
                 in their boring lives. So they quit playing Minecraft and got somehow
                 excited about making websites. They started off slowly - learnt basic <span class="red-text">HTML</span> and <span class="red-text">CSS</span>.
                 However, as time passed by, they wanted to make their websites more interactive
                 and add some responsivity, too. That is when they met <span class="red-text">php</span> and <span class="red-text">jQuery</span>.
                 Those days, they were no more than fourteen-year-old innocent yordles. 
-            <p class="justify paragraph dark-grey-text">
+            </p>
+            <p class="big justify margin indent dark-grey-text">
                 They went beyond creating websites, those handy students also
                 learnt how to create desktop and browser applications in <span class="red-text">Java</span> or <span class="red-text">C++</span>.
             </p>
-            <p class="justify paragraph dark-grey-text">
+            <p class="big justify margin indent dark-grey-text">
                 Nowadays, they have mastered many techniques of creating stunning websites,
                 useful apps and user-friendly interfaces.
             </p>
-            <p class="justify paragraph dark-grey-text">
+            <p class="big justify margin indent dark-grey-text">
                 Behold, <span class="red-text">Sleanded</span>!
             </p>
         </div>
@@ -54,18 +55,19 @@
     <div  class="area">
         <h2 class="red-text">Why choose us</h2>
         
-        <p class="justify paragraph grey-text">
+        <p class="big justify margin indent light-grey-text">
             Since we are a company with fresh and young team,
             our idea box is filled with crative solutions.
             We believe that, despite huge competition on this market,
             we will make our way through it and bring something new! 
         </p>
-        <p class="justify paragraph grey-text">
+        <p class="big justify margin indent light-grey-text">
             As has been mentioned before, we are a starting company
-            thus all projects are dealth with swiftly and are carefully tailored to client’s requests.
-            All of this for very pleasant prices because we are building up our reference portfolio!
+            thus all projects are dealt with swiftly and are carefully tailored to client’s requests.
+            At the moment, we are building up our reference portfolio thus we can offer very pleasant prices
+            for all kinds of projects
         </p>
-        <p class="justify paragraph">
+        <p class="big justify margin indent">
             <a class="leave" href="<?php echo $this->basePath("team"); ?>"><span class="red-text">Meet our team!</span></a>
         </p>
         <!--
@@ -102,20 +104,29 @@
         <h2 class="red-text">Our recent projects</h2>
         <div class="reference">
             <img src="img/ref1.png" />
-            <h4>Useless website</h4>
-            <p class="reference-text dark-grey-text">A bunch of useless websites.
-                This has no use. Overall it was just a big waste of time.</p>
+            <div>
+                <h4>Useless website</h4>
+                <p class="medium description">28. 10. 2015</p>
+                <p class="medium justify dark-grey-text">A bunch of useless websites.
+                    This has no use. Overall it was just a big waste of time.</p>
+            </div>
         </div>
         <div class="reference">
             <img src="img/ref2.png" />
-            <h4>Useful website</h4>
-            <p class="reference-text dark-grey-text">Despite the name, this website is still useless
-                as hell. Another waste of time.</p>
+            <div>
+                <h4>Useful website</h4>
+                <p class="medium description">28. 10. 2015</p>
+                <p class="medium justify dark-grey-text">Despite the name, this website is still useless
+                    as hell. Another waste of time.</p>
+            </div>
         </div>
         <div class="reference">
             <img src="img/ref3.png" />
-            <h4>Web templates</h4>
-            <p class="reference-text dark-grey-text">Our source of inspiration (not really).</p>
+            <div>
+                <h4>Web templates</h4>
+                <p class="medium description">28. 10. 2015</p>
+                <p class="medium justify dark-grey-text">Our source of inspiration (not really).</p>
+            </div>
         </div>
     </div>
 </section>
@@ -126,30 +137,48 @@
         <h2 class="red-text">Latest blog posts</h2>
         <article class="post">
             <img src="http://lorempixel.com/g/640/480/abstract/gray" />
-            <h5>Lorem ipsum</h5>
-            <p class="post-text grey-text">dolor
-                sit amet, consectetuer adipiscing elit.
-                Nulla pulvinar eleifend sem.
-                Vivamus luctus egestas leo.
-                Aliquam erat volutpat.</p>
+            <div>
+                <h4 class="light-grey-text">Lorem ipsum</h4>
+                <p class="medium description">28. 10. 2015</p>
+                <p class="medium indent justify light-grey-text">Dolor
+                    sit amet, consectetuer adipiscing elit.
+                    Nulla pulvinar eleifend sem.
+                    Vivamus luctus egestas leo.
+                    Aliquam erat volutpat. dolor
+                    sit amet, consectetuer adipiscing elit.
+                    Nulla pulvinar eleifend sem.
+                    Vivamus luctus egestas leo.
+                    Aliquam erat volutpat.</p>
+            </div>
         </article>
+        <!--
         <article class="post">
             <img src="http://lorempixel.com/g/640/480/technics/gray" />
-            <h5>Lorem ipsum</h5>
-            <p class="post-text grey-text">dolor
-                sit amet, consectetuer adipiscing elit.
-                Nulla pulvinar eleifend sem.
-                Vivamus luctus egestas leo.
-                Aliquam erat volutpat.</p>
+            <div>
+                <h5>Lorem ipsum</h5>
+                <p class="medium light-grey-text">dolor
+                    sit amet, consectetuer adipiscing elit.
+                    Nulla pulvinar eleifend sem.
+                    Vivamus luctus egestas leo.
+                    Aliquam erat volutpat.</p>
+            </div>
         </article>
+        -->
         <article class="post">
             <img src="http://lorempixel.com/g/640/480/cats/gray" />
-            <h5>Lorem ipsum</h5>
-            <p class="post-text grey-text">dolor
-                sit amet, consectetuer adipiscing elit.
-                Nulla pulvinar eleifend sem.
-                Vivamus luctus egestas leo.
-                Aliquam erat volutpat.</p>
+            <div>
+                <h4>class="light-grey-text">Lorem ipsum</h4>
+                <p class="medium description">28. 10. 2015</p>
+                <p class="medium indent justify light-grey-text">Dolor
+                    sit amet, consectetuer adipiscing elit.
+                    Nulla pulvinar eleifend sem.
+                    Vivamus luctus egestas leo.
+                    Aliquam erat volutpat. dolor
+                    sit amet, consectetuer adipiscing elit.
+                    Nulla pulvinar eleifend sem.
+                    Vivamus luctus egestas leo.
+                    Aliquam erat volutpat.</p>
+            </div>
         </article>
     </div>
 </section>
@@ -168,7 +197,7 @@
                 <option>FB</option>
             </select>
             <textarea name="text" placeholder="your message"></textarea>
-            <button>Send</button>
+            <button class="hvr-grow">Send</button>
         </form>
     </div>
 </section>

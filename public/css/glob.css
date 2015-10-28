@@ -237,34 +237,12 @@ header #buttons {
     width: 700px;
   }
 }
-.reference {
-  width: 27.3333%;
-  height: 345.5px;
-  margin: 0 2.5% 50px 2.5%;
-  padding: 0.5%;
-  border-radius: 5px;
-  float: left;
-  cursor: pointer;
-  background: #fafafa;
-  -webkit-transition: all linear 0.2s;
-  -moz-transition: all linear 0.2s;
-  -o-transition: all linear 0.2s;
-  transition: all linear 0.2s;
-  -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
-  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
-}
-.reference:hover {
-  -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.6);
-  -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.6);
-  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.6);
-}
 .post {
-  width: 27.3333%;
+  width: 44%;
   margin: 0 3% 50px 3%;
   cursor: pointer;
   float: left;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(50, 50, 50, 0.3);
   -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
@@ -274,10 +252,54 @@ header #buttons {
   transition: all linear 0.2s;
 }
 .post:hover {
-  -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.6);
-  -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.6);
-  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.6);
-  background: rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0px 1px 3px 0px #000000;
+  -moz-box-shadow: 0px 1px 3px 0px #000000;
+  box-shadow: 0px 1px 3px 0px #000000;
+  background: rgba(50, 50, 50, 0.5);
+}
+.post div {
+  padding: 1%;
+}
+p.motto-text {
+  margin-top: 20px;
+  color: white;
+}
+@media screen and (min-width: 0px) {
+  p.motto-text {
+    font-size: 15px;
+    line-height: 15px;
+  }
+}
+@media screen and (min-width: 800px) {
+  p.motto-text {
+    font-size: 20px;
+    line-height: 20px;
+  }
+}
+@media screen and (min-width: 1000px) {
+  p.motto-text {
+    font-size: 30px;
+    line-height: 30px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  p.motto-text {
+    font-size: 40px;
+    line-height: 40px;
+  }
+}
+p.logo-text-sleanded,
+p.logo-text-codes {
+  padding: 20px 0px;
+  font-size: 40px;
+  color: #eee;
+  font-weight: lighter;
+  line-height: 40px;
+  float: left;
+}
+p.logo-text-codes {
+  font-weight: bold;
+  color: #b23432;
 }
 /**
  * 1.3 - Další stránky
@@ -398,89 +420,73 @@ h4 {
   font-size: 25px;
   line-height: 25px;
 }
-h5 {
-  text-align: center;
-  margin: 7px 0;
-  font-weight: lighter;
-  font-size: 25px;
-  color: #eee;
-  line-height: 25px;
-}
-p {
-  font-weight: normal;
-  font-size: 20px;
-  line-height: 20px;
-}
-p.justify {
+/**
+ * 3.2 - Horizontální formátování
+ */
+.justify {
   text-align: justify;
 }
-p.motto-text {
-  margin-top: 20px;
-  color: white;
+.center {
+  text-align: center;
 }
-@media screen and (min-width: 0px) {
-  p.motto-text {
-    font-size: 15px;
-    line-height: 15px;
-  }
+.margin {
+  margin-bottom: 30px;
 }
-@media screen and (min-width: 800px) {
-  p.motto-text {
-    font-size: 20px;
-    line-height: 20px;
-  }
-}
-@media screen and (min-width: 1000px) {
-  p.motto-text {
-    font-size: 30px;
-    line-height: 30px;
-  }
-}
-@media screen and (min-width: 1200px) {
-  p.motto-text {
-    font-size: 40px;
-    line-height: 40px;
-  }
-}
-p.logo-text-sleanded,
-p.logo-text-codes {
-  padding: 20px 0px;
-  font-size: 40px;
-  color: #eee;
-  font-weight: lighter;
-  line-height: 40px;
-  float: left;
-}
-p.logo-text-codes {
-  font-weight: bold;
-  color: #b23432;
-}
-p.paragraph {
-  padding-bottom: 30px;
+.indent {
   text-indent: 50px;
 }
-p.reference-text,
-p.post-text {
-  text-align: justify;
-  font-size: 16px;
-}
-p.post-text {
-  margin: 5px;
-}
+/**
+ * 3.3 - Barvy
+ */
 .red-text {
   color: #b23432;
 }
 .white-text {
   color: #fff;
 }
-.grey-text {
+.light-grey-text {
   color: #eee;
+}
+.grey-text {
+  color: #666;
 }
 .dark-grey-text {
   color: #333;
 }
 /**
+ * 3.4 - Velikosti
+ */
+.small {
+  font-size: 14px;
+  line-height: 14px;
+}
+.medium {
+  font-size: 16px;
+  line-height: 16px;
+}
+.big {
+  font-size: 20px;
+  line-height: 20px;
+}
+/**
+ * 3.5 - Styly
+ */
+.bold {
+  font-weight: bold;
+}
+/**
+ * 3.6 - Předdefinované
+ */
+.description {
+  color: #999;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+/**
  * 4 - Obecně používané třídy
+ */
+/**
+ * 4.1 - Progress bar
  */
 .progress-bar {
   width: 100%;
@@ -499,6 +505,9 @@ p.post-text {
   display: block;
   font-size: 20px;
 }
+/**
+ * 4.2 - Barvy pozadí
+ */
 .red {
   background-color: #b23432;
 }
@@ -508,6 +517,9 @@ p.post-text {
 .grey {
   background-color: #eee;
 }
+/**
+ * 4.3 - Rozdělení stránky
+ */
 .third {
   width: 33.3333%;
   padding: 3% 2%;
@@ -529,6 +541,22 @@ p.post-text {
 .no-padding {
   padding: 0;
 }
+/**
+ * 4.6 - Scrollbar
+ */
+.nicescroll-rails {
+  background: rgba(0, 0, 0, 0.2);
+  width: 10px !important;
+}
+.nicescroll-rails div {
+  background: #b23432 !important;
+  width: 10px !important;
+  border: none !important;
+  border-radius: 0 !important;
+}
+/**
+ * 4.5 - Ostatní
+ */
 .hidden {
   display: none;
 }
@@ -543,12 +571,40 @@ p.post-text {
   width: 90%;
   opacity: 0;
 }
+.reference {
+  width: 28.3333%;
+  height: 385px;
+  margin: 0 2.5% 50px 2.5%;
+  border-radius: 5px;
+  float: left;
+  cursor: pointer;
+  background: #fafafa;
+  overflow: hidden;
+  -webkit-transition: all linear 0.2s;
+  -moz-transition: all linear 0.2s;
+  -o-transition: all linear 0.2s;
+  transition: all linear 0.2s;
+  -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+}
+.reference:hover {
+  -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.6);
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.6);
+}
+.reference div {
+  padding: 1%;
+}
 [class^='img-'] {
   position: absolute;
   z-index: -1;
 }
 /**
  * 5 - Inputy
+ */
+/**
+ * 5.1 - Contact
  */
 #contact {
   width: 50%;
@@ -601,7 +657,7 @@ p.post-text {
   background-color: #cc3c39;
 }
 /**
- * 5.1 - Tlačítka (<a>)
+ * 6 - Tlačítka (<a>)
  */
 .contact,
 .work {
@@ -660,7 +716,7 @@ p.post-text {
   color: #b23432;
 }
 /**
- * 6 - Zprávy
+ * 7 - Zprávy
  */
 .message {
   margin-top: 20px;
@@ -695,7 +751,7 @@ p.post-text {
   background-image: linear-gradient(to bottom, #eee, #fff);
 }
 /**
- * 7 - kony
+ * 8 - kony
  */
 [class^='icon'] {
   width: 32px;
@@ -716,7 +772,44 @@ p.post-text {
   background: url("../img/icons/twitter-hover.png");
 }
 /**
- * Optimalizace
+ * 9 - Funkce
+ */
+/**
+ * 10 - Tabulky
+ */
+/**
+ * 10.1 - základní, nestylovaná
+ */
+.table-basic {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 30px;
+  border-spacing: 0;
+}
+.table-basic tr:nth-child(odd) {
+  background: #eee;
+}
+.table-basic td,
+.table-basic th {
+  padding: 10px;
+  margin: 0;
+  color: #333;
+  text-align: center;
+  font-size: 16px;
+}
+.table-basic td.left,
+.table-basic th.left {
+  text-align: left;
+}
+.table-basic td.right,
+.table-basic th.right {
+  text-align: right;
+}
+.table-basic th {
+  font-weight: bold;
+}
+/**
+ * 11 - Optimalizace pro tisk
  */
 @media print {
   * {
@@ -768,53 +861,5 @@ p.post-text {
   h3 {
     page-break-after: avoid;
   }
-}
-/**
- * 8 - Funkce
- */
-/** jinak to asi nejde :( jeste na to mrknu */
-.nicescroll-rails {
-  background: rgba(0, 0, 0, 0.2);
-  width: 10px !important;
-}
-.nicescroll-rails div {
-  background: #b23432 !important;
-  width: 10px !important;
-  border: none !important;
-  border-radius: 0 !important;
-}
-/**
- * 9 - Tabulky
- */
-/**
- * 9.1 - základní, nestylovaná
- */
-.table-basic {
-  padding: 0;
-  margin: 0;
-  margin-bottom: 30px;
-  border-spacing: 0;
-}
-.table-basic tr:nth-child(odd) {
-  background: #eee;
-}
-.table-basic td,
-.table-basic th {
-  padding: 10px;
-  margin: 0;
-  color: #333;
-  text-align: center;
-  font-size: 16px;
-}
-.table-basic td.left,
-.table-basic th.left {
-  text-align: left;
-}
-.table-basic td.right,
-.table-basic th.right {
-  text-align: right;
-}
-.table-basic th {
-  font-weight: bold;
 }
 /*# sourceMappingURL=glob.css.map */
