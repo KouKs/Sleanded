@@ -114,6 +114,20 @@ return array(
                     ),
                 ),
             ),
+            'admin' => array(
+                'type'    => 'Literal',
+                'options' => array(
+                    'route'    => '/admin',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Admin\Controller',
+                        'controller'    => 'Index',
+                        'action'        => 'index',
+                    ),
+                ),
+                'may_terminate' => true,
+                'child_routes' => array(
+                ),
+            ),
         ),
     ),
     'service_manager' => array(
@@ -138,6 +152,7 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'Application\Controller\Index' => 'Application\Controller\IndexController',
+            'Admin\Controller\Index' => 'Admin\Controller\IndexController',
         ),
     ),
     'view_manager' => array(
