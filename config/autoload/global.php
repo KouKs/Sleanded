@@ -22,9 +22,9 @@ return array(
     ),
     'db' => array(
         'driver'    => 'pdo',
-        'dsn'       => 'mysql:dbname=trinec;host=localhost',
+        'dsn'       => 'mysql:dbname=sleanded;host=localhost',
         'username'  => 'root',
-        'password'  => '',
+        'password'  => 'root',
     	'driver_options' => array(
                         PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
          ),
