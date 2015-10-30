@@ -10,6 +10,7 @@
         `name` VARCHAR(100) NULL COLLATE 'utf8_bin',
         `email` VARCHAR(100) NULL COLLATE 'utf8_bin',
         `text` TEXT(3000) NULL COLLATE 'utf8_bin',
+        `viewed` TINYINT(4) NOT NULL DEFAULT '0',
         `sent` INT NULL,
         `ip` VARCHAR(25) NULL COLLATE 'utf8_bin',
         PRIMARY KEY (`id`)
