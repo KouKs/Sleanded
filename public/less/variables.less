@@ -4,7 +4,7 @@
  */
 
 /**
- * Proměnné
+ * 1 - Proměnné
  */
 @theme-color: #b23432;
 @lighter-color: #C97170;
@@ -20,7 +20,7 @@
 @font-folder: "../fonts/";
 
 /**
- * Funkce
+ * 2 - Funkce
  */
 .animate (@time: 0.2s) {
   -webkit-transition: all linear @time;
@@ -56,4 +56,315 @@
 }
 .hidden() {
     display: none;
+}
+
+
+/**
+ * 3 - Fonty
+ */
+@font-face {
+    font-family: 'Proxima Nova';
+    font-weight: normal;
+    src: url('@{font-folder}ProximaNova-Regular.otf');
+}
+@font-face {
+    font-family: 'Proxima Nova';
+    font-weight: lighter;
+    src: url('@{font-folder}ProximaNova-Light.otf');
+}
+@font-face {
+    font-family: 'Proxima Nova';
+    font-weight: bold;
+    src: url('@{font-folder}ProximaNova-Semibold.otf');
+}
+
+/**
+ * 4 - Formátování textu
+ */
+/**
+ * 4.1 - Nadpisy
+ */
+h1,h2,h3,h4,h5,h6 {
+    margin: 0;
+    width: 100%;
+}
+
+h1 {
+    color: white;
+    font-weight: lighter;
+    margin: 0;
+    
+    @media screen {
+        @media(min-width: 0px) {
+            font-size: 30px;
+            line-height: 30px;
+        }
+        @media(min-width: 800px) {
+            font-size: 60px;
+            line-height: 60px;
+        }
+        @media(min-width: 1000px) {
+            font-size: 70px;
+            line-height: 70px;
+        }
+        @media(min-width: 1200px) {
+            font-size: 80px;
+            line-height: 80px;
+        }
+    }
+}
+
+h2 {
+    margin: 50px 0;
+    text-align: center;
+    font-weight: lighter;
+    
+    font-size: 50px;
+    line-height: 50px;
+}
+
+h3 {
+    margin: 30px 0;
+    text-align: center;
+    font-weight: lighter;
+    
+    font-size: 35px;
+    line-height: 35px;
+    
+}
+
+h4 {
+    margin: 7px 0;
+    font-weight: lighter;
+    font-size: 25px;
+    line-height: 25px;
+}
+
+h5 {
+    margin: 7px 0;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 20px;
+}
+
+/**
+ * 4.2 - Horizontální formátování
+ */
+.justify {
+    text-align: justify;
+}
+.center {
+    text-align: center;
+}
+.left {
+    text-align: left;
+}
+.right {
+    text-align: right;
+}
+.margin {
+    margin-bottom: 30px;
+}
+.indent {
+    text-indent: 50px;
+}
+
+
+/**
+ * 4.3 - Barvy
+ */
+
+.red-text {
+    color: @theme-color;
+}
+.white-text {
+    color: #fff;
+    
+}
+.light-grey-text {
+    color: @light-grey;
+    
+}
+.grey-text {
+    color: @grey;
+} 
+.dark-grey-text {
+    color: @dark-grey;
+}
+
+/**
+ * 4.4 - Velikosti
+ */
+.small {
+    font-size: 14px;
+    line-height: 18px;
+}
+.medium {
+    font-size: 16px;
+    line-height: 20px;
+}
+.big {
+    font-size: 20px; 
+    line-height: 24px;   
+}
+
+/**
+ * 4.5 - Styly
+ */
+.bold {
+    font-weight: bold;
+}
+
+/**
+ * 4.6 - Předdefinované
+ */
+.description {
+    color: #999;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+/**
+ * 5 - Obecně používané třídy
+ */
+
+/**
+ * 5.1 - Barvy pozadí
+ */
+.red {
+    background-color: @theme-color;
+}
+.white {
+    background-color: #fff;
+}
+.grey {
+    background-color: @light-grey;
+}
+
+/**
+ * 5.2 - Rozdělení stránky
+ */
+.third {
+    width: 33.3333%;
+    padding: 3% 2%;
+    display: inline-block;
+    vertical-align: top;
+    box-sizing: border-box;
+}
+.half {
+    width: 50%;
+    padding: 3% 2%;
+    display: inline-block;
+    vertical-align: top;
+    box-sizing: border-box; 
+}
+.one {
+    width: 100%;
+    padding: 3% 2%;
+    float: left;
+    box-sizing: border-box;
+}
+
+.no-padding {
+    padding: 0;
+}
+
+
+/**
+ * 5.3 - Scrollbar
+ */
+.nicescroll-rails {
+    background: rgba(0,0,0,0.2);
+    width: 10px !important;
+
+}
+
+.nicescroll-rails div {
+    background: @theme-color !important;
+    width: 10px !important;
+    border: none !important;
+    border-radius: 0 !important;
+}
+
+/**
+ * 5.4 - Ostatní
+ */
+[class^='img-'] { position: absolute; z-index: -1; }
+
+/**
+ * 6 - kony
+ */
+icon {
+    width: 32px; height: 32px;
+    display: block;
+    float: right;
+
+    &-fb { 
+        background: url( "@{img-folder}icons/facebook.png" );
+        &:hover {
+            background: url( "@{img-folder}icons/facebook-hover.png" );
+        }
+    }
+    &-twitter { 
+        background: url( "@{img-folder}icons/twitter.png" );
+        &:hover {
+            background: url( "@{img-folder}icons/twitter-hover.png" );
+        }
+    }
+}
+
+
+/**
+ * 7 - Optimalizace pro tisk
+ */
+@media print {
+  * {
+    color: #000 !important;
+    text-shadow: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+  .ir a:after,
+  a[href^="javascript:"]:after,
+  a[href^="#"]:after {
+    content: "";
+  }
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+  thead {
+    display: table-header-group;
+  }
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+  img {
+    max-width: 100% !important;
+  }
+  @page  {
+    margin: 0.5cm;
+  }
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
 }

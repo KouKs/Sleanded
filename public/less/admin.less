@@ -37,8 +37,6 @@ html, body, .page {
     width: 100%;
     height: 100%;
     font-family: 'Proxima Nova';
-    position: relative;
-    z-index: -2;
 }
 
 /**
@@ -52,6 +50,7 @@ header {
     background: @theme-color;
     
     position: fixed;
+    z-index: 15;
     
     .shadow(0.5);
     
@@ -64,7 +63,6 @@ header {
         
         line-height: 30px;
         font-size: 30px;
-        text-transform: uppercase;
         font-weight: lighter;
         color: @theme-color;
     }
@@ -78,13 +76,14 @@ header {
         > a , > div > a {
             width: 160px;
             padding: 15px 20px;
-            color: @light-grey;
             float: left;
             cursor: pointer;
+            background: @theme-color;
 
             font-size: 14px;
             text-transform: uppercase;
             font-weight: bold;
+            color: @light-grey;
 
             border-top: 1px solid #E34240;
             border-bottom: 1px solid #982D2B;
@@ -159,228 +158,13 @@ header {
 /**
  * 1.3 - Další stránky
  */
-/**
- * 2 - Fonty
- */
-@font-face {
-    font-family: 'Proxima Nova';
-    font-weight: normal;
-    src: url('@{font-folder}ProximaNova-Regular.otf');
-}
-@font-face {
-    font-family: 'Proxima Nova';
-    font-weight: lighter;
-    src: url('@{font-folder}ProximaNova-Light.otf');
-}
-@font-face {
-    font-family: 'Proxima Nova';
-    font-weight: bold;
-    src: url('@{font-folder}ProximaNova-Semibold.otf');
-}
 
 /**
- * 3 - Formátování textu
- */
-/**
- * 3.1 - Nadpisy
- */
-h1,h2,h3,h4,h5,h6 {
-    margin: 0;
-    width: 100%;
-}
-
-h1 {
-    color: white;
-    font-weight: lighter;
-    margin: 0;
-    
-    @media screen {
-        @media(min-width: 0px) {
-            font-size: 30px;
-            line-height: 30px;
-        }
-        @media(min-width: 800px) {
-            font-size: 60px;
-            line-height: 60px;
-        }
-        @media(min-width: 1000px) {
-            font-size: 70px;
-            line-height: 70px;
-        }
-        @media(min-width: 1200px) {
-            font-size: 80px;
-            line-height: 80px;
-        }
-    }
-}
-
-h2 {
-    margin: 50px 0;
-    text-align: center;
-    font-weight: lighter;
-    
-    font-size: 50px;
-    line-height: 50px;
-}
-
-h3 {
-    margin: 30px 0;
-    text-align: center;
-    font-weight: lighter;
-    
-    font-size: 35px;
-    line-height: 35px;
-    
-}
-
-h4 {
-    margin: 7px 0;
-    font-weight: lighter;
-    font-size: 25px;
-    line-height: 25px;
-}
-
-h5 {
-    margin: 7px 0;
-    font-weight: bold;
-    font-size: 20px;
-    line-height: 20px;
-}
-
-/**
- * 3.2 - Horizontální formátování
- */
-.justify {
-    text-align: justify;
-}
-.center {
-    text-align: center;
-}
-.margin {
-    margin-bottom: 30px;
-}
-.indent {
-    text-indent: 50px;
-}
-
-
-/**
- * 3.3 - Barvy
- */
-
-.red-text {
-    color: @theme-color;
-}
-.white-text {
-    color: #fff;
-    
-}
-.light-grey-text {
-    color: @light-grey;
-    
-}
-.grey-text {
-    color: @grey;
-} 
-.dark-grey-text {
-    color: @dark-grey;
-}
-
-/**
- * 3.4 - Velikosti
- */
-.small {
-    font-size: 14px;
-    line-height: 18px;
-}
-.medium {
-    font-size: 16px;
-    line-height: 20px;
-}
-.big {
-    font-size: 20px; 
-    line-height: 24px;   
-}
-
-/**
- * 3.5 - Styly
- */
-.bold {
-    font-weight: bold;
-}
-
-/**
- * 3.6 - Předdefinované
- */
-.description {
-    color: #999;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-}
-
-/**
- * 4 - Obecně používané třídy
+ * 2 - Custom třídy
  */
 
 /**
- * 4.2 - Barvy pozadí
- */
-.red {
-    background-color: @theme-color;
-}
-.white {
-    background-color: #fff;
-}
-.grey {
-    background-color: @light-grey;
-}
-
-/**
- * 4.3 - Rozdělení stránky
- */
-.third {
-    width: 33.3333%;
-    padding: 3% 2%;
-    display: inline-block;
-    vertical-align: top;
-    box-sizing: border-box;
-}
-.half {
-    width: 50%;
-    padding: 3% 2%;
-    display: inline-block;
-    vertical-align: top;
-    box-sizing: border-box; 
-}
-.one {
-    width: 100%;
-    padding: 3% 2%;
-    float: left;
-    box-sizing: border-box;
-}
-
-.no-padding {
-    padding: 0;
-}
-
-/**
- * 4.6 - Scrollbar
- */
-.nicescroll-rails {
-    background: rgba(0,0,0,0.2);
-    width: 10px !important;
-
-}
-
-.nicescroll-rails div {
-    background: @theme-color !important;
-    width: 10px !important;
-    border: none !important;
-    border-radius: 0 !important;
-}
-
-/**
- * 4.5 - Ostatní
+ * 2.1 - Ostatní
  */
 .hidden {
     display: none;
@@ -388,10 +172,12 @@ h5 {
 
 .part {
     width: 100%;
+    padding-left: 200px;
     overflow: hidden;
     display: block;
     position: relative;
     font-size: 0;
+    box-sizing: border-box;
     
     .area {
         margin: 0 auto;
@@ -405,19 +191,15 @@ h5 {
 
 
 /**
- * 5 - Inputy
+ * 3 - Inputy
  */
 
 /**
- * 5.1 - Contact
- */
-
-/**
- * 6 - Tlačítka (<a>)
+ * 4 - Tlačítka (<a>)
  */
  
 /**
- * 7 - Zprávy
+ * 5 - Zprávy
  */
 .message {
     margin-top: 20px;
@@ -438,32 +220,10 @@ h5 {
 }
 
 /**
- * 8 - kony
- */
-icon {
-    width: 32px; height: 32px;
-    display: block;
-    float: right;
-
-    &-fb { 
-        background: url( "@{img-folder}icons/facebook.png" );
-        &:hover {
-            background: url( "@{img-folder}icons/facebook-hover.png" );
-        }
-    }
-    &-twitter { 
-        background: url( "@{img-folder}icons/twitter.png" );
-        &:hover {
-            background: url( "@{img-folder}icons/twitter-hover.png" );
-        }
-    }
-}
-
-/**
- * 9 - Tabulky
+ * 6 - Tabulky
  */
 /**
- * 9.1 - základní, nestylovaná
+ * 6.1 - základní, nestylovaná
  */
 
 .table-basic {
@@ -491,4 +251,50 @@ icon {
     th {
         font-weight: bold;
     }
+}
+
+table.admin {
+    padding: 0; margin: 0;
+    margin: 30px;
+    border-spacing: 0;
+    border-collapse: collapse;
+    width: 100%;
+
+    box-sizing: border-box;
+    tr:nth-child(odd) {
+        background: @light-grey;
+        
+    }
+    tr:hover {
+        background: #f8f8f8;            
+    }
+    th, td {
+        padding: 7px; margin: 0;
+        color: @dark-grey;
+        text-align: left;
+        font-size: 14px;
+        border: 1px solid #d4d4d4
+    }
+    td {
+        cursor: pointer;
+    }
+    th{
+        .gradient( #f5f5f5 , #e4e4e4 );
+    }
+}
+
+.admin-table-heading {
+    .gradient( #fff, #f5f5f5 );
+    width: 100%;
+    padding: 7px;
+    margin-bottom: 1px;
+    
+    color: @dark-grey;
+    font-size: 14px;
+    
+    border: 1px solid #d4d4d4;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    
+    box-sizing: border-box;
 }
