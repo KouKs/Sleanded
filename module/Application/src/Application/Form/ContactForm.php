@@ -13,7 +13,7 @@ class ContactForm extends Form
     public function __construct($name = null,$kategorie = null)
     {
         parent::__construct('contact');
-
+        
         $this->add(array(
             'name' => 'name',
             'type' => 'text',

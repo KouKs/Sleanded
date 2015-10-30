@@ -16,10 +16,18 @@ class IndexController extends AbstractActionController
 
     public function indexAction()
     {
-        
+        $form = new ContactForm();
+        $request = $this->getRequest();
+        if ( $request->isPost() ) {
+            $form->setData( $request->post() );
+            if ( $form->isValid() ) {
+                var_dump( $form->getData() ); //for debug
+                die();
+            }
+        }
         
         return [
-            'contactForm' => new ContactForm(),
+            'contactForm' => $form,
         ];
     }
 
