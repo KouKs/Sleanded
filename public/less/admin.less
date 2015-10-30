@@ -262,6 +262,9 @@ table.admin {
     tr:hover {
         background: #f8f8f8;            
     }
+    tr:last-child {
+        border-bottom: 1px solid #ddd;
+    }
     th, td {
         padding: 7px; margin: 0;
         color: @dark-grey;
@@ -280,9 +283,10 @@ table.admin {
     th:first-child {
         border-top-left-radius: 5px;
     }
+    th:last-child {
+        border-top-right-radius: 5px;        
+    }
     th:last-child, td:last-child {
-        border-right: none;
-        border-top-right-radius: 5px;
-        
+        border-right: none;        
     }
 }

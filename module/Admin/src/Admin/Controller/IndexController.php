@@ -18,7 +18,7 @@ class IndexController extends AbstractActionController
         $messageTable = $this->getMessageTable( );
         
         return [
-            'messages' => $messageTable->fetchAll( ),
+            'messages' => $messageTable->select("viewed=0"),
         ];
     }
     

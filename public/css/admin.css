@@ -566,6 +566,9 @@ table.admin tr:nth-child(odd) {
 table.admin tr:hover {
   background: #f8f8f8;
 }
+table.admin tr:last-child {
+  border-bottom: 1px solid #ddd;
+}
 table.admin th,
 table.admin td {
   padding: 7px;
@@ -586,9 +589,11 @@ table.admin th {
 table.admin th:first-child {
   border-top-left-radius: 5px;
 }
+table.admin th:last-child {
+  border-top-right-radius: 5px;
+}
 table.admin th:last-child,
 table.admin td:last-child {
   border-right: none;
-  border-top-right-radius: 5px;
 }
 /*# sourceMappingURL=admin.css.map */

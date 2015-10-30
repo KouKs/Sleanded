@@ -9,16 +9,16 @@
         <table class="admin">
             <tr>
                 <th>Name</th>
+                <th>E-mail</th>
                 <th>Text</th>
             </tr>
-            <tr>
-                <td>Pavel Koch</td>
-                <td>i want website</td>
-            </tr>
-            <tr>
-                <td>Michael Bausano</td>
-                <td>me too</td>               
-            </tr>            
+            <?php foreach( $this->messages as $message ) : ?>
+                <tr>
+                    <td><?php echo $message->name; ?></td>
+                    <td><?php echo $message->email; ?></td>
+                    <td><?php echo strlen( $message->text ) > 30 ? substr( $message->text , 0 , 30 ) . "..." : $message->text; ?></td>
+                </tr>
+            <?php endforeach; ?>
         </table>
     </div>    
     <div class="half">
