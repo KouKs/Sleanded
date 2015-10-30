@@ -4,19 +4,9 @@
  */
 
 /**
- * Setting variables
+ * Import proměnných
  */
-@theme-color: #b23432;
-@lighter-color: #C97170;
-@darker-color: #591A19;
-@secondary: #d9403c;
-@third: #cc3c39;
-@light-grey: #eee;
-@grey: #666;
-@dark-grey: #333;
-
-@img-folder: "../img/";
-@font-folder: "../fonts/";
+@import "variables.less";
 
 /**
  * 0 - Reset
@@ -50,20 +40,12 @@ html, body, .page {
     position: relative;
     z-index: -2;
 }
-#port {
-    background: rbga( 0,0,0,0.2);
-    width: 20px;
-}
-#bar {
-    background: @theme-color;
-    width: 20px;
-}
 footer {
     width: 100%;
     overflow: hidden;
     height: 20px;
     padding: 30px 0;
-    background: url( ../img/logo50.png ) 15px center no-repeat #111;
+    background: url( "@{img-folder}logo50.png" ) 15px center no-repeat #111;
     
     line-height: 20px;
     font-size: 20px;
@@ -814,68 +796,30 @@ h5 {
 /**
  * 8 - kony
  */
-[class^='icon'] {
+icon {
     width: 32px; height: 32px;
     display: block;
     float: right;
-}
-.icon-fb { 
-    background: url( "@{img-folder}icons/facebook.png" );
-    &:hover {
-        background: url( "@{img-folder}icons/facebook-hover.png" );
+
+    &-fb { 
+        background: url( "@{img-folder}icons/facebook.png" );
+        &:hover {
+            background: url( "@{img-folder}icons/facebook-hover.png" );
+        }
+    }
+    &-twitter { 
+        background: url( "@{img-folder}icons/twitter.png" );
+        &:hover {
+            background: url( "@{img-folder}icons/twitter-hover.png" );
+        }
     }
 }
-.icon-twitter { 
-    background: url( "@{img-folder}icons/twitter.png" );
-    &:hover {
-        background: url( "@{img-folder}icons/twitter-hover.png" );
-    }
-}
 
 /**
- * 9 - Funkce
- */
-.animate (@time: 0.2s) {
-  -webkit-transition: all linear @time;
-     -moz-transition: all linear @time;
-       -o-transition: all linear @time;
-          transition: all linear @time;
-}
-
-.gradient(@color1,@color2) {
-    background-color: @color1;
-    background-image: -moz-linear-gradient(top, @color1, @color2);
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@color1), to(@color2));
-    background-image: -webkit-linear-gradient(top, @color1, @color2);
-    background-image: -o-linear-gradient(top, @color1, @color2);
-    background-image: linear-gradient(to bottom, @color1, @color2);    
-}
-
-.underline() {
-    padding-bottom: 15px;
-    background: url("@{img-folder}underline.png") center bottom no-repeat;
-}
-
-.shadow(@opacity: 0.2) {
-    -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, @opacity);
-    -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, @opacity);
-    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, @opacity);
-}
-.whiteShadow(@opacity: 0.2) {
-    -webkit-box-shadow: 0px 1px 3px 0px rgba(255, 255, 255, @opacity);
-    -moz-box-shadow: 0px 1px 3px 0px rgba(255, 255, 255, @opacity);
-    box-shadow: 0px 1px 3px 0px rgba(255, 255, 255, @opacity);
-    
-}
-.hidden() {
-    display: none;
-}
-
-/**
- * 10 - Tabulky
+ * 9 - Tabulky
  */
 /**
- * 10.1 - základní, nestylovaná
+ * 9.1 - základní, nestylovaná
  */
 
 .table-basic {

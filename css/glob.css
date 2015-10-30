@@ -3,17 +3,7 @@
  *   Author     : Pavel
  */
 /**
- * Import proměnných
- */
-/**
- *   Created on : 28.10.2015
- *   Author     : Pavel
- */
-/**
- * Proměnné
- */
-/**
- * Funkce
+ * Setting variables
  */
 /**
  * 0 - Reset
@@ -56,7 +46,7 @@ footer {
   overflow: hidden;
   height: 20px;
   padding: 30px 0;
-  background: url("../img/logo50.png") 15px center no-repeat #111;
+  background: url(../img/logo50.png ) 15px center no-repeat #111;
   line-height: 20px;
   font-size: 20px;
   color: #999;
@@ -815,29 +805,32 @@ h5 {
 /**
  * 8 - kony
  */
-icon {
+[class^='icon'] {
   width: 32px;
   height: 32px;
   display: block;
   float: right;
 }
-icon-fb {
+.icon-fb {
   background: url("../img/icons/facebook.png");
 }
-icon-fb:hover {
+.icon-fb:hover {
   background: url("../img/icons/facebook-hover.png");
 }
-icon-twitter {
+.icon-twitter {
   background: url("../img/icons/twitter.png");
 }
-icon-twitter:hover {
+.icon-twitter:hover {
   background: url("../img/icons/twitter-hover.png");
 }
 /**
- * 9 - Tabulky
+ * 9 - Funkce
  */
 /**
- * 9.1 - základní, nestylovaná
+ * 10 - Tabulky
+ */
+/**
+ * 10.1 - základní, nestylovaná
  */
 .table-basic {
   padding: 0;

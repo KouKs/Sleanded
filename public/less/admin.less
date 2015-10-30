@@ -4,19 +4,9 @@
  */
 
 /**
- * Setting variables
+ * Import proměnných
  */
-@theme-color: #b23432;
-@lighter-color: #C97170;
-@darker-color: #591A19;
-@secondary: #d9403c;
-@third: #cc3c39;
-@light-grey: #eee;
-@grey: #666;
-@dark-grey: #333;
-
-@img-folder: "../img/";
-@font-folder: "../fonts/";
+@import "variables.less";
 
 /**
  * 0 - Reset
@@ -43,9 +33,129 @@ input,button,textarea,select,option {
 /**
  * 1.1 - Celkový
  */
+html, body, .page {
+    width: 100%;
+    height: 100%;
+    font-family: 'Proxima Nova';
+    position: relative;
+    z-index: -2;
+}
+
 /**
  * 1.2 - Index
  */
+
+header {
+    height: 100%;
+    width: 200px;
+    
+    background: @theme-color;
+    
+    position: fixed;
+    
+    .shadow(0.5);
+    
+    .logo {
+        width: 100px;
+        height: 30px;
+        padding: 35px 30px 35px 70px;
+        background: url( "@{img-folder}logo50.png" ) 20px center no-repeat @light-grey;
+        background-size: 50px;
+        
+        line-height: 30px;
+        font-size: 30px;
+        text-transform: uppercase;
+        font-weight: lighter;
+        color: @theme-color;
+    }
+    
+    /**
+     * 1.2.1  - Ano, tohle celé je menu.
+     */
+    > nav {
+        width: 100%;
+        
+        > a , > div > a {
+            width: 160px;
+            padding: 15px 20px;
+            color: @light-grey;
+            float: left;
+            cursor: pointer;
+
+            font-size: 14px;
+            text-transform: uppercase;
+            font-weight: bold;
+
+            border-top: 1px solid #E34240;
+            border-bottom: 1px solid #982D2B;
+
+
+            .animate;
+
+            &:hover {
+                background: @dark-grey;
+                border-color: @dark-grey;
+            }
+            &:hover + nav  {
+                display: block;
+            }
+        }
+        a.clear {
+            background: @theme-color;
+            border-color: @theme-color;
+            cursor: default;
+            &:hover {
+                background: @theme-color;
+                border-color: @theme-color;
+            }
+        }
+        div  {
+            width: 200%;
+            height: auto;
+            overflow: hidden;
+            
+            &:hover > a {
+                background: @dark-grey;
+                border-color: @dark-grey;
+            }
+            
+            nav {
+                position: absolute; left: 200px;
+                background-color: @dark-grey;
+                width: 200px;
+                display: none;
+                
+                &:hover {
+                    display: block;
+                }
+                
+                a {
+                    width: 160px;
+                    padding: 15px 20px;
+                    color: @light-grey;
+                    float: left;
+                    cursor: pointer;
+
+                    font-size: 14px;
+                    text-transform: uppercase;
+                    font-weight: bold;
+
+                    border-top: 1px solid #444;
+                    border-bottom: 1px solid #222;
+
+                    .animate;
+
+                    &:hover {
+                        color: @grey;
+                    }
+                }
+            }
+        }
+    }
+    /**
+     * ### Tady končí ###
+     */
+}
 /**
  * 1.3 - Další stránky
  */
@@ -330,68 +440,30 @@ h5 {
 /**
  * 8 - kony
  */
-[class^='icon'] {
+icon {
     width: 32px; height: 32px;
     display: block;
     float: right;
-}
-.icon-fb { 
-    background: url( "@{img-folder}icons/facebook.png" );
-    &:hover {
-        background: url( "@{img-folder}icons/facebook-hover.png" );
+
+    &-fb { 
+        background: url( "@{img-folder}icons/facebook.png" );
+        &:hover {
+            background: url( "@{img-folder}icons/facebook-hover.png" );
+        }
+    }
+    &-twitter { 
+        background: url( "@{img-folder}icons/twitter.png" );
+        &:hover {
+            background: url( "@{img-folder}icons/twitter-hover.png" );
+        }
     }
 }
-.icon-twitter { 
-    background: url( "@{img-folder}icons/twitter.png" );
-    &:hover {
-        background: url( "@{img-folder}icons/twitter-hover.png" );
-    }
-}
 
 /**
- * 9 - Funkce
- */
-.animate (@time: 0.2s) {
-  -webkit-transition: all linear @time;
-     -moz-transition: all linear @time;
-       -o-transition: all linear @time;
-          transition: all linear @time;
-}
-
-.gradient(@color1,@color2) {
-    background-color: @color1;
-    background-image: -moz-linear-gradient(top, @color1, @color2);
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@color1), to(@color2));
-    background-image: -webkit-linear-gradient(top, @color1, @color2);
-    background-image: -o-linear-gradient(top, @color1, @color2);
-    background-image: linear-gradient(to bottom, @color1, @color2);    
-}
-
-.underline() {
-    padding-bottom: 15px;
-    background: url("@{img-folder}underline.png") center bottom no-repeat;
-}
-
-.shadow(@opacity: 0.2) {
-    -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, @opacity);
-    -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, @opacity);
-    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, @opacity);
-}
-.whiteShadow(@opacity: 0.2) {
-    -webkit-box-shadow: 0px 1px 3px 0px rgba(255, 255, 255, @opacity);
-    -moz-box-shadow: 0px 1px 3px 0px rgba(255, 255, 255, @opacity);
-    box-shadow: 0px 1px 3px 0px rgba(255, 255, 255, @opacity);
-    
-}
-.hidden() {
-    display: none;
-}
-
-/**
- * 10 - Tabulky
+ * 9 - Tabulky
  */
 /**
- * 10.1 - základní, nestylovaná
+ * 9.1 - základní, nestylovaná
  */
 
 .table-basic {
