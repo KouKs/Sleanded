@@ -57,8 +57,8 @@ header {
     .logo {
         width: 100px;
         height: 30px;
-        padding: 35px 30px 35px 70px;
-        background: url( "@{img-folder}logo50.png" ) 20px center no-repeat @light-grey;
+        padding: 60px 30px 60px 70px;
+        background: url( "@{img-folder}logo50.png" ) 20px center no-repeat #fff;
         background-size: 50px;
         
         line-height: 30px;
@@ -75,7 +75,7 @@ header {
         
         > a , > div > a {
             width: 160px;
-            padding: 15px 20px;
+            padding: 10px 20px;
             float: left;
             cursor: pointer;
             background: @theme-color;
@@ -113,11 +113,6 @@ header {
             height: auto;
             overflow: hidden;
             
-            &:hover > a {
-                background: @dark-grey;
-                border-color: @dark-grey;
-            }
-            
             nav {
                 position: absolute; left: 200px;
                 background-color: @dark-grey;
@@ -130,7 +125,7 @@ header {
                 
                 a {
                     width: 160px;
-                    padding: 15px 20px;
+                    padding: 10px 20px;
                     color: @light-grey;
                     float: left;
                     cursor: pointer;
@@ -255,12 +250,11 @@ header {
 
 table.admin {
     padding: 0; margin: 0;
-    margin: 30px;
+    margin-bottom: 30px;
     border-spacing: 0;
     border-collapse: collapse;
     width: 100%;
-
-    box-sizing: border-box;
+    
     tr:nth-child(odd) {
         background: @light-grey;
         
@@ -273,28 +267,22 @@ table.admin {
         color: @dark-grey;
         text-align: left;
         font-size: 14px;
-        border: 1px solid #d4d4d4
+        border-right: 1px solid #ddd;
     }
     td {
         cursor: pointer;
     }
     th{
-        .gradient( #f5f5f5 , #e4e4e4 );
+        color: @light-grey;
+        background: @theme-color;
+        font-weight: bold;
     }
-}
-
-.admin-table-heading {
-    .gradient( #fff, #f5f5f5 );
-    width: 100%;
-    padding: 7px;
-    margin-bottom: 1px;
-    
-    color: @dark-grey;
-    font-size: 14px;
-    
-    border: 1px solid #d4d4d4;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    
-    box-sizing: border-box;
+    th:first-child {
+        border-top-left-radius: 5px;
+    }
+    th:last-child, td:last-child {
+        border-right: none;
+        border-top-right-radius: 5px;
+        
+    }
 }

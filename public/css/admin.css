@@ -186,6 +186,9 @@ h5 {
 .grey {
   background-color: #eee;
 }
+.dark-grey {
+  background-color: #333;
+}
 /**
  * 5.2 - Rozdělení stránky
  */
@@ -363,8 +366,8 @@ header {
 header .logo {
   width: 100px;
   height: 30px;
-  padding: 35px 30px 35px 70px;
-  background: url("../img/logo50.png") 20px center no-repeat #eee;
+  padding: 60px 30px 60px 70px;
+  background: url("../img/logo50.png") 20px center no-repeat #fff;
   background-size: 50px;
   line-height: 30px;
   font-size: 30px;
@@ -377,7 +380,7 @@ header > nav {
 header > nav > a,
 header > nav > div > a {
   width: 160px;
-  padding: 15px 20px;
+  padding: 10px 20px;
   float: left;
   cursor: pointer;
   background: #b23432;
@@ -415,10 +418,6 @@ header > nav div {
   height: auto;
   overflow: hidden;
 }
-header > nav div:hover > a {
-  background: #333;
-  border-color: #333;
-}
 header > nav div nav {
   position: absolute;
   left: 200px;
@@ -431,7 +430,7 @@ header > nav div nav:hover {
 }
 header > nav div nav a {
   width: 160px;
-  padding: 15px 20px;
+  padding: 10px 20px;
   color: #eee;
   float: left;
   cursor: pointer;
@@ -556,11 +555,10 @@ header > nav div nav a:hover {
 table.admin {
   padding: 0;
   margin: 0;
-  margin: 30px;
+  margin-bottom: 30px;
   border-spacing: 0;
   border-collapse: collapse;
   width: 100%;
-  box-sizing: border-box;
 }
 table.admin tr:nth-child(odd) {
   background: #eee;
@@ -575,34 +573,22 @@ table.admin td {
   color: #333;
   text-align: left;
   font-size: 14px;
-  border: 1px solid #d4d4d4;
+  border-right: 1px solid #ddd;
 }
 table.admin td {
   cursor: pointer;
 }
 table.admin th {
-  background-color: #f5f5f5;
-  background-image: -moz-linear-gradient(top, #f5f5f5, #e4e4e4);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f5f5f5), to(#e4e4e4));
-  background-image: -webkit-linear-gradient(top, #f5f5f5, #e4e4e4);
-  background-image: -o-linear-gradient(top, #f5f5f5, #e4e4e4);
-  background-image: linear-gradient(to bottom, #f5f5f5, #e4e4e4);
+  color: #eee;
+  background: #b23432;
+  font-weight: bold;
 }
-.admin-table-heading {
-  background-color: #fff;
-  background-image: -moz-linear-gradient(top, #fff, #f5f5f5);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fff), to(#f5f5f5));
-  background-image: -webkit-linear-gradient(top, #fff, #f5f5f5);
-  background-image: -o-linear-gradient(top, #fff, #f5f5f5);
-  background-image: linear-gradient(to bottom, #fff, #f5f5f5);
-  width: 100%;
-  padding: 7px;
-  margin-bottom: 1px;
-  color: #333;
-  font-size: 14px;
-  border: 1px solid #d4d4d4;
+table.admin th:first-child {
   border-top-left-radius: 5px;
+}
+table.admin th:last-child,
+table.admin td:last-child {
+  border-right: none;
   border-top-right-radius: 5px;
-  box-sizing: border-box;
 }
 /*# sourceMappingURL=admin.css.map */

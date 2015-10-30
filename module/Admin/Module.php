@@ -14,6 +14,11 @@ use Zend\Mvc\MvcEvent;
 use Zend\Session\Config\SessionConfig;
 use Zend\Session\Container;
 use Zend\Session\SessionManager;
+use Zend\Db\ResultSet\ResultSet;
+use Zend\Db\TableGateway\TableGateway;
+
+use Application\Model\Message;
+use Application\Model\MessageTable;
 
 class Module
 {
@@ -51,19 +56,16 @@ class Module
     {
         return array(
             'factories' => array(
-                /**
-                 * kategorie
-                 *
-                'Application\Model\KategorieTable' =>  function($sm) {
-                    $tableGateway = $sm->get('KategorieTableGateway');
-                    $table = new KategorieTable($tableGateway);
+                'Application\Model\MessageTable' =>  function($sm) {
+                    $tableGateway = $sm->get('MessageTableGateway');
+                    $table = new MessageTable($tableGateway);
                     return $table;
                 },
-                'KategorieTableGateway' => function ($sm) {
+                'MessageTableGateway' => function ($sm) {
                     $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
                     $resultSetPrototype = new ResultSet();
-                    $resultSetPrototype->setArrayObjectPrototype(new Kategorie());
-                    return new TableGateway('kategorie', $dbAdapter, null, $resultSetPrototype);
+                    $resultSetPrototype->setArrayObjectPrototype( new Message() );
+                    return new TableGateway('message', $dbAdapter, null, $resultSetPrototype);
                 },
                 /**
                  * user

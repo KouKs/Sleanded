@@ -15,8 +15,27 @@ class IndexController extends AbstractActionController
     public function indexAction()
     {
         $this->layout("layout/admin");
-        return [];
+        //$messageTable = $this->getMessageTable( );
+        
+        
+        return [
+           // 'messages' => $messageTable->fetchAll( ),
+        ];
     }
+    
+    /*************************************************************************\
+     | Privátní fce                                                          |
+    \*************************************************************************/
+    
+    /**
+     * Returns an isntance of message table
+     * @return Application\Model\MessageTable 
+     */
+    private function getMessageTable()
+    {
+        return $this->getServiceLocator()->get('Application\Model\MessageTable');
+    }
+    
 
 }
 
