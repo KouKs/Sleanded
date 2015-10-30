@@ -29,38 +29,17 @@ return array(
     'router' => array(
         'routes' => array(
             'admin' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'type' => 'Segment',
                 'options' => array(
-                    'route'    => '/admin/',
+                    'route'    => '/admin/[:action/][:id]',
+                    'constraints' => array(
+                        'controller' => 'Admin\Controller\Index',
+                        'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id'         => '[0-9]+'
+                    ),
                     'defaults' => array(
                         'controller' => 'Admin\Controller\Index',
                         'action'     => 'index',
-                    ),
-                ),
-                'may_terminate' => true,
-                'child_routes' => array(
-                    'default' => array(
-                        'type'    => 'Segment',
-                        'options' => array(
-                            'route'    => '[:controller[/:action]]',
-                            'constraints' => array(
-                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
-                            ),
-                            'defaults' => array(
-                            ),
-                        ),
-                    ),
-                    /*login*/
-                    'login' => array(
-                        'type'    => 'Literal',
-                        'options' => array(
-                            'route'    => 'login',
-                            'defaults' => array(
-                                'controller' => 'Admin\Controller\Index',
-                                'action' => 'login',
-                            ),
-                        ),
                     ),
                 ),
             ),

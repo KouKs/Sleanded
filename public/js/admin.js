@@ -38,3 +38,10 @@ $.fn.showContent = function( ) {
         }
     });
 };
+
+function ajax( controller , action , data ) {
+    $.post( _URL + controller + '/' + action , data , function( ) {
+            alert("Successfully sent!");
+        }
+    );
+}

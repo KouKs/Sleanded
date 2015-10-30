@@ -29,6 +29,24 @@ class IndexController extends AbstractActionController
         return [];
     }
     
+    public function messagesAction()
+    {
+       
+        $this->layout("layout/admin");
+        $messageTable = $this->getMessageTable( );
+        
+        return [
+            'messages' => $messageTable->fetchAll(),
+        ];
+    }
+    
+    public function deletemessageAction()
+    {
+        $id = $this->params()->fromPost('id');
+        $table = $this->getCategoryTable();
+        $table->delete( $id );
+        return $this->response;
+    }
     /*************************************************************************\
      | Private functions                                                          |
     \*************************************************************************/
