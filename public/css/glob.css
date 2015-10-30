@@ -674,7 +674,7 @@ h5 {
 #contact textarea,
 #contact select,
 #contact button,
-#contact input[type="text"] {
+#contact input {
   border: 0;
   padding: 20px;
   margin-bottom: 5px;
@@ -701,10 +701,10 @@ h5 {
 }
 #contact select:hover,
 #contact textarea:hover,
-#contact input[type="text"]:hover,
+#contact input:hover,
 #contact select:focus,
 #contact textarea:focus,
-#contact input[type="text"]:focus {
+#contact input:focus {
   background: #eee;
 }
 #contact button {
@@ -922,4 +922,3 @@ h5 {
     page-break-after: avoid;
   }
 }
-/*# sourceMappingURL=glob.css.map */

@@ -3,7 +3,8 @@
 namespace Application\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
-use Zend\View\Model\ViewModel;
+
+use Application\Form\ContactForm;
 
 class IndexController extends AbstractActionController
 {
@@ -15,7 +16,11 @@ class IndexController extends AbstractActionController
 
     public function indexAction()
     {
-        return [];
+        
+        
+        return [
+            'contactForm' => new ContactForm(),
+        ];
     }
 
     public function workAction()
@@ -33,7 +38,9 @@ class IndexController extends AbstractActionController
     public function contactAction()
     {
         $this->layout("layout/page");
-        return [];
+        return [
+            'contactForm' => new ContactForm(),
+        ];
     }
     
     public function blogAction()

@@ -186,18 +186,15 @@
 <section class="part red">
     <div class="area">
         <h2 class="white-text">Contact form</h2>
-        <form id="contact" action="" method="post">
-            <input placeholder="name" type="text" />
-            <input placeholder="e-mail" type="text" />
-            <input placeholder="phone" type="text" />
-            <select>
-                <option selected disabled hidden>Where did you hear of us?</option>
-                <option>FB</option>
-                <option>FB</option>
-                <option>FB</option>
-            </select>
-            <textarea name="text" placeholder="your message"></textarea>
-            <button class="hvr-grow">Send</button>
-        </form>
+        <?php $form = $this->contactForm;
+              $form->prepare();
+              echo $this->form()->openTag($form); ?>
+        
+            <?php echo $this->formElement( $form->get('name') ) .  
+                       $this->formElement( $form->get('email') ) . 
+                       $this->formElement( $form->get('text') ) .
+                       $this->formButton( $form->get('submit') , "send" ); ?>
+        
+        <?php echo $this->form()->closeTag(); ?>
     </div>
 </section>
