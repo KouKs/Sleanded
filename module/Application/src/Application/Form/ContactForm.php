@@ -28,7 +28,7 @@ class ContactForm extends Form
                 'placeholder' => 'e-mail'
             ),
         ));
-        $this->add(array(
+        /*$this->add(array(
             'name' => 'kategorie',
             'type' => 'Zend\Form\Element\Select',
             'options' => array(
@@ -51,7 +51,7 @@ class ContactForm extends Form
                     ),
                 ),
             ),
-        ));
+        ));*/
         $this->add(array(
             'name' => 'text',
             'type' => 'textarea',
@@ -61,7 +61,6 @@ class ContactForm extends Form
         ));
         $this->add(array(
             'name' => 'submit',
-            'type' => 'Zend\Form\Element\Button',
             'attributes' => array(
                 'class' => 'hvr-grow'
              ),
