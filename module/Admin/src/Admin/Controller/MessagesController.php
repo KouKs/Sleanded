@@ -4,13 +4,8 @@ namespace Admin\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 
-class IndexController extends AbstractActionController
+class MessagesController extends AbstractActionController
 {
-
-    public function onDispatch(\Zend\Mvc\MvcEvent $e)
-    {
-        return parent::onDispatch($e);
-    }
 
     public function indexAction()
     {
@@ -18,7 +13,7 @@ class IndexController extends AbstractActionController
         $messageTable = $this->getMessageTable( );
         
         return [
-            'messages' => $messageTable->select("viewed=0"),
+            'messages' => $messageTable->fetchAll(),
         ];
     }
     

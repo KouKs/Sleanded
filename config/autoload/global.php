@@ -25,8 +25,8 @@ return array(
         'dsn'       => 'mysql:dbname=sleanded;host=localhost',
         'username'  => 'root',
         'password'  => 'root',
-    	'driver_options' => array(
-                        PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
-         ),
+    	'driver_options' => array( 
+            1002 => 'SET NAMES \'UTF8\'',
+        ),
     ),
 );

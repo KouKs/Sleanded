@@ -36,33 +36,6 @@ class IndexController extends AbstractActionController
             'contactForm' => $form,
         ];
     }
-
-    public function workAction()
-    {
-        $this->layout("layout/page");
-        return [];
-    }
-
-    public function teamAction()
-    {
-        $this->layout("layout/page");
-        return [];
-    }
-    
-    public function contactAction()
-    {
-        $this->layout("layout/page");
-        
-        return [
-            'contactForm' => new ContactForm(),
-        ];
-    }
-    
-    public function blogAction()
-    {
-        $this->layout("layout/page");
-        return [];
-    }
     
     /*************************************************************************\
      | Private functions                                                          |

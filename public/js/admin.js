@@ -18,26 +18,9 @@ $(document).ready( function() {
     },function(){
         $(this).prev().css({"background": "#b23432","border-bottom-color": "#982D2B","border-top-color": "#E34240"});
         
-    });
-    
-    /* loading with scrolling */
-    $(".area").showContent( );
-    $(this).scroll( function() {
-        $(".area").showContent( );
-    });   
+    }); 
 });
 
-/*
- * Function to show area of content
- */
-$.fn.showContent = function( ) {   
-    this.each( function( ) {
-        if( $(this).css("opacity") < 1 && $(window).scrollTop() > $(this).offset().top - 650 ) {
-            $(this).animate({opacity: 1});
-            return;
-        }
-    });
-};
 
 function ajax( controller , action , data ) {
     $.post( _URL + controller + '/' + action , data , function( ) {

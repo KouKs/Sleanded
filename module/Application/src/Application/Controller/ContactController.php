@@ -1,24 +1,21 @@
 <?php
 
-namespace Admin\Controller;
+namespace Application\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 
-class IndexController extends AbstractActionController
-{
+use Application\Form\ContactForm;
+use Application\Model\ContactFilter;
 
-    public function onDispatch(\Zend\Mvc\MvcEvent $e)
-    {
-        return parent::onDispatch($e);
-    }
+class ContactController extends AbstractActionController
+{
 
     public function indexAction()
     {
-        $this->layout("layout/admin");
-        $messageTable = $this->getMessageTable( );
+        $this->layout("layout/page");
         
         return [
-            'messages' => $messageTable->select("viewed=0"),
+            'contactForm' => new ContactForm(),
         ];
     }
     

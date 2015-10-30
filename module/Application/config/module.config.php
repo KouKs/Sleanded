@@ -55,7 +55,7 @@ return array(
                     'default' => array(
                         'type'    => 'Segment',
                         'options' => array(
-                            'route'    => '[:controller/][:action/][:id/]',
+                            'route'    => '[:controller[/[:action[/[:id]]]]]',
                             'constraints' => array(
                                 'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
                                 'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
@@ -66,6 +66,7 @@ return array(
                                 'action'        => 'index',
                             ),
                         ),
+                        'may_terminate' => true,
                     ),
                 ),
             ),
@@ -93,6 +94,10 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'Application\Controller\Index' => 'Application\Controller\IndexController',
+            'Application\Controller\Work' => 'Application\Controller\WorkController',
+            'Application\Controller\Team' => 'Application\Controller\TeamController',
+            'Application\Controller\Blog' => 'Application\Controller\BlogController',
+            'Application\Controller\Contact' => 'Application\Controller\ContactController',
         ),
     ),
     'view_manager' => array(

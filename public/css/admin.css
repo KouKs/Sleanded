@@ -471,7 +471,6 @@ header > nav div nav a:hover {
 .part .area {
   margin: 0 auto;
   width: 90%;
-  opacity: 0;
 }
 [class^='img-'] {
   position: absolute;

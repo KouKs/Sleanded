@@ -31,23 +31,28 @@ return array(
             'admin' => array(
                 'type' => 'Segment',
                 'options' => array(
-                    'route'    => '/admin/[:action/][:id]',
+                    'route'    => '/admin[/[:controller[/[:action[/[:id]]]]]]',
                     'constraints' => array(
-                        'controller' => 'Admin\Controller\Index',
+                        '__NAMESPACE__' => 'Admin\Controller',
+                        'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'id'         => '[0-9]+'
                     ),
                     'defaults' => array(
-                        'controller' => 'Admin\Controller\Index',
+                        '__NAMESPACE__' => 'Admin\Controller',
+                        'controller' => 'index',
                         'action'     => 'index',
                     ),
                 ),
+                'may_terminate' => true,
             ),
         ),
     ),
     'controllers' => array(
         'invokables' => array(
             'Admin\Controller\Index' => 'Admin\Controller\IndexController',
+            'Admin\Controller\Messages' => 'Admin\Controller\MessagesController',
+            'Admin\Controller\Login' => 'Admin\Controller\LoginController',
         ),
     ), 
     'view_manager' => array(
