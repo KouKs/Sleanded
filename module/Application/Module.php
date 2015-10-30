@@ -14,10 +14,11 @@ use Zend\Mvc\MvcEvent;
 use Zend\Session\Config\SessionConfig;
 use Zend\Session\Container;
 use Zend\Session\SessionManager;
+use Zend\Db\ResultSet\ResultSet;
+use Zend\Db\TableGateway\TableGateway;
+
 use Application\Model\ContactFilter;
- use Application\Model\MessageTable;
- use Zend\Db\ResultSet\ResultSet;
- use Zend\Db\TableGateway\TableGateway;
+use Application\Model\MessageTable;
 
 class Module
 {
@@ -57,14 +58,12 @@ class Module
             'factories' => array(
                 'Application\Model\MessageTable' =>  function($sm) {
                     $tableGateway = $sm->get('MessageTableGateway');
-                    $table = new MessageTable($tableGateway);
+                    $table = new MessageTable( $tableGateway );
                     return $table;
                 },
                 'MessageTableGateway' => function ($sm) {
                     $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
-                    $resultSetPrototype = new ResultSet();
-                    $resultSetPrototype->setArrayObjectPrototype( new ContactFilter() );
-                    return new TableGateway('messages', $dbAdapter, null, $resultSetPrototype);
+                    return new TableGateway( 'messages' , $dbAdapter , null , new ResultSet() );
                 },
                 /**
                  * user

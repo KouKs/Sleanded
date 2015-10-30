@@ -29,15 +29,14 @@ class MessageTable {
     
     protected $tableGateway;
 
-    public function __construct(TableGateway $tableGateway)
+    public function __construct( TableGateway $tableGateway )
     {
         $this->tableGateway = $tableGateway;
     }
     
     public function fetchAll()
     {
-        $select = $this->tableGateway->getSql()
-                ->select();
+        $select = $this->tableGateway->getSql()->select();
         $result = $this->tableGateway->getSql()->prepareStatementForSqlObject( $select )->execute();
         
         $rs = new ResultSet();
@@ -47,31 +46,31 @@ class MessageTable {
     }
     
     public function add( ContactFilter $contact ) {
+        
         $data = [
             'name'      => $contact->name,
             'email'     => $contact->email,
-            'text'       => $contact->text,
+            'text'      => $contact->text,
             'sent'      => time(),
             'ip'        => $_SERVER['REMOTE_ADDR'],
         ];
+        
         if( !$this->tableGateway->insert( $data ) )
-            // TODO: TRANSLATION
-            throw new \Exception( "Nastala chyba! Konktaktujte, prosím, správce webových stránek." );
+            throw new \Exception( "An error occured, please conntact administrator." );
     }
     
     public function edit( $id , $data )
     {
         
         if( !$this->tableGateway->update( $data , [ 'id' => $id ] ) )
-            // TODO: TRANSLATION
-            throw new \Exception( "Nastala chyba! Konktaktujte, prosím, správce webových stránek." );
+            throw new \Exception( "An error occured, please conntact administrator." );
     }
     
     public function delete( $id )
     {
         if( !$this->tableGateway->delete( [ 'id' => $id ] ) )
             // TODO: TRANSLATION
-            throw new \Exception( "Nastala chyba! Konktaktujte, prosím, správce webových stránek." );
+            throw new \Exception( "An error occured, please conntact administrator." );
     }
     
     public function select( $where = null , $join = null , $cond = null , $cols = null , $order = "id ASC" )

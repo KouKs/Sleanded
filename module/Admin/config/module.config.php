@@ -51,17 +51,17 @@ return array(
                             ),
                         ),
                     ),
-                    /*blog*/
-                    /*'blog' => array(
+                    /*login*/
+                    'login' => array(
                         'type'    => 'Literal',
                         'options' => array(
-                            'route'    => 'blog',
+                            'route'    => 'login',
                             'defaults' => array(
                                 'controller' => 'Admin\Controller\Index',
-                                'action' => 'blog',
+                                'action' => 'login',
                             ),
                         ),
-                    ),*/
+                    ),
                 ),
             ),
         ),

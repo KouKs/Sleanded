@@ -9,7 +9,6 @@ use Application\Model\ContactFilter;
 
 class IndexController extends AbstractActionController
 {
-    protected $tables = [ 'message' => false ];
 
     public function onDispatch(\Zend\Mvc\MvcEvent $e)
     {
@@ -20,6 +19,7 @@ class IndexController extends AbstractActionController
     {
         $form = new ContactForm();
         $request = $this->getRequest();
+        
         if ( $request->isPost() ) {
             $contact = new ContactFilter();
             $form->setInputFilter( $contact->getInputFilter() );
@@ -52,6 +52,7 @@ class IndexController extends AbstractActionController
     public function contactAction()
     {
         $this->layout("layout/page");
+        
         return [
             'contactForm' => new ContactForm(),
         ];
@@ -63,14 +64,17 @@ class IndexController extends AbstractActionController
         return [];
     }
     
-
-    public function getMessageTable()
+    /*************************************************************************\
+     | Private functions                                                          |
+    \*************************************************************************/
+    
+    /**
+     * Returns an isntance of message table
+     * @return Application\Model\MessageTable 
+     */
+    private function getMessageTable()
     {
-        if ( !$this->tables['message'] ) {
-            $sm = $this->getServiceLocator();
-            $this->tables['message'] = $sm->get('Application\Model\MessageTable');
-        }
-        return $this->tables['message'];
+        return $this->getServiceLocator()->get('Application\Model\MessageTable');
     }
 }
 

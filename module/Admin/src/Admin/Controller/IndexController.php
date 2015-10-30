@@ -15,16 +15,22 @@ class IndexController extends AbstractActionController
     public function indexAction()
     {
         $this->layout("layout/admin");
-        //$messageTable = $this->getMessageTable( );
-        
+        $messageTable = $this->getMessageTable( );
         
         return [
-           // 'messages' => $messageTable->fetchAll( ),
+            'messages' => $messageTable->fetchAll( ),
         ];
     }
     
+    public function loginAction()
+    {
+        $this->layout( "layout/empty" );
+        
+        return [];
+    }
+    
     /*************************************************************************\
-     | Privátní fce                                                          |
+     | Private functions                                                          |
     \*************************************************************************/
     
     /**
