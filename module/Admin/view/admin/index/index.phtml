@@ -6,20 +6,24 @@
 <section class="part">
     <div class="half">   
         <h3 class="center dark-grey-text">New messages</h3>
-        <table class="admin">
-            <tr>
-                <th>Name</th>
-                <th>E-mail</th>
-                <th>Text</th>
-            </tr>
-            <?php foreach( $this->messages as $message ) : ?>
+        <?php if( count( $this->messages ) > 0 ) : ?>
+            <table class="admin">
                 <tr>
-                    <td><?php echo $message->name; ?></td>
-                    <td><?php echo $message->email; ?></td>
-                    <td><?php echo strlen( $message->text ) > 30 ? substr( $message->text , 0 , 30 ) . "..." : $message->text; ?></td>
+                    <th>Name</th>
+                    <th>E-mail</th>
+                    <th>Text</th>
                 </tr>
-            <?php endforeach; ?>
-        </table>
+                <?php foreach( $this->messages as $message ) : ?>
+                    <tr>  
+                        <td><?php echo $message->name; ?></td>
+                        <td><?php echo $message->email; ?></td>
+                        <td><?php echo strlen( $message->text ) > 30 ? substr( $message->text , 0 , 30 ) . "..." : $message->text; ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
+        <?php else : ?>
+            <h4 class="center dark-grey-text">No new messages :(</h4>
+        <?php endif; ?>
     </div>    
     <div class="half">
         <h3 class="center dark-grey-text">Pending TODOs</h3>
