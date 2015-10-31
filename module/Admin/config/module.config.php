@@ -54,6 +54,7 @@ return array(
             'Admin\Controller\Index' => 'Admin\Controller\IndexController',
             'Admin\Controller\Messages' => 'Admin\Controller\MessagesController',
             'Admin\Controller\Login' => 'Admin\Controller\LoginController',
+            'Admin\Controller\Users' => 'Admin\Controller\UsersController',
         ),
     ), 
     'view_manager' => array(
