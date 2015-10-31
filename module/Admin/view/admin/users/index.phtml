@@ -5,6 +5,17 @@
 </section>
 <section class="part">
     <div class="area">
-        <h3>Action "index", controller "Users", module "Admin".</h3>
+        <h3>User panel</h3>
+        <table class='table-basic' width='100%'>
+            <?php foreach( $this->users as $u ) : ?>
+                <tr>
+                    <td> <?= $u['name'] ?> </td>
+                    <td> <?= $u['full_name'] ?> </td>
+                    <td> <?= $u['email'] ?> </td>
+                    <td> <?= $u['job'] ?> </td>
+                    <td> <?= $u['ip'] ?> </td>
+                </tr>
+            <?php endforeach; ?>
+        </table>
     </div>
 </section>

@@ -24,7 +24,7 @@ class ContactForm extends Form
         ));
         $this->add(array(
             'name' => 'email',
-            'type' => 'email',
+            'type' => 'text',
             'attributes' => array(
                 'placeholder' => 'e-mail'
             ),
