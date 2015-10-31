@@ -74,7 +74,7 @@ class LoginController extends AbstractActionController
                 }
                 else
                 {
-                    $messenger(null, "All form fields have to be filled! ", null);
+                    $messenger(null, "All form fields have to be filled!", null);
                 }
             }
         } else {

@@ -6,6 +6,7 @@ use Zend\Mvc\Controller\AbstractActionController;
 
 use Application\Form\ContactForm;
 use Application\Model\ContactFilter;
+use Application\Helper\Messenger;
 
 class IndexController extends AbstractActionController
 {
@@ -22,6 +23,7 @@ class IndexController extends AbstractActionController
         
         if ( $request->isPost() )
         {
+            $messenger = new Messenger;
             $contact = new ContactFilter();
             $form->setInputFilter( $contact->getInputFilter() );
             $form->setData( $request->getPost() );
@@ -30,12 +32,16 @@ class IndexController extends AbstractActionController
             {
                 $contact->exchangeArray( $form->getData() );
                 $this->getMessageTable()->add( $contact );
-                // throw message
+                // TODO: TRANSLATION
+                $messenger("You message has been successfully sent!", null, null);
+            } else {
+                // TODO: TRANSLATION
+                $messenger(null, null, "All form fields have to be filled!");
             }
         }
         
         return [
-            'contactForm' => $form,
+            'contactForm' => new ContactForm(),
         ];
     }
     

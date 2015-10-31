@@ -574,6 +574,9 @@ header > nav div nav a:hover {
 /**
  * 5 - Zprávy
  */
+.padding-20-vertical {
+    padding: 20px 0px;
+}
 .message {
   margin-top: 20px;
   width: 100%;
