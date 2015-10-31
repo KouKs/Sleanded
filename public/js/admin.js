@@ -21,9 +21,13 @@ $(document).ready( function() {
 });
 
 
-function ajax( controller , action , data ) {
-    $.post( _URL + controller + '/' + action , data , function( ) {
-            alert("Successfully sent!");
+function ajax( controller , action , id , el ) {
+    $.post( _URL + controller + '/' + action  + '/' + id , {} , function( ) {
+        alert("Successfully sent!");
+        if( el !== undefined ) {
+            $(el).fadeOut( "slow" , function( ) { 
+                $(this).remove();
+            });
         }
-    );
+    });
 }

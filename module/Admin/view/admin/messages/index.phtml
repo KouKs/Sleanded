@@ -13,7 +13,7 @@
                     <p class="small dark-grey-text"><?php echo $message->text ?></p>
                 </div>
                 <div class="tile-subheading">
-                    <p class="small dark-grey-text underline"><a>Delete</a></p>
+                    <p onClick="ajax( 'messages' , 'delete' , <?php echo $message->id; ?> , $(this).parent().parent().parent() )" class="small dark-grey-text underline"><a>Delete</a></p>
                 </div>
             </div>
         </div>

@@ -20,12 +20,14 @@ class IndexController extends AbstractActionController
         $form = new ContactForm();
         $request = $this->getRequest();
         
-        if ( $request->isPost() ) {
+        if ( $request->isPost() )
+        {
             $contact = new ContactFilter();
             $form->setInputFilter( $contact->getInputFilter() );
             $form->setData( $request->getPost() );
 
-            if ( $form->isValid() ) {
+            if ( $form->isValid() )
+            {
                 $contact->exchangeArray( $form->getData() );
                 $this->getMessageTable()->add( $contact );
                 // throw message

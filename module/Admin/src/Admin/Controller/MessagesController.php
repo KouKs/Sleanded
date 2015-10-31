@@ -18,6 +18,16 @@ class MessagesController extends AbstractActionController
         ];
     }
     
+    public function deleteAction()
+    {
+        $id = $this->params('id');
+        
+        $messageTable = $this->getMessageTable();
+        $messageTable->delete( $id );
+        
+        return $this->response;
+    }
+    
     /*************************************************************************\
      | Private functions                                                          |
     \*************************************************************************/
