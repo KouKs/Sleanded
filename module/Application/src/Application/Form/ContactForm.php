@@ -18,6 +18,7 @@ class ContactForm extends Form
             'name' => 'name',
             'type' => 'text',
             'attributes' => array(
+                // TODO: TRANSLATION
                 'placeholder' => 'name'
             ),
         ));
@@ -56,6 +57,7 @@ class ContactForm extends Form
             'name' => 'text',
             'type' => 'textarea',
             'attributes' => array(
+                // TODO: TRANSLATION
                 'placeholder' => 'your message'
             ),
         ));

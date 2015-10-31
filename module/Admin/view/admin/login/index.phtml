@@ -1,14 +1,25 @@
+<?php
+    $form = $this->loginForm;
+    $form->prepare();
+    echo $this->form()->openTag($form);
+?>
+        
+
 <div class="login-area">
     <div class="tile no-hover">
         <label>Administrator login</label>
         <div class="tile-subheading center">
-            <input type="text" />
+            <?= $this->formElement( $form->get('name') ) ?>
         </div>
         <div class="tile-subheading center">
-            <input type="text" />
+            <?= $this->formElement( $form->get('password') ) ?>
+        </div>
+        <div class="tile-subheading center right">
+            <?= $this->formElement( $form->get('remember') ) ?> <span class="small">Remember me</span>
         </div>
         <div class="tile-subheading center">
-            <button>Login</button>
+           <?= $this->formButton( $form->get('submit'), "LOGIN" ) ?>
         </div>
     </div>
 </div>
+<?= $this->form()->closeTag() ?>

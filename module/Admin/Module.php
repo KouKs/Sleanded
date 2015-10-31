@@ -19,6 +19,8 @@ use Zend\Db\TableGateway\TableGateway;
 
 use Application\Model\ContactFilter;
 use Application\Model\MessageTable;
+use Admin\Model\LoginFilter;
+use Admin\Model\UserTable;
 
 class Module
 {
@@ -64,6 +66,15 @@ class Module
                 'MessageTableGateway' => function ($sm) {
                     $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
                     return new TableGateway( 'messages' , $dbAdapter , null , new ResultSet() );
+                },
+                'Admin\Model\UserTable' =>  function($sm) {
+                    $tableGateway = $sm->get('UserTableGateway');
+                    $table = new UserTable( $tableGateway );
+                    return $table;
+                },
+                'UserTableGateway' => function ($sm) {
+                    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                    return new TableGateway( 'users' , $dbAdapter , null , new ResultSet() );
                 },
                 /**
                  * user
