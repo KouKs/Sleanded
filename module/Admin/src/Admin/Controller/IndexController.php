@@ -3,12 +3,23 @@
 namespace Admin\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
+use Zend\Session\Container;
 
 class IndexController extends AbstractActionController
 {
 
+    private $logged;
+    
     public function onDispatch(\Zend\Mvc\MvcEvent $e)
     {
+        $this->logged = new Container('user');
+        
+        if( !$this->logged->boolLogged ) {
+            return $this->redirect()->toRoute('admin', array(
+                'controller' => 'index'
+            ));
+        }
+        
         return parent::onDispatch($e);
     }
 

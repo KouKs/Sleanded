@@ -6,7 +6,21 @@ use Zend\Mvc\Controller\AbstractActionController;
 
 class MessagesController extends AbstractActionController
 {
-
+    private $logged;
+    
+    public function onDispatch(\Zend\Mvc\MvcEvent $e)
+    {
+        $this->logged = new Container('user');
+        
+        if( !$this->logged->boolLogged ) {
+            return $this->redirect()->toRoute('admin', array(
+                'controller' => 'index'
+            ));
+        }
+        
+        return parent::onDispatch($e);
+    }
+    
     public function indexAction()
     {
         $this->layout("layout/admin");
