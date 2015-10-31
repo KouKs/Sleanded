@@ -1,27 +1,21 @@
 <section class="part">
-    <div class="third">
-        <div class="tile">
-            <label>messgage #1</label>
-            <div class="tile-subheading">
-                <p class="small dark-grey-text bold">Pavel Koch</p>
-            </div>
-            <div class="tile-subheading">
-                <p class="small dark-grey-text bold">kouks.koch@gmail.com</p>
-            </div>
-            <div>
-                <p class="small dark-grey-text">
-                    Dolor sit amet, consectetuer adipiscing elit.
-                    Nulla pulvinar eleifend sem.
-                    Vivamus luctus egestas leo.
-                    Aliquam erat volutpat. dolor
-                    sit amet, consectetuer adipiscing elit.
-                    Nulla pulvinar eleifend sem.
-                    Vivamus luctus egestas leo.
-                    Aliquam erat volutpat.</p>
-            </div>
-            <div class="tile-subheading">
-                <p class="small dark-grey-text underline"><a>Delete</a></p>
+    <?php foreach( $this->messages as $message ) : ?>
+        <div class="third">
+            <div class="tile">
+                <label>messgage #<?php echo $message->id; ?></label>
+                <div class="tile-subheading">
+                    <p class="small dark-grey-text bold"><?php echo $message->name; ?></p>
+                </div>
+                <div class="tile-subheading">
+                    <p class="small dark-grey-text bold"><?php echo $message->email; ?></p>
+                </div>
+                <div>
+                    <p class="small dark-grey-text"><?php echo $message->text ?></p>
+                </div>
+                <div class="tile-subheading">
+                    <p class="small dark-grey-text underline"><a>Delete</a></p>
+                </div>
             </div>
         </div>
-    </div>
+    <?php endforeach; ?>
 </section>

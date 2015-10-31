@@ -64,20 +64,19 @@ class MessageTable {
     {
         if( $id == "*" )
         {
-            if( !$this->tableGateway->update( $data ) )
-                throw new \Exception( "An error occured, please contact administrator." );
+            $this->tableGateway->update( $data );
+                //throw new \Exception( "An error occured, please contact administrator." );
         }
         else
         {
-            if( !$this->tableGateway->update( $data , [ 'id' => $id ] ) )
-                throw new \Exception( "An error occured, please contact administrator." );
+            $this->tableGateway->update( $data , [ 'id' => $id ] );
+                //throw new \Exception( "An error occured, please contact administrator." );
         }
     }
     
     public function delete( $id )
     {
         if( !$this->tableGateway->delete( [ 'id' => $id ] ) )
-            // TODO: TRANSLATION
             throw new \Exception( "An error occured, please contact administrator." );
     }
     
