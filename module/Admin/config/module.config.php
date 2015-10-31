@@ -31,12 +31,13 @@ return array(
             'admin' => array(
                 'type' => 'Segment',
                 'options' => array(
-                    'route'    => '/admin[/[:controller[/[:action[/[:id]]]]]]',
+                    'route'    => '/admin[/[:controller[/[:action[/[:id[/[:seo]]]]]]]]',
                     'constraints' => array(
                         '__NAMESPACE__' => 'Admin\Controller',
                         'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
-                        'id'         => '[0-9]+'
+                        'id'         => '[0-9]+',
+                        'seo'        => '[a-zA-Z][a-zA-Z0-9_-]*',
                     ),
                     'defaults' => array(
                         '__NAMESPACE__' => 'Admin\Controller',

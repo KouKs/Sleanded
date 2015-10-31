@@ -16,8 +16,7 @@ $(document).ready( function() {
     $("header > nav > div > nav").hover(function(){
         $(this).prev().css({"background": "#333","border-color": "#333"});
     },function(){
-        $(this).prev().css({"background": "#b23432","border-bottom-color": "#982D2B","border-top-color": "#E34240"});
-        
+        $(this).prev().css({"background": "","border-color": ""});
     }); 
 });
 
