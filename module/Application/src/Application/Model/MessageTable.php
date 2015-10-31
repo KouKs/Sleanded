@@ -57,21 +57,28 @@ class MessageTable {
         ];
         
         if( !$this->tableGateway->insert( $data ) )
-            throw new \Exception( "An error occured, please conntact administrator." );
+            throw new \Exception( "An error occured, please contact administrator." );
     }
     
     public function edit( $id , $data )
     {
-        
-        if( !$this->tableGateway->update( $data , [ 'id' => $id ] ) )
-            throw new \Exception( "An error occured, please conntact administrator." );
+        if( $id == "*" )
+        {
+            if( !$this->tableGateway->update( $data ) )
+                throw new \Exception( "An error occured, please contact administrator." );
+        }
+        else
+        {
+            if( !$this->tableGateway->update( $data , [ 'id' => $id ] ) )
+                throw new \Exception( "An error occured, please contact administrator." );
+        }
     }
     
     public function delete( $id )
     {
         if( !$this->tableGateway->delete( [ 'id' => $id ] ) )
             // TODO: TRANSLATION
-            throw new \Exception( "An error occured, please conntact administrator." );
+            throw new \Exception( "An error occured, please contact administrator." );
     }
     
     public function select( $where = null , $join = null , $cond = null , $cols = null , $order = "id ASC" )
@@ -81,7 +88,7 @@ class MessageTable {
                 ->where( $where )
                 ->order( $order );
         
-        if( $join != null ) $select->join( $join , $cond , $cols );
+        if( $join != null ) $select->joinLeft( $join , $cond , $cols );
         
         $result = $this->tableGateway->getSql()->prepareStatementForSqlObject( $select )->execute();
         

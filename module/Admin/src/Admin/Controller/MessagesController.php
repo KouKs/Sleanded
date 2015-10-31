@@ -11,6 +11,7 @@ class MessagesController extends AbstractActionController
     {
         $this->layout("layout/admin");
         $messageTable = $this->getMessageTable( );
+        $messageTable->edit( "*" , [ "viewed" => 1 ] );
         
         return [
             'messages' => $messageTable->fetchAll(),
