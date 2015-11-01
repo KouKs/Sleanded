@@ -22,6 +22,10 @@ $(document).ready( function() {
     window.setTimeout( function( ){
         $(".message").fadeOut();
     } , 4000 );
+    
+    $('.grid').masonry({
+        itemSelector: '.grid-item'
+    });
 });
 
 
