@@ -59,6 +59,10 @@ $(document).ready( function() {
         $(".area").showContent( );
         $(".progress-bar").showBar( );
     });    
+    
+    window.setTimeout( function( ){
+        $(".message").fadeOut();
+    } , 4000 );
 });
 
 /*

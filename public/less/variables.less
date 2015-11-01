@@ -341,9 +341,35 @@ icon {
     }
 }
 
+ 
+/**
+ * 7 - Zprávy
+ */
+.message {
+    width: 50%;
+    padding: 40px 100px;
+    margin: auto;
+    color: #fff;
+    font-size: 20px;
+    border-radius: 5px;
+    position: fixed; top: 100px; left: 0; right: 0;
+    z-index: 1000;
+    display: inline-block;
+    
+    .shadow(0.5);
+}
+.success {
+    .gradient(green, green);
+}
+.notice {
+    .gradient(yellow, yellow);
+}
+.error { 
+    .gradient(@theme-color, @secondary);
+}
 
 /**
- * 7 - Optimalizace pro tisk
+ * 8 - Optimalizace pro tisk
  */
 @media print {
   * {

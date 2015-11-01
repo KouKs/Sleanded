@@ -10,7 +10,9 @@ class TeamController extends AbstractActionController
     public function indexAction()
     {
         $this->layout("layout/page");
-        return [];
+        return [
+            'message'       => isset( $message ) ? $message : null,
+        ];
     }
 
 

@@ -19,22 +19,28 @@ class LoginController extends AbstractActionController
         $logged = new Container('user');
         $table = $this->getUserTable();
         
-        if( !$logged->boolLogged ) {
+        if( !$logged->boolLogged )
+        {
             $messenger = new Messenger;
             
-            if( isset( $_COOKIE[ 'sleanded_admin' ] ) && $_COOKIE[ 'sleanded_admin' ] != '' ) {
+            if( isset( $_COOKIE[ 'sleanded_admin' ] ) && $_COOKIE[ 'sleanded_admin' ] != '' )
+            {
                 $credentials = explode( ";" , $_COOKIE[ 'sleanded_admin' ] );
                 $user = $table->autologin( $credentials[ 0 ], $credentials[ 1 ] );
-                if( count( $user ) == 1 ) {
+                
+                if( count( $user ) == 1 )
+                {
                     $user = $user[0];
                     $this->registerSession($user, $logged);
                     return $this->redirect()->toRoute('admin', array(
                                         'controller' => 'index'
                     ));
-                } else {
+                }
+                else
+                {
                     unset( $_COOKIE['sleanded_admin'] );
                     setcookie('sleanded_admin', '', time() - 3600);
-                    $messenger(null, null, "Autologin failed. Please, login again!");
+                    $message = [ "Autologin failed, please log in" , Messenger::ERROR ];
                 }
             }
             
@@ -52,12 +58,16 @@ class LoginController extends AbstractActionController
                         'password' => $form->getData()['password'],
                         'remember' => $form->getData()['remember']
                     );
+                    
                     $login->exchangeArray( $data );
                     $user = $table->login( $login->name, $login->password );
-                    if( count( $user ) == 1 ) {
+                    
+                    if( count( $user ) == 1 )
+                    {
                         $user = $user[0];
                         $this->registerSession($user, $logged);
-                        if( $login->remember == 1 ) {
+                        if( $login->remember == 1 )
+                        {
                             setcookie (
                                 'sleanded_admin',
                                 $user['name'].';'.$user['password'],
@@ -68,16 +78,20 @@ class LoginController extends AbstractActionController
                         return $this->redirect()->toRoute('admin', array(
                             'controller' => 'index'
                         ));
-                    } else {
-                        $messenger(null, null, "Invalid name/email or password. Please, try to log in again!");
+                    }
+                    else
+                    {
+                        $message = [ "Invalid name/email or password. Please, try to log in again!" , Messenger::ERROR ];
                     }
                 }
                 else
                 {
-                    $messenger(null, "All form fields have to be filled!", null);
+                    $message = [ "All form fields have to be filled!" , Messenger::NOTICE ];
                 }
             }
-        } else {
+        }
+        else
+        {
             unset( $_COOKIE['sleanded_admin'] );
             setcookie('sleanded_admin', '', time() - 3600);
             $u = $table->select( [ 'name' => $logged->name ] )->toArray();
@@ -85,13 +99,14 @@ class LoginController extends AbstractActionController
             $logged->getManager()->getStorage()->clear('user');
             
             return $this->redirect()->toRoute('admin', array(
-                                        'controller' => 'index'
+                'controller' => 'index'
             ));
             
         }
         
         return [
-            'loginForm' => $form,
+            'message'       => isset( $message ) ? $message : null,
+            'loginForm'     => $form,
             
         ];
     }

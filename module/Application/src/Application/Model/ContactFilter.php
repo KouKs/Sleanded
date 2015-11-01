@@ -64,7 +64,7 @@ class ContactFilter implements InputFilterAwareInterface
                          ),
                     ),
                     array(
-                        'name' => 'EmailAddress',
+                        'name'    => 'EmailAddress',
                         'options' =>array(
                             'domain'   => 'true',
                             'hostname' => 'true',

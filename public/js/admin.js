@@ -18,6 +18,10 @@ $(document).ready( function() {
     },function(){
         $(this).prev().css({"background": "","border-color": ""});
     }); 
+    
+    window.setTimeout( function( ){
+        $(".message").fadeOut();
+    } , 4000 );
 });
 
 

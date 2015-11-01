@@ -3,18 +3,20 @@
 namespace Admin\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
+use Zend\Session\Container;
 
 class MessagesController extends AbstractActionController
 {
-    private $logged;
+    
+    private $user;
     
     public function onDispatch(\Zend\Mvc\MvcEvent $e)
     {
-        $this->logged = new Container('user');
+        $this->user = new Container('user');
         
-        if( !$this->logged->boolLogged ) {
+        if( !$this->user->boolLogged ) {
             return $this->redirect()->toRoute('admin', array(
-                'controller' => 'index'
+                'controller' => 'login'
             ));
         }
         
@@ -28,7 +30,8 @@ class MessagesController extends AbstractActionController
         $messageTable->edit( "*" , [ "viewed" => 1 ] );
         
         return [
-            'messages' => $messageTable->fetchAll(),
+            'message'       => isset( $message ) ? $message : null,
+            'messages'      => $messageTable->fetchAll(),
         ];
     }
     

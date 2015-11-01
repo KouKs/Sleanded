@@ -13,31 +13,24 @@ class Messenger extends AbstractHelper
 {
     protected $html;
 
-    public function __invoke( $success , $notice , $error )
+    const SUCCESS   = 'success';
+    const NOTICE    = 'notice';
+    const ERROR     = 'error';
+    
+    public function __invoke( $params )
     {
+        list( $message , $type ) = $params;
+        
         $this->html = "";
         
-        if( isset( $success ) )
+        if( isset( $message ) )
         {
-            $this->html .= '<div class="shadow message success">';
-                $this->html .= $success; 
-            $this->html .= '</div>';
-        }
-        
-        if( isset( $notice ) )
-        {
-            $this->html .= '<div class="shadow message notice">';
-                $this->html .= $notice; 
-            $this->html .= '</div>';
-        }
-        
-        if( isset( $error ) )
-        {
-            $this->html .= '<div class="shadow message error">';
-                $this->html .= $error; 
+            $this->html .= '<div class="shadow message ' . $type . '">';
+                $this->html .= $message; 
             $this->html .= '</div>';
         }
         
         echo $this->html;
     }
+
 }

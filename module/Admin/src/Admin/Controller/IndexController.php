@@ -8,15 +8,16 @@ use Zend\Session\Container;
 class IndexController extends AbstractActionController
 {
 
-    private $logged;
+    private $user;
     
     public function onDispatch(\Zend\Mvc\MvcEvent $e)
     {
-        $this->logged = new Container('user');
+        $this->user = new Container('user');
         
-        if( !$this->logged->boolLogged ) {
+        if( !$this->user->boolLogged )
+        {
             return $this->redirect()->toRoute('admin', array(
-                'controller' => 'index'
+                'controller' => 'login'
             ));
         }
         
@@ -29,7 +30,8 @@ class IndexController extends AbstractActionController
         $messageTable = $this->getMessageTable( );
         
         return [
-            'messages' => $messageTable->select("viewed=0"),
+            'message'       => isset( $message ) ? $message : null,
+            'messages'      => $messageTable->select("viewed=0"),
         ];
     }
     

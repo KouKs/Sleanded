@@ -3,24 +3,29 @@
 namespace Admin\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
+use Zend\Session\Container;
+
 use Admin\Form\NewUserForm;
 
 class UsersController extends AbstractActionController
 {
-    private $logged;
+    
+    private $user;
     
     public function onDispatch(\Zend\Mvc\MvcEvent $e)
     {
-        $this->logged = new Container('user');
+        $this->user = new Container('user');
         
-        if( !$this->logged->boolLogged ) {
+        if( !$this->user->boolLogged )
+        {
             return $this->redirect()->toRoute('admin', array(
-                'controller' => 'index'
+                'controller' => 'login'
             ));
         }
         
         return parent::onDispatch($e);
     }
+    
     public function indexAction()
     {
         $this->layout("layout/admin");
@@ -28,7 +33,8 @@ class UsersController extends AbstractActionController
         $users = $table->fetchAll()->toArray();
         
         return [
-            'users' => $users
+            'message'       => isset( $message ) ? $message : null,
+            'users'         => $users
         ];
     }
     
@@ -36,7 +42,8 @@ class UsersController extends AbstractActionController
         $this->layout("layout/admin");
         
         return [
-            'form' => new NewUserForm
+            'message'       => isset( $message ) ? $message : null,
+            'form'          => new NewUserForm
         ];
     }
 

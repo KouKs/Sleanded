@@ -21,9 +21,9 @@ class IndexController extends AbstractActionController
         $form = new ContactForm();
         $request = $this->getRequest();
         
+        
         if ( $request->isPost() )
         {
-            $messenger = new Messenger;
             $contact = new ContactFilter();
             $form->setInputFilter( $contact->getInputFilter() );
             $form->setData( $request->getPost() );
@@ -32,16 +32,18 @@ class IndexController extends AbstractActionController
             {
                 $contact->exchangeArray( $form->getData() );
                 $this->getMessageTable()->add( $contact );
-                // TODO: TRANSLATION
-                $messenger("You message has been successfully sent!", null, null);
-            } else {
-                // TODO: TRANSLATION
-                $messenger(null, null, "All form fields have to be filled!");
+                
+                $message = [ "Your message has been successfully sent" , Messenger::SUCCESS ];
+            }
+            else
+            {
+                $message = [ "All inputs have to be filled out" , Messenger::ERROR ];
             }
         }
         
         return [
-            'contactForm' => new ContactForm(),
+            'message'       => isset( $message ) ? $message : null,
+            'contactForm'   => new ContactForm(),
         ];
     }
     

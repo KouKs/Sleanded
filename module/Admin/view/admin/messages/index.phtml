@@ -4,39 +4,23 @@
     </div>    
 </section>
 <section class="part">
-    <?php $col = [ 1 => '', 2 => '', 3 => '' ]; $i = 1; ?>
     <?php foreach( $this->messages as $message ) : ?>
-        <?php
-            $col[ $i ] .= '<div class="padding-20-vertical">';
-                $col[ $i ] .= '<div class="tile">';
-                    $col[ $i ] .= '<label>messgage #'.$message->id.'</label>';
-                    $col[ $i ] .= '<div class="tile-subheading">';
-                        $col[ $i ] .= '<p class="small dark-grey-text bold">'.$message->name.'</p>';
-                    $col[ $i ] .= '</div>';
-                    $col[ $i ] .= '<div class="tile-subheading">';
-                        $col[ $i ] .= '<p class="small dark-grey-text bold">'.$message->email.'</p>';
-                    $col[ $i ] .= '</div>';
-                    $col[ $i ] .= '<div>';
-                        $col[ $i ] .= '<p class="small dark-grey-text">'.$message->text.'</p>';
-                    $col[ $i ] .= '</div>';
-                    $col[ $i ] .= '<div class="tile-subheading">';
-                        $col[ $i ] .= '<p onClick="ajax( \'messages\' , \'delete\' , '.$message->id.' , $(this).parent().parent().parent() )" class="small dark-grey-text underline"><a>Delete</a></p>';
-                    $col[ $i ] .= '</div>';
-                $col[ $i ] .= '</div>';
-            $col[ $i ] .= '</div>';
-        ?>
-    <?php $i++; if( $i > 3 ) { $i = 1; } ?>
+        <div class="third">
+            <div class="tile">
+                <label>messgage #<?= $message->id ?></label>
+                <div class="tile-subheading">
+                    <p class="small dark-grey-text bold"><?= $message->name ?></p>
+                </div>
+                <div class="tile-subheading">
+                    <p class="small dark-grey-text bold"><?= $message->email ?></p>
+                </div>
+                <div>
+                    <p class="small dark-grey-text"><?= $message->text ?></p>
+                </div>
+                <div class="tile-subheading">
+                    <p onClick="ajax( 'messages' , 'delete' , <?= $message->id ?> , $(this).parent().parent().parent() )" class="small dark-grey-text underline"><a>Delete</a></p>
+                </div>
+            </div>
+        </div>
     <?php endforeach; ?>
-    
-    <div class="third">
-        <?= $col[ 1 ] ?>
-    </div>
-    
-    <div class="third">
-        <?= $col[ 2 ] ?>
-    </div>
-    
-    <div class="third">
-        <?= $col[ 3 ] ?>
-    </div>
 </section>

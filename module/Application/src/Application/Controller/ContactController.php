@@ -29,16 +29,18 @@ class ContactController extends AbstractActionController
             {
                 $contact->exchangeArray( $form->getData() );
                 $this->getMessageTable()->add( $contact );
-                // TODO: TRANSLATION
-                $messenger("You message has been successfully sent!", null, null);
-            } else {
-                // TODO: TRANSLATION
-                $messenger(null, null, "All form fields have to be filled!");
+                
+                $message = [ "Your message has been successfully sent" , Messenger::SUCCESS ];
+            }
+            else 
+            {
+                $message = [ "All inputs have to be filled out" , Messenger::ERROR ];
             }
         }
         
         return [
-            'contactForm' => new ContactForm(),
+            'message'       => isset( $message ) ? $message : null,
+            'contactForm'   => new ContactForm(),
         ];
     }
     

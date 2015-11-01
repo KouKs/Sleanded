@@ -1,8 +1,8 @@
-<?php
-    $form = $this->loginForm;
-    $form->prepare();
-    echo $this->form()->openTag($form);
-?>
+<?php echo $this->messenger( $this->message ); ?>
+
+<?php $form = $this->loginForm;
+      $form->prepare();
+      echo $this->form()->openTag($form); ?>
         
 
 <div class="login-area">
@@ -15,11 +15,12 @@
             <?= $this->formElement( $form->get('password') ) ?>
         </div>
         <div class="tile-subheading center right">
-            <?= $this->formElement( $form->get('remember') ) ?> <span class="small">Remember me</span>
+            <p class="center"><?= $this->formElement( $form->get('remember') ) ?> <span class="small">Remember me</span></p>
         </div>
         <div class="tile-subheading center">
            <?= $this->formButton( $form->get('submit'), "LOGIN" ) ?>
         </div>
     </div>
 </div>
+
 <?= $this->form()->closeTag() ?>

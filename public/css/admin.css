@@ -285,7 +285,51 @@ icon-twitter:hover {
   background: url("../img/icons/twitter-hover.png");
 }
 /**
- * 7 - Optimalizace pro tisk
+ * 7 - Zprávy
+ */
+.message {
+  width: 50%;
+  padding: 40px 100px;
+  margin: auto;
+  color: #fff;
+  font-size: 20px;
+  border-radius: 5px;
+  position: fixed;
+  top: 100px;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: inline-block;
+  -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5);
+}
+.success {
+  background-color: green;
+  background-image: -moz-linear-gradient(top, green, green);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(green), to(green));
+  background-image: -webkit-linear-gradient(top, green, green);
+  background-image: -o-linear-gradient(top, green, green);
+  background-image: linear-gradient(to bottom, green, green);
+}
+.notice {
+  background-color: yellow;
+  background-image: -moz-linear-gradient(top, yellow, yellow);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(yellow), to(yellow));
+  background-image: -webkit-linear-gradient(top, yellow, yellow);
+  background-image: -o-linear-gradient(top, yellow, yellow);
+  background-image: linear-gradient(to bottom, yellow, yellow);
+}
+.error {
+  background-color: #b23432;
+  background-image: -moz-linear-gradient(top, #b23432, #d9403c);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#b23432), to(#d9403c));
+  background-image: -webkit-linear-gradient(top, #b23432, #d9403c);
+  background-image: -o-linear-gradient(top, #b23432, #d9403c);
+  background-image: linear-gradient(to bottom, #b23432, #d9403c);
+}
+/**
+ * 8 - Optimalizace pro tisk
  */
 @media print {
   * {
@@ -572,48 +616,10 @@ header > nav div nav a:hover {
  * 4 - Tlačítka (<a>)
  */
 /**
- * 5 - Zprávy
- */
-.padding-20-vertical {
-  padding: 20px 0px;
-}
-.message {
-  margin-top: 20px;
-  width: 100%;
-  padding: 20px;
-  color: #fff;
-  font-size: 20px;
-  box-sizing: border-box;
-}
-.success {
-  background-color: #eee;
-  background-image: -moz-linear-gradient(top, #eee, #fff);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#eee), to(#fff));
-  background-image: -webkit-linear-gradient(top, #eee, #fff);
-  background-image: -o-linear-gradient(top, #eee, #fff);
-  background-image: linear-gradient(to bottom, #eee, #fff);
-}
-.notice {
-  background-color: #eee;
-  background-image: -moz-linear-gradient(top, #eee, #fff);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#eee), to(#fff));
-  background-image: -webkit-linear-gradient(top, #eee, #fff);
-  background-image: -o-linear-gradient(top, #eee, #fff);
-  background-image: linear-gradient(to bottom, #eee, #fff);
-}
-.error {
-  background-color: #eee;
-  background-image: -moz-linear-gradient(top, #eee, #fff);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#eee), to(#fff));
-  background-image: -webkit-linear-gradient(top, #eee, #fff);
-  background-image: -o-linear-gradient(top, #eee, #fff);
-  background-image: linear-gradient(to bottom, #eee, #fff);
-}
-/**
- * 6 - Tabulky
+ * 5 - Tabulky
  */
 /**
- * 6.1 - základní, nestylovaná
+ * 5.1 - základní, nestylovaná
  */
 .table-basic {
   padding: 0;
@@ -662,7 +668,7 @@ table.admin tr:last-child {
 }
 table.admin th,
 table.admin td {
-  padding: 7px;
+  padding: 10px;
   margin: 0;
   color: #333;
   text-align: left;
