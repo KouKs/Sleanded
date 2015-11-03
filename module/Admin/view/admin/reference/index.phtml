@@ -1,1 +1,14 @@
-Action "index", controller "Reference", module "Admin".
+<section class="part dark-grey">
+    <div class="area">
+        <h2 class="left white-text">Admin > Reference</h2>
+    </div>    
+</section>
+<section class="part grid">
+    <?php if( count( $this->reference ) > 0 ) : ?>
+        <?php foreach( $this->reference as $reference ) : ?>
+            <div class="third grid-item">
+                <h3><?= $reference->name; ?></h3>
+            </div>
+        <?php endforeach; ?>        
+    <?php endif; ?>
+</section>

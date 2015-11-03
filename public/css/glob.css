@@ -785,7 +785,6 @@ header.secondary #top-bar nav#primary a:hover {
   overflow: hidden;
   display: block;
   position: relative;
-  font-size: 0;
 }
 .part .area {
   margin: 0 auto;

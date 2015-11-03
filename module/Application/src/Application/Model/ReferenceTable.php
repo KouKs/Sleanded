@@ -25,6 +25,8 @@ namespace Application\Model;
 use Zend\Db\TableGateway\TableGateway;
 use Zend\Db\ResultSet\ResultSet;
 
+use Admin\Model\ReferenceFilter;
+
 class ReferenceTable {
     
     protected $tableGateway;
@@ -49,7 +51,7 @@ class ReferenceTable {
         
         $data = [
             'name'     => $reference->name,
-            'text'     => $reference->email,
+            'text'     => $reference->text,
             'img'      => $reference->img,
             'time'     => time(),
         ];
@@ -78,15 +80,27 @@ class ReferenceTable {
             throw new \Exception( "An error occured, please contact administrator." );
     }
     
-    public function select( $where = null , $join = null , $cond = null , $cols = null , $order = "id ASC" )
+    public function select( $where = null , $limit = null , $join = null , $cond = null , $cols = null , $order = "id ASC" )
     {
         $select = $this->tableGateway->getSql()
                 ->select()
                 ->where( $where )
-                ->order( $order );
+                ->order( $order )
+                ->limit( $limit );
         
         if( $join != null ) $select->joinLeft( $join , $cond , $cols );
         
+        $result = $this->tableGateway->getSql()->prepareStatementForSqlObject( $select )->execute();
+        
+        $rs = new ResultSet();
+        $rs->initialize( $result );
+        
+        return $rs;
+    }
+    
+    public function selectFirst( $limit )
+    {
+        $select = $this->tableGateway->getSql()->select()->limit( $limit ); 
         $result = $this->tableGateway->getSql()->prepareStatementForSqlObject( $select )->execute();
         
         $rs = new ResultSet();

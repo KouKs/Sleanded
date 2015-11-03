@@ -17,8 +17,8 @@ use Zend\Session\SessionManager;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\TableGateway\TableGateway;
 
-use Application\Model\ContactFilter;
 use Application\Model\MessageTable;
+use Application\Model\ReferenceTable;
 
 class Module
 {

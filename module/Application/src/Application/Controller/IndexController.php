@@ -42,6 +42,7 @@ class IndexController extends AbstractActionController
         }
         
         return [
+            'reference'     => $this->getReferenceTable()->selectFirst( 3 ),
             'message'       => isset( $message ) ? $message : null,
             'contactForm'   => new ContactForm(),
         ];
@@ -58,6 +59,14 @@ class IndexController extends AbstractActionController
     private function getMessageTable()
     {
         return $this->getServiceLocator()->get('Application\Model\MessageTable');
+    }
+    /**
+     * Returns an isntance of reference table
+     * @return Application\Model\ReferennceTable 
+     */
+    private function getReferenceTable()
+    {
+        return $this->getServiceLocator()->get('Application\Model\ReferenceTable');
     }
 }
 

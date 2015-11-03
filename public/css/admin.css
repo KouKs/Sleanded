@@ -508,7 +508,6 @@ header > nav div nav a:hover {
   overflow: hidden;
   display: block;
   position: relative;
-  font-size: 0;
 }
 .part .area {
   margin: 0 auto;
