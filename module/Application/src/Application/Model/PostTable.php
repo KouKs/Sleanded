@@ -1,32 +1,17 @@
 <?php
 
 /**
- * Message table gateway
+ * Blog post table gateway
  *
- * @author Mišel
+ * @author Kouks
  * 
-    CREATE TABLE `messages` (
-        `id` INT NOT NULL AUTO_INCREMENT,
-        `name` VARCHAR(100) NULL COLLATE 'utf8_bin',
-        `email` VARCHAR(100) NULL COLLATE 'utf8_bin',
-        `text` TEXT(3000) NULL COLLATE 'utf8_bin',
-        `viewed` TINYINT(4) NOT NULL DEFAULT '0',
-        `sent` INT NULL,
-        `ip` VARCHAR(25) NULL COLLATE 'utf8_bin',
-        PRIMARY KEY (`id`)
-    )
-    COMMENT='Sleanded contact form messages'
-    COLLATE='utf8_bin'
-    ENGINE=MyISAM
-    ;
-
  */
 namespace Application\Model;
 
 use Zend\Db\TableGateway\TableGateway;
 use Zend\Db\ResultSet\ResultSet;
 
-class MessageTable {
+class PostTable {
     
     protected $tableGateway;
 

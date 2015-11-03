@@ -65,6 +65,15 @@ class Module
                     $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
                     return new TableGateway( 'messages' , $dbAdapter , null , new ResultSet() );
                 },
+                'Application\Model\ReferenceTable' =>  function($sm) {
+                    $tableGateway = $sm->get('ReferenceTableGateway');
+                    $table = new ReferenceTable( $tableGateway );
+                    return $table;
+                },
+                'ReferenceTableGateway' => function ($sm) {
+                    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                    return new TableGateway( 'reference' , $dbAdapter , null , new ResultSet() );
+                },
                 /**
                  * user
                  *

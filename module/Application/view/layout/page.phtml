@@ -18,8 +18,9 @@
 
         <!-- Scripts -->
         <?php echo $this->headScript()
+            ->prependFile($this->basePath('js/page.js'), 'text/javascript')
+            ->prependFile($this->basePath('js/main.js'), 'text/javascript')
             ->prependFile($this->basePath('js/masonry.pkgd.min.js'), 'text/javascript')
-            ->prependFile($this->basePath('js/load.js'), 'text/javascript')
             ->prependFile($this->basePath('js/jquery.imageScroll.min.js'), 'text/javascript')
             ->prependFile($this->basePath('js/jquery.nicescroll.min.js'), 'text/javascript')
             ->prependFile('http://code.jquery.com/jquery.min.js', 'text/javascript')

@@ -17,8 +17,9 @@
 
         <!-- Scripts -->
         <?php echo $this->headScript()
-            ->prependFile($this->basePath('js/masonry.pkgd.min.js'), 'text/javascript')
             ->prependFile($this->basePath('js/admin.js'), 'text/javascript')
+            ->prependFile($this->basePath('js/main.js'), 'text/javascript')
+            ->prependFile($this->basePath('js/masonry.pkgd.min.js'), 'text/javascript')
             ->prependFile($this->basePath('js/jquery.imageScroll.min.js'), 'text/javascript')
             ->prependFile($this->basePath('js/jquery.nicescroll.min.js'), 'text/javascript')
             ->prependFile('http://code.jquery.com/jquery.min.js', 'text/javascript')
@@ -34,10 +35,10 @@
                 <nav>
                     <a class="clear"></a>
                     <div>
-                        <a>reference</a>
+                        <a href="<?php echo $this->basePath("admin/reference"); ?>">reference</a>
                         <nav>
-                            <a>list</a>
-                            <a>add new</a>
+                            <a href="<?php echo $this->basePath("admin/reference"); ?>">list</a>
+                            <a href="<?php echo $this->basePath("admin/reference/add"); ?>">add new</a>
                         </nav>
                     </div>
                     <div>

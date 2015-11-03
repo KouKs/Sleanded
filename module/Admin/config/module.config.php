@@ -55,6 +55,8 @@ return array(
             'Admin\Controller\Messages' => 'Admin\Controller\MessagesController',
             'Admin\Controller\Login' => 'Admin\Controller\LoginController',
             'Admin\Controller\Users' => 'Admin\Controller\UsersController',
+            'Admin\Controller\Rererence' => 'Admin\Controller\ReferenceController',
+            'Admin\Controller\Blog' => 'Admin\Controller\BlogController',
         ),
     ), 
     'view_manager' => array(
