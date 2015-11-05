@@ -80,14 +80,13 @@ class ReferenceTable {
             throw new \Exception( "An error occured, please contact administrator." );
     }
     
-    public function select( $where = null , $limit = null , $join = null , $cond = null , $cols = null , $order = "id ASC" )
+    public function select( $where = null , $join = null , $cond = null , $cols = null , $order = "id DESC" )
     {
         $select = $this->tableGateway->getSql()
                 ->select()
-                ->where( $where )
-                ->order( $order )
-                ->limit( $limit );
+                ->order($order);
         
+        if( $where ) $select->where( $where );
         if( $join != null ) $select->joinLeft( $join , $cond , $cols );
         
         $result = $this->tableGateway->getSql()->prepareStatementForSqlObject( $select )->execute();
@@ -100,7 +99,11 @@ class ReferenceTable {
     
     public function selectFirst( $limit )
     {
-        $select = $this->tableGateway->getSql()->select()->limit( $limit ); 
+        $select = $this->tableGateway->getSql()
+                ->select()
+                ->limit( $limit )
+                ->order( 'id DESC' );
+                 
         $result = $this->tableGateway->getSql()->prepareStatementForSqlObject( $select )->execute();
         
         $rs = new ResultSet();

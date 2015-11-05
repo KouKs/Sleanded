@@ -8,118 +8,18 @@
     </div>
 </section>
 <section class="part grey grid">
-    <div class="third grid-item">
-        <div class="text-area">
-            <div class="work-tile">
-                <img src="img/ref1.png" />
-                <div>
-                    <h5>Useless website</h5>
-                    <p class="small description">28. 10. 2015</p>
-                    <p class="medium dark-grey-text">A bunch of useless websites.
-                        This has no use. Overall it was just a big waste of time.</p>
+    <?php foreach( $this->reference as $reference ) : ?>
+        <div class="third grid-item">
+            <div class="text-area">
+                <div class="work-tile">
+                    <img src="<?= $reference->img ?>" />
+                    <div>
+                        <h5><?= $reference->name ?></h5>
+                        <p class="small description"><?= @date( 'j. N. Y' , $reference->time ) ?></p>
+                        <p class="medium dark-grey-text"><?= strlen( $reference->text ) > 100 ? substr( $reference->text , 0 , 100 ) . "..." : $reference->text ?></p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="third grid-item">
-        <div class="text-area">
-        <div class="work-tile">
-            <img src="img/ref2.png" />
-            <div>
-                <h5>Useful website</h5>
-                <p class="small description">28. 10. 2015</p>
-                <p class="medium dark-grey-text">Despite the name, this website is still useless
-                    as hell. Another waste of time.</p>
-            </div>
-        </div>
-        </div>
-    </div>
-    <div class="third grid-item">
-        <div class="text-area">
-        <div class="work-tile">
-            <img src="img/ref3.png" />
-            <div>
-                <h5>Web templates</h5>
-                <p class="small description">28. 10. 2015</p>
-                <p class="medium dark-grey-text">Our source of inspiration (not really).</p>
-            </div>
-        </div>
-        </div>
-    </div>
-    <div class="third grid-item">
-        <div class="text-area">
-        <div class="work-tile">
-            <img src="img/ref1.png" />
-            <div>
-                <h5>Useless website</h5>
-                <p class="small description">28. 10. 2015</p>
-                <p class="medium dark-grey-text">A bunch of useless websites.
-                    This has no use. Overall it was just a big waste of time.</p>
-            </div>
-        </div>
-        </div>
-    </div>
-    <div class="third grid-item">
-        <div class="text-area">
-        <div class="work-tile">
-            <img src="img/ref2.png" />
-            <div>
-                <h5>Useful website</h5>
-                <p class="small description">28. 10. 2015</p>
-                <p class="medium dark-grey-text">Despite the name, this website is still useless
-                    as hell. Another waste of time.</p>
-            </div>
-        </div>
-        </div>
-    </div>
-    <div class="third grid-item">
-        <div class="text-area">
-        <div class="work-tile">
-            <img src="img/ref3.png" />
-            <div>
-                <h5>Web templates</h5>
-                <p class="small description">28. 10. 2015</p>
-                <p class="medium dark-grey-text">Our source of inspiration (not really).</p>
-            </div>
-        </div>
-        </div>
-    </div>
-    <div class="third grid-item">
-        <div class="text-area">
-        <div class="work-tile">
-            <img src="img/ref1.png" />
-            <div>
-                <h5>Useless website</h5>
-                <p class="small description">28. 10. 2015</p>
-                <p class="medium dark-grey-text">A bunch of useless websites.
-                    This has no use. Overall it was just a big waste of time.</p>
-            </div>
-        </div>
-        </div>
-    </div>
-    <div class="third grid-item">
-        <div class="text-area">
-        <div class="work-tile">
-            <img src="img/ref2.png" />
-            <div>
-                <h5>Useful website</h5>
-                <p class="small description">28. 10. 2015</p>
-                <p class="medium dark-grey-text">Despite the name, this website is still useless
-                    as hell. Another waste of time.</p>
-            </div>
-        </div>
-        </div>
-    </div>
-    <div class="third grid-item">
-        <div class="text-area">
-        <div class="work-tile">
-            <img src="img/ref3.png" />
-            <div>
-                <h5>Web templates</h5>
-                <p class="small description">28. 10. 2015</p>
-                <p class="medium dark-grey-text">Our source of inspiration (not really).</p>
-            </div>
-        </div>
-        </div>
-    </div>
+    <?php endforeach; ?>
 </section>

@@ -47,7 +47,7 @@ class ReferenceController extends AbstractActionController
         {
             $post = $request->getPost()->toArray();
             $files = $request->getFiles( );
-            $post['img'] = "./data/uploads/" . $files["img"]["name"];
+            $post['img'] = "./uploads/" . $files["img"]["name"];
 
             $reference = new ReferenceFilter();
             $form->setInputFilter( $reference->getInputFilter() );
@@ -55,7 +55,7 @@ class ReferenceController extends AbstractActionController
 
             if ( $form->isValid() )
             {
-                $filter = new \Zend\Filter\File\RenameUpload("./data/uploads/");
+                $filter = new \Zend\Filter\File\RenameUpload("./public/uploads/");
                 $filter->setUseUploadName(true);
                 $filter->filter( $files['img'] );
 
