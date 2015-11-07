@@ -9,6 +9,10 @@
 return array(
     'view_helpers' => array(
         'factories' => array(
+            'urlparser' => function($sm) {
+                $helper = new Application\Helper\UrlParser();
+                return $helper;           
+            },
             'date' => function($sm) {
                 $helper = new Application\Helper\Date();
                 return $helper;           

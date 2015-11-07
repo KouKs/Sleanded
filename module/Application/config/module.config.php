@@ -11,6 +11,10 @@ return array(
     
     'view_helpers' => array(
         'factories' => array(
+            'urlparser' => function($sm) {
+                $helper = new Application\Helper\UrlParser();
+                return $helper;           
+            },
             'date' => function($sm) {
                 $helper = new Application\Helper\Date();
                 return $helper;           
@@ -28,16 +32,6 @@ return array(
     
     'router' => array(
         'routes' => array(
-            'home' => array(
-                'type' => 'Literal',
-                'options' => array(
-                    'route'    => '/',
-                    'defaults' => array(
-                        'controller' => 'Application\Controller\Index',
-                        'action'     => 'index',
-                    ),
-                ),
-            ),
             'application' => array(
                 'type'    => 'Segment',
                 'options' => array(

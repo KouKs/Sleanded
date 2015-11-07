@@ -1,0 +1,22 @@
+<?php foreach( $this->reference as $reference ) { break; } ?>
+
+<section class="part red">
+    <div class="area">
+        <h2 class="white-text"><?= $reference->name ?></h2>
+        <p class="big center margin light-grey-text"><?= $reference->desc ?></p>
+    </div>
+</section>
+<section class="part grey">
+    <div class="area">
+        <div class="text-area">
+            <p class="medium dark-grey-text indent margin"><?= $reference->text ?></p>
+        </div>
+    </div>
+</section>
+<section class="part white">
+    <div class="area">
+        <div class="text-area">
+            <p class="medium dark-grey-text"><?= $this->date( $reference->time ) ?> | <a class="leave" href="<?php echo $this->url( "application" ); ?>work">Show all references</a></p>
+        </div>
+    </div>
+</section>

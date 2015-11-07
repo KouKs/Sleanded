@@ -16,7 +16,16 @@ class WorkController extends AbstractActionController
             'message'       => isset( $message ) ? $message : null,
         ];
     }
-
+    
+    public function detailAction()
+    {
+        $this->layout("layout/page"); 
+        $id = $this->params('id');
+        
+        return [
+            'reference'     => $this->getReferenceTable()->select( 'id = ' . $id ),
+        ];
+    }
 
     /*************************************************************************\
      | Private functions                                                          |

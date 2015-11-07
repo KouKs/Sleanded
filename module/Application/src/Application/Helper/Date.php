@@ -16,7 +16,7 @@ class Date extends AbstractHelper
     public function __invoke( $time )
     {
         $this->time = $time;
-        return @date( 'j. N. Y' , $this->time );
+        return @date( 'j. n. Y' , $this->time );
     }
     
     /*

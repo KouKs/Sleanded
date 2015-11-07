@@ -8,7 +8,8 @@
  * 
 CREATE TABLE `post` (
 	`id` INT NULL AUTO_INCREMENT,
-	`topic` VARCHAR(100) NULL DEFAULT NULL,
+	`topic` VARCHAR(20) NULL DEFAULT NULL,
+	`desc` VARCHAR(100) NULL DEFAULT NULL,
 	`author_id` INT NULL,
 	`text` TEXT NULL DEFAULT NULL,
 	`img` VARCHAR(100) NULL DEFAULT NULL,
@@ -48,13 +49,14 @@ class PostTable {
         return $rs;
     }
     
-    public function add( PostFilter $contact ) {
+    public function add( PostFilter $post ) {
         
         $data = [
-            'topic'      => $contact->topic,
-            'author_id'     => $contact->author_id,
-            'text'      => $contact->text,
-            'img'      => $contact->img,
+            'topic'      => $post->topic,
+            'desc'      => $post->desc,
+            'author_id'     => $post->author_id,
+            'text'      => $post->text,
+            'img'      => $post->img,
             'time'      => time(),
             'ip'        => $_SERVER['REMOTE_ADDR'],
         ];

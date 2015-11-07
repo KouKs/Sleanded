@@ -7,7 +7,8 @@
  * 
 CREATE TABLE `reference` (
 	`id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-	`name` VARCHAR(50) NULL,
+	`name` VARCHAR(20) NULL,
+	`desc` VARCHAR(100) NULL DEFAULT NULL,
 	`text` TEXT NULL,
 	`img` VARCHAR(70) NULL,
 	`time` DOUBLE UNSIGNED NULL,
@@ -52,6 +53,7 @@ class ReferenceTable {
         
         $data = [
             'name'     => $reference->name,
+            'desc'     => $reference->desc,
             'text'     => $reference->text,
             'img'      => $reference->img,
             'time'     => time(),

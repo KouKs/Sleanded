@@ -20,7 +20,21 @@ class BlogController extends AbstractActionController
             'message'       => isset( $message ) ? $message : null,
         ];
     }
-
+    
+    public function detailAction()
+    {
+        $this->layout("layout/page");
+        $id = $this->params('id');
+        
+        return [
+            'post'         => $this->getPostTable()->select( 'posts.id = ' . $id , 
+                                                             null,
+                                                             "users",
+                                                             "posts.author_id = users.id",
+                                                             array( "id" , "full_name" ),
+                                                             "posts.id DESC" ),
+        ];
+    }
     /**
      * Returns an isntance of post table
      * @return Application\Model\PostTable 

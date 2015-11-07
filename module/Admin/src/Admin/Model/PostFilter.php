@@ -13,6 +13,7 @@ class PostFilter implements InputFilterAwareInterface
     public function exchangeArray($data)
     {
         $this->topic = ( isset($data['topic']) ) ? $data['topic'] : null;
+        $this->desc = ( isset($data['desc']) ) ? $data['desc'] : null;
         $this->author_id = ( isset($data['author_id']) ) ? $data['author_id'] : null;
         $this->text  = ( isset($data['text']) ) ? $data['text']  : null;
         $this->img  = ( isset($data['img']) ) ? $data['img']  : null;
@@ -40,19 +41,33 @@ class PostFilter implements InputFilterAwareInterface
                     'options' => array(
                         'encoding' => 'UTF-8',
                         'min'      => 3,
-                        'max'      => 100,
+                        'max'      => 20,
                     ),
                 ),
             ),
         ));
 
         $inputFilter->add(array(
-            'name'     => 'text',
+            'name'     => 'desc',
             'required' => true,
             'filters'  => array(
                 array('name' => 'StripTags'),
                 array('name' => 'StringTrim'),
             ),
+            'validators' => array(
+                array(
+                    'name'    => 'StringLength',
+                    'options' => array(
+                        'encoding' => 'UTF-8',
+                        'min'      => 3,
+                        'max'      => 100,
+                    ),
+                ),
+            ),
+        ));
+        $inputFilter->add(array(
+            'name'     => 'text',
+            'required' => true,
             'validators' => array(
                 array(
                      'name'    => 'StringLength',

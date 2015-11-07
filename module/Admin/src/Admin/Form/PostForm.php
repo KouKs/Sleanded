@@ -22,6 +22,13 @@ class PostForm extends Form
             ),
         ));
         $this->add(array(
+            'name' => 'desc',
+            'type' => 'textarea',
+            'attributes' => array(
+                'placeholder' => 'Brief description'
+            ),
+        ));
+        $this->add(array(
             'name' => 'text',
             'type' => 'textarea',
             'attributes' => array(

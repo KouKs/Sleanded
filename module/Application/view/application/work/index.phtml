@@ -9,17 +9,19 @@
 </section>
 <section class="part grey grid">
     <?php foreach( $this->reference as $reference ) : ?>
-        <div class="third grid-item">
-            <div class="text-area">
-                <div class="work-tile">
-                    <img src="<?= $reference->img ?>" />
-                    <div>
-                        <h5><?= $reference->name ?></h5>
-                        <p class="small description"><?= $this->date( $reference->time ) ?></p>
-                        <p class="medium dark-grey-text"><?= strlen( $reference->text ) > 100 ? substr( $reference->text , 0 , 100 ) . "..." : $reference->text ?></p>
+        <a class="leave" href="<?= $this->url('application') ?>work/detail/<?= $reference->id ?>/<?= $this->urlparser( $reference->name ); ?>">
+            <div class="third grid-item">
+                <div class="text-area">
+                    <div class="work-tile">
+                        <img src="<?= $reference->img ?>" />
+                        <div>
+                            <h5><?= $reference->name ?></h5>
+                            <p class="small description"><?= $this->date( $reference->time ) ?></p>
+                            <p class="medium dark-grey-text"><?= $reference->desc ?></p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </a>
     <?php endforeach; ?>
 </section>

@@ -83,14 +83,16 @@
     <div class="area">
         <h2 class="red-text">Our recent projects</h2>
         <?php foreach( $this->reference as $reference ) : ?>
-            <div class="reference">
-                <img src="<?= $reference->img ?>" />
-                <div>
-                    <h5><?= $reference->name ?></h5>
-                    <p class="small description"><?= $this->date( $reference->time ) ?></p>
-                    <p class="medium dark-grey-text"><?= strlen( $reference->text ) > 100 ? substr( $reference->text , 0 , 100 ) . "..." : $reference->text ?></p>
+            <a class="leave" href="<?= $this->url('application') ?>work/detail/<?= $reference->id ?>/<?= $this->urlparser( $reference->name ); ?>">
+                <div class="reference">
+                    <img src="<?= $reference->img ?>" />
+                    <div>
+                        <h5><?= $reference->name ?></h5>
+                        <p class="small description"><?= $this->date( $reference->time ) ?></p>
+                        <p class="medium dark-grey-text"><?= $reference->desc ?></p>
+                    </div>
                 </div>
-            </div>
+            </a>
         <?php endforeach; ?>
     </div>
 </section>
@@ -100,14 +102,16 @@
     <div class="area">
         <h2 class="red-text">Latest blog posts</h2>
         <?php foreach( $this->posts as $post ) : ?>
-            <article class="post">
-                <img src="<?= $post->img ?>" />
-                <div>
-                    <h5 class="light-grey-text"><?= $post->topic ?></h5>
-                    <p class="small description"><?= $post->full_name . " on " .  $this->date( $post->time ) ?></p>
-                    <p class="medium light-grey-text"><?= strlen( $post->text ) > 150 ? substr( $post->text , 0 , 150 ) . "..." : $post->text ?></p>
-                </div>
-            </article>
+            <a class="leave"  href="<?= $this->url('application') ?>blog/detail/<?= $post->id ?>/<?= $this->urlparser( $post->topic ); ?>">
+                <article class="post">
+                    <img src="<?= $post->img ?>" />
+                    <div>
+                        <h5 class="light-grey-text"><?= $post->topic ?></h5>
+                        <p class="small description"><?= $post->full_name . " on " .  $this->date( $post->time ) ?></p>
+                        <p class="medium light-grey-text"><?= $post->desc ?></p>
+                    </div>
+                </article>
+            </a>
         <?php endforeach; ?>
     </div>
 </section>
