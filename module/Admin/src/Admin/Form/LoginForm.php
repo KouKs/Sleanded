@@ -10,7 +10,7 @@ use Zend\Form\Form;
 
 class LoginForm extends Form
 {
-    public function __construct($name = null,$kategorie = null)
+    public function __construct()
     {
         parent::__construct('login');
         

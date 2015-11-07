@@ -1,1 +1,16 @@
-Action "index", controller "Blog", module "Admin".
+<section class="part dark-grey">
+    <div class="area">
+        <h2 class="left white-text">Admin > Blog</h2>
+    </div>    
+</section>
+
+<section class="part grid">
+    <?php if( count( $this->posts ) > 0 ) : ?>
+        <?php foreach( $this->posts as $post ) : ?>
+            <div class="third grid-item">
+                <h3><?= $post->topic; ?></h3>
+                <h3><?= $post->full_name; ?></h3>
+            </div>
+        <?php endforeach; ?>        
+    <?php endif; ?>
+</section>

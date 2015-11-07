@@ -10,7 +10,7 @@ use Zend\Form\Form;
 
 class NewUserForm extends Form
 {
-    public function __construct($name = null,$kategorie = null)
+    public function __construct()
     {
         parent::__construct('new_user');
         

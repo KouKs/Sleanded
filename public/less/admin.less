@@ -55,7 +55,7 @@ header {
     > nav {
         width: 100%;
         
-        > a , > div > a {
+        > a {
             width: 160px;
             padding: 10px 20px;
             float: left;
@@ -90,40 +90,35 @@ header {
                 border-color: @theme-color;
             }
         }
-        div  {
-            width: 200%;
-            height: auto;
-            overflow: hidden;
             
-            nav {
-                position: absolute; left: 200px;
-                background-color: @dark-grey;
-                width: 200px;
-                display: none;
-                
+        nav {
+            position: absolute; left: 200px;
+            background-color: @dark-grey;
+            width: 200px;
+            display: none;
+
+            &:hover {
+                display: block;
+            }
+
+            a {
+                width: 160px;
+                padding: 10px 20px;
+                color: @light-grey;
+                float: left;
+                cursor: pointer;
+
+                font-size: 14px;
+                text-transform: uppercase;
+                font-weight: bold;
+
+                border-top: 1px solid #444;
+                border-bottom: 1px solid #222;
+
+                .animate;
+
                 &:hover {
-                    display: block;
-                }
-                
-                a {
-                    width: 160px;
-                    padding: 10px 20px;
-                    color: @light-grey;
-                    float: left;
-                    cursor: pointer;
-
-                    font-size: 14px;
-                    text-transform: uppercase;
-                    font-weight: bold;
-
-                    border-top: 1px solid #444;
-                    border-bottom: 1px solid #222;
-
-                    .animate;
-
-                    &:hover {
-                        color: @grey;
-                    }
+                    color: @grey;
                 }
             }
         }
@@ -220,6 +215,7 @@ header {
  */
 .login-area {
     input {
+        margin: 5px;
         padding: 5px;
         
         border-radius: 5px;

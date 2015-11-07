@@ -87,7 +87,7 @@
                 <img src="<?= $reference->img ?>" />
                 <div>
                     <h5><?= $reference->name ?></h5>
-                    <p class="small description"><?= @date( 'j. N. Y' , $reference->time ) ?></p>
+                    <p class="small description"><?= $this->date( $reference->time ) ?></p>
                     <p class="medium dark-grey-text"><?= strlen( $reference->text ) > 100 ? substr( $reference->text , 0 , 100 ) . "..." : $reference->text ?></p>
                 </div>
             </div>
@@ -99,38 +99,16 @@
     <div class="img-blog" data-image="img/book.png" data-width="2000" data-height="1000"></div>
     <div class="area">
         <h2 class="red-text">Latest blog posts</h2>
-        <article class="post">
-            <img src="http://lorempixel.com/g/640/480/abstract" />
-            <div>
-                <h5 class="light-grey-text">Lorem ipsum</h5>
-                <p class="small description">28. 10. 2015</p>
-                <p class="medium light-grey-text">
-                    Dolor sit amet, consectetuer adipiscing elit.
-                    Nulla pulvinar eleifend sem.
-                    Vivamus luctus egestas leo.
-                    Aliquam erat volutpat. dolor
-                    sit amet, consectetuer adipiscing elit.
-                    Nulla pulvinar eleifend sem.
-                    Vivamus luctus egestas leo.
-                    Aliquam erat volutpat.</p>
-            </div>
-        </article>
-        <article class="post">
-            <img src="http://lorempixel.com/g/640/480/cats" />
-            <div>
-                <h5 class="light-grey-text">Lorem ipsum</h5>
-                <p class="small description">28. 10. 2015</p>
-                <p class="medium light-grey-text">
-                    Dolor sit amet, consectetuer adipiscing elit.
-                    Nulla pulvinar eleifend sem.
-                    Vivamus luctus egestas leo.
-                    Aliquam erat volutpat. dolor
-                    sit amet, consectetuer adipiscing elit.
-                    Nulla pulvinar eleifend sem.
-                    Vivamus luctus egestas leo.
-                    Aliquam erat volutpat.</p>
-            </div>
-        </article>
+        <?php foreach( $this->posts as $post ) : ?>
+            <article class="post">
+                <img src="<?= $post->img ?>" />
+                <div>
+                    <h5 class="light-grey-text"><?= $post->topic ?></h5>
+                    <p class="small description"><?= $post->full_name . " on " .  $this->date( $post->time ) ?></p>
+                    <p class="medium light-grey-text"><?= strlen( $post->text ) > 150 ? substr( $post->text , 0 , 150 ) . "..." : $post->text ?></p>
+                </div>
+            </article>
+        <?php endforeach; ?>
     </div>
 </section>
 

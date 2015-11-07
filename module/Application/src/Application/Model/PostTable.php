@@ -5,11 +5,28 @@
  *
  * @author Kouks
  * 
+ * 
+CREATE TABLE `post` (
+	`id` INT NULL AUTO_INCREMENT,
+	`topic` VARCHAR(100) NULL DEFAULT NULL,
+	`author_id` INT NULL,
+	`text` TEXT NULL DEFAULT NULL,
+	`img` VARCHAR(100) NULL DEFAULT NULL,
+	`time` DOUBLE UNSIGNED NULL DEFAULT NULL,
+	`ip` VARCHAR(100) NULL DEFAULT NULL,
+	INDEX `id` (`id`)
+)
+COLLATE='utf8_bin'
+ENGINE=MyISAM
+;
+
  */
 namespace Application\Model;
 
 use Zend\Db\TableGateway\TableGateway;
 use Zend\Db\ResultSet\ResultSet;
+
+use Admin\Model\PostFilter;
 
 class PostTable {
     
@@ -31,13 +48,14 @@ class PostTable {
         return $rs;
     }
     
-    public function add( ContactFilter $contact ) {
+    public function add( PostFilter $contact ) {
         
         $data = [
-            'name'      => $contact->name,
-            'email'     => $contact->email,
+            'topic'      => $contact->topic,
+            'author_id'     => $contact->author_id,
             'text'      => $contact->text,
-            'sent'      => time(),
+            'img'      => $contact->img,
+            'time'      => time(),
             'ip'        => $_SERVER['REMOTE_ADDR'],
         ];
         
@@ -65,14 +83,15 @@ class PostTable {
             throw new \Exception( "An error occured, please contact administrator." );
     }
     
-    public function select( $where = null , $join = null , $cond = null , $cols = null , $order = "id ASC" )
+    public function select( $where = null , $limit = null , $join = null , $cond = null , $cols = null , $order = "id DESC" )
     {
         $select = $this->tableGateway->getSql()
                 ->select()
-                ->where( $where )
                 ->order( $order );
         
-        if( $join != null ) $select->joinLeft( $join , $cond , $cols );
+        if( $limit ) $select->limit( $limit );
+        if( $where ) $select->where( $where );
+        if( $join != null ) $select->join( $join , $cond , $cols );
         
         $result = $this->tableGateway->getSql()->prepareStatementForSqlObject( $select )->execute();
         
@@ -81,4 +100,5 @@ class PostTable {
         
         return $rs;
     }
+    
 }

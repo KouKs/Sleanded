@@ -8,17 +8,17 @@ namespace Admin\Form;
 
 use Zend\Form\Form;
 
-class ReferenceForm extends Form
+class PostForm extends Form
 {
-    public function __construct()
+    public function __construct( $author_id )
     {
-        parent::__construct('reference');
+        parent::__construct('post');
         
         $this->add(array(
-            'name' => 'name',
+            'name' => 'topic',
             'type' => 'text',
             'attributes' => array(
-                'placeholder' => 'Project name'
+                'placeholder' => 'Topic'
             ),
         ));
         $this->add(array(
@@ -26,6 +26,13 @@ class ReferenceForm extends Form
             'type' => 'textarea',
             'attributes' => array(
                 'class' => 'editor'
+            ),
+        ));
+        $this->add(array(
+            'name' => 'author_id',
+            'type' => 'hidden',
+            'attributes' => array(
+                'value' => $author_id,
             ),
         ));
         $this->add(array(

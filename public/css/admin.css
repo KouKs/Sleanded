@@ -416,8 +416,7 @@ header .logo {
 header > nav {
   width: 100%;
 }
-header > nav > a,
-header > nav > div > a {
+header > nav > a {
   width: 160px;
   padding: 10px 20px;
   float: left;
@@ -434,13 +433,11 @@ header > nav > div > a {
   -o-transition: all linear 0.2s;
   transition: all linear 0.2s;
 }
-header > nav > a:hover,
-header > nav > div > a:hover {
+header > nav > a:hover {
   background: #333;
   border-color: #333;
 }
-header > nav > a:hover + nav,
-header > nav > div > a:hover + nav {
+header > nav > a:hover + nav {
   display: block;
 }
 header > nav a.clear {
@@ -452,22 +449,17 @@ header > nav a.clear:hover {
   background: #b23432;
   border-color: #b23432;
 }
-header > nav div {
-  width: 200%;
-  height: auto;
-  overflow: hidden;
-}
-header > nav div nav {
+header > nav nav {
   position: absolute;
   left: 200px;
   background-color: #333;
   width: 200px;
   display: none;
 }
-header > nav div nav:hover {
+header > nav nav:hover {
   display: block;
 }
-header > nav div nav a {
+header > nav nav a {
   width: 160px;
   padding: 10px 20px;
   color: #eee;
@@ -483,7 +475,7 @@ header > nav div nav a {
   -o-transition: all linear 0.2s;
   transition: all linear 0.2s;
 }
-header > nav div nav a:hover {
+header > nav nav a:hover {
   color: #666;
 }
 /**
@@ -563,6 +555,7 @@ header > nav div nav a:hover {
  * 3 - Inputy
  */
 .login-area input {
+  margin: 5px;
   padding: 5px;
   border-radius: 5px;
   background-color: #fafafa;

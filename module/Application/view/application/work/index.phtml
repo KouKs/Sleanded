@@ -15,7 +15,7 @@
                     <img src="<?= $reference->img ?>" />
                     <div>
                         <h5><?= $reference->name ?></h5>
-                        <p class="small description"><?= @date( 'j. N. Y' , $reference->time ) ?></p>
+                        <p class="small description"><?= $this->date( $reference->time ) ?></p>
                         <p class="medium dark-grey-text"><?= strlen( $reference->text ) > 100 ? substr( $reference->text , 0 , 100 ) . "..." : $reference->text ?></p>
                     </div>
                 </div>

@@ -126,6 +126,8 @@ class LoginController extends AbstractActionController
     
     private function registerSession( $data, $container ) {
         $container->name = $data[ 'name' ];
+        $container->id = $data[ 'id' ];
+        $container->fullName = $data[ 'full_name' ];
         $container->boolLogged = true;
     }
 

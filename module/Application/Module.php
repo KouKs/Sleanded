@@ -19,6 +19,7 @@ use Zend\Db\TableGateway\TableGateway;
 
 use Application\Model\MessageTable;
 use Application\Model\ReferenceTable;
+use Application\Model\PostTable;
 
 class Module
 {
@@ -74,35 +75,15 @@ class Module
                     $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
                     return new TableGateway( 'reference' , $dbAdapter , null , new ResultSet() );
                 },
-                /**
-                 * user
-                 *
-                'Application\Model\UserTable' =>  function($sm) {
-                    $tableGateway = $sm->get('UserTableGateway');
-                    $table = new UserTable($tableGateway);
+                'Application\Model\PostTable' =>  function($sm) {
+                    $tableGateway = $sm->get('PostTableGateway');
+                    $table = new PostTable( $tableGateway );
                     return $table;
                 },
-                'UserTableGateway' => function ($sm) {
+                'PostTableGateway' => function ($sm) {
                     $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
-                    $resultSetPrototype = new ResultSet();
-                    $resultSetPrototype->setArrayObjectPrototype(new User());
-                    return new TableGateway('uzivatele', $dbAdapter, null, $resultSetPrototype);
+                    return new TableGateway( 'posts' , $dbAdapter , null , new ResultSet() );
                 },
-                /**
-                 * banner
-                 *
-                'Application\Model\BannerTable' =>  function($sm) {
-                    $tableGateway = $sm->get('BannerTableGateway');
-                    $table = new BannerTable($tableGateway);
-                    return $table;
-                },
-                'BannerTableGateway' => function ($sm) {
-                    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
-                    $resultSetPrototype = new ResultSet();
-                    $resultSetPrototype->setArrayObjectPrototype(new Banner());
-                    return new TableGateway('banner', $dbAdapter, null, $resultSetPrototype);
-                },
-                */   
             ),
         );
     }

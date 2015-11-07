@@ -42,7 +42,13 @@ class IndexController extends AbstractActionController
         }
         
         return [
-            'reference'     => $this->getReferenceTable()->selectFirst( 3 ),
+            'reference'     => $this->getReferenceTable()->select( null , 3 ),
+            'posts'         => $this->getPostTable()->select( null, 
+                                                              2,
+                                                              "users",
+                                                              "posts.author_id = users.id",
+                                                              array( "id" , "full_name" ),
+                                                              "posts.id DESC" ),
             'message'       => isset( $message ) ? $message : null,
             'contactForm'   => new ContactForm(),
         ];
@@ -67,6 +73,15 @@ class IndexController extends AbstractActionController
     private function getReferenceTable()
     {
         return $this->getServiceLocator()->get('Application\Model\ReferenceTable');
+    }
+    
+    /**
+     * Returns an isntance of post table
+     * @return Application\Model\PostTable 
+     */
+    private function getPostTable()
+    {
+        return $this->getServiceLocator()->get('Application\Model\PostTable');
     }
 }
 

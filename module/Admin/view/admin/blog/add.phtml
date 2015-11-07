@@ -1,0 +1,24 @@
+<?php echo $this->messenger( $this->message ); ?>
+
+<section class="part dark-grey">
+    <div class="area">
+        <h2 class="left white-text">Admin > Blog > Add</h2>
+    </div>    
+</section>
+
+<section class="part">
+    <div class="area">
+         <?php $form = $this->form;
+               $form->prepare();
+               $form->setAttribute('class' , 'admin');
+               echo $this->form()->openTag($form); ?>
+        
+         <?=   $this->formElement( $form->get('topic') ) .  
+               $this->formElement( $form->get('img') ) . 
+               $this->formElement( $form->get('text') ) .
+               $this->formElement( $form->get('author_id') ) .
+               $this->formButton( $form->get('submit') , 'Post' ) ?>
+             
+        <?= $this->form()->closeTag() ?>
+    </div>
+</section>

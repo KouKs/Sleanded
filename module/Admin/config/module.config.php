@@ -9,12 +9,10 @@
 return array(
     'view_helpers' => array(
         'factories' => array(
-            /*
-            'menu' => function($sm) {
-                $helper = new Application\Helper\Menu();
+            'date' => function($sm) {
+                $helper = new Application\Helper\Date();
                 return $helper;           
             },
-            */
             'messenger' => function($sm) {
                 $helper = new Application\Helper\Messenger();
                 return $helper;           

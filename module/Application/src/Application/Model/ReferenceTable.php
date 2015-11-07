@@ -11,6 +11,7 @@ CREATE TABLE `reference` (
 	`text` TEXT NULL,
 	`img` VARCHAR(70) NULL,
 	`time` DOUBLE UNSIGNED NULL,
+	`ip` VARCHAR(70) NULL,
 	INDEX `id` (`id`),
 	PRIMARY KEY (`id`)
 )
@@ -54,6 +55,7 @@ class ReferenceTable {
             'text'     => $reference->text,
             'img'      => $reference->img,
             'time'     => time(),
+            'ip'        => $_SERVER['REMOTE_ADDR'],
         ];
         
         if( !$this->tableGateway->insert( $data ) )
@@ -80,30 +82,16 @@ class ReferenceTable {
             throw new \Exception( "An error occured, please contact administrator." );
     }
     
-    public function select( $where = null , $join = null , $cond = null , $cols = null , $order = "id DESC" )
+    public function select( $where = null , $limit = null , $join = null , $cond = null , $cols = null , $order = "id DESC" )
     {
         $select = $this->tableGateway->getSql()
                 ->select()
                 ->order($order);
         
+        if( $limit ) $select->limit( $limit );
         if( $where ) $select->where( $where );
-        if( $join != null ) $select->joinLeft( $join , $cond , $cols );
+        if( $join != null ) $select->join( $join , $cond , $cols );
         
-        $result = $this->tableGateway->getSql()->prepareStatementForSqlObject( $select )->execute();
-        
-        $rs = new ResultSet();
-        $rs->initialize( $result );
-        
-        return $rs;
-    }
-    
-    public function selectFirst( $limit )
-    {
-        $select = $this->tableGateway->getSql()
-                ->select()
-                ->limit( $limit )
-                ->order( 'id DESC' );
-                 
         $result = $this->tableGateway->getSql()->prepareStatementForSqlObject( $select )->execute();
         
         $rs = new ResultSet();
