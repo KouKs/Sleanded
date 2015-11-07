@@ -309,11 +309,20 @@ h5 {
 /**
  * 6 - kony
  */
-icon {
+
+[class^='icon-big'] {
     width: 32px; height: 32px;
     display: block;
     float: right;
-
+    cursor: pointer
+}
+[class^='icon-small'] {
+    width: 16px; height: 16px;
+    display: block;
+    float: right;
+    cursor: pointer
+}
+.icon-big {
     &-fb { 
         background: url( "@{img-folder}icons/facebook.png" );
         &:hover {
@@ -324,6 +333,20 @@ icon {
         background: url( "@{img-folder}icons/twitter.png" );
         &:hover {
             background: url( "@{img-folder}icons/twitter-hover.png" );
+        }
+    }
+}
+.icon-small {
+    &-edit { 
+        background: url( "@{img-folder}icons/pen.png" );
+        &:hover {
+            background: url( "@{img-folder}icons/pen-hover.png" );
+        }
+    }
+    &-cross { 
+        background: url( "@{img-folder}icons/cross.png" );
+        &:hover {
+            background: url( "@{img-folder}icons/cross-hover.png" );
         }
     }
 }

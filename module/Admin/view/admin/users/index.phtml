@@ -5,9 +5,10 @@
 </section>
 <section class="part">
     <div class="area">
-        <h3>User panel</h3>
+        <h3>List of admins</h3>
         <table class='admin' width='100%'>
             <tr>
+                <th class="thin">#</th>
                 <th>Name</th>
                 <th>Full Name</th>
                 <th>E-mail</th>
@@ -16,11 +17,12 @@
             </tr>
             <?php foreach( $this->users as $u ) : ?>
                 <tr>
-                    <td> <?= $u['name'] ?> </td>
-                    <td> <?= $u['full_name'] ?> </td>
-                    <td> <?= $u['email'] ?> </td>
-                    <td> <?= $u['job'] ?> </td>
-                    <td> <?= $u['ip'] ?> </td>
+                    <td> <?= $u->id ?> </td>
+                    <td> <?= $u->name ?> </td>
+                    <td> <?= $u->full_name ?> </td>
+                    <td> <?= $u->email ?> </td>
+                    <td> <?= $u->job ?> </td>
+                    <td> <?= $u->ip ?> </td>
                 </tr>
             <?php endforeach; ?>
         </table>

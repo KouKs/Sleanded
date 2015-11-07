@@ -15,7 +15,7 @@ class BlogController extends AbstractActionController
                                                               null,
                                                               "users",
                                                               "posts.author_id = users.id",
-                                                              array( "id" , "full_name" ),
+                                                              "full_name",
                                                               "posts.id DESC" ),
             'message'       => isset( $message ) ? $message : null,
         ];
@@ -31,7 +31,7 @@ class BlogController extends AbstractActionController
                                                              null,
                                                              "users",
                                                              "posts.author_id = users.id",
-                                                             array( "id" , "full_name" ),
+                                                             "full_name",
                                                              "posts.id DESC" ),
         ];
     }

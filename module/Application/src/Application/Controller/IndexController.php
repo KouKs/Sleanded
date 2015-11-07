@@ -47,7 +47,7 @@ class IndexController extends AbstractActionController
                                                               2,
                                                               "users",
                                                               "posts.author_id = users.id",
-                                                              array( "id" , "full_name" ),
+                                                              "full_name",
                                                               "posts.id DESC" ),
             'message'       => isset( $message ) ? $message : null,
             'contactForm'   => new ContactForm(),

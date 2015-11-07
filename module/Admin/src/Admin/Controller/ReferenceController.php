@@ -77,6 +77,16 @@ class ReferenceController extends AbstractActionController
         ];
     }
     
+    public function deleteAction()
+    {
+        $id = $this->params('id');
+        
+        $referenceTable = $this->getReferenceTable();
+        $referenceTable->delete( $id );
+        
+        return $this->response;
+    }
+    
     /*************************************************************************\
      | Private functions                                                          |
     \*************************************************************************/

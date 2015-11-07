@@ -4,13 +4,25 @@
     </div>    
 </section>
 
-<section class="part grid">
-    <?php if( count( $this->posts ) > 0 ) : ?>
-        <?php foreach( $this->posts as $post ) : ?>
-            <div class="third grid-item">
-                <h3><?= $post->topic; ?></h3>
-                <h3><?= $post->full_name; ?></h3>
-            </div>
-        <?php endforeach; ?>        
-    <?php endif; ?>
+<section class="part">
+    <div class="area">
+        <h3>List of blog posts</h3>
+        <table class='admin' width='100%'>
+            <tr>
+                <th class="thin">#</th>
+                <th>Topic</th>
+                <th>Author</th>
+                <th class="thin" colspan="2">Actions</th>
+            </tr>
+            <?php foreach( $this->posts as $post ) : ?>
+                <tr>
+                    <td><?= $post->id ?></td>
+                    <td class="bold"><?= $post->topic ?></td>
+                    <td><?= $post->full_name ?></td>
+                    <td class="thin"><div class="icon-small-edit"></div></td>
+                    <td class="thin"><div onClick="ajax( 'blog' , 'delete' , <?= $post->id ?> , $(this).parent().parent() )" class="icon-small-cross"></div></td>
+                </tr>
+            <?php endforeach; ?>
+        </table>
+    </div>
 </section>

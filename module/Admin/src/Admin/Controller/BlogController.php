@@ -30,14 +30,13 @@ class BlogController extends AbstractActionController
     {
         $this->layout("layout/admin");
         $postTable = $this->getPostTable();
-        
-        
+
         return [
             'posts' => $postTable->select(  null, 
                                             null,
                                             "users",
                                             "posts.author_id = users.id",
-                                            array( "id" , "full_name" ),
+                                            "full_name",
                                             "posts.id DESC" ),
         ];
     }
@@ -80,6 +79,16 @@ class BlogController extends AbstractActionController
             'message'       => isset( $message ) ? $message : null,
             'form'          => $form,
         ];
+    }
+    
+    public function deleteAction()
+    {
+        $id = $this->params('id');
+        
+        $postTable = $this->getPostTable();
+        $postTable->delete( $id );
+        
+        return $this->response;
     }
 
     /*************************************************************************\

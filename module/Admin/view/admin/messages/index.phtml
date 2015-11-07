@@ -19,7 +19,7 @@
                         <p class="small dark-grey-text"><?= $message->text ?></p>
                     </div>
                     <div class="tile-subheading">
-                        <p onClick="ajax( 'messages' , 'delete' , <?= $message->id ?> , $(this).parent().parent().parent() )" class="small dark-grey-text underline"><a>Delete</a></p>
+                        <div class="icon-small-cross" onClick="ajax( 'messages' , 'delete' , <?= $message->id ?> , $(this).parent().parent().parent() )"></div>
                     </div>
                 </div>
             </div>

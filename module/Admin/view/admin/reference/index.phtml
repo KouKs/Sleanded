@@ -3,12 +3,23 @@
         <h2 class="left white-text">Admin > Reference</h2>
     </div>    
 </section>
-<section class="part grid">
-    <?php if( count( $this->reference ) > 0 ) : ?>
-        <?php foreach( $this->reference as $reference ) : ?>
-            <div class="third grid-item">
-                <h3><?= $reference->name; ?></h3>
-            </div>
-        <?php endforeach; ?>        
-    <?php endif; ?>
+<section class="part">
+    <div class="area">
+        <h3>Reference list</h3>
+        <table class='admin' width='100%'>
+            <tr>
+                <th class="thin">#</th>
+                <th>Name</th>
+                <th class="thin" colspan="2">Actions</th>
+            </tr>
+            <?php foreach( $this->reference as $reference ) : ?>
+                <tr>
+                    <td><?= $reference->id ?></td>
+                    <td class="bold"><?= $reference->name ?></td>
+                    <td class="thin"><div class="icon-small-edit"></div></td>
+                    <td class="thin"><div  onClick="ajax( 'reference' , 'delete' , <?= $reference->id ?> , $(this).parent().parent() )" class="icon-small-cross"></div></td>
+                </tr>
+            <?php endforeach; ?>
+        </table>
+    </div>
 </section>

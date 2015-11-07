@@ -44,3 +44,17 @@ $(document).ready( function() {
     /* binding function to elements */
     $('.leave').leavePage();
 });
+/*
+ * Leave page function
+ */
+$.fn.leavePage = function() {   
+
+    this.click(function(event){
+
+        event.preventDefault();
+        linkLocation = this.href === undefined ? this.form.action : this.href;
+        $("body .page").fadeOut( "slow" , function() {
+            location.href = linkLocation;
+        });
+    }); 
+};

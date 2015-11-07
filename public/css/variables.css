@@ -247,23 +247,43 @@ h5 {
 /**
  * 6 - kony
  */
-icon {
+[class^='icon-big'] {
   width: 32px;
   height: 32px;
   display: block;
   float: right;
+  cursor: pointer;
 }
-icon-fb {
+[class^='icon-small'] {
+  width: 16px;
+  height: 16px;
+  display: block;
+  float: right;
+  cursor: pointer;
+}
+.icon-big-fb {
   background: url("../img/icons/facebook.png");
 }
-icon-fb:hover {
+.icon-big-fb:hover {
   background: url("../img/icons/facebook-hover.png");
 }
-icon-twitter {
+.icon-big-twitter {
   background: url("../img/icons/twitter.png");
 }
-icon-twitter:hover {
+.icon-big-twitter:hover {
   background: url("../img/icons/twitter-hover.png");
+}
+.icon-small-edit {
+  background: url("../img/icons/pen.png");
+}
+.icon-small-edit:hover {
+  background: url("../img/icons/pen-hover.png");
+}
+.icon-small-cross {
+  background: url("../img/icons/cross.png");
+}
+.icon-small-cross:hover {
+  background: url("../img/icons/cross-hover.png");
 }
 /**
  * 7 - Zprávy

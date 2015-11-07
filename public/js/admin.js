@@ -1,3 +1,6 @@
+
+var _URL = "/sleanded/public/admin/";
+
 /* 
  * Page loading
  */

@@ -29,12 +29,10 @@ class UsersController extends AbstractActionController
     public function indexAction()
     {
         $this->layout("layout/admin");
-        $table = $this->getUserTable();
-        $users = $table->fetchAll()->toArray();
         
         return [
             'message'       => isset( $message ) ? $message : null,
-            'users'         => $users
+            'users'         => $this->getUserTable()->fetchAll( ),
         ];
     }
     
