@@ -14,6 +14,7 @@
                 <th>E-mail</th>
                 <th>Job</th>
                 <th>IP</th>
+                <th class="thin" colspan="2">Actions</th>
             </tr>
             <?php foreach( $this->users as $u ) : ?>
                 <tr>
@@ -23,6 +24,8 @@
                     <td> <?= $u->email ?> </td>
                     <td> <?= $u->job ?> </td>
                     <td> <?= $u->ip ?> </td>
+                    <td class="thin"><div class="icon-small-edit"></div></td>
+                    <td class="thin"><div onClick="ajax( 'users' , 'delete' , <?= $u->id ?> , $(this).parent().parent() )" class="icon-small-cross"></div></td>
                 </tr>
             <?php endforeach; ?>
         </table>

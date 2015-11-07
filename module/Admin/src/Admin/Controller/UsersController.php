@@ -41,10 +41,20 @@ class UsersController extends AbstractActionController
         
         return [
             'message'       => isset( $message ) ? $message : null,
-            'form'          => new NewUserForm
+            'form'          => new NewUserForm(),
         ];
     }
 
+    public function deleteAction()
+    {
+        $id = $this->params('id');
+        
+        $userTable = $this->getUserTable();
+        $userTable->delete( $id );
+        
+        return $this->response;
+    }
+    
     /**
      * Returns an isntance of users table
      * @return Admin\Model\UserTable 
