@@ -59,6 +59,7 @@ return array(
             'Admin\Controller\Users' => 'Admin\Controller\UsersController',
             'Admin\Controller\Reference' => 'Admin\Controller\ReferenceController',
             'Admin\Controller\Blog' => 'Admin\Controller\BlogController',
+            'Admin\Controller\Profile' => 'Admin\Controller\ProfileController',
         ),
     ), 
     'view_manager' => array(

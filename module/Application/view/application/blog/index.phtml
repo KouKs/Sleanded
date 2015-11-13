@@ -12,7 +12,7 @@
             <div class="third grid-item">
                 <div class="text-area">
                 <article class="blog-post">
-                    <img src="<?= $post->img ?>" />
+                    <img src="<?= $this->basePath( $post->img ) ?>" />
                     <div>
                         <h5><?= $post->topic ?></h5>
                         <p class="small description"><?= $post->full_name . " on " .  $this->date( $post->time ) ?></p>

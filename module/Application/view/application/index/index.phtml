@@ -71,7 +71,7 @@
             As has been mentioned before, we are a starting company
             thus all projects are dealt with swiftly and are carefully tailored to client’s requests.
             At the moment, we are building up our reference portfolio thus we can offer very pleasant prices
-            for all kinds of projects
+            for all kinds of projects.
         </p>
         <p class="big justify margin indent">
             <a class="leave" href="<?php echo $this->basePath("team"); ?>"><span class="red-text">Meet our team!</span></a>
@@ -85,7 +85,7 @@
         <?php foreach( $this->reference as $reference ) : ?>
             <a class="leave" href="<?= $this->url('application') ?>work/detail/<?= $reference->id ?>/<?= $this->urlparser( $reference->name ); ?>">
                 <div class="reference">
-                    <img src="<?= $reference->img ?>" />
+                    <img src="<?= $this->basePath( $reference->img ) ?>" />
                     <div>
                         <h5><?= $reference->name ?></h5>
                         <p class="small description"><?= $this->date( $reference->time ) ?></p>
@@ -104,7 +104,7 @@
         <?php foreach( $this->posts as $post ) : ?>
             <a class="leave"  href="<?= $this->url('application') ?>blog/detail/<?= $post->id ?>/<?= $this->urlparser( $post->topic ); ?>">
                 <article class="post">
-                    <img src="<?= $post->img ?>" />
+                    <img src="<?= $this->basePath( $post->img ) ?>" />
                     <div>
                         <h5 class="light-grey-text"><?= $post->topic ?></h5>
                         <p class="small description"><?= $post->full_name . " on " .  $this->date( $post->time ) ?></p>

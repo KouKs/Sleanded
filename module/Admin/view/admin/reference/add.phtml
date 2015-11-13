@@ -12,10 +12,9 @@
                $form->setAttribute('class' , 'admin');
                echo $this->form()->openTag($form); ?>
         
-         <?=   $this->formElement( $form->get('name') ) .  
+         <?=   $this->formElement( $form->get('desc') ) .  
                $this->formElement( $form->get('img') ) . 
-               $this->formElement( $form->get('desc') ) . 
-               $this->formElement( $form->get('text') ) .
+               $this->formElement( $form->get('displayed') ) . 
                $this->formButton( $form->get('submit') , 'Save' ) ?>
              
         <?= $this->form()->closeTag() ?>

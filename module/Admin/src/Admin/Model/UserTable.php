@@ -17,6 +17,10 @@
     ENGINE=MyISAM
     AUTO_INCREMENT=2
 ;
+ALTER TABLE `users`
+	ADD COLUMN `displayed` INT NULL DEFAULT '0' AFTER `ip`,
+	ADD COLUMN `img` VARCHAR(100) NULL AFTER `displayed`,
+	ADD COLUMN `desc` TEXT NULL DEFAULT NULL AFTER `img`;
 
  */
 namespace Admin\Model;
@@ -43,31 +47,29 @@ class UserTable {
         
         return $rs;
     }
-    
-    public function add( ContactFilter $contact ) {
+    /*
+    public function add( UserFilter $u ) {
         
         $data = [
-            'name'      => $contact->name,
-            'email'     => $contact->email,
-            'password'  => sha1( $contact->password ),
+            'name'      => $u->name,
+            'email'     => $u->email,
+            'password'  => hash( 'sha256', $u->$password ),
             'ip'        => $_SERVER['REMOTE_ADDR'],
         ];
         
         if( !$this->tableGateway->insert( $data ) )
             throw new \Exception( "An error occured, please contact administrator." );
-    }
+    }*/
     
     public function edit( $id , $data )
     {
         if( $id == "*" )
         {
             $this->tableGateway->update( $data );
-                //throw new \Exception( "An error occured, please contact administrator." );
         }
         else
         {
             $this->tableGateway->update( $data , [ 'id' => $id ] );
-                //throw new \Exception( "An error occured, please contact administrator." );
         }
     }
     
@@ -77,14 +79,15 @@ class UserTable {
             throw new \Exception( "An error occured, please contact administrator." );
     }
     
-    public function select( $where = null , $join = null , $cond = null , $cols = null , $order = "id ASC" )
+    public function select( $where = null , $limit = null , $join = null , $cond = null , $cols = null , $order = "id DESC" )
     {
         $select = $this->tableGateway->getSql()
                 ->select()
-                ->where( $where )
-                ->order( $order );
+                ->order($order);
         
-        if( $join != null ) $select->joinLeft( $join , $cond , $cols );
+        if( $limit ) $select->limit( $limit );
+        if( $where ) $select->where( $where );
+        if( $join != null ) $select->join( $join , $cond , $cols );
         
         $result = $this->tableGateway->getSql()->prepareStatementForSqlObject( $select )->execute();
         

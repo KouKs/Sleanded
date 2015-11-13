@@ -5,11 +5,11 @@ namespace Admin\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Session\Container;
 
-use Admin\Form\PostForm;
-use Admin\Model\PostFilter;
+use Admin\Form\ProfileEditForm;
+use Admin\Model\ProfileEditFilter;
 use Application\Helper\Messenger;
 
-class BlogController extends AbstractActionController
+class ProfileController extends AbstractActionController
 {
     private $user;
     
@@ -29,22 +29,8 @@ class BlogController extends AbstractActionController
     public function indexAction()
     {
         $this->layout("layout/admin");
-        $postTable = $this->getPostTable();
-
-        return [
-            'posts' => $postTable->select(  null, 
-                                            null,
-                                            "users",
-                                            "posts.author_id = users.id",
-                                            "full_name",
-                                            "posts.id DESC" ),
-        ];
-    }
-
-    public function addAction()
-    {
-        $this->layout("layout/admin");
-        $form = new PostForm( $this->user->id );
+        $user = $this->getUserTable()->select("id = ". $this->user->id)->toArray(); 
+        $form = new ProfileEditForm( $user[0]["desc"] , $user[0]["displayed"] );
         $request = $this->getRequest();
         
         if ( $request->isPost() )
@@ -53,8 +39,8 @@ class BlogController extends AbstractActionController
             $files = $request->getFiles( );
             $post['img'] = "uploads/" . $files["img"]["name"];
 
-            $blogPost = new PostFilter();
-            $form->setInputFilter( $blogPost->getInputFilter() );
+            $profileEdit = new ProfileEditFilter();
+            $form->setInputFilter( $profileEdit->getInputFilter() );
             $form->setData( $post );
 
             if ( $form->isValid() )
@@ -62,11 +48,11 @@ class BlogController extends AbstractActionController
                 $filter = new \Zend\Filter\File\RenameUpload("./public/uploads/");
                 $filter->setUseUploadName(true);
                 $filter->filter( $files['img'] );
-
-                $blogPost->exchangeArray( $form->getData() );
-                $this->getPostTable()->add( $blogPost );
                 
-                $message = [ "Post has been successfully added" , Messenger::SUCCESS ];
+                $profileEdit->exchangeArray( $form->getData() );
+                $this->getUserTable()->edit( $this->user->id , $profileEdit->toArray() );
+                
+                $message = [ "Reference has been successfully added" , Messenger::SUCCESS ];
             }
             else
             {
@@ -74,34 +60,25 @@ class BlogController extends AbstractActionController
             }
         }
         
-        
         return [
             'message'       => isset( $message ) ? $message : null,
             'form'          => $form,
+            'user'          => $user,
         ];
     }
-    
-    public function deleteAction()
-    {
-        $id = $this->params('id');
-        
-        $postTable = $this->getPostTable();
-        $postTable->delete( $id );
-        
-        return $this->response;
-    }
+
 
     /*************************************************************************\
      | Private functions                                                          |
     \*************************************************************************/
     
     /**
-     * Returns an isntance of post table
-     * @return Application\Model\PostTable 
+     * Returns an isntance of user table
+     * @return Admin\Model\UserTable 
      */
-    private function getPostTable()
+    private function getUserTable()
     {
-        return $this->getServiceLocator()->get('Application\Model\PostTable');
+        return $this->getServiceLocator()->get('Admin\Model\UserTable');
     }
 }
 

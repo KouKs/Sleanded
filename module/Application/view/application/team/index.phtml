@@ -13,32 +13,34 @@
     </div>
 </section>
 
-<section class="part white">
-    <div class="half team-tile">
-        <div class="text-area">
-            <h4>Michael Bausano</h4>
-            <p class="medium description">ceo, coder</p>
-            <p class="big justify margin indent about grey-text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-        </div>
-    </div>
-    <div class="half no-padding team-tile">
-        <img src="img/my.png" />
-    </div>
-</section>
-
-<section class="part white">
-    <div class="half team-tile">
-        <img src="img/my.png" />
-    </div>
-    <div class="half team-tile">
-        <div class="text-area">
-            <h4>Pavel Koch</h4>
-            <p class="medium description">ceo, coder, designer</p>
-            <p class="big justify margin indent about grey-text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-        </div>
-    </div>
-</section>
+<?php foreach( $this->team as $index=>$coder ) : ?>
+    <section class="part white">
+        <?php if( $index % 2 == 0 ) : ?>
+            <div class="half team-tile">
+                <div class="text-area">
+                    <h4><?= $coder->full_name ?></h4>
+                    <p class="medium description"><?= str_replace( ";" , ", " , $coder->job ) ?></p>
+                    <p class="big justify margin indent about grey-text">
+                        <?= $coder->desc ?>
+                    </p>
+                </div>
+            </div>
+            <div class="half no-padding team-tile">
+                <img src="<?= $this->basePath( $coder->img ) ?>" />
+            </div>
+        <?php else : ?>
+            <div class="half no-padding team-tile">
+                <img src="<?= $this->basePath( $coder->img ) ?>" />
+            </div>
+            <div class="half team-tile">
+                <div class="text-area">
+                    <h4><?= $coder->full_name ?></h4>
+                    <p class="medium description"><?= str_replace( ";" , ", " , $coder->job ) ?></p>
+                    <p class="big justify margin indent about grey-text">
+                        <?= $coder->desc ?>
+                    </p>
+                </div>
+            </div>
+        <?php endif; ?>
+    </section>
+<?php endforeach; ?>

@@ -47,7 +47,7 @@ class ReferenceController extends AbstractActionController
         {
             $post = $request->getPost()->toArray();
             $files = $request->getFiles( );
-            $post['img'] = "./uploads/" . $files["img"]["name"];
+            $post['img'] = "uploads/" . $files["img"]["name"];
 
             $reference = new ReferenceFilter();
             $form->setInputFilter( $reference->getInputFilter() );

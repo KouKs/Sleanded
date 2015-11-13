@@ -251,6 +251,12 @@ h5 {
   position: absolute;
   z-index: -1;
 }
+hr {
+  border: 0;
+  height: 2px;
+  background: #333;
+  background-image: linear-gradient(to right, #b23432, #fff);
+}
 /**
  * 6 - kony
  */
@@ -511,6 +517,17 @@ header > nav nav a:hover {
 /**
  * 2.1 - Ostatní
  */
+img.bordered {
+  margin: 5px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #aaa;
+  box-sizing: border-box;
+  background-color: #b23432;
+  -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+}
 .hidden {
   display: none;
 }
@@ -611,6 +628,57 @@ header > nav nav a:hover {
 .login-area button:focus {
   background: #d9403c;
 }
+.admin label {
+  float: left;
+}
+.admin input,
+.admin textarea {
+  margin: 5px;
+  padding: 5px;
+  min-width: 100%;
+  max-width: 100%;
+  background-color: #fafafa;
+  background-image: -moz-linear-gradient(top, #fafafa, #f8f8f8);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fafafa), to(#f8f8f8));
+  background-image: -webkit-linear-gradient(top, #fafafa, #f8f8f8);
+  background-image: -o-linear-gradient(top, #fafafa, #f8f8f8);
+  background-image: linear-gradient(to bottom, #fafafa, #f8f8f8);
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  font-size: 20px;
+  line-height: 20px;
+  color: #333;
+  font-family: 'Proxima nova';
+  box-sizing: border-box;
+}
+.admin input:hover,
+.admin textarea:hover,
+.admin input:focus,
+.admin textarea:focus {
+  background: #fff;
+}
+.admin textarea {
+  width: 100% !important;
+  min-height: 300px;
+}
+.admin button {
+  padding: 10px 25px;
+  border: none;
+  border-radius: 5px;
+  background: #b23432;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 14px;
+  line-height: 14x;
+  color: #eee;
+  -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+}
+.admin button:hover,
+.admin button:focus {
+  background: #d9403c;
+}
 /**
  * 4 - Tlačítka (<a>)
  */
@@ -691,5 +759,21 @@ table.admin th:last-child {
 table.admin th:last-child,
 table.admin td:last-child {
   border-right: none;
+}
+table.clear {
+  padding: 0;
+  margin: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+td {
+  padding: 15px;
+  vertical-align: top;
+}
+td.left {
+  text-align: left;
+}
+td.right {
+  text-align: right;
 }
 /*# sourceMappingURL=admin.css.map */
