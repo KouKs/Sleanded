@@ -9,16 +9,18 @@
     <div class="area">        
         <h3 class="left dark-grey-text">Adding a reference</h3>
         <hr />
-         <?php $form = $this->form;
-               $form->prepare();
-               $form->setAttribute('class' , 'admin');
-               echo $this->form()->openTag($form); ?>
+        <?php $form = $this->form;
+              $form->prepare();
+              $form->setAttribute('class' , 'admin');
+              echo $this->form()->openTag($form); ?>
         
-         <?=   $this->formElement( $form->get('name') ) .  
-               $this->formElement( $form->get('img') ) . 
-               $this->formElement( $form->get('desc') ) . 
-               $this->formElement( $form->get('text') ) . 
-               $this->formButton( $form->get('submit') , 'Save' ) ?>
+        <?=   $this->formElement( $form->get('name') ) .  
+              $this->formElement( $form->get('img') ) ?>
+        <?= $this->media( $this->images , $this->basePath("") ); ?>
+        <?=
+              $this->formElement( $form->get('desc') ) . 
+              $this->formElement( $form->get('text') ) . 
+              $this->formButton( $form->get('submit') , 'Save' ) ?>
              
         <?= $this->form()->closeTag() ?>
     </div>

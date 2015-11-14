@@ -46,14 +46,10 @@ class PostForm extends Form
         $this->add(array(
             'name' => 'img',
             'type' => 'hidden',
+            'attributes' => array(
+                'id' => 'img',
+            ),
         ));
-        /*
-        $this->add(array(
-            'name' => 'img',
-            'type' => 'Zend\Form\Element\File',
-            'label' => 'Image displayed as miniature',
-        ));
-         */
         $this->add(array(
             'name' => 'submit',
             'attributes' => array(

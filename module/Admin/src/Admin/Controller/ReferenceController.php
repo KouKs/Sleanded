@@ -28,12 +28,10 @@ class ReferenceController extends AbstractActionController
     
     public function indexAction()
     {
-        $this->layout("layout/admin");
-        $refereceTable = $this->getReferenceTable();
-        
+        $this->layout("layout/admin");        
         
         return [
-            'reference' => $refereceTable->fetchAll(),
+            'reference' => $this->getReferenceTable()->fetchAll(),
         ];
     }
 
@@ -66,6 +64,7 @@ class ReferenceController extends AbstractActionController
         return [
             'message'       => isset( $message ) ? $message : null,
             'form'          => $form,
+            'images'    => $this->getMediaTable()->fetchAll(),
         ];
     }
     
@@ -85,11 +84,20 @@ class ReferenceController extends AbstractActionController
     
     /**
      * Returns an isntance of reference table
-     * @return Application\Model\ReferenceTable 
+     * @return Application\Database\ReferenceTable 
      */
     private function getReferenceTable()
     {
         return $this->getServiceLocator()->get('Application\Database\ReferenceTable');
+    }
+    
+    /**
+     * Returns an isntance of message table
+     * @return Application\Database\Media 
+     */
+    private function getMediaTable()
+    {
+        return $this->getServiceLocator()->get('Application\Database\MediaTable');
     }
 }
 

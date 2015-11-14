@@ -21,6 +21,10 @@ return array(
                 $helper = new Application\Helper\Messenger();
                 return $helper;           
             },
+            'media' => function($sm) {
+                $helper = new Application\Helper\Media();
+                return $helper;           
+            },
         ),
         'invokables' => array(
             //'menu' => 'Application\Helper\Menu', 

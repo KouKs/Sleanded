@@ -17,6 +17,15 @@ $(document).ready( function() {
         $(this).prev().css({ 'background': "" , 'border-color': ""});
     });
     
+    /*
+     * Media tab
+     */
+    $(".media-window img").click(function() {
+        $(this).parent().fadeOut();
+    });
+    /*
+     * Dropzone
+     */
     $("#dropzone").dropzone({ url: _URL + "media"});
     
     Dropzone.options.dropzone = {

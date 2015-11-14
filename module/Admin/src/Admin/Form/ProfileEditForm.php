@@ -27,16 +27,12 @@ class ProfileEditForm extends Form
                 'value' => $desc,
             ),
         ));
-        /*
-        $this->add(array(
-            'name' => 'img',
-            'type' => 'Zend\Form\Element\File',
-            'label' => 'Profile image displayed on team page',
-        ));
-         */
         $this->add(array(
             'name' => 'img',
             'type' => 'hidden',
+            'attributes' => array(
+                'id' => 'img',
+            ),
         ));
         $this->add(array(
             'name' => 'displayed',

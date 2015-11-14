@@ -36,16 +36,12 @@ class ReferenceForm extends Form
                 'class' => 'editor'
             ),
         ));
-        /*
-        $this->add(array(
-            'name' => 'img',
-            'type' => 'Zend\Form\Element\File',
-            'label' => 'Image displayed as miniature',
-        ));
-         */
         $this->add(array(
             'name' => 'img',
             'type' => 'hidden',
+            'attributes' => array(
+                'id' => 'img',
+            ),
         ));
         $this->add(array(
             'name' => 'submit',
