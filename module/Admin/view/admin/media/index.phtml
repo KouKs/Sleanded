@@ -5,11 +5,37 @@
 </section>
 <section class="part">
     <div class="area">
-        <h3 class="left white-text">Media administration</h3>
+        <h3 class="left dark-grey-text">Media administration</h3>
+        <h4 class="left dark-grey-text">Upload new</h4>
         <hr />
     </div>    
 </section>
-<section class="part grid">
-    <div class="third grid-item">
+<section class="part">
+    <?php $form = $this->form;
+          $form->prepare();
+          $form->setAttribute('class' , 'admin');
+          echo $this->form()->openTag($form); ?>
+
+    <?= $this->formElement( $form->get('file[]') ) ?>
+
+    <?= $this->form()->closeTag() ?>
+</section>
+<section class="part">
+    <div class="area">
+        <h4 class="left dark-grey-text">Currently uploaded media</h4>
+        <hr />
     </div>    
+</section>
+<section class="part grid img-list">
+    <?php foreach( $this->images as $img ) : ?>
+        <div class="third grid-item">
+            <div class="text-area">
+                <img class="bordered" src="<?= $this->basePath( $img->url ) ?>" />
+                <div class="desc">
+                    <p  style="float: left" class="medium white-text"><?= strlen( $img->name ) > 25 ? substr( $img->name , 0 , 25) . "..." : $img->name ?></p>
+                    <div onClick="ajax( 'media' , 'delete' , <?= $img->id ?> , $(this).parent().parent() )" style="float: right; margin: 2px" class="icon-small-cross"></div>
+                </div>
+            </div>
+        </div>    
+    <?php endforeach; ?>
 </section>

@@ -16,5 +16,25 @@ $(document).ready( function() {
     }, function() {
         $(this).prev().css({ 'background': "" , 'border-color': ""});
     });
+    
+    $("#dropzone").dropzone({ url: _URL + "media"});
+    
+    Dropzone.options.dropzone = {
+        paramName: "file[]",
+        maxFilesize: 4,
+        uploadMultiple: true,
+        parallelUploads: 25,
+        maxFiles: 25,
+        autoProcessQueue: true,
+        acceptedFiles: 'image/*',
+        accept: function(file, done) {
+            done();
+        }
+      };
+    
+    $("#dropzone").on("complete", function(file) {
+       $("#dropzone").removeFile(file);
+       alert("xD");
+    });
 });
 

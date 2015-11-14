@@ -134,7 +134,65 @@ header {
     width: 350px;
     margin: 15% auto;
 }
+/**
+ * 1.4 - Media
+ */
+#dropzone {
+    width: 90%; min-height: 200px;
+    background: rgba( 255,255,255,0.6 );
+    border: 5px dotted @theme-color;
+    top: 0; left: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    margin: 5% auto;
+    border-radius: 10px;
+    
+    .dz-preview {
+        display: inline-block;
+        vertical-align: top;
+        width: 23%;
+        margin: 1%;
+    }
+    
+    img {
+        margin: 5px;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #aaa;
+        box-sizing: border-box;
+        background-color: @theme-color;
+    }
+    
+    .dz-details, .dz-success-mark, .dz-error-mark , .dz-error-message {
+        display: none
+    }
+    
+    .dz-progress {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        z-index: 1000;
+        background-color: @theme-color;
+        height: 10px;
+        border-radius: 5px;
+    }
+}
+.img-list {
+    .desc {
+        cursor: pointer;
+        height: 32px; width: 100%;
+        padding: 6px;
+        background: @theme-color;
+    
+        border-radius: 5px;
+        box-sizing: border-box;
+        .shadow();
+        &:hover {
+            .shadow(0.6);
 
+        }
+    }
+}
 /**
  * 2 - Custom třídy
  */
@@ -143,10 +201,8 @@ header {
  * 2.1 - Ostatní
  */
 img.bordered {
-    margin: 5px;
     padding: 10px;
     border-radius: 5px;
-    border: 1px solid #aaa;
     box-sizing: border-box;
     background-color: @theme-color;
     .shadow();

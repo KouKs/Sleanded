@@ -512,16 +512,75 @@ header > nav nav a:hover {
   margin: 15% auto;
 }
 /**
+ * 1.4 - Media
+ */
+#dropzone {
+  width: 90%;
+  min-height: 200px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 5px dotted #b23432;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  margin: 5% auto;
+  border-radius: 10px;
+}
+#dropzone .dz-preview {
+  display: inline-block;
+  vertical-align: top;
+  width: 23%;
+  margin: 1%;
+}
+#dropzone img {
+  margin: 5px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #aaa;
+  box-sizing: border-box;
+  background-color: #b23432;
+}
+#dropzone .dz-details,
+#dropzone .dz-success-mark,
+#dropzone .dz-error-mark,
+#dropzone .dz-error-message {
+  display: none;
+}
+#dropzone .dz-progress {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  z-index: 1000;
+  background-color: #b23432;
+  height: 10px;
+  border-radius: 5px;
+}
+.img-list .desc {
+  cursor: pointer;
+  height: 32px;
+  width: 100%;
+  padding: 6px;
+  background: #b23432;
+  border-radius: 5px;
+  box-sizing: border-box;
+  -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+}
+.img-list .desc:hover {
+  -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.6);
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.6);
+}
+/**
  * 2 - Custom třídy
  */
 /**
  * 2.1 - Ostatní
  */
 img.bordered {
-  margin: 5px;
   padding: 10px;
   border-radius: 5px;
-  border: 1px solid #aaa;
   box-sizing: border-box;
   background-color: #b23432;
   -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);

@@ -40,6 +40,7 @@ class MediaTable {
     public function add( TableModel\Media $m ) {
         
         $data = [
+            'name' => $m->name,
             'url' => $m->url,
         ];
         

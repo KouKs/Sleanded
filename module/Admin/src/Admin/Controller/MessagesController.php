@@ -51,7 +51,7 @@ class MessagesController extends AbstractActionController
     
     /**
      * Returns an isntance of message table
-     * @return Application\Model\MessageTable 
+     * @return Application\Database\MessageTable 
      */
     private function getMessageTable()
     {

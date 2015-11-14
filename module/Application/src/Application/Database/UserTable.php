@@ -138,5 +138,16 @@ class UserTable {
         
         return $rs->toArray();        
     }
+    
+    public function updateProfile( $id , TableModel\User $u ) {
+        
+        $data = [
+            "desc" => $u->desc,
+            "displayed" => $u->displayed,
+        ];        
+        if( $u->img ) $data["img"] = $u->img;
+
+        $this->edit( $id , $data );
+    }
 }
 
