@@ -4,39 +4,45 @@
     </div>    
 </section>
 <section class="part">
-    <div class="half">   
-        <h3 class="center dark-grey-text">New messages</h3>
-        <?php if( count( $this->messages ) > 0 ) : ?>
-            <table class="admin">
-                <tr>
-                    <th>Name</th>
-                    <th>E-mail</th>
-                    <th>Text</th>
-                </tr>
-                <?php foreach( $this->messages as $message ) : ?>
-                    <tr>  
-                        <td><?= $message->name ?></td>
-                        <td><?= $message->email ?></td>
-                        <td><?= strlen( $message->text ) > 30 ? substr( $message->text , 0 , 30 ) . "..." : $message->text ?></td>
+    <div class="half"> 
+        <div class="text-area">
+            <h3 class="center dark-grey-text">New messages</h3>
+            <?php if( count( $this->messages ) > 0 ) : ?>
+                <table class="admin">
+                    <tr>
+                        <th>Name</th>
+                        <th>E-mail</th>
+                        <th>Text</th>
                     </tr>
-                <?php endforeach; ?>
-            </table>
-        <?php else : ?>
-            <h4 class="center dark-grey-text">No new messages :(</h4>
-        <?php endif; ?>
+                    <?php foreach( $this->messages as $message ) : ?>
+                        <tr>  
+                            <td><?= $message->name ?></td>
+                            <td><?= $message->email ?></td>
+                            <td><?= strlen( $message->text ) > 30 ? substr( $message->text , 0 , 30 ) . "..." : $message->text ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </table>
+            <?php else : ?>
+                <h4 class="center dark-grey-text">No new messages :(</h4>
+            <?php endif; ?>
+        </div>
     </div>    
     <div class="half">
-        <h3 class="center dark-grey-text">Pending TODOs</h3>
-        <p class="big dark-grey-text">
-            - Zakomentovat a rozdělit LoginConrtroller<br />
-            - Dodělat form na users<br />
-            - Dodělat form na reference<br />
-            - Dodělat form na blog<br />
-            - Editace referencí a blogu<br />
-            - Později: nahrávání médií (lepší práce s obrázky)<br />
-        </p>
+        <div class="text-area">
+            <h3 class="center dark-grey-text">Pending TODOs</h3>
+            <p class="big dark-grey-text">
+                - Zakomentovat a rozdělit LoginConrtroller<br />
+                - Dodělat form na users<br />
+                - Dodělat form na reference<br />
+                - Dodělat form na blog<br />
+                - Editace referencí a blogu<br />
+                - Později: nahrávání médií (lepší práce s obrázky)<br />
+            </p>
+        </div>
     </div>     
     <div class="half">
-        <h3 class="center dark-grey-text">Latest blog posts</h3>
+        <div class="text-area">
+            <h3 class="center dark-grey-text">Latest blog posts</h3>
+        </div>
     </div>  
 </section>

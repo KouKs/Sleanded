@@ -6,7 +6,8 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Session\Container;
 
 use Admin\Form\ProfileEditForm;
-use Admin\Model\ProfileEditFilter;
+
+use Application\Database\TableModel\User;
 use Application\Helper\Messenger;
 
 class ProfileController extends AbstractActionController
@@ -35,22 +36,14 @@ class ProfileController extends AbstractActionController
         
         if ( $request->isPost() )
         {
-            $post = $request->getPost()->toArray();
-            $files = $request->getFiles( );
-            $post['img'] = "uploads/" . $files["img"]["name"];
-
-            $profileEdit = new ProfileEditFilter();
-            $form->setInputFilter( $profileEdit->getInputFilter() );
-            $form->setData( $post );
+            $form->setInputFilter( $form->getInputFilter() );
+            $form->setData( $request->getPost() );
 
             if ( $form->isValid() )
             {
-                $filter = new \Zend\Filter\File\RenameUpload("./public/uploads/");
-                $filter->setUseUploadName(true);
-                $filter->filter( $files['img'] );
-                
-                $profileEdit->exchangeArray( $form->getData() );
-                $this->getUserTable()->edit( $this->user->id , $profileEdit->toArray() );
+                $u = new User;  
+                $u->exchangeArray( $request->getPost() );
+                $this->getUserTable()->updateProfile( $this->user->id , $u );
                 
                 $message = [ "Reference has been successfully added" , Messenger::SUCCESS ];
             }
@@ -78,7 +71,7 @@ class ProfileController extends AbstractActionController
      */
     private function getUserTable()
     {
-        return $this->getServiceLocator()->get('Admin\Model\UserTable');
+        return $this->getServiceLocator()->get('Application\Database\UserTable');
     }
 }
 

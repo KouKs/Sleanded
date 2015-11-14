@@ -23,7 +23,7 @@ ALTER TABLE `users`
 	ADD COLUMN `desc` TEXT NULL DEFAULT NULL AFTER `img`;
 
  */
-namespace Admin\Model;
+namespace Application\Database;
 
 use Zend\Db\TableGateway\TableGateway;
 use Zend\Db\ResultSet\ResultSet;
@@ -47,19 +47,25 @@ class UserTable {
         
         return $rs;
     }
-    /*
-    public function add( UserFilter $u ) {
+    
+    public function add( TableModel\User $u ) {
         
         $data = [
             'name'      => $u->name,
             'email'     => $u->email,
-            'password'  => hash( 'sha256', $u->$password ),
+            'password'  => $u->password,
+            'full_name'  => $u->full_name,
+            'job'  => $u->job,
+            'email'  => $u->email,
+            'desc'  => $u->desc,
+            'img'  => $u->img,
+            'displayed'  => $u->displayed,
             'ip'        => $_SERVER['REMOTE_ADDR'],
         ];
         
         if( !$this->tableGateway->insert( $data ) )
             throw new \Exception( "An error occured, please contact administrator." );
-    }*/
+    }
     
     public function edit( $id , $data )
     {

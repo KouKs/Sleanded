@@ -7,6 +7,7 @@
 namespace Admin\Form;
 
 use Zend\Form\Form;
+use Zend\InputFilter\InputFilter;
 
 class PostForm extends Form
 {
@@ -44,14 +45,79 @@ class PostForm extends Form
         ));
         $this->add(array(
             'name' => 'img',
+            'type' => 'hidden',
+        ));
+        /*
+        $this->add(array(
+            'name' => 'img',
             'type' => 'Zend\Form\Element\File',
             'label' => 'Image displayed as miniature',
         ));
+         */
         $this->add(array(
             'name' => 'submit',
             'attributes' => array(
                 'class' => 'hvr-grow'
              ),
         ));
+    }
+
+    public function getInputFilter()
+    {
+        $inputFilter = new InputFilter();
+
+        $inputFilter->add(array(
+            'name'     => 'topic',
+            'required' => true,
+            'filters'  => array(
+                array('name' => 'StripTags'),
+                array('name' => 'StringTrim'),
+            ),
+            'validators' => array(
+                array(
+                    'name'    => 'StringLength',
+                    'options' => array(
+                        'encoding' => 'UTF-8',
+                        'min'      => 3,
+                        'max'      => 20,
+                    ),
+                ),
+            ),
+        ));
+
+        $inputFilter->add(array(
+            'name'     => 'desc',
+            'required' => true,
+            'filters'  => array(
+                array('name' => 'StripTags'),
+                array('name' => 'StringTrim'),
+            ),
+            'validators' => array(
+                array(
+                    'name'    => 'StringLength',
+                    'options' => array(
+                        'encoding' => 'UTF-8',
+                        'min'      => 3,
+                        'max'      => 100,
+                    ),
+                ),
+            ),
+        ));
+        $inputFilter->add(array(
+            'name'     => 'text',
+            'required' => true,
+            'validators' => array(
+                array(
+                     'name'    => 'StringLength',
+                     'options' => array(
+                         'encoding' => 'UTF-8',
+                         'min'      => 3,
+                         'max'      => 10000,
+                     ),
+                ),
+            ),
+        ));
+
+        return $inputFilter;
     }
 }

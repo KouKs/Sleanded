@@ -7,6 +7,7 @@
 namespace Admin\Form;
 
 use Zend\Form\Form;
+use Zend\InputFilter\InputFilter;
 
 class ProfileEditForm extends Form
 {
@@ -16,6 +17,7 @@ class ProfileEditForm extends Form
         
         $desc = isset( $desc ) ? $desc : "";
         $checked = $checked ? "checked" : "";
+        
         $this->add(array(
             'name' => 'desc',
             'type' => 'textarea',
@@ -25,10 +27,16 @@ class ProfileEditForm extends Form
                 'value' => $desc,
             ),
         ));
+        /*
         $this->add(array(
             'name' => 'img',
             'type' => 'Zend\Form\Element\File',
             'label' => 'Profile image displayed on team page',
+        ));
+         */
+        $this->add(array(
+            'name' => 'img',
+            'type' => 'hidden',
         ));
         $this->add(array(
             'name' => 'displayed',
@@ -45,5 +53,11 @@ class ProfileEditForm extends Form
                 'class' => 'hvr-grow'
              ),
         ));
+    }
+    
+    public function getInputFilter() {
+        $inputFilter = new InputFilter();
+        
+        return $inputFilter;
     }
 }

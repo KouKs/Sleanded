@@ -37,7 +37,7 @@ class WorkController extends AbstractActionController
      */
     private function getReferenceTable()
     {
-        return $this->getServiceLocator()->get('Application\Model\ReferenceTable');
+        return $this->getServiceLocator()->get('Application\Database\ReferenceTable');
     }
 }
 

@@ -60,6 +60,7 @@ return array(
             'Admin\Controller\Reference' => 'Admin\Controller\ReferenceController',
             'Admin\Controller\Blog' => 'Admin\Controller\BlogController',
             'Admin\Controller\Profile' => 'Admin\Controller\ProfileController',
+            'Admin\Controller\Media' => 'Admin\Controller\MediaController',
         ),
     ), 
     'view_manager' => array(

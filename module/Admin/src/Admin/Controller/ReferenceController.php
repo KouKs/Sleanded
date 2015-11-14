@@ -6,7 +6,7 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Session\Container;
 
 use Admin\Form\ReferenceForm;
-use Admin\Model\ReferenceFilter;
+use Application\Database\TableModel\Reference;
 use Application\Helper\Messenger;
 
 class ReferenceController extends AbstractActionController
@@ -45,22 +45,14 @@ class ReferenceController extends AbstractActionController
         
         if ( $request->isPost() )
         {
-            $post = $request->getPost()->toArray();
-            $files = $request->getFiles( );
-            $post['img'] = "uploads/" . $files["img"]["name"];
-
-            $reference = new ReferenceFilter();
-            $form->setInputFilter( $reference->getInputFilter() );
-            $form->setData( $post );
+            $form->setInputFilter( $form->getInputFilter() );
+            $form->setData( $request->getPost() );
 
             if ( $form->isValid() )
             {
-                $filter = new \Zend\Filter\File\RenameUpload("./public/uploads/");
-                $filter->setUseUploadName(true);
-                $filter->filter( $files['img'] );
-
-                $reference->exchangeArray( $form->getData() );
-                $this->getReferenceTable()->add( $reference );
+                $r = new Reference();
+                $r->exchangeArray( $request->getPost() );
+                $this->getReferenceTable()->add( $r );
                 
                 $message = [ "Reference has been successfully added" , Messenger::SUCCESS ];
             }
@@ -97,7 +89,7 @@ class ReferenceController extends AbstractActionController
      */
     private function getReferenceTable()
     {
-        return $this->getServiceLocator()->get('Application\Model\ReferenceTable');
+        return $this->getServiceLocator()->get('Application\Database\ReferenceTable');
     }
 }
 

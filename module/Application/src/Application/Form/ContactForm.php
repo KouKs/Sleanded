@@ -7,10 +7,12 @@
 namespace Application\Form;
 
 use Zend\Form\Form;
+use Zend\InputFilter\InputFilter;
+
 
 class ContactForm extends Form
 {
-    public function __construct($name = null,$kategorie = null)
+    public function __construct()
     {
         parent::__construct('contact');
         
@@ -18,7 +20,6 @@ class ContactForm extends Form
             'name' => 'name',
             'type' => 'text',
             'attributes' => array(
-                // TODO: TRANSLATION
                 'placeholder' => 'name'
             ),
         ));
@@ -29,35 +30,10 @@ class ContactForm extends Form
                 'placeholder' => 'e-mail'
             ),
         ));
-        /*$this->add(array(
-            'name' => 'kategorie',
-            'type' => 'Zend\Form\Element\Select',
-            'options' => array(
-                'empty_option' => array(
-                    'label' => 'where did you hear of us',
-                    'attributes' => array(
-                        'selected' => 'selected',
-                        'disabled' => 'disabled',
-                        'hdidden' => 'hidden',
-                    ),
-                ),
-                'value_options' => array(
-                    'facebook' => array(
-                        'label' => "Facebook",
-                        'value' => "Facebook",
-                    ),
-                    'twitter' => array(
-                        'label' => "Twitter",
-                        'value' => "Twitter",
-                    ),
-                ),
-            ),
-        ));*/
         $this->add(array(
             'name' => 'text',
             'type' => 'textarea',
             'attributes' => array(
-                // TODO: TRANSLATION
                 'placeholder' => 'your message'
             ),
         ));
@@ -67,17 +43,81 @@ class ContactForm extends Form
                 'class' => 'hvr-grow'
              ),
         ));
-        /*
-        $this->add(array(
-            'name' => 'submit',
-            'type' => 'Submit',
-            'attributes' => array(
-                'value' => 'Přidat',
-                'class' => 'btn btn-info',
-                'id' => 'cat',
-                'style' => 'display: none;'
+    }
+    
+    public function getInputFilter( )
+    {
+        
+        $inputFilter = new InputFilter();
+
+        $inputFilter->add(array(
+            'name'     => 'name',
+            'required' => true,
+            'filters'  => array(
+                array('name' => 'StripTags'),
+                array('name' => 'StringTrim'),
+            ),
+            'validators' => array(
+                array(
+                    'name'    => 'StringLength',
+                    'options' => array(
+                        'encoding' => 'UTF-8',
+                        'min'      => 3,
+                        'max'      => 100,
+                    ),
+                ),
             ),
         ));
-         */
+
+        $inputFilter->add(array(
+            'name'     => 'email',
+            'required' => true,
+            'filters'  => array(
+                array('name' => 'StripTags'),
+                array('name' => 'StringTrim'),
+            ),
+            'validators' => array(
+                array(
+                     'name'    => 'StringLength',
+                     'options' => array(
+                         'encoding' => 'UTF-8',
+                         'min'      => 3,
+                         'max'      => 100,
+                     ),
+                ),
+                array(
+                    'name'    => 'EmailAddress',
+                    'options' =>array(
+                        'domain'   => 'true',
+                        'hostname' => 'true',
+                        'mx'       => 'true',
+                        'deep'     => 'true',
+                        'message'  => 'Invalid email address',
+                    ),
+                )
+            ),
+        ));
+
+        $inputFilter->add(array(
+            'name'     => 'text',
+            'required' => true,
+            'filters'  => array(
+                array('name' => 'StripTags'),
+                array('name' => 'StringTrim'),
+            ),
+            'validators' => array(
+                array(
+                    'name'    => 'StringLength',
+                    'options' => array(
+                        'encoding' => 'UTF-8',
+                        'min'      => 10,
+                        'max'      => 3000,
+                    ),
+                ),
+            ),
+        ));
+
+        return $inputFilter;
     }
+    
 }

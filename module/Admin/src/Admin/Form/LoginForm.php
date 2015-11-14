@@ -7,6 +7,7 @@
 namespace Admin\Form;
 
 use Zend\Form\Form;
+use Zend\InputFilter\InputFilter;
 
 class LoginForm extends Form
 {
@@ -44,5 +45,50 @@ class LoginForm extends Form
                 'class' => 'hvr-grow'
              ),
         ));
+    }
+    
+    public function getInputFilter()
+    {
+        $inputFilter = new InputFilter();
+
+        $inputFilter->add(array(
+            'name'     => 'name',
+            'required' => true,
+            'filters'  => array(
+                array('name' => 'StripTags'),
+                array('name' => 'StringTrim'),
+            ),
+            'validators' => array(
+                array(
+                    'name'    => 'StringLength',
+                    'options' => array(
+                        'encoding' => 'UTF-8',
+                        'min'      => 3,
+                        'max'      => 30,
+                    ),
+                ),
+            ),
+        ));
+
+        $inputFilter->add(array(
+            'name'     => 'password',
+            'required' => true,
+            'filters'  => array(
+                array('name' => 'StripTags'),
+                array('name' => 'StringTrim'),
+            ),
+            'validators' => array(
+                array(
+                     'name'    => 'StringLength',
+                     'options' => array(
+                         'encoding' => 'UTF-8',
+                         'min'      => 3,
+                         'max'      => 100,
+                     ),
+                ),
+            ),
+        ));
+
+        return $inputFilter;
     }
 }

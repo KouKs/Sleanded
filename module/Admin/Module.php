@@ -17,10 +17,7 @@ use Zend\Session\SessionManager;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\TableGateway\TableGateway;
 
-use Application\Model\MessageTable;
-use Admin\Model\UserTable;
-use Application\Model\ReferenceTable;
-use Application\Model\PostTable;
+use Application\Database;
 
 class Module
 {
@@ -57,44 +54,63 @@ class Module
     public function getServiceConfig()
     {
         return array(
-            'factories' => array(
-                'Application\Model\MessageTable' =>  function($sm) {
-                    $tableGateway = $sm->get('MessageTableGateway');
-                    $table = new MessageTable( $tableGateway );
-                    return $table;
-                },
-                'MessageTableGateway' => function ($sm) {
-                    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
-                    return new TableGateway( 'messages' , $dbAdapter , null , new ResultSet() );
-                },
-                'Admin\Model\UserTable' =>  function($sm) {
-                    $tableGateway = $sm->get('UserTableGateway');
-                    $table = new UserTable( $tableGateway );
-                    return $table;
-                },
-                'UserTableGateway' => function ($sm) {
-                    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
-                    return new TableGateway( 'users' , $dbAdapter , null , new ResultSet() );
-                },
-                'Application\Model\ReferenceTable' =>  function($sm) {
-                    $tableGateway = $sm->get('ReferenceTableGateway');
-                    $table = new ReferenceTable( $tableGateway );
-                    return $table;
-                },
-                'ReferenceTableGateway' => function ($sm) {
-                    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
-                    return new TableGateway( 'reference' , $dbAdapter , null , new ResultSet() );
-                },
-                'Application\Model\PostTable' =>  function($sm) {
-                    $tableGateway = $sm->get('PostTableGateway');
-                    $table = new PostTable( $tableGateway );
-                    return $table;
-                },
-                'PostTableGateway' => function ($sm) {
-                    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
-                    return new TableGateway( 'posts' , $dbAdapter , null , new ResultSet() );
-                },
-            ),
+             'factories' => array(
+                 'Application\Database\MessageTable' =>  function($sm) {
+                     $tableGateway = $sm->get('MessageTableGateway');
+                     $table = new Database\MessageTable($tableGateway);
+                     return $table;
+                 },
+                 'MessageTableGateway' => function ($sm) {
+                     $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                     $resultSetPrototype = new ResultSet();
+                     $resultSetPrototype->setArrayObjectPrototype(new Database\TableModel\Message());
+                     return new TableGateway('messages', $dbAdapter, null, $resultSetPrototype);
+                 },
+                 'Application\Database\MediaTable' =>  function($sm) {
+                     $tableGateway = $sm->get('MediaTableGateway');
+                     $table = new Database\MediaTable($tableGateway);
+                     return $table;
+                 },
+                 'MediaTableGateway' => function ($sm) {
+                     $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                     $resultSetPrototype = new ResultSet();
+                     $resultSetPrototype->setArrayObjectPrototype(new Database\TableModel\Media());
+                     return new TableGateway('media', $dbAdapter, null, $resultSetPrototype);
+                 },
+                 'Application\Database\PostTable' =>  function($sm) {
+                     $tableGateway = $sm->get('PostTableGateway');
+                     $table = new Database\PostTable($tableGateway);
+                     return $table;
+                 },
+                 'PostTableGateway' => function ($sm) {
+                     $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                     $resultSetPrototype = new ResultSet();
+                     $resultSetPrototype->setArrayObjectPrototype(new Database\TableModel\Post());
+                     return new TableGateway('posts', $dbAdapter, null, $resultSetPrototype);
+                 },
+                 'Application\Database\ReferenceTable' =>  function($sm) {
+                     $tableGateway = $sm->get('ReferenceTableGateway');
+                     $table = new Database\ReferenceTable($tableGateway);
+                     return $table;
+                 },
+                 'ReferenceTableGateway' => function ($sm) {
+                     $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                     $resultSetPrototype = new ResultSet();
+                     $resultSetPrototype->setArrayObjectPrototype(new Database\TableModel\Reference());
+                     return new TableGateway('reference', $dbAdapter, null, $resultSetPrototype);
+                 },
+                 'Application\Database\UserTable' =>  function($sm) {
+                     $tableGateway = $sm->get('UserTableGateway');
+                     $table = new Database\UserTable($tableGateway);
+                     return $table;
+                 },
+                 'UserTableGateway' => function ($sm) {
+                     $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                     $resultSetPrototype = new ResultSet();
+                     $resultSetPrototype->setArrayObjectPrototype(new Database\TableModel\User());
+                     return new TableGateway('users', $dbAdapter, null, $resultSetPrototype);
+                 },
+             ),
         );
     }
     

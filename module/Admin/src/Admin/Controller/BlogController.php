@@ -6,7 +6,8 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Session\Container;
 
 use Admin\Form\PostForm;
-use Admin\Model\PostFilter;
+
+use Application\Database\TableModel\Post;
 use Application\Helper\Messenger;
 
 class BlogController extends AbstractActionController
@@ -49,22 +50,14 @@ class BlogController extends AbstractActionController
         
         if ( $request->isPost() )
         {
-            $post = $request->getPost()->toArray();
-            $files = $request->getFiles( );
-            $post['img'] = "uploads/" . $files["img"]["name"];
-
-            $blogPost = new PostFilter();
-            $form->setInputFilter( $blogPost->getInputFilter() );
-            $form->setData( $post );
+            $form->setInputFilter( $form->getInputFilter() );
+            $form->setData( $request->getPost() );
 
             if ( $form->isValid() )
             {
-                $filter = new \Zend\Filter\File\RenameUpload("./public/uploads/");
-                $filter->setUseUploadName(true);
-                $filter->filter( $files['img'] );
-
-                $blogPost->exchangeArray( $form->getData() );
-                $this->getPostTable()->add( $blogPost );
+                $p = new Post();
+                $p->exchangeArray( $request->getPost() );
+                $this->getPostTable()->add( $p );
                 
                 $message = [ "Post has been successfully added" , Messenger::SUCCESS ];
             }
@@ -101,7 +94,7 @@ class BlogController extends AbstractActionController
      */
     private function getPostTable()
     {
-        return $this->getServiceLocator()->get('Application\Model\PostTable');
+        return $this->getServiceLocator()->get('Application\Database\PostTable');
     }
 }
 

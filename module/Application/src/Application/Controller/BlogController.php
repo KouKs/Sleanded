@@ -41,7 +41,7 @@ class BlogController extends AbstractActionController
      */
     private function getPostTable()
     {
-        return $this->getServiceLocator()->get('Application\Model\PostTable');
+        return $this->getServiceLocator()->get('Application\Database\PostTable');
     }
 
 }

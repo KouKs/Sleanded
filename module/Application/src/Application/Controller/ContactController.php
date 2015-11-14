@@ -5,7 +5,7 @@ namespace Application\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 
 use Application\Form\ContactForm;
-use Application\Model\ContactFilter;
+use Application\Database\TableModel\Message;
 use Application\Helper\Messenger;
 
 class ContactController extends AbstractActionController
@@ -20,15 +20,14 @@ class ContactController extends AbstractActionController
         
         if ( $request->isPost() )
         {
-            $messenger = new Messenger;
-            $contact = new ContactFilter();
-            $form->setInputFilter( $contact->getInputFilter() );
+            $form->setInputFilter( $form->getInputFilter() );
             $form->setData( $request->getPost() );
 
             if ( $form->isValid() )
             {
-                $contact->exchangeArray( $form->getData() );
-                $this->getMessageTable()->add( $contact );
+                $m = new Message();
+                $m->exchangeArray( $request->getPost() );
+                $this->getMessageTable()->add( $m );
                 
                 $message = [ "Your message has been successfully sent" , Messenger::SUCCESS ];
             }
@@ -54,7 +53,7 @@ class ContactController extends AbstractActionController
      */
     private function getMessageTable()
     {
-        return $this->getServiceLocator()->get('Application\Model\MessageTable');
+        return $this->getServiceLocator()->get('Application\Database\MessageTable');
     }
 }
 

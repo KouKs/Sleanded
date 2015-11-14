@@ -27,7 +27,7 @@ class TeamController extends AbstractActionController
      */
     private function getUserTable()
     {
-        return $this->getServiceLocator()->get('Admin\Model\UserTable');
+        return $this->getServiceLocator()->get('Application\Database\UserTable');
     }
 }
 

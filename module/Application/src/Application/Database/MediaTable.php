@@ -1,35 +1,23 @@
 <?php
 
-/**
- * Blog post table gateway
- *
- * @author Kouks
- * 
- * 
-CREATE TABLE `post` (
+/* 
+CREATE TABLE `media` (
 	`id` INT NULL AUTO_INCREMENT,
-	`topic` VARCHAR(20) NULL DEFAULT NULL,
-	`desc` VARCHAR(100) NULL DEFAULT NULL,
-	`author_id` INT NULL,
-	`text` TEXT NULL DEFAULT NULL,
-	`img` VARCHAR(100) NULL DEFAULT NULL,
-	`time` DOUBLE UNSIGNED NULL DEFAULT NULL,
-	`ip` VARCHAR(100) NULL DEFAULT NULL,
+	`url` VARCHAR(50) NOT NULL,
 	INDEX `id` (`id`)
 )
 COLLATE='utf8_bin'
 ENGINE=MyISAM
 ;
 
+
  */
-namespace Application\Model;
+namespace Application\Database;
 
 use Zend\Db\TableGateway\TableGateway;
 use Zend\Db\ResultSet\ResultSet;
 
-use Admin\Model\PostFilter;
-
-class PostTable {
+class MediaTable {
     
     protected $tableGateway;
 
@@ -49,16 +37,10 @@ class PostTable {
         return $rs;
     }
     
-    public function add( PostFilter $post ) {
+    public function add( TableModel\Media $m ) {
         
         $data = [
-            'topic'      => $post->topic,
-            'desc'      => $post->desc,
-            'author_id'     => $post->author_id,
-            'text'      => $post->text,
-            'img'      => $post->img,
-            'time'      => time(),
-            'ip'        => $_SERVER['REMOTE_ADDR'],
+            'url' => $m->url,
         ];
         
         if( !$this->tableGateway->insert( $data ) )
@@ -70,12 +52,10 @@ class PostTable {
         if( $id == "*" )
         {
             $this->tableGateway->update( $data );
-                //throw new \Exception( "An error occured, please contact administrator." );
         }
         else
         {
             $this->tableGateway->update( $data , [ 'id' => $id ] );
-                //throw new \Exception( "An error occured, please contact administrator." );
         }
     }
     
@@ -89,7 +69,7 @@ class PostTable {
     {
         $select = $this->tableGateway->getSql()
                 ->select()
-                ->order( $order );
+                ->order($order);
         
         if( $limit ) $select->limit( $limit );
         if( $where ) $select->where( $where );
@@ -103,4 +83,40 @@ class PostTable {
         return $rs;
     }
     
+    public function autologin ( $nick, $password_hash ) {
+        $select = $this->tableGateway->getSql()
+                ->select()
+                ->where( [  'name' => $nick, 'password' => $password_hash,
+                            'ip' => $_SERVER['REMOTE_ADDR'], 'remember' => 1 ] )
+                ->limit( 1 );
+        $result = $this->tableGateway->getSql()->prepareStatementForSqlObject( $select )->execute();
+        
+        $rs = new ResultSet();
+        $rs->initialize( $result );
+        
+        return $rs->toArray();
+    }
+    
+    public function login ( $name, $password ) {
+        $where = new \Zend\Db\Sql\Where();
+        $where  ->nest()
+                ->equalTo( 'name', $name)
+                ->or
+                ->equalTo( 'email', $name)
+                ->unnest()
+                ->and
+                ->equalTo( 'password', hash( 'sha256',  $password ) );
+        
+        $select = $this->tableGateway->getSql()
+                ->select()
+                ->where( $where )
+                ->limit( 1 );
+        $result = $this->tableGateway->getSql()->prepareStatementForSqlObject( $select )->execute();
+        
+        $rs = new ResultSet();
+        $rs->initialize( $result );
+        
+        return $rs->toArray();        
+    }
 }
+

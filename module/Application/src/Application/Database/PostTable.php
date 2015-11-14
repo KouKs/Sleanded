@@ -1,35 +1,35 @@
 <?php
 
 /**
- * Banner table gateway
+ * Blog post table gateway
  *
  * @author Kouks
  * 
-CREATE TABLE `reference` (
-	`id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-	`name` VARCHAR(20) NULL,
+ * 
+CREATE TABLE `post` (
+	`id` INT NULL AUTO_INCREMENT,
+	`topic` VARCHAR(20) NULL DEFAULT NULL,
 	`desc` VARCHAR(100) NULL DEFAULT NULL,
-	`text` TEXT NULL,
-	`img` VARCHAR(70) NULL,
-	`time` DOUBLE UNSIGNED NULL,
-	`ip` VARCHAR(70) NULL,
-	INDEX `id` (`id`),
-	PRIMARY KEY (`id`)
+	`author_id` INT NULL,
+	`text` TEXT NULL DEFAULT NULL,
+	`img` VARCHAR(100) NULL DEFAULT NULL,
+	`time` DOUBLE UNSIGNED NULL DEFAULT NULL,
+	`ip` VARCHAR(100) NULL DEFAULT NULL,
+	INDEX `id` (`id`)
 )
 COLLATE='utf8_bin'
 ENGINE=MyISAM
 ;
 
- * 
  */
-namespace Application\Model;
+namespace Application\Database;
 
 use Zend\Db\TableGateway\TableGateway;
 use Zend\Db\ResultSet\ResultSet;
 
-use Admin\Model\ReferenceFilter;
+use Admin\Model\PostFilter;
 
-class ReferenceTable {
+class PostTable {
     
     protected $tableGateway;
 
@@ -49,14 +49,15 @@ class ReferenceTable {
         return $rs;
     }
     
-    public function add( ReferenceFilter $reference ) {
+    public function add( TableModel\Post $post ) {
         
         $data = [
-            'name'     => $reference->name,
-            'desc'     => $reference->desc,
-            'text'     => $reference->text,
-            'img'      => $reference->img,
-            'time'     => time(),
+            'topic'      => $post->topic,
+            'desc'      => $post->desc,
+            'author_id'     => $post->author_id,
+            'text'      => $post->text,
+            'img'      => $post->img,
+            'time'      => time(),
             'ip'        => $_SERVER['REMOTE_ADDR'],
         ];
         
@@ -88,7 +89,7 @@ class ReferenceTable {
     {
         $select = $this->tableGateway->getSql()
                 ->select()
-                ->order($order);
+                ->order( $order );
         
         if( $limit ) $select->limit( $limit );
         if( $where ) $select->where( $where );
@@ -101,4 +102,5 @@ class ReferenceTable {
         
         return $rs;
     }
+    
 }

@@ -1,32 +1,35 @@
 <?php
 
 /**
- * Message table gateway
+ * Banner table gateway
  *
- * @author Mišel
+ * @author Kouks
  * 
-    CREATE TABLE `messages` (
-        `id` INT NOT NULL AUTO_INCREMENT,
-        `name` VARCHAR(100) NULL COLLATE 'utf8_bin',
-        `email` VARCHAR(100) NULL COLLATE 'utf8_bin',
-        `text` TEXT(3000) NULL COLLATE 'utf8_bin',
-        `viewed` TINYINT(4) NOT NULL DEFAULT '0',
-        `sent` INT NULL,
-        `ip` VARCHAR(25) NULL COLLATE 'utf8_bin',
-        PRIMARY KEY (`id`)
-    )
-    COMMENT='Sleanded contact form messages'
-    COLLATE='utf8_bin'
-    ENGINE=MyISAM
-    ;
+CREATE TABLE `reference` (
+	`id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+	`name` VARCHAR(20) NULL,
+	`desc` VARCHAR(100) NULL DEFAULT NULL,
+	`text` TEXT NULL,
+	`img` VARCHAR(70) NULL,
+	`time` DOUBLE UNSIGNED NULL,
+	`ip` VARCHAR(70) NULL,
+	INDEX `id` (`id`),
+	PRIMARY KEY (`id`)
+)
+COLLATE='utf8_bin'
+ENGINE=MyISAM
+;
 
+ * 
  */
-namespace Application\Model;
+namespace Application\Database;
 
 use Zend\Db\TableGateway\TableGateway;
 use Zend\Db\ResultSet\ResultSet;
 
-class MessageTable {
+use Admin\Model\ReferenceFilter;
+
+class ReferenceTable {
     
     protected $tableGateway;
 
@@ -46,13 +49,14 @@ class MessageTable {
         return $rs;
     }
     
-    public function add( ContactFilter $contact ) {
+    public function add( TableModel\Reference $reference ) {
         
         $data = [
-            'name'      => $contact->name,
-            'email'     => $contact->email,
-            'text'      => $contact->text,
-            'sent'      => time(),
+            'name'     => $reference->name,
+            'desc'     => $reference->desc,
+            'text'     => $reference->text,
+            'img'      => $reference->img,
+            'time'     => time(),
             'ip'        => $_SERVER['REMOTE_ADDR'],
         ];
         
@@ -80,14 +84,15 @@ class MessageTable {
             throw new \Exception( "An error occured, please contact administrator." );
     }
     
-    public function select( $where = null , $join = null , $cond = null , $cols = null , $order = "id ASC" )
+    public function select( $where = null , $limit = null , $join = null , $cond = null , $cols = null , $order = "id DESC" )
     {
         $select = $this->tableGateway->getSql()
                 ->select()
-                ->where( $where )
-                ->order( $order );
+                ->order($order);
         
-        if( $join != null ) $select->joinLeft( $join , $cond , $cols );
+        if( $limit ) $select->limit( $limit );
+        if( $where ) $select->where( $where );
+        if( $join != null ) $select->join( $join , $cond , $cols );
         
         $result = $this->tableGateway->getSql()->prepareStatementForSqlObject( $select )->execute();
         

@@ -6,8 +6,8 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Session\Container;
 
 use Admin\Form\LoginForm;
-use Admin\Model\LoginFilter;
 
+use Application\Database\TableModel\User;
 use Application\Helper\Messenger;
 
 class LoginController extends AbstractActionController
@@ -48,25 +48,19 @@ class LoginController extends AbstractActionController
             $request = $this->getRequest();
             if( $request->isPost( ) )
             {
-                $login = new LoginFilter( );
-                $form->setInputFilter( $login->getInputFilter(  ) );
+                $form->setInputFilter( $form->getInputFilter(  ) );
                 $form->setData( $request->getPost( ) );
                 if( $form->isValid( ) )
                 {
-                    $data = array( 
-                        'name' => $form->getData()['name'],
-                        'password' => $form->getData()['password'],
-                        'remember' => $form->getData()['remember']
-                    );
-                    
-                    $login->exchangeArray( $data );
-                    $user = $table->login( $login->name, $login->password );
+                    $u = new User( );
+                    $u->exchangeArray( $request->getPost( ) );
+                    $user = $table->login( $u->name, $u->password );
                     
                     if( count( $user ) == 1 )
                     {
                         $user = $user[0];
                         $this->registerSession($user, $logged);
-                        if( $login->remember == 1 )
+                        if( $u->remember == 1 )
                         {
                             setcookie (
                                 'sleanded_admin',
@@ -92,16 +86,7 @@ class LoginController extends AbstractActionController
         }
         else
         {
-            unset( $_COOKIE['sleanded_admin'] );
-            setcookie('sleanded_admin', '', time() - 3600);
-            $u = $table->select( [ 'name' => $logged->name ] )->toArray();
-            $table->edit( $u[0]['id'], [ 'remember' => 0 ] );
-            $logged->getManager()->getStorage()->clear('user');
-            
-            return $this->redirect()->toRoute('admin', array(
-                'controller' => 'index'
-            ));
-            
+            $this->logout( );            
         }
         
         return [
@@ -117,11 +102,11 @@ class LoginController extends AbstractActionController
     
     /**
      * Returns an isntance of users table
-     * @return Admin\Model\UserTable 
+     * @return Admin\Database\UserTable 
      */
     private function getUserTable()
     {
-        return $this->getServiceLocator()->get('Admin\Model\UserTable');
+        return $this->getServiceLocator()->get('Application\Database\UserTable');
     }
     
     private function registerSession( $data, $container ) {
@@ -130,6 +115,37 @@ class LoginController extends AbstractActionController
         $container->fullName = $data[ 'full_name' ];
         $container->boolLogged = true;
     }
+    
+    /**
+     * Logout function
+     * @return void
+     */
+    private function logout( )
+    { 
+        /*
+         * cleaning cookies
+         */
+        unset( $_COOKIE['sleanded_admin'] );
+        setcookie('sleanded_admin', '', time() - 3600);
+        
+        /*
+         * turning off remember in db
+         */
+        $table = $this->getUserTable();
+        $u = $table->select( [ 'name' => $logged->name ] )->toArray();
+        $table->edit( $u[0]['id'], [ 'remember' => 0 ] );
+        
+        /*
+         * cleaning session
+         */
+        $logged->getManager()->getStorage()->clear('user');
 
+        /*
+         * redirect
+         */
+        return $this->redirect()->toRoute('admin', array(
+            'controller' => 'index'
+        ));
+    }
 }
 

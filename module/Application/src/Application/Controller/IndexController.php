@@ -5,7 +5,7 @@ namespace Application\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 
 use Application\Form\ContactForm;
-use Application\Model\ContactFilter;
+use Application\Database\TableModel\Message;
 use Application\Helper\Messenger;
 
 class IndexController extends AbstractActionController
@@ -24,14 +24,14 @@ class IndexController extends AbstractActionController
         
         if ( $request->isPost() )
         {
-            $contact = new ContactFilter();
-            $form->setInputFilter( $contact->getInputFilter() );
+            $form->setInputFilter( $form->getInputFilter() );
             $form->setData( $request->getPost() );
 
             if ( $form->isValid() )
             {
-                $contact->exchangeArray( $form->getData() );
-                $this->getMessageTable()->add( $contact );
+                $m = new Message();
+                $m->exchangeArray( $request->getPost() );
+                $this->getMessageTable()->add( $m );
                 
                 $message = [ "Your message has been successfully sent" , Messenger::SUCCESS ];
             }
@@ -64,7 +64,7 @@ class IndexController extends AbstractActionController
      */
     private function getMessageTable()
     {
-        return $this->getServiceLocator()->get('Application\Model\MessageTable');
+        return $this->getServiceLocator()->get('Application\Database\MessageTable');
     }
     /**
      * Returns an isntance of reference table
@@ -72,7 +72,7 @@ class IndexController extends AbstractActionController
      */
     private function getReferenceTable()
     {
-        return $this->getServiceLocator()->get('Application\Model\ReferenceTable');
+        return $this->getServiceLocator()->get('Application\Database\ReferenceTable');
     }
     
     /**
@@ -81,7 +81,7 @@ class IndexController extends AbstractActionController
      */
     private function getPostTable()
     {
-        return $this->getServiceLocator()->get('Application\Model\PostTable');
+        return $this->getServiceLocator()->get('Application\Database\PostTable');
     }
 }
 

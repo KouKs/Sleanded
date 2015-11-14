@@ -55,7 +55,7 @@ class MessagesController extends AbstractActionController
      */
     private function getMessageTable()
     {
-        return $this->getServiceLocator()->get('Application\Model\MessageTable');
+        return $this->getServiceLocator()->get('Application\Database\MessageTable');
     }
 }
 
