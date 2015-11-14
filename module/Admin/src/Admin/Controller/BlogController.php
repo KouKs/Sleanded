@@ -75,6 +75,41 @@ class BlogController extends AbstractActionController
         ];
     }
     
+    public function editAction()
+    {
+        $this->layout("layout/admin");
+        $id = $this->params('id');
+        $form = new PostForm( $this->user->id );
+        $request = $this->getRequest();
+        $postTable = $this->getPostTable();
+        
+        if ( $request->isPost() )
+        {
+            $form->addInputFilter();
+            $form->setData( $request->getPost() );
+
+            if ( $form->isValid() )
+            {
+                $p = new Post();
+                $p->exchangeArray( $request->getPost() );
+                $postTable->edit( $id , $p->toArray() );
+                
+                $message = [ "Post has been successfully edited" , Messenger::SUCCESS ];
+            }
+            else
+            {
+                $message = [ "All inputs have to be filled out" , Messenger::ERROR ];
+            }
+        }
+        
+        $form->setData( $postTable->select("id=".$id)->toArray()[0] );
+        return [
+            'message'       => isset( $message ) ? $message : null,
+            'form'          => $form,
+            'images'        => $this->getMediaTable()->fetchAll(),
+        ];
+    }
+    
     public function deleteAction()
     {
         $id = $this->params('id');

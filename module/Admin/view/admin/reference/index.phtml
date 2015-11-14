@@ -16,7 +16,7 @@
                 <tr>
                     <td><?= $reference->id ?></td>
                     <td class="bold"><?= $reference->name ?></td>
-                    <td class="thin"><div class="icon-small-edit"></div></td>
+                    <td class="thin"><a href="<?= $this->basePath( "admin/reference/edit/" . $reference->id ) ?>"><div class="icon-small-edit"></div></a></td>
                     <td class="thin"><div onClick="ajax( 'reference' , 'delete' , <?= $reference->id ?> , $(this).parent().parent() )" class="icon-small-cross"></div></td>
                 </tr>
             <?php endforeach; ?>

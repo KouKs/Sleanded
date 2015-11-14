@@ -1,0 +1,32 @@
+<?php echo $this->messenger( $this->message ); ?>
+
+<section class="part dark-grey">
+    <div class="area">
+        <h2 class="left white-text">Admin > Blog > Edit</h2>
+    </div>    
+</section>
+
+<section class="part">
+    <div class="area">       
+        <h3 class="left dark-grey-text">Editing an article</h3>
+        <hr />
+        <?php $form = $this->form;
+              $form->prepare();
+              $form->setAttribute('class' , 'admin');
+              echo $this->form()->openTag($form); ?>
+        
+        <?=   $this->formElement( $form->get('topic') ) .  
+              $this->formElement( $form->get('img') ) ?>
+        <!--
+            Media
+        -->
+        <?=   $this->media( $this->images , $this->basePath("") ); ?>
+        
+        <?=   $this->formElement( $form->get('desc') ) . 
+              $this->formElement( $form->get('text') ) .
+              $this->formElement( $form->get('author_id') ) .
+              $this->formButton( $form->get('submit') , 'Edit' ) ?>
+             
+        <?= $this->form()->closeTag() ?>
+    </div>
+</section>

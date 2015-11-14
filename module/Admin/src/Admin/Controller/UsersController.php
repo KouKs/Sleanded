@@ -7,6 +7,9 @@ use Zend\Session\Container;
 
 use Admin\Form\NewUserForm;
 
+use Application\Database\TableModel\User;
+use Application\Helper\Messenger;
+
 class UsersController extends AbstractActionController
 {
     
@@ -38,10 +41,31 @@ class UsersController extends AbstractActionController
     
     public function addAction( ) {
         $this->layout("layout/admin");
+        $request = $this->getRequest();
+        $form = new NewUserForm();
+        
+        if ( $request->isPost() )
+        {
+            $form->addInputFilter();
+            $form->setData( $request->getPost() );
+
+            if ( $form->isValid() )
+            {
+                $u = new User();
+                $u->exchangeArray( $request->getPost() );
+                $this->getUserTable()->add( $u );
+                
+                $message = [ "User has been successfully added" , Messenger::SUCCESS ];
+            }
+            else
+            {
+                $message = [ "All inputs have to be filled out" , Messenger::ERROR ];
+            }
+        }
         
         return [
             'message'       => isset( $message ) ? $message : null,
-            'form'          => new NewUserForm(),
+            'form'          => $form,
         ];
     }
 

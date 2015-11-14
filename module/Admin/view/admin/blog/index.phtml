@@ -19,7 +19,7 @@
                     <td><?= $post->id ?></td>
                     <td class="bold"><?= $post->topic ?></td>
                     <td><?= $post->full_name ?></td>
-                    <td class="thin"><div class="icon-small-edit"></div></td>
+                    <td class="thin"><a href="<?= $this->basePath( "admin/blog/edit/" . $post->id ) ?>"><div class="icon-small-edit"></div></a></td>
                     <td class="thin"><div onClick="ajax( 'blog' , 'delete' , <?= $post->id ?> , $(this).parent().parent() )" class="icon-small-cross"></div></td>
                 </tr>
             <?php endforeach; ?>

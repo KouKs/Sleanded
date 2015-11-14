@@ -20,6 +20,9 @@ $(document).ready( function() {
     /*
      * Media tab
      */
+    if( $("input#img").val() !== '' ) {
+        $(".media-image-holder").attr( "src" , _URL + "../" + $("input#img").val()).show();
+    }
     $(".media-choose-image").click(function(e) {
         e.preventDefault();
         $(".media-window").fadeIn();
@@ -56,6 +59,13 @@ $(document).ready( function() {
     $("#dropzone").on("complete", function(file) {
        $("#dropzone").removeFile(file);
        alert("xD");
+    });
+    
+    /*
+     * profile image loading error
+     */
+    $("#profile-image").error( function() {
+        $(this).parent().html('<h5 class="dark-grey-text">No image supplied yet</h5>');
     });
 });
 

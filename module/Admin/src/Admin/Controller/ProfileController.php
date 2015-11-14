@@ -31,7 +31,7 @@ class ProfileController extends AbstractActionController
     {
         $this->layout("layout/admin");
         $user = $this->getUserTable()->select("id = ". $this->user->id)->toArray(); 
-        $form = new ProfileEditForm( $user[0]["desc"] , $user[0]["displayed"] );
+        $form = new ProfileEditForm( );
         $request = $this->getRequest();
         
         if ( $request->isPost() )
@@ -43,7 +43,7 @@ class ProfileController extends AbstractActionController
             {
                 $u = new User;  
                 $u->exchangeArray( $request->getPost() );
-                $this->getUserTable()->updateProfile( $this->user->id , $u );
+                $this->getUserTable()->edit( $this->user->id , $u->toArray() );
                 
                 $message = [ "Reference has been successfully added" , Messenger::SUCCESS ];
             }
@@ -53,6 +53,7 @@ class ProfileController extends AbstractActionController
             }
         }
         
+        $form->setData( $user[0] );
         return [
             'message'       => isset( $message ) ? $message : null,
             'form'          => $form,

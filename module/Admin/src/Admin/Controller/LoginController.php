@@ -12,14 +12,16 @@ use Application\Helper\Messenger;
 
 class LoginController extends AbstractActionController
 {
-
+    protected $logged;
+    
     public function indexAction()
     {
         $this->layout( "layout/empty" );
-        $logged = new Container('user');
+        $this->logged = new Container('user');
         $table = $this->getUserTable();
+        $form = new LoginForm();
         
-        if( !$logged->boolLogged )
+        if( !$this->logged->boolLogged )
         {
             $messenger = new Messenger;
             
@@ -31,7 +33,7 @@ class LoginController extends AbstractActionController
                 if( count( $user ) == 1 )
                 {
                     $user = $user[0];
-                    $this->registerSession($user, $logged);
+                    $this->registerSession($user, $this->logged);
                     return $this->redirect()->toRoute('admin', array(
                                         'controller' => 'index'
                     ));
@@ -44,7 +46,6 @@ class LoginController extends AbstractActionController
                 }
             }
             
-            $form = new LoginForm();
             $request = $this->getRequest();
             if( $request->isPost( ) )
             {
@@ -59,7 +60,7 @@ class LoginController extends AbstractActionController
                     if( count( $user ) == 1 )
                     {
                         $user = $user[0];
-                        $this->registerSession($user, $logged);
+                        $this->registerSession($user, $this->logged);
                         if( $u->remember == 1 )
                         {
                             setcookie (
@@ -92,7 +93,6 @@ class LoginController extends AbstractActionController
         return [
             'message'       => isset( $message ) ? $message : null,
             'loginForm'     => $form,
-            
         ];
     }
     
@@ -132,13 +132,13 @@ class LoginController extends AbstractActionController
          * turning off remember in db
          */
         $table = $this->getUserTable();
-        $u = $table->select( [ 'name' => $logged->name ] )->toArray();
+        $u = $table->select( [ 'name' => $this->logged->name ] )->toArray();
         $table->edit( $u[0]['id'], [ 'remember' => 0 ] );
         
         /*
          * cleaning session
          */
-        $logged->getManager()->getStorage()->clear('user');
+        $this->logged->getManager()->getStorage()->clear('user');
 
         /*
          * redirect

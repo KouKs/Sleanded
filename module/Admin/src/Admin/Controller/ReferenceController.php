@@ -6,6 +6,7 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Session\Container;
 
 use Admin\Form\ReferenceForm;
+
 use Application\Database\TableModel\Reference;
 use Application\Helper\Messenger;
 
@@ -61,6 +62,41 @@ class ReferenceController extends AbstractActionController
         }
         
         
+        return [
+            'message'       => isset( $message ) ? $message : null,
+            'form'          => $form,
+            'images'        => $this->getMediaTable()->fetchAll(),
+        ];
+    }
+    
+    public function editAction()
+    {
+        $this->layout("layout/admin");
+        $id = $this->params('id');
+        $form = new ReferenceForm();
+        $request = $this->getRequest();
+        $referenceTable = $this->getReferenceTable();
+        
+        if ( $request->isPost() )
+        {
+            $form->addInputFilter();
+            $form->setData( $request->getPost() );
+
+            if ( $form->isValid() )
+            {
+                $r = new Reference();
+                $r->exchangeArray( $request->getPost() );
+                $referenceTable->edit( $id , $r->toArray() );
+                
+                $message = [ "Reference has been successfully edited" , Messenger::SUCCESS ];
+            }
+            else
+            {
+                $message = [ "All inputs have to be filled out" , Messenger::ERROR ];
+            }
+        }
+        
+        $form->setData( $referenceTable->select("id=".$id)->toArray()[0] );
         return [
             'message'       => isset( $message ) ? $message : null,
             'form'          => $form,

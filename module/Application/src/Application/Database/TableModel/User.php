@@ -4,13 +4,15 @@ namespace Application\Database\TableModel;
 
 class User
 {
-    public $name, $password, $remember;
-    protected $inputFilter;
+    public $name, $password, $remember, $full_name, $job, $email, $desc, $img, $displayed;
+    public $data;
 
     public function exchangeArray($data)
     {
+        $this->data = $data->toArray();
+        
         $this->name = ( isset($data['name']) ) ? $data['name'] : null;
-        $this->password  = ( isset($data['password']) ) ? $data['password']  : null;
+        $this->password  = ( isset($data['password']) ) ? hash( "sha256" , $data['password'] )  : null;
         $this->remember  = ( isset($data['remember']) ) ? $data['remember']  : null;
         $this->full_name = ( isset($data['full_name']) ) ? $data['full_name'] : null;
         $this->job = ( isset($data['job']) ) ? $data['job'] : null;
@@ -19,10 +21,11 @@ class User
         $this->img  = ( isset($data['img']) ) ? $data['img']  : null;
         $this->displayed  = ( isset($data['displayed']) ) ? $data['displayed']  : null;
     }
-
-    public function setInputFilter(InputFilterInterface $inputFilter)
+    
+    public function toArray()
     {
-        throw new \Exception("Not used");
+        unset( $this->data["submit"] );
+        return $this->data;
     }
 
 }

@@ -125,7 +125,7 @@ class UserTable {
                 ->equalTo( 'email', $name)
                 ->unnest()
                 ->and
-                ->equalTo( 'password', hash( 'sha256',  $password ) );
+                ->equalTo( 'password', $password );
         
         $select = $this->tableGateway->getSql()
                 ->select()
@@ -144,9 +144,9 @@ class UserTable {
         $data = [
             "desc" => $u->desc,
             "displayed" => $u->displayed,
-        ];        
-        if( $u->img ) $data["img"] = $u->img;
-
+            "img" => $u->img,
+        ];     
+        
         $this->edit( $id , $data );
     }
 }
