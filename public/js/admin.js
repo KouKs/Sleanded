@@ -20,9 +20,21 @@ $(document).ready( function() {
     /*
      * Media tab
      */
+    $(".media-choose-image").click(function(e) {
+        e.preventDefault();
+        $(".media-window").fadeIn();
+    });
     $(".media-window img").click(function() {
         $(this).parent().fadeOut();
+        $("input#img").val( $(this).data('url') );
+        $(".media-image-holder").attr( "src" , $(this).attr("src")).show();
     });
+    /*
+    $(this).click(function(e) {
+        if( $('.media-window').css("opacity") !== 1 || $(e.target).closest('.media-window').length !== 0 ) return false;
+        $('.media-window').fadeOut();
+    });
+     */
     /*
      * Dropzone
      */

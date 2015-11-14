@@ -10,17 +10,22 @@
     <div class="area">       
         <h3 class="left dark-grey-text">Writing an article</h3>
         <hr />
-         <?php $form = $this->form;
-               $form->prepare();
-               $form->setAttribute('class' , 'admin');
-               echo $this->form()->openTag($form); ?>
+        <?php $form = $this->form;
+              $form->prepare();
+              $form->setAttribute('class' , 'admin');
+              echo $this->form()->openTag($form); ?>
         
-         <?=   $this->formElement( $form->get('topic') ) .  
-               $this->formElement( $form->get('img') ) . 
-               $this->formElement( $form->get('desc') ) . 
-               $this->formElement( $form->get('text') ) .
-               $this->formElement( $form->get('author_id') ) .
-               $this->formButton( $form->get('submit') , 'Post' ) ?>
+        <?=   $this->formElement( $form->get('topic') ) .  
+              $this->formElement( $form->get('img') ) ?>
+        <!--
+            Media
+        -->
+        <?=   $this->media( $this->images , $this->basePath("") ); ?>
+        
+        <?=   $this->formElement( $form->get('desc') ) . 
+              $this->formElement( $form->get('text') ) .
+              $this->formElement( $form->get('author_id') ) .
+              $this->formButton( $form->get('submit') , 'Post' ) ?>
              
         <?= $this->form()->closeTag() ?>
     </div>

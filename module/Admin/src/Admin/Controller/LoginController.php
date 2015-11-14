@@ -48,7 +48,7 @@ class LoginController extends AbstractActionController
             $request = $this->getRequest();
             if( $request->isPost( ) )
             {
-                $form->setInputFilter( $form->getInputFilter(  ) );
+                $form->addInputFilter();
                 $form->setData( $request->getPost( ) );
                 if( $form->isValid( ) )
                 {

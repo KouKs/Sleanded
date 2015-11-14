@@ -58,7 +58,7 @@ class PostForm extends Form
         ));
     }
 
-    public function getInputFilter()
+    public function addInputFilter()
     {
         $inputFilter = new InputFilter();
 
@@ -114,6 +114,6 @@ class PostForm extends Form
             ),
         ));
 
-        return $inputFilter;
+        $this->setInputFilter( $inputFilter );
     }
 }

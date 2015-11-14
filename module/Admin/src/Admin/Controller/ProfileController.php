@@ -36,7 +36,7 @@ class ProfileController extends AbstractActionController
         
         if ( $request->isPost() )
         {
-            $form->setInputFilter( $form->getInputFilter() );
+            $form->addInputFilter();
             $form->setData( $request->getPost() );
 
             if ( $form->isValid() )
@@ -57,6 +57,7 @@ class ProfileController extends AbstractActionController
             'message'       => isset( $message ) ? $message : null,
             'form'          => $form,
             'user'          => $user,
+            'images'        => $this->getMediaTable()->fetchAll(),
         ];
     }
 
@@ -72,6 +73,14 @@ class ProfileController extends AbstractActionController
     private function getUserTable()
     {
         return $this->getServiceLocator()->get('Application\Database\UserTable');
+    }
+    /**
+     * Returns an isntance of message table
+     * @return Application\Database\Media 
+     */
+    private function getMediaTable()
+    {
+        return $this->getServiceLocator()->get('Application\Database\MediaTable');
     }
 }
 

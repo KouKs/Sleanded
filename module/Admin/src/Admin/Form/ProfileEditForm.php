@@ -51,7 +51,7 @@ class ProfileEditForm extends Form
         ));
     }
     
-    public function getInputFilter() {
+    public function addInputFilter() {
         $inputFilter = new InputFilter();
         
         $inputFilter->add(array(
@@ -73,6 +73,6 @@ class ProfileEditForm extends Form
             ),
         ));
         
-        return $inputFilter;
+        $this->setInputFilter( $inputFilter );
     }
 }

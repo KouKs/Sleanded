@@ -7,6 +7,7 @@
 namespace Admin\Form;
 
 use Zend\Form\Form;
+use Zend\InputFilter\InputFilter;
 
 class LoginForm extends Form
 {
@@ -46,7 +47,7 @@ class LoginForm extends Form
         ));
     }
     
-    public function getInputFilter()
+    public function addInputFilter()
     {
         $inputFilter = new InputFilter();
 
@@ -88,6 +89,6 @@ class LoginForm extends Form
             ),
         ));
 
-        return $inputFilter;
+        $this->setInputFilter( $inputFilter );
     }
 }

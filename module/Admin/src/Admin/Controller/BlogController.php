@@ -50,7 +50,7 @@ class BlogController extends AbstractActionController
         
         if ( $request->isPost() )
         {
-            $form->setInputFilter( $form->getInputFilter() );
+            $form->addInputFilter();
             $form->setData( $request->getPost() );
 
             if ( $form->isValid() )
@@ -71,6 +71,7 @@ class BlogController extends AbstractActionController
         return [
             'message'       => isset( $message ) ? $message : null,
             'form'          => $form,
+            'images'        => $this->getMediaTable()->fetchAll(),
         ];
     }
     
@@ -95,6 +96,14 @@ class BlogController extends AbstractActionController
     private function getPostTable()
     {
         return $this->getServiceLocator()->get('Application\Database\PostTable');
+    }
+    /**
+     * Returns an isntance of message table
+     * @return Application\Database\Media 
+     */
+    private function getMediaTable()
+    {
+        return $this->getServiceLocator()->get('Application\Database\MediaTable');
     }
 }
 

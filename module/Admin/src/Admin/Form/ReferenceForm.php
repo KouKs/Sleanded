@@ -51,7 +51,7 @@ class ReferenceForm extends Form
         ));
     }
     
-    public function getInputFilter()
+    public function addInputFilter()
     {
         $inputFilter = new InputFilter();
 
@@ -108,6 +108,6 @@ class ReferenceForm extends Form
             ),
         ));
 
-        return $inputFilter;
+        $this->setInputFilter( $inputFilter );
     }
 }

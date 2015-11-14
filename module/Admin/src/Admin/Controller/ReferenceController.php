@@ -43,7 +43,7 @@ class ReferenceController extends AbstractActionController
         
         if ( $request->isPost() )
         {
-            $form->setInputFilter( $form->getInputFilter() );
+            $form->addInputFilter();
             $form->setData( $request->getPost() );
 
             if ( $form->isValid() )
@@ -64,7 +64,7 @@ class ReferenceController extends AbstractActionController
         return [
             'message'       => isset( $message ) ? $message : null,
             'form'          => $form,
-            'images'    => $this->getMediaTable()->fetchAll(),
+            'images'        => $this->getMediaTable()->fetchAll(),
         ];
     }
     

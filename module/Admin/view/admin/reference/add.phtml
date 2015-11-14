@@ -16,7 +16,11 @@
         
         <?=   $this->formElement( $form->get('name') ) .  
               $this->formElement( $form->get('img') ) ?>
-        <?= $this->media( $this->images , $this->basePath("") ); ?>
+        <!--
+            Media
+        -->
+        <?=   $this->media( $this->images , $this->basePath("") ); ?>
+        
         <?=
               $this->formElement( $form->get('desc') ) . 
               $this->formElement( $form->get('text') ) . 
