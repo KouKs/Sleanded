@@ -45,7 +45,7 @@ class ProfileController extends AbstractActionController
                 $u->exchangeArray( $request->getPost() );
                 $this->getUserTable()->edit( $this->user->id , $u->toArray() );
                 
-                $message = [ "Reference has been successfully added" , Messenger::SUCCESS ];
+                $message = [ "Profile has been successfully edited" , Messenger::SUCCESS ];
             }
             else
             {

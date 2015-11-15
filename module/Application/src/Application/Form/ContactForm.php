@@ -45,7 +45,7 @@ class ContactForm extends Form
         ));
     }
     
-    public function getInputFilter( )
+    public function addInputFilter( )
     {
         
         $inputFilter = new InputFilter();
@@ -117,7 +117,7 @@ class ContactForm extends Form
             ),
         ));
 
-        return $inputFilter;
+        $this->setInputFilter( $inputFilter );
     }
     
 }

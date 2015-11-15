@@ -31,7 +31,7 @@ class MessagesController extends AbstractActionController
         
         return [
             'message'       => isset( $message ) ? $message : null,
-            'messages'      => $messageTable->fetchAll(),
+            'messages'      => $messageTable->select(null,null,null,null,null,"ID desc"),
         ];
     }
     

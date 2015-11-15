@@ -80,14 +80,15 @@ class MessageTable {
             throw new \Exception( "An error occured, please contact administrator." );
     }
     
-    public function select( $where = null , $join = null , $cond = null , $cols = null , $order = "id ASC" )
+    public function select( $where = null , $limit = null , $join = null , $cond = null , $cols = null , $order = "id DESC" )
     {
         $select = $this->tableGateway->getSql()
                 ->select()
-                ->where( $where )
                 ->order( $order );
         
-        if( $join != null ) $select->joinLeft( $join , $cond , $cols );
+        if( $limit ) $select->limit( $limit );
+        if( $where ) $select->where( $where );
+        if( $join != null ) $select->join( $join , $cond , $cols );
         
         $result = $this->tableGateway->getSql()->prepareStatementForSqlObject( $select )->execute();
         
