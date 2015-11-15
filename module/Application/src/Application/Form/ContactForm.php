@@ -34,7 +34,7 @@ class ContactForm extends Form
             'name' => 'text',
             'type' => 'textarea',
             'attributes' => array(
-                'placeholder' => 'your message'
+                'placeholder' => 'YOUR MESSAGE'
             ),
         ));
         $this->add(array(

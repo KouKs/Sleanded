@@ -852,6 +852,7 @@ header.secondary #top-bar nav#primary a:hover {
 }
 #contact textarea {
   min-height: 200px;
+  text-transform: none;
 }
 #contact select option {
   background: #fff;

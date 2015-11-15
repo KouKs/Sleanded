@@ -26,9 +26,10 @@ $(document).ready( function() {
     $(".media-choose-image").click(function(e) {
         e.preventDefault();
         $(".media-window").fadeIn();
+        $(".grid").masonry('reloadItems').masonry();
     });
     $(".media-window img").click(function() {
-        $(this).parent().fadeOut();
+        $(this).parent().parent().fadeOut();
         $("input#img").val( $(this).data('url') );
         $(".media-image-holder").attr( "src" , $(this).attr("src")).show();
     });
@@ -62,7 +63,7 @@ $(document).ready( function() {
         sending: function( ) {
             $(".dz-processing .dz-progress").show();
         },
-        totaluploadprogress: function( progress , id , filee , file ) {
+        totaluploadprogress: function( progress ) {
             $(".dz-processing .dz-progress span").css({width: 0});
             $(".dz-processing .dz-progress span").animate({width: progress + '%'},800);
         },
@@ -79,7 +80,7 @@ $(document).ready( function() {
                     '</div>' +
                 '</div></div>'
             );
-            window.setTimeout( function( ) { $(".grid").masonry('reloadItems').masonry() } , 300 );
+            window.setTimeout( function( ) { $(".grid").masonry('reloadItems').masonry(); } , 300 );
         }
     });
 

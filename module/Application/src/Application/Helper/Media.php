@@ -20,10 +20,12 @@ class Media extends AbstractHelper
         
         $this->html .= '<div class="media-window">';
             $this->html .= '<h3 class="left dark-grey-text">Available media</h3>';
-            foreach( $images as $img )
-            {
-                $this->html .= '<img data-url="' . $img->url . '" class="bordered" src="' . $base . $img->url . '" />';
-            }
+            $this->html .= '<div class="grid">';
+                foreach( $images as $img )
+                {
+                    $this->html .= '<img data-url="' . $img->url . '" class="bordered grid-item" src="' . $base . $img->url . '" />';
+                }
+            $this->html .= '</div>';
         $this->html .= '</div>';
         
         return $this->html;
