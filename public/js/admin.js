@@ -41,25 +41,48 @@ $(document).ready( function() {
     /*
      * Dropzone
      */
-    $("#dropzone").dropzone({ url: _URL + "media"});
-    
-    Dropzone.options.dropzone = {
-        paramName: "file[]",
+    $("#dropzone").dropzone({ 
+        url: _URL + "media",
+        paramName: "file",
+        thumbnailWidth: 500,
+        thumbnailHeight: null,
         maxFilesize: 4,
-        uploadMultiple: true,
-        parallelUploads: 25,
+        parallelUploads: 1,
         maxFiles: 25,
         autoProcessQueue: true,
         acceptedFiles: 'image/*',
+        
         accept: function(file, done) {
+            $(".dz-default").hide();
             done();
+        },
+        processing: function(file) {
+            $( file.previewElement ).addClass("dz-processing");
+        },
+        sending: function( ) {
+            $(".dz-processing .dz-progress").show();
+        },
+        totaluploadprogress: function( progress , id , filee , file ) {
+            $(".dz-processing .dz-progress span").css({width: 0});
+            $(".dz-processing .dz-progress span").animate({width: progress + '%'},800);
+        },
+        complete: function( file ) {
+            $(".dz-progress").fadeOut();
+            var img = $( file.previewElement ).find("img");
+            $( file.previewElement ).removeClass("dz-success").removeClass("dz-processing");
+            $(img).css({'background-color': 'green'});
+            $(".grid").prepend(
+                '<div class="third grid-item"><div class="text-area">' +
+                    '<img class="bordered" src="' + $(img).attr("src") + '" />' +
+                    '<div class="desc">' +
+                        '<p style="float: left" class="medium white-text">' + file.name + '</p>' +
+                    '</div>' +
+                '</div></div>'
+            );
+            window.setTimeout( function( ) { $(".grid").masonry('reloadItems').masonry() } , 300 );
         }
-      };
-    
-    $("#dropzone").on("complete", function(file) {
-       $("#dropzone").removeFile(file);
-       alert("xD");
     });
+
     
     /*
      * profile image loading error

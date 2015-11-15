@@ -58,11 +58,11 @@ $.fn.showBar = function( ) {
 function ajax( controller , action , id , el ) {
     if( !confirm("Do you really wanna do this?") ) return false;
     $.post( _URL + controller + '/' + action  + '/' + id , {} , function( ) {
-        alert("Successfully sent!");
+        //alert("Successfully sent!");
         if( el !== undefined ) {
             $(el).fadeOut( "slow" , function( ) { 
                 $(this).remove();
-                $('.grid').masonry().reload();
+                $(".grid").masonry('reloadItems').masonry();
             });
         }
     });

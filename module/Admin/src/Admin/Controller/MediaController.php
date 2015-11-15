@@ -57,7 +57,7 @@ class MediaController extends AbstractActionController
         return [
             'message'       => isset( $message ) ? $message : null,
             'form'          => new MediaForm(),
-            'images'        => $this->getMediaTable()->fetchAll(),
+            'images'        => $this->getMediaTable()->select(null,null,null,null,null,"ID desc"),
         ];
     }
 
