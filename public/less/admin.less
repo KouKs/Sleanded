@@ -138,6 +138,9 @@ header {
  * 1.4 - Media
  */
 #dropzone {
+    /**
+     * restyle plz plz plz plz plz
+     */
     width: 90%; min-height: 150px;
     background: #f8f8f8;
     border: 5px dotted @theme-color;
@@ -157,10 +160,9 @@ header {
     img {
         margin: 5px;
         padding: 10px;
-        border-radius: 5px;
-        border: 1px solid #aaa;
         box-sizing: border-box;
-        background-color: @theme-color;
+        .gradient(@secondary, @theme-color);
+        .shadow(1)
     }
     
     .dz-details, .dz-success-mark, .dz-error-mark , .dz-error-message {
@@ -173,8 +175,8 @@ header {
         z-index: 1000;
         height: 20px;
         display: none;
-        width: 80%;
-        margin: 0 10%;
+        width: 100%;
+        //margin: 0 ;
         .shadow(1);
         .gradient( #fafafa, #f8f8f8);
         
@@ -191,13 +193,11 @@ header {
         cursor: pointer;
         height: 32px; width: 100%;
         padding: 6px;
-        background: @theme-color;
-    
-        border-radius: 5px;
         box-sizing: border-box;
-        .shadow();
+        .gradient(@secondary, @theme-color);
+        .shadow(0.6);
         &:hover {
-            .shadow(0.6);
+            .shadow(1);
 
         }
     }
@@ -207,7 +207,44 @@ header {
  */
 
 /**
- * 2.1 - Media
+ * 2.1 - Editor
+ */
+.editor {
+    &-menu {
+        width: 100%;
+        margin-top: 10px;
+        
+        box-sizing: border-box;
+        background: #f8f8f8;
+        
+        overflow: hidden;
+        
+        .shadow( 0.6 );
+        
+        li {
+            margin: 2px;
+            padding: 5px;
+            float: left;
+            border-radius: 5px;
+            list-style-type: none;
+            border: 1px solid transparent;
+            cursor: pointer;
+            
+            &:hover {
+                border: 1px solid #d8d8d8;
+                background: #e3e3e3;
+            }
+            &.static:hover {
+                border: 1px solid transparent;
+                background: transparent;
+                cursor: default;
+            }
+        }
+    }
+    
+}
+/**
+ * 2.2 - Media
  */
 .media {
     &-window {
@@ -234,7 +271,7 @@ header {
     }
     &-choose-image {
         float: left;
-        margin: 5px !important;
+        margin: 5px 0 !important;
     }
     
     &-image-holder {
@@ -246,14 +283,13 @@ header {
 }
 
 /**
- * 2.2 - Ostatní
+ * 2.3 - Ostatní
  */
 img.bordered {
     padding: 10px;
-    border-radius: 5px;
     box-sizing: border-box;
-    background-color: @theme-color;
-    .shadow();
+    .shadow(1);
+    .gradient( @secondary , @theme-color )
 }
 
 .hidden {
@@ -372,17 +408,18 @@ img.bordered {
     label {
         float: left
     }
+    
     input, textarea {
-        margin: 5px;
+        margin: 5px 0;
         padding: 5px;
         
         min-width: 100%;
         max-width: 100%;
 
-        .gradient(#fafafa,#f8f8f8);
+        .gradient(#fafafa,#f2f2f2);
         
-        border-radius: 5px;
-        border: 1px solid #ddd;
+        border-radius: 0;
+        border: none;
         
         font-size: 20px;
         line-height: 20px;
@@ -391,10 +428,20 @@ img.bordered {
         
         box-sizing: border-box;
         
+        .shadow(0.5);
+        
         &:hover , &:focus {
-            background: #fff;
+            background: #fafafa;
         }
         
+    }
+    input[type="checkbox"] {
+        min-width: auto;
+        max-width: auto;
+        width: 25px;
+        height: 25px;
+        .shadow( 0 );
+        cursor: pointer;
     }
     textarea {
         width: 100% !important;
@@ -406,8 +453,6 @@ img.bordered {
         display: block;
         
         border: none;
-        border-radius: 5px;
-        background: @theme-color;
         
         cursor: pointer;
         
@@ -416,7 +461,8 @@ img.bordered {
         line-height: 14x;
         color: @light-grey;
         
-        .shadow(0.2);
+        .shadow(1);
+        .gradient( @secondary , @theme-color );
         
         &:hover , &:focus {
             background: @secondary;

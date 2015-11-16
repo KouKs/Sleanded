@@ -5,6 +5,12 @@ var _URL = "/sleanded/public/admin/";
  * Page loading
  */
 $(document).ready( function() {
+    
+    /*
+     * Editor
+     */
+    $(".editor").editor();
+    
     /*
      * Menu
      */

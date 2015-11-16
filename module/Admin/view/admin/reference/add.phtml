@@ -21,10 +21,11 @@
         -->
         <?=   $this->media( $this->images , $this->basePath("") ); ?>
         
-        <?=
-              $this->formElement( $form->get('desc') ) . 
-              $this->formElement( $form->get('text') ) . 
-              $this->formButton( $form->get('submit') , 'Save' ) ?>
+        <?=  $this->formElement( $form->get('desc') ) ?>
+        <div>
+            <?=  $this->formElement( $form->get('text') ) ?>
+        </div>
+        <?=  $this->formButton( $form->get('submit') , 'Save' ) ?>
              
         <?= $this->form()->closeTag() ?>
     </div>

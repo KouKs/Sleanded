@@ -26,7 +26,7 @@ class ReferenceForm extends Form
             'name' => 'desc',
             'type' => 'textarea',
             'attributes' => array(
-                'placeholder' => 'Brief description'
+                'placeholder' => 'Brief description',
             ),
         ));
         $this->add(array(

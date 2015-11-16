@@ -515,6 +515,9 @@ header > nav nav a:hover {
  * 1.4 - Media
  */
 #dropzone {
+  /**
+     * restyle plz plz plz plz plz
+     */
   width: 90%;
   min-height: 150px;
   background: #f8f8f8;
@@ -535,10 +538,16 @@ header > nav nav a:hover {
 #dropzone img {
   margin: 5px;
   padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #aaa;
   box-sizing: border-box;
-  background-color: #b23432;
+  background-color: #d9403c;
+  background-image: -moz-linear-gradient(top, #d9403c, #b23432);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#d9403c), to(#b23432));
+  background-image: -webkit-linear-gradient(top, #d9403c, #b23432);
+  background-image: -o-linear-gradient(top, #d9403c, #b23432);
+  background-image: linear-gradient(to bottom, #d9403c, #b23432);
+  -webkit-box-shadow: 0px 1px 3px 0px #000000;
+  -moz-box-shadow: 0px 1px 3px 0px #000000;
+  box-shadow: 0px 1px 3px 0px #000000;
 }
 #dropzone .dz-details,
 #dropzone .dz-success-mark,
@@ -552,8 +561,7 @@ header > nav nav a:hover {
   z-index: 1000;
   height: 20px;
   display: none;
-  width: 80%;
-  margin: 0 10%;
+  width: 100%;
   -webkit-box-shadow: 0px 1px 3px 0px #000000;
   -moz-box-shadow: 0px 1px 3px 0px #000000;
   box-shadow: 0px 1px 3px 0px #000000;
@@ -580,23 +588,58 @@ header > nav nav a:hover {
   height: 32px;
   width: 100%;
   padding: 6px;
-  background: #b23432;
-  border-radius: 5px;
   box-sizing: border-box;
-  -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
-  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
-}
-.img-list .desc:hover {
+  background-color: #d9403c;
+  background-image: -moz-linear-gradient(top, #d9403c, #b23432);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#d9403c), to(#b23432));
+  background-image: -webkit-linear-gradient(top, #d9403c, #b23432);
+  background-image: -o-linear-gradient(top, #d9403c, #b23432);
+  background-image: linear-gradient(to bottom, #d9403c, #b23432);
   -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.6);
   -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.6);
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.6);
+}
+.img-list .desc:hover {
+  -webkit-box-shadow: 0px 1px 3px 0px #000000;
+  -moz-box-shadow: 0px 1px 3px 0px #000000;
+  box-shadow: 0px 1px 3px 0px #000000;
 }
 /**
  * 2 - Custom třídy
  */
 /**
- * 2.1 - Media
+ * 2.1 - Editor
+ */
+.editor-menu {
+  width: 100%;
+  margin-top: 10px;
+  box-sizing: border-box;
+  background: #f8f8f8;
+  overflow: hidden;
+  -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.6);
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.6);
+}
+.editor-menu li {
+  margin: 2px;
+  padding: 5px;
+  float: left;
+  border-radius: 5px;
+  list-style-type: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+.editor-menu li:hover {
+  border: 1px solid #d8d8d8;
+  background: #e3e3e3;
+}
+.editor-menu li.static:hover {
+  border: 1px solid transparent;
+  background: transparent;
+  cursor: default;
+}
+/**
+ * 2.2 - Media
  */
 .media-window {
   position: fixed;
@@ -625,7 +668,7 @@ header > nav nav a:hover {
 }
 .media-choose-image {
   float: left;
-  margin: 5px !important;
+  margin: 5px 0 !important;
 }
 .media-image-holder {
   display: none;
@@ -634,16 +677,20 @@ header > nav nav a:hover {
   margin: 5px !important;
 }
 /**
- * 2.2 - Ostatní
+ * 2.3 - Ostatní
  */
 img.bordered {
   padding: 10px;
-  border-radius: 5px;
   box-sizing: border-box;
-  background-color: #b23432;
-  -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
-  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0px 1px 3px 0px #000000;
+  -moz-box-shadow: 0px 1px 3px 0px #000000;
+  box-shadow: 0px 1px 3px 0px #000000;
+  background-color: #d9403c;
+  background-image: -moz-linear-gradient(top, #d9403c, #b23432);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#d9403c), to(#b23432));
+  background-image: -webkit-linear-gradient(top, #d9403c, #b23432);
+  background-image: -o-linear-gradient(top, #d9403c, #b23432);
+  background-image: linear-gradient(to bottom, #d9403c, #b23432);
 }
 .hidden {
   display: none;
@@ -750,29 +797,42 @@ img.bordered {
 }
 .admin input,
 .admin textarea {
-  margin: 5px;
+  margin: 5px 0;
   padding: 5px;
   min-width: 100%;
   max-width: 100%;
   background-color: #fafafa;
-  background-image: -moz-linear-gradient(top, #fafafa, #f8f8f8);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fafafa), to(#f8f8f8));
-  background-image: -webkit-linear-gradient(top, #fafafa, #f8f8f8);
-  background-image: -o-linear-gradient(top, #fafafa, #f8f8f8);
-  background-image: linear-gradient(to bottom, #fafafa, #f8f8f8);
-  border-radius: 5px;
-  border: 1px solid #ddd;
+  background-image: -moz-linear-gradient(top, #fafafa, #f2f2f2);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fafafa), to(#f2f2f2));
+  background-image: -webkit-linear-gradient(top, #fafafa, #f2f2f2);
+  background-image: -o-linear-gradient(top, #fafafa, #f2f2f2);
+  background-image: linear-gradient(to bottom, #fafafa, #f2f2f2);
+  border-radius: 0;
+  border: none;
   font-size: 20px;
   line-height: 20px;
   color: #333;
   font-family: 'Proxima nova';
   box-sizing: border-box;
+  -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5);
 }
 .admin input:hover,
 .admin textarea:hover,
 .admin input:focus,
 .admin textarea:focus {
-  background: #fff;
+  background: #fafafa;
+}
+.admin input[type="checkbox"] {
+  min-width: auto;
+  max-width: auto;
+  width: 25px;
+  height: 25px;
+  -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0);
+  -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0);
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0);
+  cursor: pointer;
 }
 .admin textarea {
   width: 100% !important;
@@ -783,16 +843,20 @@ img.bordered {
   margin: 0 auto;
   display: block;
   border: none;
-  border-radius: 5px;
-  background: #b23432;
   cursor: pointer;
   text-transform: uppercase;
   font-size: 14px;
   line-height: 14x;
   color: #eee;
-  -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
-  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0px 1px 3px 0px #000000;
+  -moz-box-shadow: 0px 1px 3px 0px #000000;
+  box-shadow: 0px 1px 3px 0px #000000;
+  background-color: #d9403c;
+  background-image: -moz-linear-gradient(top, #d9403c, #b23432);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#d9403c), to(#b23432));
+  background-image: -webkit-linear-gradient(top, #d9403c, #b23432);
+  background-image: -o-linear-gradient(top, #d9403c, #b23432);
+  background-image: linear-gradient(to bottom, #d9403c, #b23432);
 }
 .admin button:hover,
 .admin button:focus {
