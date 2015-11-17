@@ -613,7 +613,6 @@ header > nav nav a:hover {
 .editor-menu {
   width: 100%;
   margin-top: 10px;
-  box-sizing: border-box;
   background: #f8f8f8;
   overflow: hidden;
   -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.6);
@@ -624,7 +623,6 @@ header > nav nav a:hover {
   margin: 2px;
   padding: 5px;
   float: left;
-  border-radius: 5px;
   list-style-type: none;
   border: 1px solid transparent;
   cursor: pointer;
@@ -637,6 +635,30 @@ header > nav nav a:hover {
   border: 1px solid transparent;
   background: transparent;
   cursor: default;
+}
+.editor-preview {
+  width: 100%;
+  -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.6);
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.6);
+  margin: 5px 0;
+  overflow: hidden;
+}
+.editor-preview .part {
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+  display: block;
+  position: relative;
+}
+.editor-preview .part .area {
+  margin: 0 auto;
+  width: 90%;
+  opacity: 0;
+  opacity: 1;
+}
+.editor-preview .part .area .text-area {
+  outline: none;
 }
 /**
  * 2.2 - Media

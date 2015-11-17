@@ -93,7 +93,6 @@ class ReferenceForm extends Form
             'name'     => 'text',
             'required' => true,
             'filters'  => array(
-                array('name' => 'StripTags'),
                 array('name' => 'StringTrim'),
             ),
             'validators' => array(
