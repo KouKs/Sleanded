@@ -8,9 +8,6 @@ var _URL = "/sleanded/public/";
  * Page loading
  */
 $(document).ready( function() {
-    /* smooth scrolling */
-    $("html").niceScroll({scrollspeed: 65});
-    $("#port").niceScroll("#bar",{scrollspeed: 65});
     
     /* loading with scrolling */
     $(".area").showContent( );

@@ -128,7 +128,6 @@ $.fn.menuItem = function( label , html , action ) {
          * getting selected area
          */
         var sel = selection( );
-        console.log(sel)
         switch( action ) {
             case 'section':
                 
@@ -171,14 +170,15 @@ $.fn.menuItem = function( label , html , action ) {
                  */
                 if(!sel || $(".editor-preview").has(sel.parent).length === 0 ) break;
                 el = sel.parent;
-                while( !$(el).hasClass("text-area") ) {
-                    html = $(el).html();
+                while( !$(el).is("div.text-area") ) {
+                    if( $(el).is("div.area")) return;
+                    
+                    text = $(el).text();
                     parent = $(el).parent();
                     $(el).remove();
                     el = parent;
-                    $(el).html( html );
+                    $(el).html( $(el).html() + text );
                     
-                    if( $(el).is("body")) return;
                 }
                 break;
                 

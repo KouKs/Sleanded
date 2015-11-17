@@ -3,8 +3,8 @@
         <h2 class="left white-text">Dashboard</h2>
     </div>    
 </section>
-<section class="part">
-    <div class="half"> 
+<section class="part grid">
+    <div class="half grid-item"> 
         <div class="text-area">
             <h3 class="center dark-grey-text">New messages</h3>
             <?php if( count( $this->messages ) > 0 ) : ?>
@@ -27,7 +27,7 @@
             <?php endif; ?>
         </div>
     </div>    
-    <div class="half">
+    <div class="half grid-item">
         <div class="text-area">
             <h3 class="center dark-grey-text">Pending TODOs</h3>
             <p class="big dark-grey-text">
@@ -39,7 +39,7 @@
             </p>
         </div>
     </div>     
-    <div class="half">
+    <div class="half grid-item">
         <div class="text-area">
             <h3 class="center dark-grey-text">Latest blog posts</h3>
         </div>
