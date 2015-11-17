@@ -1,4 +1,4 @@
-<?php echo $this->messenger( $this->message ); ?>
+<?= $this->messenger( $this->message ); ?>
 
 <section class="part dark-grey">
     <div class="area">
@@ -19,11 +19,12 @@
         <!--
             Media
         -->
-        <?=   $this->media( $this->images , $this->basePath("") ); ?>
+        <?=   $this->media( $images , $this->basePath("") ); ?>
         
         <?=  $this->formElement( $form->get('desc') ) ?>
         <div>
-            <?=  $this->formElement( $form->get('text') ) ?>
+            <?= $this->media( $images , $this->basePath("") , true ); ?>
+            <?= $this->formElement( $form->get('text') ) ?>
         </div>
         <?=  $this->formButton( $form->get('submit') , 'Save' ) ?>
              

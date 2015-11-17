@@ -6,6 +6,8 @@
  * @author Kouks
  */
 
+var Memory = new Array();
+
 $.fn.editor = function( ) {
     /**
      * hiding actual textare
@@ -24,13 +26,13 @@ $.fn.editor = function( ) {
 $.fn.preview = function( content ) {
     if( content === '' ) {
         $(this).prepend(
-            '<div class="editor-preview">\n\
-                <section class="part">\n\
-                    <div class="area">\n\
-                        <div spellcheck="false" contenteditable="true" class="text-area"></div>\n\
-                    </div>\n\
-                </section>\n\
-            </div>'        
+            '<div class="editor-preview">'+
+                '<section class="part">'+
+                    '<div class="area">'+
+                        '<div spellcheck="false" contenteditable="true" class="text-area"></div>'+
+                    '</div>'+
+                '</section>'+
+            '</div>'        
         );
     } else {
         $(this).prepend(
@@ -77,12 +79,19 @@ $.fn.menu = function( textarea ) {
     $("ul.editor-menu").menuItem("remove formatting",'',"remove");
     $("ul.editor-menu").menuItem("static");
     $("ul.editor-menu").menuItem("+",           '<section class="part"><div class="area"><div contenteditable="true" class="text-area"></div></div></section>','section');
+    $("ul.editor-menu").menuItem("static");
+    $("ul.editor-menu").menuItem("one",         "area" , "parts");
+    $("ul.editor-menu").menuItem("two",         "half" , "parts");
+    $("ul.editor-menu").menuItem("three",       "third" , "parts");
+    $("ul.editor-menu").menuItem("static");
     $("ul.editor-menu").menuItem("red",         "red" , "bg");
     $("ul.editor-menu").menuItem("light-grey",  "grey" , "bg");
     $("ul.editor-menu").menuItem("grey",        "dark-grey" , "bg");
     $("ul.editor-menu").menuItem("white",       "white" , "bg");
     $("ul.editor-menu").menuItem("static");
     $("ul.editor-menu").menuItem("image",       "" , "img");
+    $("ul.editor-menu").menuItem("static");
+    $("ul.editor-menu").menuItem("undo",        "" , "undo");
 };
 
 $.fn.menuItem = function( label , html , action ) { 
@@ -118,13 +127,7 @@ $.fn.menuItem = function( label , html , action ) {
         /*
          * getting selected area
          */
-        sel = selection( );
-        
-        /*
-         * removing whitespaces
-         */
-        if(sel && $(".editor-preview").has(sel.parent).length !== 0 )
-            $(sel.parent).html($(sel.parent).html().replace("&nbsp;"," ")); 
+        var sel = selection( );
         
         switch( action ) {
             case 'section':
@@ -133,6 +136,32 @@ $.fn.menuItem = function( label , html , action ) {
                  * new section
                  */
                 $(editor).html( $(editor).html() + html);
+                break;
+                
+            case 'parts':
+                
+                if(!sel || $(".editor-preview").has(sel.parent).length === 0 ) break;
+                
+                count = {
+                    area : 1,
+                    half : 2,
+                    third: 3
+                };
+                
+                el = sel.parent;
+                while( !$(el).is('section') ) {
+                    el = $(el).parent();
+                    if( $(el).is("body") ) return;
+                }
+                $(el).children().each( function( ) {
+                    $(this).remove();
+                });
+                
+                for( i = 0 ; i < count[html] ; i++ ) {
+                    $(el).append( 
+                        '<div class="' + html + '"><div contenteditable="true" class="text-area"></div></div>'
+                    );
+                }
                 break;
                 
             case 'remove':
@@ -158,9 +187,29 @@ $.fn.menuItem = function( label , html , action ) {
                 el = sel.parent;
                 while( !$(el).is("section") || !$(el).parent().hasClass("editor-preview") ) {
                     el = $(el).parent();
-                    if( $(el).is("body") ) break;
+                    if( $(el).is("body") ) return;
                 }
-                if( !$(el).is("body") ) $(el).removeAttr('class').addClass('part ' + html);
+                $(el).removeAttr('class').addClass('part ' + html);
+                break;
+                
+            case 'img':
+                
+                /*
+                 * adding img
+                 */
+                if(!sel || $(".editor-preview").has(sel.parent).length === 0 ) break;
+                $(".media-window-tab").fadeIn();
+                $(".media-window-tab .grid").masonry().masonry("reloadItems");
+                break;
+                
+            case 'undo':
+                
+                /*
+                 * adding img
+                 */
+                if( Memory.length > 0 ) $(".editor-preview").html( Memory[ Memory.length - 1 ] );
+                Memory.pop();
+
                 break;
                 
             default:
@@ -169,7 +218,12 @@ $.fn.menuItem = function( label , html , action ) {
                  * default wrapping
                  */
                 if(!sel || sel.start === sel.end || $(".editor-preview").has(sel.parent).length === 0 ) break;
-                $(sel.parent).html('');
+                
+                /*
+                 * removing whitespaces
+                 */
+                $(sel.parent).html($(sel.parent).html().replace("&nbsp;"," ")); 
+                
                 $(sel.parent).html( 
                     $(sel.parent).html().substr( 0 , sel.start ) + 
                     html.replace("{text}", sel.text) +
@@ -193,24 +247,47 @@ function selection( ) {
             start  : start,
             end    : end,
             text   : sel.toString(),
-            parent : sel.focusNode.parentElement
+            parent : $(sel.focusNode.parentElement),
+            wrap   : $(sel.focusNode)
         };
     } else {
         return false;
     }
 };
 
+/**
+ * removing section
+ * @param e event
+ */
 $(document).bind('keydown', function(e) {
     if( e.which === 8 || e.which === 46 ) {
         sel = selection( );
-        if( sel && $(sel.parent).hasClass("area") && sel.parent.innerText === '' ) {
+        if( sel && $(sel.parent).parent().hasClass("part") && $(sel.parent).parent().text() === '' ) {
             e.preventDefault();
             $(sel.parent).parent().remove();
         }
     }
-    
 });
 
+/**
+ * memory
+ * @param e event
+ */
+$(document).bind('keyup', function(e) {
+    if( $(".editor-preview").has( e.target) !== 0 ) {
+        Memory.push( $(".editor-preview").html() );
+    }
+});/*
+$(document).bind('click', function(e) {
+    if( $(".editor-menu").has( e.target ) !== 0 ) {
+        Memory.push( $(".editor-preview").html() );
+    }
+});*/
+
+/**
+ * copying content to textarea on submit
+ * @param e event
+ */
 $(document).submit(function(e) { 
     $(".editor-preview > section > div > div").each( function( ) {
         $(this).attr("contenteditable","false");
@@ -219,4 +296,31 @@ $(document).submit(function(e) {
     $(".editor-preview > section > div > div").each( function( ) {
         $(this).attr("contenteditable","true");
     });
+});
+
+/**
+ * choosing image
+ * @param e event
+ */
+$(document).bind('click', function(e) {
+   if( $(e.target).is(".media-window-tab img") ) {
+       
+       sel = selection();
+       if(!sel || $(".editor-preview").has(sel.parent).length === 0 ) return;
+       
+       /*
+        * removing whitespaces
+        */ 
+       $(sel.wrap).html($(sel.wrap).html().replace("&nbsp;"," "));   
+
+       /*
+        * adding img
+        */ 
+       $(sel.wrap).html( 
+           $(sel.wrap).html().substr( 0 , sel.start ) + 
+           '<img class="shadowed" src="' + $(e.target).attr("src") + '" />' + 
+           $(sel.wrap).html().substr( sel.end , $(sel.wrap).html().length )
+       );
+       $(".media-window-tab").fadeOut();
+   }
 });

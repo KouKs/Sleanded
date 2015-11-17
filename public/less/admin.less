@@ -233,7 +233,7 @@ header {
                 background: #e3e3e3;
             }
             &.static {
-                width: 0; padding:0; margin: auto; height: 28px;
+                width: 0; padding:0; margin: auto; height: 30px;
                 border-left: 1px solid #fff;
                 border-right: 1px solid #ddd;
             }
@@ -262,10 +262,9 @@ header {
                 width: 90%;
                 opacity: 0;
                 opacity: 1;
-                
-                .text-area {
-                    outline: none;
-                }
+            }
+            .text-area {
+                //outline: none;
             }
         }
     }
@@ -275,7 +274,7 @@ header {
  * 2.2 - Media
  */
 .media {
-    &-window {
+    &-window , &-window-tab {
         position: fixed;
         top: 5%; left: 5%;
         width: 80%; height: 80%;
@@ -318,6 +317,11 @@ img.bordered {
     box-sizing: border-box;
     .shadow(1);
     .gradient( @secondary , @theme-color )
+}
+img.shadowed {
+    width: 90%;
+    margin: 0 5%;
+    .shadow(1);    
 }
 
 .hidden {

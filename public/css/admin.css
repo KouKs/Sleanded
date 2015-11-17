@@ -643,7 +643,7 @@ header > nav nav a:hover {
   width: 0;
   padding: 0;
   margin: auto;
-  height: 28px;
+  height: 30px;
   border-left: 1px solid #fff;
   border-right: 1px solid #ddd;
 }
@@ -673,13 +673,11 @@ header > nav nav a:hover {
   opacity: 0;
   opacity: 1;
 }
-.editor-preview .part .area .text-area {
-  outline: none;
-}
 /**
  * 2.2 - Media
  */
-.media-window {
+.media-window,
+.media-window-tab {
   position: fixed;
   top: 5%;
   left: 5%;
@@ -693,12 +691,14 @@ header > nav nav a:hover {
   -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.6);
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.6);
 }
-.media-window img {
+.media-window img,
+.media-window-tab img {
   margin: 5px;
   width: 15%;
   cursor: pointer;
 }
-.media-window img:hover {
+.media-window img:hover,
+.media-window-tab img:hover {
   background: #d9403c;
   -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.6);
   -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.6);
@@ -729,6 +729,13 @@ img.bordered {
   background-image: -webkit-linear-gradient(top, #d9403c, #b23432);
   background-image: -o-linear-gradient(top, #d9403c, #b23432);
   background-image: linear-gradient(to bottom, #d9403c, #b23432);
+}
+img.shadowed {
+  width: 90%;
+  margin: 0 5%;
+  -webkit-box-shadow: 0px 1px 3px 0px #000000;
+  -moz-box-shadow: 0px 1px 3px 0px #000000;
+  box-shadow: 0px 1px 3px 0px #000000;
 }
 .hidden {
   display: none;

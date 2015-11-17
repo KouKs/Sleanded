@@ -32,8 +32,9 @@
             <div class="text-area">
                 <img class="bordered" src="<?= $this->basePath( $img->url ) ?>" />
                 <div class="desc">
-                    <p  style="float: left" class="medium white-text"><?= strlen( $img->name ) > 25 ? substr( $img->name , 0 , 25) . "..." : $img->name ?></p>
+                    <p style="float: left" class="medium white-text"><?= strlen( $img->name ) > 25 ? substr( $img->name , 0 , 25) . "..." : $img->name ?></p>
                     <div onClick="ajax( 'media' , 'delete' , <?= $img->id ?> , $(this).parent().parent() )" style="float: right; margin: 2px" class="icon-small-cross"></div>
+                    <p onClick="window.clipboardData.setData('Text', '<?= $this->basePath( $img->url ) ?>');" style="float: right" class="underline small">Copy url</p>
                 </div>
             </div>
         </div>    
