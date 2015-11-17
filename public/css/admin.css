@@ -149,6 +149,9 @@ h5 {
 /**
  * 4.3 - Barvy
  */
+.black-text {
+  color: #000;
+}
 .red-text {
   color: #b23432;
 }
@@ -613,7 +616,12 @@ header > nav nav a:hover {
 .editor-menu {
   width: 100%;
   margin-top: 10px;
-  background: #f8f8f8;
+  background-color: #fafafa;
+  background-image: -moz-linear-gradient(top, #fafafa, #f2f2f2);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fafafa), to(#f2f2f2));
+  background-image: -webkit-linear-gradient(top, #fafafa, #f2f2f2);
+  background-image: -o-linear-gradient(top, #fafafa, #f2f2f2);
+  background-image: linear-gradient(to bottom, #fafafa, #f2f2f2);
   overflow: hidden;
   -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.6);
   -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.6);
@@ -631,9 +639,17 @@ header > nav nav a:hover {
   border: 1px solid #d8d8d8;
   background: #e3e3e3;
 }
+.editor-menu li.static {
+  width: 0;
+  padding: 0;
+  margin: auto;
+  height: 28px;
+  border-left: 1px solid #fff;
+  border-right: 1px solid #ddd;
+}
 .editor-menu li.static:hover {
-  border: 1px solid transparent;
-  background: transparent;
+  border-left: 1px solid #fff;
+  border-right: 1px solid #ddd;
   cursor: default;
 }
 .editor-preview {
@@ -720,9 +736,9 @@ img.bordered {
 .part {
   width: -100%;
   margin-left: 200px;
-  overflow: hidden;
   display: block;
   position: relative;
+  overflow: hidden;
 }
 .part .area {
   margin: 0 auto;

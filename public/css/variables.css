@@ -142,6 +142,9 @@ h5 {
 /**
  * 4.3 - Barvy
  */
+.black-text {
+  color: #000;
+}
 .red-text {
   color: #b23432;
 }
