@@ -23,7 +23,8 @@
         
         <?=   $this->formElement( $form->get('desc') ) ?>
         <div>
-            <?=  $this->formElement( $form->get('text') ) ?>
+            <?= $this->media( $images , $this->basePath("") , true ); ?>
+            <?= $this->formElement( $form->get('text') ) ?>
         </div>
         <?=   $this->formButton( $form->get('submit') , 'Edit' ) ?>
              

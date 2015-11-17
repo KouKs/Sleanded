@@ -71,7 +71,7 @@ class BlogController extends AbstractActionController
         return [
             'message'       => isset( $message ) ? $message : null,
             'form'          => $form,
-            'images'        => $this->getMediaTable()->fetchAll(),
+            'images'        => $this->getMediaTable()->fetchAll()->toArray(),
         ];
     }
     
@@ -106,7 +106,7 @@ class BlogController extends AbstractActionController
         return [
             'message'       => isset( $message ) ? $message : null,
             'form'          => $form,
-            'images'        => $this->getMediaTable()->fetchAll(),
+            'images'        => $this->getMediaTable()->fetchAll()->toArray(),
         ];
     }
     

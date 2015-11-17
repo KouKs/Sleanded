@@ -310,6 +310,18 @@ h5 {
  */
 [class^='img-'] { position: absolute; z-index: -1; }
 
+img.bordered {
+    padding: 10px;
+    box-sizing: border-box;
+    .shadow(1);
+    .gradient( @secondary , @theme-color )
+}
+img.shadowed {
+    width: 90%;
+    margin: 0 5%;
+    .shadow(1);    
+}
+
 hr {
     border: 0;
     height: 2px;

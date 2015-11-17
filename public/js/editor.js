@@ -128,7 +128,7 @@ $.fn.menuItem = function( label , html , action ) {
          * getting selected area
          */
         var sel = selection( );
-        
+        console.log(sel)
         switch( action ) {
             case 'section':
                 
@@ -171,10 +171,14 @@ $.fn.menuItem = function( label , html , action ) {
                  */
                 if(!sel || $(".editor-preview").has(sel.parent).length === 0 ) break;
                 el = sel.parent;
-                while( !$(el).is("div") || !$(el).hasClass("text-area") ) {
+                while( !$(el).hasClass("text-area") ) {
                     html = $(el).html();
-                    el = $(el).parent();
+                    parent = $(el).parent();
+                    $(el).remove();
+                    el = parent;
                     $(el).html( html );
+                    
+                    if( $(el).is("body")) return;
                 }
                 break;
                 
@@ -289,11 +293,11 @@ $(document).bind('click', function(e) {
  * @param e event
  */
 $(document).submit(function(e) { 
-    $(".editor-preview > section > div > div").each( function( ) {
+    $(".editor-preview div.text-area").each( function( ) {
         $(this).attr("contenteditable","false");
     });
     $(".editor").val($(".editor-preview").html());
-    $(".editor-preview > section > div > div").each( function( ) {
+    $(".editor-preview div.text-area").each( function( ) {
         $(this).attr("contenteditable","true");
     });
 });

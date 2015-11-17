@@ -22,9 +22,12 @@
         -->
         <?=   $this->media( $this->images , $this->basePath("") ); ?>
         
-        <?=   $this->formElement( $form->get('desc') ) . 
-              $this->formElement( $form->get('text') ) .
-              $this->formElement( $form->get('author_id') ) .
+        <?=   $this->formElement( $form->get('desc') ) ?>
+        <div>
+            <?= $this->media( $images , $this->basePath("") , true ); ?>
+            <?= $this->formElement( $form->get('text') ) ?>
+        </div>
+        <?=   $this->formElement( $form->get('author_id') ) .
               $this->formButton( $form->get('submit') , 'Post' ) ?>
              
         <?= $this->form()->closeTag() ?>
