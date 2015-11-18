@@ -128,16 +128,23 @@ h5 {
 /**
  * 4.2 - Horizontální formátování
  */
-.justify {
+p {
+  line-height: 20px;
+}
+.justify,
+.justify-align {
   text-align: justify;
 }
-.center {
+.center,
+.center-align {
   text-align: center;
 }
-.left {
+.left,
+.left-align {
   text-align: left;
 }
-.right {
+.right,
+.right-align {
   text-align: right;
 }
 .margin {
@@ -170,15 +177,18 @@ h5 {
 /**
  * 4.4 - Velikosti
  */
-.small {
+.small,
+.small-font {
   font-size: 14px;
   line-height: 18px;
 }
-.medium {
+.medium,
+.medium-font {
   font-size: 16px;
   line-height: 20px;
 }
-.big {
+.big,
+.big-font {
   font-size: 20px;
   line-height: 24px;
 }
@@ -193,6 +203,12 @@ h5 {
 }
 .italic {
   font-style: italic;
+}
+.quote-layout {
+  padding: 15px;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-left: 5px solid #b23432;
 }
 /**
  * 4.6 - Předdefinované
@@ -660,7 +676,8 @@ header > nav nav a:hover {
   border: 1px solid transparent;
   cursor: pointer;
 }
-.editor-menu li:hover {
+.editor-menu li:hover,
+.editor-menu li.used {
   border: 1px solid #d8d8d8;
   background: #e3e3e3;
 }
@@ -691,12 +708,35 @@ header > nav nav a:hover {
   overflow: hidden;
   display: block;
   position: relative;
+  box-sizing: border-box;
+  border: 5px solid transparent;
+}
+.editor-preview .part.focused {
+  border-color: #C97170;
 }
 .editor-preview .part .area {
   margin: 0 auto;
   width: 90%;
   opacity: 0;
   opacity: 1;
+}
+.editor-preview .part h1:focus,
+.editor-preview .part h2:focus,
+.editor-preview .part h3:focus,
+.editor-preview .part h4:focus,
+.editor-preview .part h5:focus,
+.editor-preview .part h6:focus,
+.editor-preview .part p:focus {
+  outline: 1px dotted #aaa;
+}
+.editor-preview .part h1:hover,
+.editor-preview .part h2:hover,
+.editor-preview .part h3:hover,
+.editor-preview .part h4:hover,
+.editor-preview .part h5:hover,
+.editor-preview .part h6:hover,
+.editor-preview .part p:hover {
+  outline: 1px dotted #777;
 }
 /**
  * 2.2 - Media

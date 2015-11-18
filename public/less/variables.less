@@ -170,16 +170,19 @@ h5 {
 /**
  * 4.2 - Horizontální formátování
  */
-.justify {
+p {
+    line-height: 20px;
+}
+.justify,.justify-align {
     text-align: justify;
 }
-.center {
+.center,.center-align {
     text-align: center;
 }
-.left {
+.left,.left-align {
     text-align: left;
 }
-.right {
+.right,.right-align {
     text-align: right;
 }
 .margin {
@@ -217,15 +220,15 @@ h5 {
 /**
  * 4.4 - Velikosti
  */
-.small {
+.small,.small-font {
     font-size: 14px;
     line-height: 18px;
 }
-.medium {
+.medium,.medium-font {
     font-size: 16px;
     line-height: 20px;
 }
-.big {
+.big,.big-font {
     font-size: 20px; 
     line-height: 24px;   
 }
@@ -241,6 +244,13 @@ h5 {
 }
 .italic {
     font-style: italic;
+}
+
+.quote-layout {
+    padding: 15px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-left: 5px solid @theme-color;
 }
 
 /**

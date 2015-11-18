@@ -228,7 +228,7 @@ header {
             border: 1px solid transparent;
             cursor: pointer;
             
-            &:hover {
+            &:hover , &.used {
                 border: 1px solid #d8d8d8;
                 background: #e3e3e3;
             }
@@ -256,7 +256,13 @@ header {
             overflow: hidden;
             display: block;
             position: relative;
-
+            box-sizing: border-box;
+            border: 5px solid transparent;
+            
+            &.focused {
+                border-color: @lighter-color;
+            }
+            
             .area {
                 margin: 0 auto;
                 width: 90%;
@@ -265,6 +271,24 @@ header {
             }
             .text-area {
                 //outline: none;
+            }
+            h1:focus,
+            h2:focus,
+            h3:focus,
+            h4:focus,
+            h5:focus,
+            h6:focus,
+            p:focus {
+                outline: 1px dotted #aaa;
+            }
+            h1:hover,
+            h2:hover,
+            h3:hover,
+            h4:hover,
+            h5:hover,
+            h6:hover,
+            p:hover {
+                outline: 1px dotted #777;
             }
         }
     }

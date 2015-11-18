@@ -27,9 +27,9 @@ $.fn.preview = function( content ) {
     if( content === '' ) {
         $(this).prepend(
             '<div class="editor-preview">'+
-                '<section class="part">'+
+                '<section class="part focused">'+
                     '<div class="area">'+
-                        '<div spellcheck="false" contenteditable="true" class="text-area"></div>'+
+                        '<div class="text-area"><p spellcheck="false" contenteditable="true"></p></div>'+
                     '</div>'+
                 '</section>'+
             '</div>'        
@@ -50,14 +50,17 @@ $.fn.menu = function( textarea ) {
     $(this).prepend( 
         '<ul class="editor-menu"></ul>'
     );    
-    
-    $("ul.editor-menu").menuItem("H1",          "<h1 class='red-text center'>{text}</h1>");
-    $("ul.editor-menu").menuItem("H2",          "<h2>{text}</h2>");
-    $("ul.editor-menu").menuItem("H3",          "<h3>{text}</h3>");
-    $("ul.editor-menu").menuItem("H4",          "<h4>{text}</h4>");
+    /*
+    $("ul.editor-menu").menuItem("+",           "","paragraph");
+    $("ul.editor-menu").menuItem("static");*/
+    $("ul.editor-menu").menuItem("H1",          "h2" , "heading");
+    $("ul.editor-menu").menuItem("H2",          "h3" , "heading");
+    $("ul.editor-menu").menuItem("H3",          "h4" , "heading");
+    $("ul.editor-menu").menuItem("H4",          "h5" , "heading");
     $("ul.editor-menu").menuItem("static");
     $("ul.editor-menu").menuItem("black",       "<span class='black-text'>{text}</span>");
     $("ul.editor-menu").menuItem("red",         "<span class='red-text'>{text}</span>");
+    $("ul.editor-menu").menuItem("dark-grey",   "<span class='grey-text'>{text}</span>");
     $("ul.editor-menu").menuItem("grey",        "<span class='grey-text'>{text}</span>");
     $("ul.editor-menu").menuItem("light-grey",  "<span class='light-grey-text'>{text}</span>");
     $("ul.editor-menu").menuItem("white",       "<span class='white-text'>{text}</span>");
@@ -66,35 +69,39 @@ $.fn.menu = function( textarea ) {
     $("ul.editor-menu").menuItem("underline",   "<span class='underline'>{text}</span>");
     $("ul.editor-menu").menuItem("italic",      "<span class='italic'>{text}</span>");
     $("ul.editor-menu").menuItem("static");
-    $("ul.editor-menu").menuItem("big",          "<span class='big'>{text}</span>");
-    $("ul.editor-menu").menuItem("medium",      "<span class='medium'>{text}</span>");
-    $("ul.editor-menu").menuItem("small",       "<span class='small'>{text}</span>");
+    $("ul.editor-menu").menuItem("big",         "big-font"      , 'p-style' , /-font$/);
+    $("ul.editor-menu").menuItem("medium",      "medium-font"   , 'p-style' , /-font$/);
+    $("ul.editor-menu").menuItem("small",       "small-font"    , 'p-style' , /-font$/);
     $("ul.editor-menu").menuItem("static");
-    $("ul.editor-menu").menuItem("justify",     "<p class='justify'>{text}</p>");
-    $("ul.editor-menu").menuItem("center",      "<p class='center'>{text}</p>");
-    $("ul.editor-menu").menuItem("left",        "<p class='left'>{text}</p>");
-    $("ul.editor-menu").menuItem("indent",      "<p class='indent'>{text}</p>");
-    $("ul.editor-menu").menuItem("margin",      "<p class='margin'>{text}</p>");
+    $("ul.editor-menu").menuItem("justify",     "justify-align" , 'p-style' , /-align$/);
+    $("ul.editor-menu").menuItem("center",      "center-align"  , 'p-style' , /-align$/);
+    $("ul.editor-menu").menuItem("left",        "left-align"    , 'p-style' , /-align$/);
+    $("ul.editor-menu").menuItem("right",       "right-align"   , 'p-style' , /-align$/);
+    $("ul.editor-menu").menuItem("indent",      "indent"        , 'p-style');
+    $("ul.editor-menu").menuItem("margin",      "margin"        , 'p-style');
+    $("ul.editor-menu").menuItem("static");
+    $("ul.editor-menu").menuItem("quote",       "quote-layout"  , 'p-style' , /-layout$/);
+    $("ul.editor-menu").menuItem("code",        "code-layout"   , 'p-style' , /-layout$/);
     $("ul.editor-menu").menuItem("static");
     $("ul.editor-menu").menuItem("remove formatting",'',"remove");
     $("ul.editor-menu").menuItem("static");
-    $("ul.editor-menu").menuItem("+",           '<section class="part"><div class="area"><div contenteditable="true" class="text-area"></div></div></section>','section');
+    $("ul.editor-menu").menuItem("+",           '<section class="part"><div class="area"><div class="text-area"><p spellcheck="false" contenteditable="true"></p></div></div></section>','section');
     $("ul.editor-menu").menuItem("static");
     $("ul.editor-menu").menuItem("one",         "area" , "parts");
     $("ul.editor-menu").menuItem("two",         "half" , "parts");
     $("ul.editor-menu").menuItem("three",       "third" , "parts");
     $("ul.editor-menu").menuItem("static");
-    $("ul.editor-menu").menuItem("red",         "red" , "bg");
-    $("ul.editor-menu").menuItem("light-grey",  "grey" , "bg");
-    $("ul.editor-menu").menuItem("grey",        "dark-grey" , "bg");
-    $("ul.editor-menu").menuItem("white",       "white" , "bg");
+    $("ul.editor-menu").menuItem("red",         "red" ,      "bg");
+    $("ul.editor-menu").menuItem("light-grey",  "grey" ,     "bg");
+    $("ul.editor-menu").menuItem("grey",        "dark-grey" ,"bg");
+    $("ul.editor-menu").menuItem("white",       "white" ,   "bg");
     $("ul.editor-menu").menuItem("static");
     $("ul.editor-menu").menuItem("image",       "" , "img");
     $("ul.editor-menu").menuItem("static");
     $("ul.editor-menu").menuItem("undo",        "" , "undo");
 };
 
-$.fn.menuItem = function( label , html , action ) { 
+$.fn.menuItem = function( label , html , action , exclusive ) { 
     var editor = $(".editor-preview");
     /*
      * creating new li element
@@ -139,26 +146,21 @@ $.fn.menuItem = function( label , html , action ) {
                 
             case 'parts':
                 
-                if(!sel || $(".editor-preview").has(sel.parent).length === 0 ) break;
-                
                 count = {
                     area : 1,
                     half : 2,
                     third: 3
                 };
                 
-                el = sel.parent;
-                while( !$(el).is('section') ) {
-                    el = $(el).parent();
-                    if( $(el).is("body") ) return;
-                }
+                el = $(".editor-preview .focused");
+                
                 $(el).children().each( function( ) {
                     $(this).remove();
                 });
                 
                 for( i = 0 ; i < count[html] ; i++ ) {
                     $(el).append( 
-                        '<div class="' + html + '"><div contenteditable="true" class="text-area"></div></div>'
+                        '<div class="' + html + '"><div class="text-area"><p spellcheck="false" contenteditable="true"></p></div></div>'
                     );
                 }
                 break;
@@ -169,9 +171,9 @@ $.fn.menuItem = function( label , html , action ) {
                  * removing formatting
                  */
                 if(!sel || $(".editor-preview").has(sel.parent).length === 0 ) break;
-                el = sel.parent;
-                while( !$(el).is("div.text-area") ) {
-                    if( $(el).is("div.area")) return;
+                el = $(sel.wrap).is("span") ? sel.wrap : sel.parent;
+                while( !$(el).is("p") ) {
+                    if( $(el).is("div.text-area")) return;
                     
                     text = $(el).text();
                     parent = $(el).parent();
@@ -187,13 +189,8 @@ $.fn.menuItem = function( label , html , action ) {
                 /*
                  * changing bg
                  */
-                if(!sel || $(".editor-preview").has(sel.parent).length === 0 ) break;
-                el = sel.parent;
-                while( !$(el).is("section") || !$(el).parent().hasClass("editor-preview") ) {
-                    el = $(el).parent();
-                    if( $(el).is("body") ) return;
-                }
-                $(el).removeAttr('class').addClass('part ' + html);
+                $(".editor-preview .focused").removeAttr('class').addClass('part focused ' + html);
+
                 break;
                 
             case 'img':
@@ -215,7 +212,43 @@ $.fn.menuItem = function( label , html , action ) {
                 Memory.pop();
 
                 break;
+
+            case 'p-style':
                 
+                /*
+                 * changing class
+                 */
+                if(!sel || $(".editor-preview").has(sel.parent).length === 0 ) break;
+                el = $(sel.parent).is("p") ? sel.parent : sel.wrap;
+                
+                while( !$(el).parent().is(".text-area") ) {
+                    el = el.parent();
+                    if( $(el).is("body")) return;
+                }
+                
+                if( $(el).hasClass( html ) ) {
+                    $(el).removeClass( html );
+                } else {
+                    if( exclusive !== '' ) 
+                        $(el).removeClassRegExp( exclusive );
+
+                    $(el).addClass(html);
+                }
+                
+                break;            
+            case 'heading':
+                
+                /*
+                 * adding heading
+                 */
+                if(!sel || $(".editor-preview").has(sel.parent).length === 0 ) break;
+                el = $(sel.parent).is("p") ? sel.parent : sel.wrap;
+
+                $(el).changeElementType( html );
+
+                
+                break;
+
             default:
                 
                 /*
@@ -242,6 +275,43 @@ $.fn.menuItem = function( label , html , action ) {
     $(this).append(li);
 };
 
+$.fn.changeElementType = function(newType) {
+    var attrs = {};
+
+    $.each(this[0].attributes, function(idx, attr) {
+        attrs[attr.nodeName] = attr.nodeValue;
+    });
+
+    this.replaceWith(function() {
+        return $("<" + newType + "/>", attrs).append($(this).contents());
+    });
+};
+
+$.fn.removeClassRegExp = function (regexp) {
+    if(regexp && (typeof regexp==='string' || typeof regexp==='object')) {
+        regexp = typeof regexp === 'string' ? regexp = new RegExp(regexp) : regexp;
+        $(this).each(function () {
+            $(this).removeClass(function(i,c) { 
+                var classes = [];
+                $.each(c.split(' '), function(i,c) {
+                    if(regexp.test(c)) { classes.push(c); }
+                });
+                return classes.join(' ');
+            });
+        });
+    }
+    return this;
+};
+
+function addParagraph( el ) {
+    while( !$(el).parent().is(".text-area") ) {
+        el = el.parent();
+        if( $(el).is("body")) return;
+    }
+    $(el).after("<p spellcheck='false' contenteditable='true'></p>");
+    $(el).next().focus();
+}
+
 function selection( ) {
     sel = window.getSelection();
     if( sel !== undefined ) {
@@ -264,12 +334,29 @@ function selection( ) {
  * @param e event
  */
 $(document).bind('keydown', function(e) {
-    if( e.which === 8 || e.which === 46 ) {
-        sel = selection( );
-        if( sel && $(sel.parent).parent().hasClass("part") && $(sel.parent).parent().text() === '' ) {
+    sel = selection( );
+    if( ( e.which === 8 || e.which === 46 ) && sel) {
+        el = $(sel.parent).is("p") ? sel.parent : sel.wrap;
+        if( $(el).text() === '' && $(el).is("p") ) {
             e.preventDefault();
-            $(sel.parent).parent().remove();
+            if( $(el).parent().parent().parent().text() === '' ) {
+                $(el).parent().parent().parent().remove();
+                return;
+            }
+            if( $(el).siblings().length > 0 ) {
+                if( $(el).prev() !== undefined ) 
+                    $(el).prev().focus();
+                else
+                    $(el).next().focus();
+                $(el).remove();
+            }
         }
+    }
+    if( e.which === 13 && sel) {
+        e.preventDefault();
+        el = $(sel.parent).is("p") ? sel.parent : sel.wrap;
+        addParagraph( el );
+        return false;
     }
 });
 
@@ -288,18 +375,17 @@ $(document).bind('click', function(e) {
     }
 });*/
 
+
+
 /**
  * copying content to textarea on submit
  * @param e event
  */
 $(document).submit(function(e) { 
-    $(".editor-preview div.text-area").each( function( ) {
-        $(this).attr("contenteditable","false");
+    $(".editor-preview p").each( function( ) {
+        $(this).removeAttr("contenteditable");
     });
     $(".editor").val($(".editor-preview").html());
-    $(".editor-preview div.text-area").each( function( ) {
-        $(this).attr("contenteditable","true");
-    });
 });
 
 /**
@@ -327,4 +413,11 @@ $(document).bind('click', function(e) {
        );
        $(".media-window-tab").fadeOut();
    }
+   if( $(".editor-preview section").has( e.target ).length > 0 || 
+       $(e.target).is(".editor-preview section") ) {
+       $(".editor-preview section").each( function( ) {
+           $(this).removeClass("focused");
+       });
+       $(e.target).closest("section").addClass("focused");
+   } 
 });
