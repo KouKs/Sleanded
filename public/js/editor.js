@@ -50,9 +50,9 @@ $.fn.menu = function( textarea ) {
     $(this).prepend( 
         '<ul class="editor-menu"></ul>'
     );    
-    /*
+
     $("ul.editor-menu").menuItem("+",           "","paragraph");
-    $("ul.editor-menu").menuItem("static");*/
+    $("ul.editor-menu").menuItem("static");
     $("ul.editor-menu").menuItem("H1",          "h2" , "heading");
     $("ul.editor-menu").menuItem("H2",          "h3" , "heading");
     $("ul.editor-menu").menuItem("H3",          "h4" , "heading");
@@ -213,6 +213,18 @@ $.fn.menuItem = function( label , html , action , exclusive ) {
 
                 break;
 
+            case 'paragraph':
+                
+                /*
+                 * adding a paragraph to the beggining of a section
+                 */
+                $(".editor-preview .focused .text-area").prepend(
+                    '<p spellcheck="false" contenteditable="true"></p>'
+                ).find("p").first().focus();
+                
+                
+                break;    
+            
             case 'p-style':
                 
                 /*
@@ -235,7 +247,8 @@ $.fn.menuItem = function( label , html , action , exclusive ) {
                     $(el).addClass(html);
                 }
                 
-                break;            
+                break;    
+            
             case 'heading':
                 
                 /*
@@ -275,6 +288,10 @@ $.fn.menuItem = function( label , html , action , exclusive ) {
     $(this).append(li);
 };
 
+/**
+ * changing element type
+ * @param newType type of element
+ */
 $.fn.changeElementType = function(newType) {
     var attrs = {};
 
@@ -287,6 +304,10 @@ $.fn.changeElementType = function(newType) {
     });
 };
 
+/**
+ * removing el classes based on regular expression
+ * @param regexp regular expression
+ */
 $.fn.removeClassRegExp = function (regexp) {
     if(regexp && (typeof regexp==='string' || typeof regexp==='object')) {
         regexp = typeof regexp === 'string' ? regexp = new RegExp(regexp) : regexp;
@@ -303,15 +324,22 @@ $.fn.removeClassRegExp = function (regexp) {
     return this;
 };
 
-function addParagraph( el ) {
+/**
+ * adding a P
+ */
+$.fn.addParagraph = function() {
+    el = $(this);
     while( !$(el).parent().is(".text-area") ) {
-        el = el.parent();
+        $el = $(el).parent();
         if( $(el).is("body")) return;
     }
     $(el).after("<p spellcheck='false' contenteditable='true'></p>");
     $(el).next().focus();
-}
+};
 
+/**
+ * getting selection
+ */
 function selection( ) {
     sel = window.getSelection();
     if( sel !== undefined ) {
@@ -330,7 +358,7 @@ function selection( ) {
 };
 
 /**
- * removing section
+ * removing section or creating new P
  * @param e event
  */
 $(document).bind('keydown', function(e) {
@@ -355,7 +383,7 @@ $(document).bind('keydown', function(e) {
     if( e.which === 13 && sel) {
         e.preventDefault();
         el = $(sel.parent).is("p") ? sel.parent : sel.wrap;
-        addParagraph( el );
+        $(el).addParagraph();
         return false;
     }
 });

@@ -41,17 +41,17 @@
                 <div class="progress-bar" data-percent="95%">
                     <div><label>php</label></div>
                 </div>
-                <div class="progress-bar" data-percent="84%">
+                <div class="progress-bar" data-percent="89%">
                     <div><label>jQuery</label></div>
                 </div>
-                <div class="progress-bar" data-percent="65%">
+                <div class="progress-bar" data-percent="70%">
                     <div><label>Java</label></div>
                 </div>
-                <div class="progress-bar" data-percent="60%">
-                    <div><label>C++</label></div>
-                </div>
-                <div class="progress-bar" data-percent="50%">
+                <div class="progress-bar" data-percent="67%">
                     <div><label>C#</label></div>
+                </div>
+                <div class="progress-bar" data-percent="65%">
+                    <div><label>C++</label></div>
                 </div>
             </div>
         </div>
@@ -100,6 +100,7 @@
     </div>
 </section>
 
+<?php if( count( $this->posts ) > 0 ) : ?>
 <section id="blog" class="part">
     <div class="img-blog" data-image="img/book.png" data-width="2000" data-height="1000"></div>
     <div class="area">
@@ -118,6 +119,7 @@
         <?php endforeach; ?>
     </div>
 </section>
+<?php endif; ?>
 
 <section class="part red">
     <div class="area">
