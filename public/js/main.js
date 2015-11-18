@@ -32,7 +32,7 @@ $(document).ready( function() {
  */
 $.fn.showContent = function( ) {   
     this.each( function( ) {
-        if( $(this).css("opacity") < 1 && $(window).scrollTop() > $(this).offset().top - 650 ) {
+        if( $(this).css("opacity") < 1 && $(window).scrollTop() > $(this).offset().top - window.innerHeight ) {
             $(this).animate({opacity: 1});
             return;
         }
