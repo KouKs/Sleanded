@@ -330,7 +330,7 @@ $.fn.removeClassRegExp = function (regexp) {
 $.fn.addParagraph = function() {
     el = $(this);
     while( !$(el).parent().is(".text-area") ) {
-        $el = $(el).parent();
+        el = $(el).parent();
         if( $(el).is("body")) return;
     }
     $(el).after("<p spellcheck='false' contenteditable='true'></p>");
