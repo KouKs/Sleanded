@@ -39,7 +39,7 @@ $.fn.preview = function( content ) {
             '<div class="editor-preview"></div>'        
         );
         $(".editor-preview").html( content );
-        $(".editor-preview").find("p,h1,h2,h3,h4,h5,h6").each( function( ) {
+        $(".editor-preview .text-area").children().each( function( ) {
             $(this).attr("contentEditable","true");
         });
     }
@@ -410,7 +410,7 @@ $(document).bind('click', function(e) {
  * @param e event
  */
 $(document).submit(function(e) { 
-    $(".editor-preview").find("p,h1,h2,h3,h4,h5,h6").each( function( ) {
+    $(".editor-preview .text-area").children().each( function( ) {
         $(this).removeAttr("contenteditable");
     });
     $(".editor").val($(".editor-preview").html());
