@@ -343,8 +343,8 @@ $.fn.addParagraph = function() {
 function selection( ) {
     sel = window.getSelection();
     if( sel !== undefined ) {
-        start = sel.baseOffset < sel.extentOffset ? sel.baseOffset : sel.extentOffset;
-        end   = sel.baseOffset > sel.extentOffset ? sel.baseOffset : sel.extentOffset;
+        start = sel.focusOffset < sel.anchorOffset  ? sel.focusOffset : sel.anchorOffset;
+        end   = sel.focusOffset > sel.anchorOffset  ? sel.focusOffset : sel.anchorOffset;
         return {
             start  : start,
             end    : end,

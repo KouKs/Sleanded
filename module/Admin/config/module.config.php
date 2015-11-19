@@ -57,14 +57,15 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Admin\Controller\Index' => 'Admin\Controller\IndexController',
-            'Admin\Controller\Messages' => 'Admin\Controller\MessagesController',
-            'Admin\Controller\Login' => 'Admin\Controller\LoginController',
-            'Admin\Controller\Users' => 'Admin\Controller\UsersController',
-            'Admin\Controller\Reference' => 'Admin\Controller\ReferenceController',
-            'Admin\Controller\Blog' => 'Admin\Controller\BlogController',
-            'Admin\Controller\Profile' => 'Admin\Controller\ProfileController',
-            'Admin\Controller\Media' => 'Admin\Controller\MediaController',
+            'Admin\Controller\Index'        => 'Admin\Controller\IndexController',
+            'Admin\Controller\Messages'     => 'Admin\Controller\MessagesController',
+            'Admin\Controller\Login'        => 'Admin\Controller\LoginController',
+            'Admin\Controller\Users'        => 'Admin\Controller\UsersController',
+            'Admin\Controller\Reference'    => 'Admin\Controller\ReferenceController',
+            'Admin\Controller\Blog'         => 'Admin\Controller\BlogController',
+            'Admin\Controller\Profile'      => 'Admin\Controller\ProfileController',
+            'Admin\Controller\Media'        => 'Admin\Controller\MediaController',
+            'Admin\Controller\Projects'     => 'Admin\Controller\ProjectsController',
         ),
     ), 
     'view_manager' => array(
