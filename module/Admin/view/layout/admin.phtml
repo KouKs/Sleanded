@@ -32,33 +32,33 @@
     <body>   
         <div class="page">
             <header>
-                <a href="<?php echo $this->basePath("admin"); ?>"><div class="logo">Admin</div></a>
+                <a href="<?= $this->basePath("admin"); ?>"><div class="logo">Admin</div></a>
                 <nav id="primary">
                     <a class="clear"></a>
                     
-                    <a href="<?php echo $this->basePath("admin/reference"); ?>">reference</a>
+                    <a href="<?= $this->basePath("admin/reference"); ?>">reference</a>
                     <nav>
-                        <a href="<?php echo $this->basePath("admin/reference"); ?>">list</a>
-                        <a href="<?php echo $this->basePath("admin/reference/add"); ?>">add new</a>
+                        <a href="<?= $this->basePath("admin/reference"); ?>">list</a>
+                        <a href="<?= $this->basePath("admin/reference/add"); ?>">add new</a>
                     </nav>
                     <a href="<?php echo $this->basePath("admin/blog"); ?>">blog</a>
                     <nav>
-                        <a href="<?php echo $this->basePath("admin/blog"); ?>">all articles</a>
-                        <a href="<?php echo $this->basePath("admin/blog/add"); ?>">write article</a>
+                        <a href="<?= $this->basePath("admin/blog"); ?>">all articles</a>
+                        <a href="<?= $this->basePath("admin/blog/add"); ?>">write article</a>
                     </nav> 
-                    <a href="<?php echo $this->basePath("admin/messages"); ?>">messages</a>
-                    <a href="<?php echo $this->basePath("admin/users"); ?>">users</a>
+                    <a href="<?= $this->basePath("admin/messages"); ?>">messages</a>
+                    <a href="<?= $this->basePath("admin/users"); ?>">users</a>
                     <nav>
-                        <a href="<?php echo $this->basePath("admin/users"); ?>">list</a>
-                        <a href="<?php echo $this->basePath("admin/users/add"); ?>">add new</a>
+                        <a href="<?= $this->basePath("admin/users"); ?>">list</a>
+                        <a href="<?= $this->basePath("admin/users/add"); ?>">add new</a>
                     </nav>
-                    <a href="<?php echo $this->basePath("admin/media"); ?>">media</a>
+                    <a href="<?= $this->basePath("admin/media"); ?>">media</a>
 
                     <a class="clear"></a>
                     
-                    <a>projects</a>
+                    <a href="<?= $this->basePath("admin/projects"); ?>">projects</a>
                     <nav>
-                        <a>list of projects</a>
+                        <a href="<?= $this->basePath("admin/projects"); ?>">list of projects</a>
                         <a>add new</a>
                     </nav>
                     <a>idea sheet</a>
@@ -70,12 +70,12 @@
                     
                     <a class="clear"></a>
                     
-                    <a href="<?php echo $this->basePath("admin/profile"); ?>">profile</a>
-                    <a href="<?php echo $this->basePath("admin/login"); ?>">logout</a>
+                    <a href="<?= $this->basePath("admin/profile"); ?>">profile</a>
+                    <a href="<?= $this->basePath("admin/login"); ?>">logout</a>
                     
                     <a class="clear"></a>
                     
-                    <a href="<?php echo $this->basePath(); ?>">site</a>
+                    <a href="<?= $this->basePath(); ?>">site</a>
                 </nav>
             </header>
 
