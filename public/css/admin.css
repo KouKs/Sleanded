@@ -916,6 +916,11 @@ header > nav nav a:hover {
 .admin textarea:focus {
   background: #fafafa;
 }
+.admin input.progress,
+.admin textarea.progress {
+  min-width: 33.333%;
+  max-width: 33.333%;
+}
 .admin input[type="checkbox"] {
   min-width: auto;
   max-width: auto;

@@ -5,20 +5,20 @@
  *
  * @author Kouks
  * 
-CREATE TABLE `reference` (
-	`id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-	`name` VARCHAR(20) NULL,
-	`desc` VARCHAR(100) NULL DEFAULT NULL,
-	`text` TEXT NULL,
-	`img` VARCHAR(70) NULL,
-	`time` DOUBLE UNSIGNED NULL,
-	`ip` VARCHAR(70) NULL,
-	INDEX `id` (`id`),
-	PRIMARY KEY (`id`)
+CREATE TABLE `projects` (
+	`id` INT NULL AUTO_INCREMENT,
+	`name` VARCHAR(50) NOT NULL,
+	`desc` TEXT NULL,
+	`progressPoints` VARCHAR(150) NULL,
+	`progress` INT NOT NULL DEFAULT '0',
+	`time` BIGINT UNSIGNED NOT NULL,
+	`deadline` VARCHAR(50) NOT NULL,
+	INDEX `id` (`id`)
 )
 COLLATE='utf8_bin'
 ENGINE=MyISAM
 ;
+
 
  * 
  */
@@ -27,7 +27,7 @@ namespace Application\Database;
 use Zend\Db\TableGateway\TableGateway;
 use Zend\Db\ResultSet\ResultSet;
 
-class ReferenceTable {
+class ProjectTable {
     
     protected $tableGateway;
 
@@ -47,15 +47,15 @@ class ReferenceTable {
         return $rs;
     }
     
-    public function add( TableModel\Reference $reference ) {
+    public function add( TableModel\Project $p ) {
         
         $data = [
-            'name'     => $reference->name,
-            'desc'     => $reference->desc,
-            'text'     => $reference->text,
-            'img'      => $reference->img,
-            'time'     => time(),
-            'ip'        => $_SERVER['REMOTE_ADDR'],
+            'name' => $p->name,
+            'desc' => $p->desc,
+            'progressPoints' => $p->progressPoints,
+            'progress' => $p->progress,
+            'time' => time(),
+            'deadline' => $p->dealine,
         ];
         
         if( !$this->tableGateway->insert( $data ) )

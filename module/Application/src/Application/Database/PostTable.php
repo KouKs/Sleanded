@@ -27,8 +27,6 @@ namespace Application\Database;
 use Zend\Db\TableGateway\TableGateway;
 use Zend\Db\ResultSet\ResultSet;
 
-use Admin\Model\PostFilter;
-
 class PostTable {
     
     protected $tableGateway;

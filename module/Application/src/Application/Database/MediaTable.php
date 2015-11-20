@@ -17,7 +17,7 @@ namespace Application\Database;
 use Zend\Db\TableGateway\TableGateway;
 use Zend\Db\ResultSet\ResultSet;
 
-class MediaTable {
+class ProjectTable {
     
     protected $tableGateway;
 
@@ -41,7 +41,7 @@ class MediaTable {
         
         $data = [
             'name' => $m->name,
-            'url' => $m->url,
+            'url' => $m->desc,
         ];
         
         if( !$this->tableGateway->insert( $data ) )
@@ -82,42 +82,6 @@ class MediaTable {
         $rs->initialize( $result );
         
         return $rs;
-    }
-    
-    public function autologin ( $nick, $password_hash ) {
-        $select = $this->tableGateway->getSql()
-                ->select()
-                ->where( [  'name' => $nick, 'password' => $password_hash,
-                            'ip' => $_SERVER['REMOTE_ADDR'], 'remember' => 1 ] )
-                ->limit( 1 );
-        $result = $this->tableGateway->getSql()->prepareStatementForSqlObject( $select )->execute();
-        
-        $rs = new ResultSet();
-        $rs->initialize( $result );
-        
-        return $rs->toArray();
-    }
-    
-    public function login ( $name, $password ) {
-        $where = new \Zend\Db\Sql\Where();
-        $where  ->nest()
-                ->equalTo( 'name', $name)
-                ->or
-                ->equalTo( 'email', $name)
-                ->unnest()
-                ->and
-                ->equalTo( 'password', hash( 'sha256',  $password ) );
-        
-        $select = $this->tableGateway->getSql()
-                ->select()
-                ->where( $where )
-                ->limit( 1 );
-        $result = $this->tableGateway->getSql()->prepareStatementForSqlObject( $select )->execute();
-        
-        $rs = new ResultSet();
-        $rs->initialize( $result );
-        
-        return $rs->toArray();        
     }
 }
 

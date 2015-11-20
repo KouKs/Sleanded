@@ -1,0 +1,41 @@
+<?= $this->messenger( $this->message ); ?>
+
+<section class="part dark-grey">
+    <div class="area">
+        <h2 class="left white-text">Admin > Projects > Add</h2>
+    </div>    
+</section>
+<section class="part">
+    <div class="area">        
+        <h3 class="left dark-grey-text">Adding a project</h3>
+        <hr />
+        <?php $form = $this->form;
+              $form->prepare();
+              $form->setAttribute('class' , 'admin');
+              echo $this->form()->openTag($form); ?>
+        
+        <?=   $this->formElement( $form->get('name') ) .  
+              $this->formElement( $form->get('desc') ) .
+              $this->formElement( $form->get('deadline') ) ?>
+        <h4>Points</h4>
+        <?=   $this->formElement( $form->get('progressPoints[]') ) ?>
+        <hr /><br />
+        <?=   $this->formButton( $form->get('submit') , 'Add' ) ?>
+             
+        <?=   $this->form()->closeTag() ?>
+    </div>
+</section>
+<script>
+$(document).on('keyup', '.progress', function() {
+    if( !$(this).next().is(".progress") && $(this).val() !== '' ) {
+        $(this).after('<input type="text" name="progressPoints[]" class="progress" placeholder="Add another point" />');
+    }
+    if( $(this).val() === '' &&
+        $(this).next().val().is(".progress") &&
+        $(this).next().val() === '' &&
+        !$(this).next().next().is(".progress") ) {
+    
+        $(this).next().remove();
+    }
+});    
+</script>

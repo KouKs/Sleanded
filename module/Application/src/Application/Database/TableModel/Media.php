@@ -4,7 +4,7 @@ namespace Application\Database\TableModel;
 
 class Media
 {
-    public $url;
+    public $url, $name;
 
     public function exchangeArray( $data )
     {
