@@ -33,7 +33,7 @@
                 <?php endif; ?>
             <?php endforeach; ?>
             <?php if( $project->progress == count( $progressPoints ) ) : ?>
-                    <li data-change="<?= $index + 1 ?>" class="big done"><i class="fa-li fa fa-check-square"></i>Done!</li>
+                    <li data-done="done" data-change="<?= $index + 1 ?>" class="big bold done"><i class="fa-li fa fa-check-square"></i>Done!</li>
             <?php else : ?>
                     <li data-done="done" data-change="<?= $index + 1  ?>" class="big waiting"><i class="fa-li fa fa-square"></i>Done!</li>
             <?php endif;?>
