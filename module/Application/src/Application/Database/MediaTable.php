@@ -17,7 +17,7 @@ namespace Application\Database;
 use Zend\Db\TableGateway\TableGateway;
 use Zend\Db\ResultSet\ResultSet;
 
-class ProjectTable {
+class MediaTable {
     
     protected $tableGateway;
 

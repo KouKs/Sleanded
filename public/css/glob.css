@@ -223,6 +223,9 @@ p {
 /**
  * 5 - Obecně používané třídy
  */
+.cursor-pointer {
+  cursor: pointer;
+}
 /**
  * 5.1 - Barvy pozadí
  */
@@ -237,6 +240,9 @@ p {
 }
 .dark-grey {
   background-color: #333;
+}
+.black {
+  background-color: #000;
 }
 /**
  * 5.2 - Rozdělení stránky

@@ -223,6 +223,9 @@ p {
 /**
  * 5 - Obecně používané třídy
  */
+.cursor-pointer {
+  cursor: pointer;
+}
 /**
  * 5.1 - Barvy pozadí
  */
@@ -237,6 +240,9 @@ p {
 }
 .dark-grey {
   background-color: #333;
+}
+.black {
+  background-color: #000;
 }
 /**
  * 5.2 - Rozdělení stránky
@@ -1055,5 +1061,27 @@ td.left {
 }
 td.right {
   text-align: right;
+}
+/**
+* 6 - Ideasheet
+*/
+.idea {
+  float: left;
+  margin: 25px 30px;
+  padding: 0px;
+  cursor: pointer;
+}
+.idea .circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  float: left;
+}
+.idea .tail {
+  width: 120px;
+  height: 25px;
+  margin: 12.5px 0px 10px 40px;
+  line-height: 25px;
+  text-align: center;
 }
 /*# sourceMappingURL=admin.css.map */

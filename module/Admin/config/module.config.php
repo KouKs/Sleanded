@@ -66,6 +66,7 @@ return array(
             'Admin\Controller\Profile'      => 'Admin\Controller\ProfileController',
             'Admin\Controller\Media'        => 'Admin\Controller\MediaController',
             'Admin\Controller\Projects'     => 'Admin\Controller\ProjectsController',
+            'Admin\Controller\Ideasheet'     => 'Admin\Controller\IdeasheetController',
         ),
     ), 
     'view_manager' => array(
