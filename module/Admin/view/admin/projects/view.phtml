@@ -1,6 +1,6 @@
 <?= $this->messenger( $this->message ); ?>
-<?php foreach( $this->project as $project ) { break; } ?>
-
+<?php foreach( $this->project as $project ) { break; } 
+      $progressPoints = explode( '|' , $project->progressPoints ); ?>
 
 <section class="part dark-grey">
     <div class="area">
@@ -11,16 +11,36 @@
 <section class="part">
     <div class="area">
         <h3>Project: <?= $project->name ?></h3>
-        <h4>Project info</h4>
-        <hr />
-        <p class="big dark-grey-text margin"><?= $project->desc ?></p>
-        <h4>Progress</h4>
-        <hr />
-        <div class="progress-bar stripped" data-percent="60%">
-            <div><label>Creating label</label></div>    
-        </div>
         <h4>Tickets</h4>
         <hr />
+        <h4>Project info</h4>
+        <hr />
+        <p class="indent justify big dark-grey-text margin"><?= $project->desc ?></p>
+        <p class="big red-text margin"><a target="_blank" href="<?= $this->basePath( "project/progress/" . $project->id . "/" . $this->urlParser( $project->name ) ) ?>">View page</a></p>
+        <h4>Progress</h4>
+        <hr />
+        <div class="progress-bar stripped" data-percent="<?= ( $project->progress + 1 ) / ( count( $progressPoints ) + 1 ) * 100 ?>%">
+            <div><label>Project progress</label></div>    
+        </div>
+        <ul class="progress-menu">
+            <?php foreach( $progressPoints as $index=>$point ) : ?>
+                <?php if( $index < $project->progress ) : ?>
+                    <li data-change="<?= $index ?>" class="big done"><i class="fa-li fa fa-check-square"></i><?= $point ?></li>
+                <?php elseif( $index == $project->progress ) : ?>
+                    <li data-change="<?= $index ?>" class="big bold processing"><i class="fa-li fa fa-spinner fa-spin"></i><?= $point ?></li>
+                <?php else : ?>
+                    <li data-change="<?= $index ?>" class="big waiting"><i class="fa-li fa fa-square"></i><?= $point ?></li>
+                <?php endif; ?>
+            <?php endforeach; ?>
+            <?php if( $project->progress == count( $progressPoints ) ) : ?>
+                    <li data-change="<?= $index + 1 ?>" class="big done"><i class="fa-li fa fa-check-square"></i>Done!</li>
+            <?php else : ?>
+                    <li data-done="done" data-change="<?= $index + 1  ?>" class="big waiting"><i class="fa-li fa fa-square"></i>Done!</li>
+            <?php endif;?>
+        </ul>
+        <h4>Deadline</h4>
+        <hr />
+        <h3 class="center red-text"><?= $this->date( $project->deadline )?></h3>
 
     </div>
 </section>
@@ -28,6 +48,35 @@
     $("tr").click( function() {
         if( ( href = $(this).data("href") ) !== '' ) {
             location.href = href;
+        }
+    });
+    $("li").click( function() {
+        if( ( change = $(this).data("change") ) !== '' ) {
+            ajax( 'projects' , 'changeprogress' , "<?= $project->id ?>/" + change , undefined , true );
+            
+            $(".progress-menu li").each( function() {
+                if( $(this).data("change") < change ) {
+                    $(this).removeAttr('class').addClass('big done');
+                    $(this).find("i").first().remove();
+                    $(this).prepend('<i class="fa-li fa fa-check-square"></i>');
+                } else if( $(this).data("change") === change ) {
+                    if( $(this).data("done") === "done" ) {
+                        $(this).removeAttr('class').addClass('big bold done');
+                        $(this).find("i").first().remove();
+                        $(this).prepend('<i class="fa-li fa fa-check-square"></i>');
+                    } else {
+                        $(this).removeAttr('class').addClass('big bold processing');
+                        $(this).find("i").first().remove();
+                        $(this).prepend('<i class="fa-li fa fa-spinner fa-spin"></i>');
+                    }
+                } else {
+                    $(this).removeAttr('class').addClass('big waiting');
+                    $(this).find("i").first().remove();
+                    $(this).prepend('<i class="fa-li fa fa-square"></i>');
+                }
+            });
+            percent = ( change + 1 ) / $(".progress-menu li").length * 100;
+            $(".progress-bar div").animate({width: percent + '%'});
         }
     });
 </script>

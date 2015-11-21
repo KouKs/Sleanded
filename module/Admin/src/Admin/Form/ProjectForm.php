@@ -2,7 +2,7 @@
 /**
  * Contact Form
  *
- * @author Mišel
+ * @author kouks
  */
 namespace Admin\Form;
 
@@ -29,14 +29,15 @@ class ProjectForm extends Form
                 'placeholder' => 'Description of project',
             ),
         ));
+        
         $this->add(array(
-            'name' => 'progressPoints[]',
+            'name' => 'progressPoints',
             'type' => 'text',
             'attributes' => array(
                 'placeholder' => 'Points of progress',
-                'class' => 'progress',
             ),
         ));
+
         $this->add(array(
             'name' => 'deadline',
             'type' => 'Zend\Form\Element\Date',
@@ -88,12 +89,30 @@ class ProjectForm extends Form
                      'options' => array(
                          'encoding' => 'UTF-8',
                          'min'      => 3,
-                         'max'      => 200,
+                         'max'      => 1500,
                      ),
                 ),
             ),
         ));
         
+        $inputFilter->add(array(
+            'name'     => 'progressPoints',
+            'required' => true,
+            'filters'  => array(
+                array('name' => 'StripTags'),
+                array('name' => 'StringTrim'),
+            ),
+            'validators' => array(
+                array(
+                     'name'    => 'StringLength',
+                     'options' => array(
+                         'encoding' => 'UTF-8',
+                         'min'      => 3,
+                         'max'      => 200,
+                     ),
+                ),
+            ),
+        ));
         $this->setInputFilter( $inputFilter );
     }
 }

@@ -55,7 +55,7 @@ class ProjectTable {
         $data = [
             'name' => $p->name,
             'desc' => $p->desc,
-            'progressPoints' => implode( "|" , $p->progressPoints ),
+            'progressPoints' => $p->progressPoints,
             'time' => time(),
             'deadline' => strtotime( $p->deadline ),
         ];
@@ -66,6 +66,8 @@ class ProjectTable {
     
     public function edit( $id , $data )
     {
+
+        if( isset( $data["deadline"] ) ) $data["deadline"] = strtotime( $data["deadline"] );
         if( $id == "*" )
         {
             $this->tableGateway->update( $data );

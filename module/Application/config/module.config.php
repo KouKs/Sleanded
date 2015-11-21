@@ -56,7 +56,7 @@ return array(
                                 'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
                                 'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
                                 'id'         => '[0-9]+',
-                                'seo'        => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'seo'        => '[a-zA-Z0-9_-]+',
                             ),
                             'defaults' => array(
                                 'controller'    => 'Application\Controller\Index',
@@ -95,6 +95,7 @@ return array(
             'Application\Controller\Team' => 'Application\Controller\TeamController',
             'Application\Controller\Blog' => 'Application\Controller\BlogController',
             'Application\Controller\Contact' => 'Application\Controller\ContactController',
+            'Application\Controller\Project' => 'Application\Controller\ProjectController',
         ),
     ),
     'view_manager' => array(

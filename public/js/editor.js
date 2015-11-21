@@ -349,7 +349,7 @@ function selection( ) {
             start  : start,
             end    : end,
             text   : sel.toString(),
-            parent : $(sel.focusNode.parentElement),
+            parent : sel.focusNode !== null ? $(sel.focusNode.parentElement) : null,
             wrap   : $(sel.focusNode)
         };
     } else {

@@ -16,12 +16,12 @@
                     <th>Name</th>
                     <th class="thin" colspan="2">Actions</th>
                 </tr>
-                <?php foreach( $this->projects  as $reference ) : ?>
-                    <tr data-href="<?= $this->basePath( "admin/projects/view/" . $reference->id . "/" . $reference->name ) ?>">
-                        <td><?= $reference->id ?></td>
-                        <td class="bold"><?= $reference->name ?></td>
-                        <td class="thin"><a href="<?= $this->basePath( "admin/projects/edit/" . $reference->id ) ?>"><div class="icon-small-edit"></div></a></td>
-                        <td class="thin"><div onClick="ajax( 'projects' , 'delete' , <?= $reference->id ?> , $(this).parent().parent() )" class="icon-small-cross"></div></td>
+                <?php foreach( $this->projects  as $project ) : ?>
+                    <tr data-href="<?= $this->basePath( "admin/projects/view/" . $project->id . "/" . $this->urlParser( $project->name ) ) ?>">
+                        <td><?= $project->id ?></td>
+                        <td class="bold"><?= $project->name ?></td>
+                        <td class="thin"><a href="<?= $this->basePath( "admin/projects/edit/" . $project->id ) ?>"><div class="icon-small-edit"></div></a></td>
+                        <td class="thin"><div onClick="ajax( 'projects' , 'delete' , <?= $project->id ?> , $(this).parent().parent() )" class="icon-small-cross"></div></td>
                     </tr>
                 <?php endforeach; ?>
             </table>

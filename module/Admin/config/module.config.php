@@ -43,7 +43,7 @@ return array(
                         'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'id'         => '[0-9]+',
-                        'seo'        => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'seo'        => '[a-zA-Z0-9_-]+',
                     ),
                     'defaults' => array(
                         '__NAMESPACE__' => 'Admin\Controller',

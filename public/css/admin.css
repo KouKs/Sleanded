@@ -9,6 +9,7 @@
  *   Created on : 28.10.2015
  *   Author     : Pavel
  */
+@import "https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css";
 /**
  * 0 - Reset
  */
@@ -30,6 +31,9 @@ textarea,
 select,
 option {
   outline: 0;
+}
+li {
+  list-style-type: none;
 }
 /**
  * 1 - Proměnné
@@ -288,6 +292,24 @@ p {
   display: inline-block;
   font-size: 20px;
   width: 300px;
+}
+.progress-menu {
+  cursor: pointer;
+}
+.progress-menu li {
+  margin-bottom: 10px;
+}
+.progress-menu li.done {
+  color: green;
+}
+.progress-menu li.processing {
+  color: #f1be28;
+}
+.progress-menu li.waiting {
+  color: #333;
+}
+.fa-li {
+  position: relative !important;
 }
 /**
  * 5.5 - Ostatní

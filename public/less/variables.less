@@ -3,6 +3,8 @@
  *   Author     : Pavel
  */
 
+@import "https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css";
+
 /**
  * 0 - Reset
  */
@@ -22,6 +24,10 @@ input,button,textarea,select,option {
     outline: 0;
 }
 
+li {
+    list-style-type: none;
+}
+
 
 /**
  * 1 - Proměnné
@@ -38,6 +44,9 @@ input,button,textarea,select,option {
 
 @img-folder: "../img/";
 @font-folder: "../fonts/";
+
+@green: green;
+@yellow: #f1be28;
 
 /**
  * 2 - Funkce
@@ -352,6 +361,25 @@ p {
         width: 300px; 
     }
 }
+
+.progress-menu {
+    cursor: pointer;
+    li {
+        margin-bottom: 10px;
+        &.done {
+            color: @green;
+        }
+        &.processing {
+            color: @yellow;
+        }
+        &.waiting {
+            color: @dark-grey;
+        }
+        
+    }
+}
+
+.fa-li { position: relative !important;}
 
 /**
  * 5.5 - Ostatní

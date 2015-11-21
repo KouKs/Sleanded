@@ -1,8 +1,8 @@
-<?= $this->messenger( $this->message ); ?>
+<?php echo $this->messenger( $this->message ); ?>
 
 <section class="part dark-grey">
     <div class="area">
-        <h2 class="left white-text">Admin > Projects > Add</h2>
+        <h2 class="left white-text">Admin > Project > Edit</h2>
     </div>    
 </section>
 <section class="part">
@@ -19,8 +19,8 @@
               $this->formElement( $form->get('deadline') ) ?>
         <h4>Points</h4>
         <?=   $this->formElement( $form->get('progressPoints') ) ?>
-        
-        <?=   $this->formButton( $form->get('submit') , 'Add' ) ?>
+        <hr /><br />
+        <?=   $this->formButton( $form->get('submit') , 'Edit' ) ?>
              
         <?=   $this->form()->closeTag() ?>
     </div>
