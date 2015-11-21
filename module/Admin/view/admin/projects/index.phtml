@@ -5,5 +5,28 @@
         <h2 class="left white-text">Admin > Projects</h2>
     </div>    
 </section>
+
 <section class="part">
+    <div class="area">
+        <h3>List of projects</h3>
+        <?php if( count( $this->projects ) > 0 ) : ?>
+            <table class='admin' width='100%'>
+                <tr>
+                    <th class="thin">#</th>
+                    <th>Name</th>
+                    <th class="thin" colspan="2">Actions</th>
+                </tr>
+                <?php foreach( $this->projects  as $reference ) : ?>
+                    <tr data-href="<?= $this->basePath( "admin/projects/view/" . $reference->id . "/" . $reference->name ) ?>">
+                        <td><?= $reference->id ?></td>
+                        <td class="bold"><?= $reference->name ?></td>
+                        <td class="thin"><a href="<?= $this->basePath( "admin/projects/edit/" . $reference->id ) ?>"><div class="icon-small-edit"></div></a></td>
+                        <td class="thin"><div onClick="ajax( 'projects' , 'delete' , <?= $reference->id ?> , $(this).parent().parent() )" class="icon-small-cross"></div></td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
+        <?php else : ?>
+            <h4 class="center">None yet :(</h4>
+        <?php endif; ?>
+    </div>
 </section>

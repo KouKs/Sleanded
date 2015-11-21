@@ -93,25 +93,6 @@ class ProjectForm extends Form
                 ),
             ),
         ));
-
-        $inputFilter->add(array(
-            'name'     => 'progressPoints',
-            'required' => true,
-            'filters'  => array(
-                array('name' => 'StripTags'),
-                array('name' => 'StringTrim'),
-            ),
-            'validators' => array(
-                array(
-                     'name'    => 'StringLength',
-                     'options' => array(
-                         'encoding' => 'UTF-8',
-                         'min'      => 3,
-                         'max'      => 200,
-                     ),
-                ),
-            ),
-        ));
         
         $this->setInputFilter( $inputFilter );
     }

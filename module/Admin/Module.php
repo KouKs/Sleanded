@@ -110,6 +110,17 @@ class Module
                      $resultSetPrototype->setArrayObjectPrototype(new Database\TableModel\User());
                      return new TableGateway('users', $dbAdapter, null, $resultSetPrototype);
                  },
+                 'Application\Database\ProjectTable' =>  function($sm) {
+                     $tableGateway = $sm->get('ProjectTableGateway');
+                     $table = new Database\ProjectTable($tableGateway);
+                     return $table;
+                 },
+                 'ProjectTableGateway' => function ($sm) {
+                     $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                     $resultSetPrototype = new ResultSet();
+                     $resultSetPrototype->setArrayObjectPrototype(new Database\TableModel\Project());
+                     return new TableGateway('projects', $dbAdapter, null, $resultSetPrototype);
+                 },
              ),
         );
     }

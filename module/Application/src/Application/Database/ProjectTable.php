@@ -10,9 +10,9 @@ CREATE TABLE `projects` (
 	`name` VARCHAR(50) NOT NULL,
 	`desc` TEXT NULL,
 	`progressPoints` VARCHAR(150) NULL,
-	`progress` INT NOT NULL DEFAULT '0',
+	`progress` INT NULL DEFAULT '0',
 	`time` BIGINT UNSIGNED NOT NULL,
-	`deadline` VARCHAR(50) NOT NULL,
+	`deadline` BIGINT UNSIGNED NOT NULL,
 	INDEX `id` (`id`)
 )
 COLLATE='utf8_bin'
@@ -49,13 +49,16 @@ class ProjectTable {
     
     public function add( TableModel\Project $p ) {
         
+        if( empty( $p->progressPoints[ count( $p->progressPoints ) - 1 ] ) )
+            unset( $p->progressPoints[ count( $p->progressPoints ) - 1 ] );
+            
         $data = [
             'name' => $p->name,
             'desc' => $p->desc,
-            'progressPoints' => $p->progressPoints,
+            'progressPoints' => implode( "|" , $p->progressPoints ),
             'progress' => $p->progress,
             'time' => time(),
-            'deadline' => $p->dealine,
+            'deadline' => strtotime( $p->deadline ),
         ];
         
         if( !$this->tableGateway->insert( $data ) )
