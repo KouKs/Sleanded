@@ -37,6 +37,7 @@ class ProjectsController extends AbstractActionController
             'projects'      => $this->getProjectTable()->fetchAll(),
         ];
     }
+    
     public function addAction()
     {
         $this->layout("layout/admin");
@@ -65,6 +66,17 @@ class ProjectsController extends AbstractActionController
         return [
             'message'       => isset( $message ) ? $message : null,
             'form'          => $form,
+        ];
+    }
+    
+    public function viewAction()
+    {
+        $this->layout("layout/admin"); 
+        $id = $this->params('id');
+        
+        return [
+            'message'       => isset( $message ) ? $message : null,
+            'project'      => $this->getProjectTable()->select("id=". $id),
         ];
     }
     

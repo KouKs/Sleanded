@@ -30,3 +30,10 @@
         <?php endif; ?>
     </div>
 </section>
+<script>
+    $("tr").click( function() {
+        if( ( href = $(this).data("href") ) !== '' ) {
+            location.href = href;
+        }
+    });
+</script>

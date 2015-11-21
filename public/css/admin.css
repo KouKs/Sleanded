@@ -266,7 +266,31 @@ p {
   border-radius: 0 !important;
 }
 /**
- * 5.4 - Ostatní
+ * 5.4 - Progress bar
+ */
+.progress-bar {
+  width: 100%;
+  height: 50px;
+  background-color: #333;
+  color: #eee;
+  margin: 25px 0;
+}
+.progress-bar div {
+  width: 0;
+  height: 50px;
+  background-color: #b23432;
+}
+.progress-bar.stripped > div {
+  background: repeating-linear-gradient(45deg, #b23432, #b23432 10px, #cc3c39 10px, #cc3c39 20px);
+}
+.progress-bar label {
+  padding: 15px;
+  display: inline-block;
+  font-size: 20px;
+  width: 300px;
+}
+/**
+ * 5.5 - Ostatní
  */
 [class^='img-'] {
   position: absolute;

@@ -11,6 +11,7 @@ $(document).ready( function() {
     
     /* loading with scrolling */
     $(".area").showContent( );
+    $(".progress-bar").showBar( );
     $(this).scroll( function() {
         $(".area").showContent( );
         $(".progress-bar").showBar( );
@@ -41,7 +42,7 @@ $.fn.showContent = function( ) {
 
 $.fn.showBar = function( ) {  
     this.each( function( ) {
-        if( $(this).children().first().css("width") !== 0 && $(window).scrollTop() > $(this).offset().top - 650 ) {
+        if( $(this).children().first().css("width") !== 0 && $(window).scrollTop() > $(this).offset().top - window.innerHeight ) {
             $(this).children().first().animate({width: $(this).data("percent")},1500);
             return;
         }

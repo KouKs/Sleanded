@@ -10,7 +10,7 @@ CREATE TABLE `projects` (
 	`name` VARCHAR(50) NOT NULL,
 	`desc` TEXT NULL,
 	`progressPoints` VARCHAR(150) NULL,
-	`progress` INT NULL DEFAULT '0',
+	`progress` INT NOT NULL DEFAULT '0',
 	`time` BIGINT UNSIGNED NOT NULL,
 	`deadline` BIGINT UNSIGNED NOT NULL,
 	INDEX `id` (`id`)
@@ -56,7 +56,6 @@ class ProjectTable {
             'name' => $p->name,
             'desc' => $p->desc,
             'progressPoints' => implode( "|" , $p->progressPoints ),
-            'progress' => $p->progress,
             'time' => time(),
             'deadline' => strtotime( $p->deadline ),
         ];
