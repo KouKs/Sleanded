@@ -10,7 +10,7 @@ CREATE TABLE `projects` (
 	`name` VARCHAR(50) NOT NULL,
 	`desc` TEXT NULL,
 	`progressPoints` VARCHAR(150) NULL,
-	`progress` INT NULL DEFAULT '0',
+	`progress` INT NOT NULL DEFAULT '0',
 	`time` BIGINT UNSIGNED NOT NULL,
 	`deadline` BIGINT UNSIGNED NOT NULL,
 	INDEX `id` (`id`)
@@ -55,8 +55,7 @@ class ProjectTable {
         $data = [
             'name' => $p->name,
             'desc' => $p->desc,
-            'progressPoints' => implode( "|" , $p->progressPoints ),
-            'progress' => $p->progress,
+            'progressPoints' => $p->progressPoints,
             'time' => time(),
             'deadline' => strtotime( $p->deadline ),
         ];
@@ -67,6 +66,8 @@ class ProjectTable {
     
     public function edit( $id , $data )
     {
+
+        if( isset( $data["deadline"] ) ) $data["deadline"] = strtotime( $data["deadline"] );
         if( $id == "*" )
         {
             $this->tableGateway->update( $data );

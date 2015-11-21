@@ -6,6 +6,13 @@ var _URL = "/sleanded/public/admin/";
  */
 $(document).ready( function() {
     
+    /* loading with scrolling */
+    $(".area").showContent( );
+    $(".progress-bar").showBar( );
+    $(this).scroll( function() {
+        $(".area").showContent( );
+    });    
+    
     /*
      * Editor
      */

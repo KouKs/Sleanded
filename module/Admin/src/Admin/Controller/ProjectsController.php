@@ -37,6 +37,7 @@ class ProjectsController extends AbstractActionController
             'projects'      => $this->getProjectTable()->fetchAll(),
         ];
     }
+    
     public function addAction()
     {
         $this->layout("layout/admin");
@@ -68,12 +69,70 @@ class ProjectsController extends AbstractActionController
         ];
     }
     
+    public function editAction()
+    {
+        $this->layout("layout/admin");
+        $id = $this->params('id');
+        $form = new ProjectForm();
+        $request = $this->getRequest();
+        $projectTable = $this->getProjectTable();
+        $p = new Project(  );
+        
+        if ( $request->isPost() )
+        {
+            $form->addInputFilter();
+            $form->setData( $request->getPost() );
+
+            if ( $form->isValid() )
+            {
+                $p->exchangeArray( $request->getPost() );
+                $projectTable->edit( $id , $p->toArray() );
+                
+                $message = [ "Project has been successfully edited" , Messenger::SUCCESS ];
+            }
+            else
+            {
+                $message = [ "All inputs have to be filled out" , Messenger::ERROR ];
+            }
+        }
+        
+        $p->exchangeArray( $projectTable->select("id=".$id)->toArray()[0] );
+        $form->setData( $p->toArray() );
+        
+        return [
+            'message'       => isset( $message ) ? $message : null,
+            'form'          => $form,
+        ];
+    }
+    
+    public function viewAction()
+    {
+        $this->layout("layout/admin"); 
+        $id = $this->params('id');
+        
+        return [
+            'message'       => isset( $message ) ? $message : null,
+            'project'      => $this->getProjectTable()->select("id=". $id),
+        ];
+    }
+    
     public function deleteAction()
     {
         $id = $this->params('id');
         
         $projectTable = $this->getProjectTable();
         $projectTable->delete( $id );
+        
+        return $this->response;
+    }
+    
+    public function changeprogressAction()
+    {
+        $id = $this->params('id');
+        $progress = $this->params('seo');
+        
+        $projectTable = $this->getProjectTable();
+        $projectTable->edit( $id , [ 'progress' => $progress ] );
         
         return $this->response;
     }
@@ -84,7 +143,7 @@ class ProjectsController extends AbstractActionController
     
     /**
      * Returns an isntance of message table
-     * @return Application\Database\MessageTable 
+     * @return Application\Database\ProjectTable 
      */
     private function getProjectTable()
     {

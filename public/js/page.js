@@ -4,6 +4,14 @@
  */
 $(document).ready( function() {
     
+    /* loading with scrolling */
+    $(".area").showContent( );
+    $(".progress-bar").showBar( );
+    $(this).scroll( function() {
+        $(".area").showContent( );
+        $(".progress-bar").showBar( );
+    });    
+    
     /* smooth scrolling */
     $("html").niceScroll({scrollspeed: 65});
     $("#port").niceScroll("#bar",{scrollspeed: 65});
