@@ -6,12 +6,10 @@ var _URL = "/sleanded/public/admin/";
  */
 $(document).ready( function() {
     
-    /* loading with scrolling */
-    $(".area").showContent( );
-    $(".progress-bar").showBar( );
-    $(this).scroll( function() {
-        $(".area").showContent( );
-    });    
+    /* loading progress bar */
+    $(".progress-bar").each( function() {
+        $(this).children().first().animate({width: $(this).data("percent")},1500);
+    });  
     
     /* smooth scrolling */
     $("ul.timeline").niceScroll({scrollspeed: 65});

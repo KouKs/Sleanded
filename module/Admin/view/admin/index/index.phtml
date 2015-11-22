@@ -1,3 +1,7 @@
+<?= $this->messenger( $this->message ); ?>
+
+<?php $importances = [ 1 => "Very low" , "Low" , "Medium" , "High" , "Very high" ]; ?>
+
 <section class="part dark-grey">
     <div class="area">
         <h2 class="left white-text">Dashboard</h2>
@@ -23,19 +27,64 @@
                     <?php endforeach; ?>
                 </table>
             <?php else : ?>
-                <h4 class="center dark-grey-text">No new messages :(</h4>
+                <h4 class="center dark-grey-text">No new messages</h4>
             <?php endif; ?>
         </div>
     </div>    
     <div class="half grid-item">
         <div class="text-area">
             <h3 class="center dark-grey-text">Your tickets</h3>
+            <?php if( count( $this->assignedTickets ) > 0 ) : ?>
+                <table class="admin">
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Project</th>
+                        <th>Importance</th>
+                    </tr>
+                    <?php foreach( $this->assignedTickets as $t ) : ?>
+                        <tr data-href="<?= $this->basePath("admin/projects/view/" . $t->project_id) ?>">  
+                            <td><?= $t->name ?></td>
+                            <td><?= $t->desc ?></td>
+                            <td><?= $t->project_name ?></td>
+                            <td><?= $importances[ $t->importance ] ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </table>
+            <?php else : ?>
+                <h4 class="center dark-grey-text">You have no tickets</h4>
+            <?php endif; ?>
             <p class="big dark-grey-text">
                 - rozlišit zobrazování .area na idnexu a jinde<br />
                 - Dodělat form na users<br />
                 - Newslettery?<br />
                 - Statistiky (ga?)<br />
             </p>
+        </div>
+    </div>      
+    <div class="half grid-item">
+        <div class="text-area">
+            <h3 class="center dark-grey-text">Pending tickets</h3>
+            <?php if( count( $this->pendingTickets ) > 0 ) : ?>
+                <table class="admin">
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Project</th>
+                        <th>Importance</th>
+                    </tr>
+                    <?php foreach( $this->pendingTickets as $t ) : ?>
+                        <tr data-href="<?= $this->basePath("admin/projects/view/" . $t->project_id) ?>">  
+                            <td><?= $t->name ?></td>
+                            <td><?= $t->desc ?></td>
+                            <td><?= $t->project_name ?></td>
+                            <td><?= $importances[ $t->importance ] ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </table>
+            <?php else : ?>
+                <h4 class="center dark-grey-text">No pending tickets</h4>
+            <?php endif; ?>
         </div>
     </div>     
     <div class="half grid-item">
@@ -44,3 +93,11 @@
         </div>
     </div>  
 </section>
+
+<script>
+    $("tr").click( function() {
+        if( ( href = $(this).data("href") ) !== undefined ) {
+            location.href = href;
+        }
+    });
+</script>

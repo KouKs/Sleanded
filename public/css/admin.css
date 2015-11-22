@@ -887,7 +887,6 @@ header > nav nav a:hover {
   top: 20%;
   left: 40%;
   width: 30%;
-  min-height: 60%;
   z-index: 10000;
   display: none;
   background: #fff;
@@ -976,7 +975,6 @@ header > nav nav a:hover {
 .editor-preview .part .area {
   margin: 0 auto;
   width: 90%;
-  opacity: 0;
   opacity: 1;
 }
 .editor-preview .part h1:focus,

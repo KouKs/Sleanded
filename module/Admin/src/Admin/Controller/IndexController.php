@@ -27,11 +27,26 @@ class IndexController extends AbstractActionController
     public function indexAction()
     {
         $this->layout("layout/admin");
-        $messageTable = $this->getMessageTable( );
         
         return [
-            'message'       => isset( $message ) ? $message : null,
-            'messages'      => $messageTable->select("viewed=0"),
+            'message'        => isset( $message ) ? $message : null,
+            'messages'       => $this->getMessageTable()->select("viewed=0"),
+            'assignedTickets'=> $this->getTicketTable()->select( 
+                    array( "assigned_to=".$this->user->id , "resolved=0"),
+                    null,
+                    "projects",
+                    "projects.id = tickets.project_id",
+                    array("project_name" => "name"),
+                    "project_id DESC, importance DESC, time DESC"                    
+            ),
+            'pendingTickets' => $this->getTicketTable()->select(
+                    "assigned_to=0",
+                    null,
+                    "projects",
+                    "projects.id = tickets.project_id",
+                    array("project_name" => "name"),
+                    "project_id DESC, importance DESC, time DESC"
+            ),
         ];
     }
     
@@ -46,6 +61,15 @@ class IndexController extends AbstractActionController
     private function getMessageTable()
     {
         return $this->getServiceLocator()->get('Application\Database\MessageTable');
+    }
+    
+    /**
+     * Returns an isntance of ticket table
+     * @return Application\Model\TicketTable 
+     */
+    private function getTicketTable()
+    {
+        return $this->getServiceLocator()->get('Application\Database\TicketTable');
     }
 }
 
