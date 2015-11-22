@@ -142,7 +142,7 @@ class ProjectsController extends AbstractActionController
                 'users',
                 'tickets.assigned_to = users.id',
                 'full_name',
-                'resolved ASC, importance DESC, time DESC'
+                'resolved ASC, importance DESC, time ASC'
             ),
             'form'         => $form,
             'user_id'      => $this->user->id,

@@ -45,7 +45,7 @@ class IndexController extends AbstractActionController
                     "projects",
                     "projects.id = tickets.project_id",
                     array("project_name" => "name"),
-                    "project_id DESC, importance DESC, time DESC"
+                    "project_id DESC, importance DESC, time ASC"
             ),
         ];
     }
