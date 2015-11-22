@@ -11,8 +11,58 @@
 <section class="part">
     <div class="area">
         <h3>Project: <?= $project->name ?></h3>
-        <h4>Tickets</h4>
+        <h4>Tickets<i class="fa fa-plus-square ticket-window-trigger"></i></h4>
         <hr />
+        <div class="ticket-window">
+            <div class="top-bar"><i class="fa fa-times ticket-window-trigger"></i></div>
+            <div class="heading"><h3 class="center white-text">Add ticket</h3></i></div>
+            
+            <?php $form = $this->form;
+                  $form->prepare();
+                  $form->setAttribute('class' , 'admin text-area');
+                  echo $this->form()->openTag($form); ?>
+
+            <?=   $this->formElement( $form->get('name') ) .  
+                  $this->formElement( $form->get('desc') ) .
+                  $this->formElement( $form->get('author_id') ) .
+                  $this->formElement( $form->get('project_id') ) .
+                  $this->formElement( $form->get('importance') ) ?>
+
+            <?=   $this->formButton( $form->get('submit') , 'Add' ) ?>
+
+            <?=   $this->form()->closeTag() ?>
+            
+        </div>
+        
+        <?php if( count( $this->tickets) > 0 ) : ?>
+            <ul class="timeline">
+                <?php foreach( $this->tickets as $index=>$ticket ) : ?>
+                    <li>
+                        <div class="<?= $index % 2 == 0 ? "direction-r" : "direction-l" ?>">
+                            <div class="flag-wrapper">
+                                <span data-resolved="<?= $ticket->resolved ?>" data-id="<?= $ticket->id ?>" class="flag<?= $ticket->assigned_to ? " resolvable" : "" ?>
+                                                                                                                       <?= $ticket->resolved ? " resolved" : "" ?>
+                                                                                                                       <?= $ticket->importance < 3 ? " low-importance" : "" ?>
+                                                                                                                       <?= $ticket->importance > 3 ? " high-importance" : "" ?>"><?= $ticket->name ?></span>
+                                <span class="time-wrapper"><span class="time"><?= $this->date( $ticket->time ) ?></span></span>
+                                <?php if( $ticket->assigned_to && !$ticket->resolved ) : ?>
+                                    <span class="time-wrapper"><span class="time"><strong><?= $ticket->full_name ?></strong></span></span>
+                                <?php elseif( $ticket->resolved ) : ?>
+                                    <span class="time-wrapper"><span class="time"><strong>Resolved</strong></span></span>
+                                    <span class="time-wrapper"><span class="time"><i data-id="<?= $ticket->id ?>" class="fa fa-times remove-ticket"></i></span></span>
+                                <?php else : ?>
+                                    <span data-id="<?= $ticket->id ?>" data-assign="<?= $this->user_id ?>" class="clickable time-wrapper"><span class="time">Not assigned yet</span></span>
+                                <?php endif; ?>
+                            </div>
+                            <div class="desc"><?= $ticket->desc ?></div>
+                        </div>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        <?php else : ?>
+        <h3 class="center">No tickets assigned to this project</h3>
+        <?php endif; ?>
+        
         <h4>Project info</h4>
         <hr />
         <p class="indent justify big dark-grey-text margin"><?= $project->desc ?></p>
@@ -50,7 +100,7 @@
             location.href = href;
         }
     });
-    $("li").click( function() {
+    $(".progress-menu li").click( function() {
         if( ( change = $(this).data("change") ) !== '' ) {
             ajax( 'projects' , 'changeprogress' , "<?= $project->id ?>/" + change , undefined , true );
             
@@ -78,5 +128,33 @@
             percent = ( change + 1 ) / $(".progress-menu li").length * 100;
             $(".progress-bar div").animate({width: percent + '%'});
         }
+    });
+    
+    $(".ticket-window-trigger").click(function(){
+        $(".ticket-window").fadeToggle();
+    });
+    
+    $(".flag.resolvable").click( function(e) {
+        if(e.offsetX < 0 || e.offsetX - this.offsetWidth > 150 ) {
+            id = $(this).data("id");
+            resolved = $(this).data("resolved") ? 0 : 1;
+            
+            ajax( 'projects' , 'changeresolved' , id + "/" + resolved , null , true );
+            if(  $(this).hasClass('resolved') )
+                $(this).removeClass('resolved');
+            else
+                $(this).addClass('resolved');
+        }
+    });
+    $(".clickable.time-wrapper").click(function(){
+        id = $(this).data("id");
+        assignTo = $(this).data("assign");
+        ajax( 'projects' , 'assignticket' , id + "/" +  assignTo , null , true );
+        $(this).children().first().text("Assigned!");
+        $(this).removeClass("clickable");
+    });
+    $(".fa.remove-ticket").click(function(){
+        id = $(this).data("id");
+        ajax( 'projects' , 'deleteticket' , id , $(this).parent().parent().parent().parent().parent() );
     });
 </script>

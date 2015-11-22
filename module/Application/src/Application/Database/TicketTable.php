@@ -1,25 +1,24 @@
 <?php
-
 /**
- * Reference table gateway
+ * Ticket table gateway
  *
  * @author Kouks
  * 
-CREATE TABLE `reference` (
-	`id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-	`name` VARCHAR(20) NULL,
-	`desc` VARCHAR(100) NULL DEFAULT NULL,
-	`text` TEXT NULL,
-	`img` VARCHAR(70) NULL,
-	`time` DOUBLE UNSIGNED NULL,
-	`ip` VARCHAR(70) NULL,
-	INDEX `id` (`id`),
-	PRIMARY KEY (`id`)
+ CREATE TABLE `tickets` (
+	`id` INT NOT NULL AUTO_INCREMENT,
+	`name` VARCHAR(50) NOT NULL,
+	`desc` TEXT NULL,
+	`time` BIGINT UNSIGNED NOT NULL,
+	`importance` TINYINT UNSIGNED NOT NULL DEFAULT '1',
+        `project_id` INT UNSIGNED NOT NULL,
+	`author_id` MEDIUMINT UNSIGNED NOT NULL,
+	`assigned_to` MEDIUMINT UNSIGNED NOT NULL DEFAULT '0',
+	`resolved` TINYINT UNSIGNED NOT NULL DEFAULT '0',
+	INDEX `id` (`id`)
 )
 COLLATE='utf8_bin'
 ENGINE=MyISAM
 ;
-
  * 
  */
 namespace Application\Database;
@@ -27,7 +26,7 @@ namespace Application\Database;
 use Zend\Db\TableGateway\TableGateway;
 use Zend\Db\ResultSet\ResultSet;
 
-class ReferenceTable {
+class TicketTable {
     
     protected $tableGateway;
 
@@ -47,15 +46,15 @@ class ReferenceTable {
         return $rs;
     }
     
-    public function add( TableModel\Reference $reference ) {
+    public function add( TableModel\Ticket $t ) {
         
         $data = [
-            'name'     => $reference->name,
-            'desc'     => $reference->desc,
-            'text'     => $reference->text,
-            'img'      => $reference->img,
-            'time'     => time(),
-            'ip'        => $_SERVER['REMOTE_ADDR'],
+            'name'          => $t->name,
+            'desc'          => $t->desc,
+            'importance'    => $t->importance,
+            'project_id'    => $t->project_id,
+            'author_id'     => $t->author_id,
+            'time'          => time(),
         ];
         
         if( !$this->tableGateway->insert( $data ) )
@@ -90,7 +89,7 @@ class ReferenceTable {
         
         if( $limit ) $select->limit( $limit );
         if( $where ) $select->where( $where );
-        if( $join != null ) $select->join( $join , $cond , $cols );
+        if( $join ) $select->join( $join , $cond , $cols , "left" );
         
         $result = $this->tableGateway->getSql()->prepareStatementForSqlObject( $select )->execute();
         
@@ -99,4 +98,5 @@ class ReferenceTable {
         
         return $rs;
     }
+    
 }

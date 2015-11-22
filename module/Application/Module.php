@@ -121,6 +121,17 @@ class Module
                      $resultSetPrototype->setArrayObjectPrototype(new Database\TableModel\Project());
                      return new TableGateway('projects', $dbAdapter, null, $resultSetPrototype);
                  },
+                 'Application\Database\TicketTable' =>  function($sm) {
+                     $tableGateway = $sm->get('TicketTableGateway');
+                     $table = new Database\TicketTable($tableGateway);
+                     return $table;
+                 },
+                 'TicketTableGateway' => function ($sm) {
+                     $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                     $resultSetPrototype = new ResultSet();
+                     $resultSetPrototype->setArrayObjectPrototype(new Database\TableModel\Ticket());
+                     return new TableGateway('tickets', $dbAdapter, null, $resultSetPrototype);
+                 },
              ),
         );
     }

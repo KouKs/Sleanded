@@ -13,10 +13,16 @@ class Date extends AbstractHelper
 {
     protected $time;
     
-    public function __invoke( $time )
+    public function __invoke( $time , $type = 'days' )
     {
         $this->time = $time;
-        return @date( 'j. n. Y' , $this->time );
+        switch( $type )
+        {
+            case 'days':
+                return @date( 'j. n. Y' , $this->time );
+            case 'minutes':
+                return @date( 'j. n. Y, G:i' , $this->time );
+        }
     }
     
     /*

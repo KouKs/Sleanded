@@ -317,8 +317,171 @@ p {
 .fa-li {
   position: relative !important;
 }
+/** 
+ * 5.5 - TIMELINE
+ */
+.timeline {
+  position: relative;
+  width: 660px;
+  margin: 0 auto;
+  margin-top: 20px;
+  padding: 1em 0;
+  list-style-type: none;
+  max-height: 500px;
+  overflow: auto;
+  box-sizing: border-box;
+  background: url("../img/ticket-bar.png") center center no-repeat;
+}
+.timeline li {
+  padding: 1em 0;
+}
+.timeline li:after {
+  content: "";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.direction-l {
+  position: relative;
+  width: 300px;
+  float: left;
+  text-align: right;
+}
+.direction-l .flag {
+  -webkit-box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.15), 0 0 1px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.15), 0 0 1px rgba(0, 0, 0, 0.15);
+  box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.15), 0 0 1px rgba(0, 0, 0, 0.15);
+}
+.direction-l .flag:after {
+  content: "";
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  height: 0;
+  width: 0;
+  margin-top: -8px;
+  border: solid transparent;
+  border-left-color: transparent;
+  border-width: 8px;
+  pointer-events: none;
+}
+.direction-l .time-wrapper {
+  float: left;
+}
+.direction-r {
+  position: relative;
+  width: 300px;
+  float: right;
+}
+.direction-r .flag {
+  -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15), 0 0 1px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15), 0 0 1px rgba(0, 0, 0, 0.15);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15), 0 0 1px rgba(0, 0, 0, 0.15);
+}
+.direction-r .flag:after {
+  content: "";
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  height: 0;
+  width: 0;
+  margin-top: -8px;
+  border: solid transparent;
+  border-right-color: transparent;
+  border-width: 8px;
+  pointer-events: none;
+}
+.direction-r .flag:before {
+  left: -40px;
+}
+.direction-r .time-wrapper {
+  float: right;
+}
+.direction-r .desc {
+  margin: 1em 0 0 0.75em;
+}
+.flag-wrapper {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+}
+.flag {
+  position: relative;
+  display: inline;
+  background: #f8f8f8;
+  padding: 6px 10px;
+  border-radius: 5px;
+  font-weight: 600;
+  text-align: left;
+}
+.flag.high-importance {
+  background: #b23432;
+  color: #eee;
+}
+.flag.low-importance {
+  color: #aaa;
+}
+.direction-l .flag:before,
+.direction-r .flag:before {
+  position: absolute;
+  top: 50%;
+  right: -41px;
+  content: ' ';
+  display: block;
+  width: 12px;
+  height: 12px;
+  margin-top: -10px;
+  background: #fff;
+  border-radius: 10px;
+  border: 4px solid #b23432;
+  z-index: 10;
+}
+.flag.resolvable:hover:before,
+.flag.resolved:before {
+  cursor: pointer;
+  border-color: green;
+}
+.flag.resolved:hover:before {
+  cursor: pointer;
+  border-color: #b23432;
+}
+.time-wrapper {
+  display: inline;
+  line-height: 1em;
+  font-size: 0.66666em;
+  color: #b23432;
+  vertical-align: middle;
+}
+.time-wrapper.clickable {
+  cursor: pointer;
+}
+.time-wrapper.clickable:hover {
+  color: #333;
+}
+.time-wrapper.clickable:hover > span {
+  text-indent: -9999px;
+  line-height: 0;
+}
+.time-wrapper.clickable:hover > span:after {
+  text-indent: 0px;
+  line-height: initial;
+  display: block;
+  content: 'Assign to me!';
+}
+.time {
+  display: inline-block;
+  padding: 4px 6px;
+  background: #f8f8f8;
+}
+.desc {
+  margin: 1em 0.75em 0 0;
+  font-size: 0.77777em;
+  font-style: italic;
+  line-height: 1.5em;
+}
 /**
- * 5.5 - Ostatní
+ * 5.6 - Ostatní
  */
 [class^='img-'] {
   position: absolute;
@@ -356,7 +519,7 @@ hr {
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.3);
 }
 /**
- * 6 - kony
+ * 6 - Ikony
  */
 [class^='icon-big'] {
   width: 32px;
@@ -703,6 +866,48 @@ header > nav nav a:hover {
   box-shadow: 0px 1px 3px 0px #000000;
 }
 /**
+ * 1.5 - Projects
+ */
+.fa.ticket-window-trigger {
+  float: right;
+  cursor: pointer;
+}
+.fa.ticket-window-trigger:hover {
+  color: #b23432;
+}
+.fa.remove-ticket {
+  cursor: pointer;
+  color: #333;
+}
+.fa.remove-ticket:hover {
+  color: #b23432;
+}
+.ticket-window {
+  position: fixed;
+  top: 20%;
+  left: 40%;
+  width: 30%;
+  min-height: 60%;
+  z-index: 10000;
+  display: none;
+  background: #fff;
+  -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.6);
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.6);
+}
+.ticket-window .top-bar {
+  width: 96%;
+  padding: 2%;
+  background: #333;
+  overflow: hidden;
+  color: white;
+}
+.ticket-window .heading {
+  width: 100%;
+  background: #b23432;
+  overflow: hidden;
+}
+/**
  * 2 - Custom třídy
  */
 /**
@@ -940,7 +1145,8 @@ header > nav nav a:hover {
   float: left;
 }
 .admin input,
-.admin textarea {
+.admin textarea,
+.admin select {
   margin: 5px 0;
   padding: 5px;
   min-width: 100%;
@@ -964,12 +1170,15 @@ header > nav nav a:hover {
 }
 .admin input:hover,
 .admin textarea:hover,
+.admin select:hover,
 .admin input:focus,
-.admin textarea:focus {
+.admin textarea:focus,
+.admin select:focus {
   background: #fafafa;
 }
 .admin input.progress,
-.admin textarea.progress {
+.admin textarea.progress,
+.admin select.progress {
   min-width: 33.333%;
   max-width: 33.333%;
 }

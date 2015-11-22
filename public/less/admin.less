@@ -203,6 +203,49 @@ header {
     }
 }
 /**
+ * 1.5 - Projects
+ */
+.fa.ticket-window-trigger {
+    float: right;
+    cursor: pointer;
+    
+    &:hover {
+        color: @theme-color;
+    }
+}
+
+.fa.remove-ticket {
+    cursor: pointer;
+    color: @dark-grey;
+    &:hover {
+        color: @theme-color;
+    }
+}
+
+.ticket-window {
+    position: fixed;
+    top: 20%; left: 40%;
+    width: 30%; min-height: 60%;
+    z-index: 10000;
+    display: none;
+
+    background: #fff;
+    .shadow(0.6);
+    
+    .top-bar {
+        width: 96%;
+        padding: 2%;
+        background: @dark-grey;
+        overflow: hidden;
+        color: white;
+    }
+    .heading {
+        width: 100%;
+        background: @theme-color;
+        overflow: hidden;
+    }
+}
+/**
  * 2 - Custom třídy
  */
 
@@ -455,7 +498,7 @@ header {
         float: left
     }
     
-    input, textarea {
+    input, textarea, select {
         margin: 5px 0;
         padding: 5px;
         

@@ -13,6 +13,10 @@ $(document).ready( function() {
         $(".area").showContent( );
     });    
     
+    /* smooth scrolling */
+    $("ul.timeline").niceScroll({scrollspeed: 65});
+    $("#port").niceScroll("#bar",{scrollspeed: 65});
+    
     /*
      * Editor
      */
