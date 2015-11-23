@@ -37,7 +37,6 @@ class MediaController extends AbstractActionController
         {            
             $file = $request->getFiles( )->toArray();
             
-
             $filter = new \Zend\Filter\File\RenameUpload([
                 'target' => APP_DIR . '/../public/uploads/img.png',
                 'randomize' => true,
@@ -45,7 +44,8 @@ class MediaController extends AbstractActionController
             $name = $filter->filter( $file["file"] );
 
             $post['name'] = $file["file"]["name"];
-            $post['url'] = "uploads/" . explode( '\\' , $name["tmp_name"] )[1];
+            $temp = explode( '/' , $name["tmp_name"] );
+            $post['url'] = "uploads/" . $temp[ count( $temp ) - 1 ];
             
             $m = new Media();
             $m->exchangeArray( $post );

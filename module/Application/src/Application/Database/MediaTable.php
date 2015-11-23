@@ -41,7 +41,7 @@ class MediaTable {
         
         $data = [
             'name' => $m->name,
-            'url' => $m->desc,
+            'url' => $m->url,
         ];
         
         if( !$this->tableGateway->insert( $data ) )
